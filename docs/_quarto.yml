@@ -1,0 +1,41 @@
+project:
+  type: website
+
+website:
+  title: "Shiny TreeView"
+  description: "A Shiny for Python extension providing a treeview input component"
+  site-url: https://davidchall.github.io/shiny-treeview
+  repo-url: https://github.com/davidchall/shiny-treeview
+  repo-actions: [edit, issue]
+
+  navbar:
+    background: primary
+    search: true
+    left:
+      - href: index.md
+        text: Home
+      - href: reference/
+        text: Reference
+    right:
+      - icon: github
+        href: https://github.com/davidchall/shiny-treeview
+        aria-label: GitHub
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+
+quartodoc:
+  package: shiny_treeview
+  style: pkgdown
+  parser: numpy
+  sections:
+    - title: Functions and classes
+      desc: ""
+      contents:
+        - input_treeview
+        - TreeItem
+        - stratify

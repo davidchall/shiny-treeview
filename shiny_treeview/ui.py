@@ -5,12 +5,13 @@ from typing import Optional
 from htmltools import HTMLDependency, Tag, TagList, tags
 from shiny.module import resolve_id
 
+from .__version__ import __version__
 from .tree import TreeItem
 from .utils import duplicate_ids, get_tree_path
 
 treeview_deps = HTMLDependency(
     "shiny_treeview",
-    "0.1.0",
+    __version__,
     source={
         "package": "shiny_treeview",
         "subdir": str(PurePath(__file__).parent / "distjs"),

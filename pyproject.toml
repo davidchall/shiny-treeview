@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=40.6.0", "wheel"]
+requires = ["setuptools >= 61.0", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "shiny-treeview"
-version = "0.1.0"
+dynamic = ["version"]
 description = "A Shiny for Python extension providing MUI RichTreeView component"
 authors = [{ name = "David Hall", email = "david.hall.physics@gmail.com" }]
 readme = "README.md"
@@ -40,6 +40,9 @@ zip-safe = false
 
 [tool.setuptools.package-data]
 "shiny_treeview" = ["distjs/*"]
+
+[tool.setuptools_scm]
+local_scheme = "dirty-tag"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

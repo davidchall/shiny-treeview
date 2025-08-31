@@ -5,7 +5,7 @@ from typing import Optional
 from htmltools import HTMLDependency, Tag, TagList, tags
 from shiny.module import resolve_id
 
-from .data import TreeItem
+from .tree import TreeItem
 from .utils import duplicate_ids, get_tree_path
 
 treeview_deps = HTMLDependency(

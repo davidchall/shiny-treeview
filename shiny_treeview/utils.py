@@ -3,7 +3,7 @@
 from dataclasses import replace
 from typing import Optional
 
-from .data import TreeItem
+from .tree import TreeItem
 
 
 def get_tree_path(items: list[TreeItem], id: str) -> Optional[tuple[str, ...]]:

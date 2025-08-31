@@ -1,0 +1,28 @@
+name: Check Outdated JavaScript
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  outdated_js:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run build
+
+      - name: Check for uncommitted changes
+        run: |
+          if [[ -n `git status --porcelain` ]]; then
+            git diff
+            echo "Javascript source files are outdated."
+            exit 1
+          else
+            echo "Javascript source files are up to date."
+          fi

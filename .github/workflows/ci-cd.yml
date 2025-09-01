@@ -1,0 +1,148 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  check-python:
+    runs-on: ubuntu-latest
+    env:
+      BROWSER: "chromium"
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -e ".[dev]"
+        playwright install $BROWSER --with-deps
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Run tests
+      run: pytest --browser $BROWSER
+
+  check-javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run build
+      - name: Check for uncommitted changes
+        run: |
+          if [[ -n `git status --porcelain` ]]; then
+            git diff
+            echo "❌ Javascript source files are outdated."
+            echo "Run 'npm run build' and commit the changes."
+            exit 1
+          else
+            echo "✅ Javascript source files are up to date."
+          fi
+
+  # Validate versions for releases (only on tags)
+  validate-release:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [check-python, check-javascript]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for setuptools-scm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: 'pip'
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Get versions
+        id: versions
+        run: |
+          # Extract version from git tag (remove 'v' prefix)
+          GIT_VERSION=${GITHUB_REF#refs/tags/v}
+          echo "git_version=$GIT_VERSION" >> $GITHUB_OUTPUT
+
+          # Get Python package version
+          PYTHON_VERSION=$(python -c "import shiny_treeview; print(shiny_treeview.__version__)")
+          echo "python_version=$PYTHON_VERSION" >> $GITHUB_OUTPUT
+
+          # Get package.json version using Python
+          NPM_VERSION=$(python -c "import json; print(json.load(open('package.json'))['version'])")
+          echo "npm_version=$NPM_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Validate version alignment
+        run: |
+          echo "🏷️  Git tag version: ${{ steps.versions.outputs.git_version }}"
+          echo "🐍 Python package version: ${{ steps.versions.outputs.python_version }}"
+          echo "📦 package.json version: ${{ steps.versions.outputs.npm_version }}"
+
+          if [[ "${{ steps.versions.outputs.git_version }}" != "${{ steps.versions.outputs.python_version }}" ]]; then
+            echo "❌ Git tag version doesn't match Python package version"
+            exit 1
+          fi
+
+          if [[ "${{ steps.versions.outputs.git_version }}" != "${{ steps.versions.outputs.npm_version }}" ]]; then
+            echo "❌ Git tag version doesn't match package.json version"
+            echo "Please update package.json version to ${{ steps.versions.outputs.git_version }} before releasing"
+            exit 1
+          fi
+
+          echo "✅ All versions are aligned! Ready for release."
+
+  # Deploy to PyPI (only on tags, after all checks pass)
+  deploy-pypi:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [check-python, check-javascript, validate-release]
+    environment: release
+    permissions:
+      id-token: write  # Required for trusted publishing to PyPI
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for setuptools-scm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: 'pip'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install build twine
+
+      - name: Build package
+        run: python -m build
+
+      - name: Check package
+        run: python -m twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          print-hash: true

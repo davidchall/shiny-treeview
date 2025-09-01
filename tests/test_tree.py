@@ -207,12 +207,12 @@ class TestTreeItemValidation:
 
 
 class TestTreeItemToDict:
-    """Test TreeItem.to_dict() method."""
+    """Test TreeItem._to_dict() method."""
 
     def test_simple_item_to_dict(self):
         """Test converting simple TreeItem to dict."""
         item = TreeItem(id="test", label="Test Item")
-        result = item.to_dict()
+        result = item._to_dict()
 
         expected = {"id": "test", "label": "Test Item"}
         assert result == expected
@@ -220,7 +220,7 @@ class TestTreeItemToDict:
     def test_disabled_item_to_dict(self):
         """Test converting disabled TreeItem to dict."""
         item = TreeItem(id="disabled", label="Disabled Item", disabled=True)
-        result = item.to_dict()
+        result = item._to_dict()
 
         expected = {"id": "disabled", "label": "Disabled Item", "disabled": True}
         assert result == expected
@@ -231,7 +231,7 @@ class TestTreeItemToDict:
         child2 = TreeItem(id="child2", label="Child 2", disabled=True)
         parent = TreeItem(id="parent", label="Parent", children=[child1, child2])
 
-        result = parent.to_dict()
+        result = parent._to_dict()
 
         expected = {
             "id": "parent",
@@ -249,7 +249,7 @@ class TestTreeItemToDict:
         child = TreeItem(id="child", label="Child", children=[grandchild])
         root = TreeItem(id="root", label="Root", children=[child])
 
-        result = root.to_dict()
+        result = root._to_dict()
 
         expected = {
             "id": "root",
@@ -269,7 +269,7 @@ class TestTreeItemToDict:
     def test_enabled_item_omits_disabled_field(self):
         """Test that enabled items don't include disabled field in dict."""
         item = TreeItem(id="enabled", label="Enabled Item", disabled=False)
-        result = item.to_dict()
+        result = item._to_dict()
 
         # disabled=False should not appear in the dict
         expected = {"id": "enabled", "label": "Enabled Item"}

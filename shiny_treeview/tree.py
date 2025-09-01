@@ -88,6 +88,6 @@ class TreeItem:
             result["disabled"] = True
 
         if self.children:
-            result["children"] = [child.to_dict() for child in self.children]
+            result["children"] = [child._to_dict() for child in self.children]
 
         return result

@@ -85,7 +85,7 @@ def input_treeview(
         expanded_items = expanded
 
     payload = {
-        "items": [x.to_dict() for x in items],
+        "items": [x._to_dict() for x in items],
         "multiple": multiple,
         "selected": selected_items,
         "expanded": expanded_items,

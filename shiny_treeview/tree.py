@@ -7,18 +7,18 @@ from dataclasses import dataclass, field
 @dataclass
 class TreeItem:
     """
-    Represents a single item in a tree view.
+    Represents a single item in a tree data structure. Passed to `input_treeview()`.
 
-    Attributes
+    Parameters
     ----------
     id : str
         Unique identifier for the tree item. Must be unique across all items in the tree.
     label : str
         Display text for the tree item. Can include emoji and other characters.
     children : list[TreeItem]
-        List of child TreeItem objects. Defaults to empty list for leaf nodes.
+        List of child nodes.
     disabled : bool
-        Whether the item is disabled (non-selectable). Defaults to False.
+        Whether the item is disabled (non-selectable).
 
     Examples
     --------
@@ -71,9 +71,11 @@ class TreeItem:
             if not isinstance(child, TreeItem):
                 raise ValueError(f"TreeItem children[{i}] must be a TreeItem instance")
 
-    def to_dict(self) -> dict:
+    def _to_dict(self) -> dict:
         """
-        Convert TreeItem to dictionary format compatible with MUI RichTreeView.
+        Serialize TreeItem for sending to server.
+
+        Performance is optimized by dropping default values.
 
         Returns
         -------

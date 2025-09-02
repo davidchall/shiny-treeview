@@ -48,7 +48,7 @@ quartodoc:
       contents:
         - input_treeview
         - TreeItem
-        - stratify
+        - stratify_by_parent
 
 filters:
   - interlinks

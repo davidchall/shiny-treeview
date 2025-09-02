@@ -7,9 +7,10 @@ This is a Shiny for Python extension that provides a tree view component using M
 ```
 shiny_treeview/
 ├── __init__.py          # Package exports
-├── treeview.py          # Main input_treeview component
-├── data.py              # Tree data structures
-├── utils.py             # Helper functions (stratify, etc.)
+├── ui.py                # Main input_treeview component
+├── tree.py              # Tree data structures
+├── stratify.py          # Flat-to-nested conversion functions
+├── utils.py             # Helper functions
 └── distjs/index.js      # Prebuilt JavaScript bundle
 
 srcts/                   # TypeScript source (builds to distjs/)
@@ -17,8 +18,7 @@ srcts/                   # TypeScript source (builds to distjs/)
 └── treeview.ts          # React component implementation
 
 tests/                   # Test suite
-├── test_data.py         # Data structure tests
-├── test_utils.py        # Utility function tests
+├── test_*.py            # Unit tests
 └── playwright/          # End-to-end browser tests
 
 docs/                    # Quartodoc documentation
@@ -37,7 +37,7 @@ docs/                    # Quartodoc documentation
 ### Data Structures
 - `TreeItem`: Core data structure with `id`, `label`, and optional `children`
 - Always validate tree data structure integrity
-- Support both flat data (with `stratify()`) and hierarchical data
+- Support both flat data (via stratify functions) and hierarchical data
 
 ### Component API Design
 - Follow Shiny input component conventions

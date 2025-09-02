@@ -11,4 +11,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release of shiny-treeview
 - Select from hierarchical data in your [Shiny for Python](https://shiny.posit.co/py/) apps via `input_treeview()`
 - Create hierarchical data with nested `TreeItem` objects
-- Convert flat to hierarchical data with `stratify()` helper function
+- Convert flat to hierarchical data with helper functions: `stratify_by_parent()`

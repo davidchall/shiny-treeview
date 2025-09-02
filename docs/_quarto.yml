@@ -27,11 +27,18 @@ format:
     toc: true
     code-copy: true
     code-overflow: wrap
+    css:
+      - reference/_styles-quartodoc.css
 
 quartodoc:
   package: shiny_treeview
   style: pkgdown
   parser: numpy
+  render_interlinks: true
+  renderer:
+    style: markdown
+    table_style: description-list
+  css: reference/_styles-quartodoc.css
   sections:
     - title: Functions and classes
       desc: ""
@@ -39,3 +46,14 @@ quartodoc:
         - input_treeview
         - TreeItem
         - stratify
+
+filters:
+  - interlinks
+
+interlinks:
+  autolink: true
+  sources:
+    shiny_treeview:
+      url: /
+  aliases:
+    shiny_treeview: [null]

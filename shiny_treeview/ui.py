@@ -1,5 +1,6 @@
 import json
 from pathlib import PurePath
+from typing import Optional
 
 from htmltools import HTMLDependency, Tag, TagList, tags
 from shiny.module import resolve_id
@@ -24,8 +25,8 @@ def input_treeview(
     items: list[TreeItem],
     *,
     multiple: bool = False,
-    selected: str | list[str] | None = None,
-    expanded: str | list[str] | None = None,
+    selected: Optional[str | list[str]] = None,
+    expanded: Optional[str | list[str]] = None,
 ) -> Tag:
     """
     Create a treeview input component.
@@ -38,9 +39,9 @@ def input_treeview(
         A list of TreeItem objects representing the tree data.
     multiple : bool
         Whether to allow multiple selection.
-    selected : str | list[str] | None
+    selected : Optional[str | list[str]]
         Initially selected item ID(s). If None (default), no items are selected.
-    expanded : str | list[str] | None
+    expanded : Optional[str | list[str]]
         Initially expanded item ID(s). If None (default), automatically expands all
         parents necessary to make visible the items in the `selected` argument.
 

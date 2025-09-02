@@ -23,7 +23,10 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: solar
+    respect-user-color-scheme: true
     toc: true
     code-copy: true
     code-overflow: wrap

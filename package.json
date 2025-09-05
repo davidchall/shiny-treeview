@@ -21,8 +21,10 @@
     "url": "https://github.com/davidchall/shiny-treeview.git"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.30",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@types/rstudio-shiny": "git+https://github.com/rstudio/shiny.git#v1.10.0",
     "esbuild": "0.19.5",
     "typescript": "^5.2.2"
   },
@@ -31,8 +33,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.0",
     "@mui/x-tree-view": "^7.0.0",
-    "@posit-dev/shiny-bindings-core": "^0.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.2.0"
   }
 }

@@ -30232,45 +30232,6 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var import_react9 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
-  // node_modules/@posit-dev/shiny-bindings-core/dist/utils.js
-  var Shiny = window.Shiny;
-
-  // node_modules/@posit-dev/shiny-bindings-core/dist/makeInputBinding.js
-  function makeInputBinding({ name, selector = `.${name}`, setup }) {
-    if (!Shiny) {
-      return;
-    }
-    class NewCustomBinding extends Shiny.InputBinding {
-      constructor() {
-        super(...arguments);
-        this.boundElementValues = /* @__PURE__ */ new WeakMap();
-      }
-      find(scope) {
-        return $(scope).find(selector);
-      }
-      getValue(el) {
-        if (this.boundElementValues.has(el)) {
-          return this.boundElementValues.get(el);
-        }
-        return null;
-      }
-      // TODO: Setup the getType method here
-      subscribe(el, callback) {
-        if (this.boundElementValues.has(el)) {
-          throw new Error("Cannot subscribe to an element that is already subscribed to");
-        }
-        setup(el, (x, allowDeferred = false) => {
-          this.boundElementValues.set(el, x);
-          callback(allowDeferred);
-        });
-      }
-      unsubscribe(el) {
-        this.boundElementValues.delete(el);
-      }
-    }
-    Shiny.inputBindings.register(new NewCustomBinding(), `${name}-Binding`);
-  }
-
   // srcts/treeview.ts
   var import_react8 = __toESM(require_react());
 
@@ -39712,9 +39673,9 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       slotProps
     } = props;
     const classes = useUtilityClasses7(props);
-    const Root = slots?.root ?? RichTreeViewRoot;
+    const Root2 = slots?.root ?? RichTreeViewRoot;
     const rootProps = useSlotProps_default({
-      elementType: Root,
+      elementType: Root2,
       externalSlotProps: slotProps?.root,
       className: classes.root,
       getSlotProps: getRootProps,
@@ -39722,7 +39683,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     });
     return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(TreeViewProvider, {
       value: contextValue,
-      children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Root, _extends({}, rootProps, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Root2, _extends({}, rootProps, {
         children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RichTreeViewItems, {
           slots,
           slotProps,
@@ -39975,77 +39936,110 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   }
 
   // srcts/index.ts
-  makeInputBinding({
-    name: "shiny-treeview",
-    setup: (el, updateValue) => {
-      const configScript = el.querySelector(`script[data-for="${el.id}"]`);
-      if (!configScript) {
-        console.error(`No configuration script found for treeview ${el.id}`);
-        return;
+  if (window.Shiny) {
+    class ShinyTreeViewBinding extends window.Shiny.InputBinding {
+      constructor() {
+        super(...arguments);
+        this.boundElementValues = /* @__PURE__ */ new WeakMap();
+        this.boundElementRoots = /* @__PURE__ */ new WeakMap();
       }
-      const parseStringArray = (value, fallback = []) => {
-        if (Array.isArray(value)) {
-          return value.filter((item) => typeof item === "string");
+      find(scope) {
+        return $(scope).find(".shiny-treeview");
+      }
+      getValue(el) {
+        if (this.boundElementValues.has(el)) {
+          return this.boundElementValues.get(el);
         }
-        return fallback;
-      };
-      const validateTreeItems = (items2) => {
-        if (!Array.isArray(items2)) {
-          return [];
+        return null;
+      }
+      subscribe(el, callback) {
+        if (this.boundElementRoots.has(el)) {
+          return;
         }
-        const validateItem = (item) => {
-          if (!item || typeof item !== "object")
-            return null;
-          if (typeof item.id !== "string" || typeof item.label !== "string")
-            return null;
-          const validatedItem = {
-            id: item.id,
-            label: item.label
-          };
-          if (typeof item.disabled === "boolean") {
-            validatedItem.disabled = item.disabled;
+        const configScript = el.querySelector(`script[data-for="${el.id}"]`);
+        if (!configScript) {
+          console.error(`No configuration script found for treeview ${el.id}`);
+          return;
+        }
+        const parseStringArray = (value, fallback = []) => {
+          if (Array.isArray(value)) {
+            return value.filter((item) => typeof item === "string");
           }
-          if (Array.isArray(item.children)) {
-            const validChildren = item.children.map(validateItem).filter((child) => child !== null);
-            if (validChildren.length > 0) {
-              validatedItem.children = validChildren;
+          return fallback;
+        };
+        const validateTreeItems = (items2) => {
+          if (!Array.isArray(items2)) {
+            return [];
+          }
+          const validateItem = (item) => {
+            if (!item || typeof item !== "object")
+              return null;
+            if (typeof item.id !== "string" || typeof item.label !== "string")
+              return null;
+            const validatedItem = {
+              id: item.id,
+              label: item.label
+            };
+            if (typeof item.disabled === "boolean") {
+              validatedItem.disabled = item.disabled;
             }
+            if (Array.isArray(item.children)) {
+              const validChildren = item.children.map(validateItem).filter((child) => child !== null);
+              if (validChildren.length > 0) {
+                validatedItem.children = validChildren;
+              }
+            }
+            return validatedItem;
+          };
+          return items2.map(validateItem).filter((item) => item !== null);
+        };
+        let config;
+        try {
+          const rawConfig = JSON.parse(configScript.textContent || "{}");
+          config = {
+            items: validateTreeItems(rawConfig?.items ?? []),
+            multiple: Boolean(rawConfig?.multiple),
+            selected: parseStringArray(rawConfig?.selected ?? []),
+            expanded: parseStringArray(rawConfig?.expanded ?? [])
+          };
+          if (Array.isArray(rawConfig?.items) && rawConfig.items.length > 0 && config.items.length === 0) {
+            console.warn("All tree items failed validation - check item structure (id and label are required)");
           }
-          return validatedItem;
-        };
-        return items2.map(validateItem).filter((item) => item !== null);
-      };
-      let config;
-      try {
-        const rawConfig = JSON.parse(configScript.textContent || "{}");
-        config = {
-          items: validateTreeItems(rawConfig?.items ?? []),
-          multiple: Boolean(rawConfig?.multiple),
-          selected: parseStringArray(rawConfig?.selected ?? []),
-          expanded: parseStringArray(rawConfig?.expanded ?? [])
-        };
-        if (Array.isArray(rawConfig?.items) && rawConfig.items.length > 0 && config.items.length === 0) {
-          console.warn("All tree items failed validation - check item structure (id and label are required)");
+        } catch (e) {
+          console.error("Failed to parse treeview configuration:", e);
+          config = {
+            items: [],
+            multiple: false,
+            selected: [],
+            expanded: []
+          };
         }
-      } catch (e) {
-        console.error("Failed to parse treeview configuration:", e);
-        config = {
-          items: [],
-          multiple: false,
-          selected: [],
-          expanded: []
+        const { items, multiple, selected, expanded } = config;
+        const updateValue = (value, allowDeferred) => {
+          this.boundElementValues.set(el, value);
+          callback(allowDeferred || false);
         };
+        const root = (0, import_client.createRoot)(el);
+        this.boundElementRoots.set(el, root);
+        root.render(import_react9.default.createElement(ShinyTreeView, {
+          items,
+          multiple,
+          selected,
+          expanded,
+          updateShinyValue: updateValue
+        }));
       }
-      const { items, multiple, selected, expanded } = config;
-      (0, import_client.createRoot)(el).render(import_react9.default.createElement(ShinyTreeView, {
-        items,
-        multiple,
-        selected,
-        expanded,
-        updateShinyValue: updateValue
-      }));
+      unsubscribe(el) {
+        const root = this.boundElementRoots.get(el);
+        if (root) {
+          root.unmount();
+          this.boundElementRoots.delete(el);
+        }
+        this.boundElementValues.delete(el);
+      }
     }
-  });
+    window.Shiny.inputBindings.register(new ShinyTreeViewBinding(), "shiny-treeview-binding");
+  }
 })();
 /*! Bundled license information:
 

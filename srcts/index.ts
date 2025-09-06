@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot, Root } from "react-dom/client";
-import { ShinyTreeView, TreeItem } from "./treeview";
+import { ShinyTreeView, ShinyTreeItem } from "./treeview";
 
 if (window.Shiny) {
   class ShinyTreeViewBinding extends window.Shiny.InputBinding {
@@ -39,17 +39,17 @@ if (window.Shiny) {
         return fallback;
       };
 
-      // Helper function to validate TreeItem structure
-      const validateTreeItems = (items: unknown): TreeItem[] => {
+      // Helper function to validate ShinyTreeItem structure
+      const validateTreeItems = (items: unknown): ShinyTreeItem[] => {
         if (!Array.isArray(items)) {
           return [];
         }
 
-        const validateItem = (item: any): TreeItem | null => {
+        const validateItem = (item: any): ShinyTreeItem | null => {
           if (!item || typeof item !== 'object') return null;
           if (typeof item.id !== 'string' || typeof item.label !== 'string') return null;
 
-          const validatedItem: TreeItem = {
+          const validatedItem: ShinyTreeItem = {
             id: item.id,
             label: item.label,
           };
@@ -58,10 +58,14 @@ if (window.Shiny) {
             validatedItem.disabled = item.disabled;
           }
 
+          if (typeof item.caption === 'string') {
+            validatedItem.caption = item.caption;
+          }
+
           if (Array.isArray(item.children)) {
             const validChildren = item.children
               .map(validateItem)
-              .filter((child: TreeItem | null): child is TreeItem => child !== null);
+              .filter((child: ShinyTreeItem | null): child is ShinyTreeItem => child !== null);
             if (validChildren.length > 0) {
               validatedItem.children = validChildren;
             }
@@ -72,11 +76,11 @@ if (window.Shiny) {
 
         return items
           .map(validateItem)
-          .filter((item: TreeItem | null): item is TreeItem => item !== null);
+          .filter((item: ShinyTreeItem | null): item is ShinyTreeItem => item !== null);
       };
 
       let config: {
-        items: TreeItem[];
+        items: ShinyTreeItem[];
         multiple: boolean;
         selected: string[];
         expanded: string[];

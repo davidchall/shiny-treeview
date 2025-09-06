@@ -15,9 +15,11 @@ class TreeItem:
         Unique identifier for the tree item. Must be unique across all items in the tree.
     label : str
         Display text for the tree item. Can include emoji and other characters.
-    children : list[TreeItem]
+    caption : str, optional
+        Secondary text displayed below the label in smaller font.
+    children : list[TreeItem], optional
         List of child nodes.
-    disabled : bool
+    disabled : bool, default=False
         Whether the item is disabled (non-selectable).
 
     Examples
@@ -41,6 +43,7 @@ class TreeItem:
 
     id: str
     label: str
+    caption: str = ""
     children: list["TreeItem"] = field(default_factory=list)
     disabled: bool = False
 
@@ -58,6 +61,10 @@ class TreeItem:
 
         if not self.label.strip():
             raise ValueError("TreeItem label cannot be empty or whitespace only")
+
+        # Validate caption
+        if not isinstance(self.caption, str):
+            raise ValueError("TreeItem caption must be a string")
 
         # Validate disabled
         if not isinstance(self.disabled, bool):
@@ -83,6 +90,9 @@ class TreeItem:
             Dictionary representation of the tree item.
         """
         result = {"id": self.id, "label": self.label}
+
+        if self.caption:
+            result["caption"] = self.caption
 
         if self.disabled:
             result["disabled"] = True

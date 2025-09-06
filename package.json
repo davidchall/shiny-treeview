@@ -4,7 +4,7 @@
   "description": "A Shiny for Python extension providing MUI RichTreeView component",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild srcts/index.ts --bundle --outfile=shiny_treeview/distjs/index.js",
+    "build": "esbuild srcts/index.ts --bundle --outfile=shiny_treeview/distjs/index.js --jsx=transform",
     "watch": "npm run build -- --watch"
   },
   "keywords": [
@@ -31,8 +31,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.0",
-    "@mui/x-tree-view": "^7.0.0",
+    "@mui/material": "^5.15.14",
+    "@mui/x-tree-view": "^8.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

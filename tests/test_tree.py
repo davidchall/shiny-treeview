@@ -275,3 +275,49 @@ class TestTreeItemToDict:
         expected = {"id": "enabled", "label": "Enabled Item"}
         assert result == expected
         assert "disabled" not in result
+
+    def test_item_with_caption_to_dict(self):
+        """Test TreeItem with caption serializes correctly."""
+        item = TreeItem(id="caption_item", label="Test Label", caption="Test caption")
+        result = item._to_dict()
+
+        expected = {
+            "id": "caption_item",
+            "label": "Test Label",
+            "caption": "Test caption",
+        }
+        assert result == expected
+
+    def test_empty_caption_omitted_from_dict(self):
+        """Test that empty caption is omitted from dict."""
+        item = TreeItem(id="no_caption", label="No Caption", caption="")
+        result = item._to_dict()
+
+        expected = {"id": "no_caption", "label": "No Caption"}
+        assert result == expected
+        assert "caption" not in result
+
+
+class TestTreeItemCaptionValidation:
+    """Test TreeItem caption field validation."""
+
+    def test_valid_caption(self):
+        """Test that valid captions are accepted."""
+        # Empty caption (default)
+        item = TreeItem(id="test", label="Test")
+        assert item.caption == ""
+
+        # Non-empty caption
+        item_with_caption = TreeItem(id="test", label="Test", caption="A caption")
+        assert item_with_caption.caption == "A caption"
+
+    def test_caption_must_be_string(self):
+        """Test that caption must be a string."""
+        with pytest.raises(ValueError, match="TreeItem caption must be a string"):
+            TreeItem(id="test", label="Test", caption=123)
+
+        with pytest.raises(ValueError, match="TreeItem caption must be a string"):
+            TreeItem(id="test", label="Test", caption=None)
+
+        with pytest.raises(ValueError, match="TreeItem caption must be a string"):
+            TreeItem(id="test", label="Test", caption=["not", "a", "string"])

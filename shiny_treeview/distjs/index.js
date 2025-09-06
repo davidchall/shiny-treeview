@@ -635,7 +635,7 @@
             }
             return ReactElement(element.type, key, ref, self, source, owner, props);
           }
-          function isValidElement4(object) {
+          function isValidElement5(object) {
             return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
           }
           var SEPARATOR = ".";
@@ -700,7 +700,7 @@
                   return c;
                 });
               } else if (mappedChild != null) {
-                if (isValidElement4(mappedChild)) {
+                if (isValidElement5(mappedChild)) {
                   {
                     if (mappedChild.key && (!_child || _child.key !== mappedChild.key)) {
                       checkKeyStringCoercion(mappedChild.key);
@@ -788,12 +788,12 @@
             }) || [];
           }
           function onlyChild(children) {
-            if (!isValidElement4(children)) {
+            if (!isValidElement5(children)) {
               throw new Error("React.Children.only expected to receive a single React element child.");
             }
             return children;
           }
-          function createContext7(defaultValue) {
+          function createContext9(defaultValue) {
             var context = {
               $$typeof: REACT_CONTEXT_TYPE,
               // As a workaround to support multiple concurrent renderers, we categorize
@@ -980,7 +980,7 @@
             }
             return lazyType;
           }
-          function forwardRef13(render) {
+          function forwardRef17(render) {
             {
               if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
                 error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
@@ -1041,7 +1041,7 @@
             }
             return false;
           }
-          function memo2(type, compare) {
+          function memo3(type, compare) {
             {
               if (!isValidElementType2(type)) {
                 error("memo: The first argument must be a component. Instead received: %s", type === null ? "null" : typeof type);
@@ -1079,7 +1079,7 @@
             }
             return dispatcher;
           }
-          function useContext11(Context) {
+          function useContext13(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1093,7 +1093,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState10(initialState) {
+          function useState9(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1113,15 +1113,15 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useInsertionEffect(create, deps);
           }
-          function useLayoutEffect3(create, deps) {
+          function useLayoutEffect4(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback8(callback, deps) {
+          function useCallback9(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo5(create, deps) {
+          function useMemo8(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1519,11 +1519,11 @@
             if (isArray(node2)) {
               for (var i = 0; i < node2.length; i++) {
                 var child = node2[i];
-                if (isValidElement4(child)) {
+                if (isValidElement5(child)) {
                   validateExplicitKey(child, parentType);
                 }
               }
-            } else if (isValidElement4(node2)) {
+            } else if (isValidElement5(node2)) {
               if (node2._store) {
                 node2._store.validated = true;
               }
@@ -1534,7 +1534,7 @@
                   var iterator = iteratorFn.call(node2);
                   var step;
                   while (!(step = iterator.next()).done) {
-                    if (isValidElement4(step.value)) {
+                    if (isValidElement5(step.value)) {
                       validateExplicitKey(step.value, parentType);
                     }
                   }
@@ -1857,14 +1857,14 @@
           var createElement$1 = createElementWithValidation;
           var cloneElement$1 = cloneElementWithValidation;
           var createFactory = createFactoryWithValidation;
-          var Children2 = {
+          var Children3 = {
             map: mapChildren,
             forEach: forEachChildren,
             count: countChildren,
             toArray,
             only: onlyChild
           };
-          exports.Children = Children2;
+          exports.Children = Children3;
           exports.Component = Component;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.Profiler = REACT_PROFILER_TYPE;
@@ -1874,29 +1874,29 @@
           exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
           exports.act = act;
           exports.cloneElement = cloneElement$1;
-          exports.createContext = createContext7;
+          exports.createContext = createContext9;
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
           exports.createRef = createRef;
-          exports.forwardRef = forwardRef13;
-          exports.isValidElement = isValidElement4;
+          exports.forwardRef = forwardRef17;
+          exports.isValidElement = isValidElement5;
           exports.lazy = lazy;
-          exports.memo = memo2;
+          exports.memo = memo3;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
-          exports.useCallback = useCallback8;
-          exports.useContext = useContext11;
+          exports.useCallback = useCallback9;
+          exports.useContext = useContext13;
           exports.useDebugValue = useDebugValue2;
           exports.useDeferredValue = useDeferredValue;
           exports.useEffect = useEffect13;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle3;
           exports.useInsertionEffect = useInsertionEffect3;
-          exports.useLayoutEffect = useLayoutEffect3;
-          exports.useMemo = useMemo5;
+          exports.useLayoutEffect = useLayoutEffect4;
+          exports.useMemo = useMemo8;
           exports.useReducer = useReducer;
           exports.useRef = useRef18;
-          exports.useState = useState10;
+          exports.useState = useState9;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2392,9 +2392,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React58 = require_react();
+          var React73 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React58.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React73.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3818,7 +3818,7 @@
             }
             return false;
           }
-          function getActiveElement2(doc) {
+          function getActiveElement(doc) {
             doc = doc || (typeof document !== "undefined" ? document : void 0);
             if (typeof doc === "undefined") {
               return null;
@@ -3983,7 +3983,7 @@
           function setDefaultValue(node2, type, value) {
             if (
               // Focused number inputs synchronize on blur. See ChangeEventPlugin.js
-              type !== "number" || getActiveElement2(node2.ownerDocument) !== node2
+              type !== "number" || getActiveElement(node2.ownerDocument) !== node2
             ) {
               if (value == null) {
                 node2.defaultValue = toString(node2._wrapperState.initialValue);
@@ -3999,7 +3999,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React58.Children.forEach(props.children, function(child) {
+                  React73.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -4431,7 +4431,7 @@
             var warnedForNaNValue = false;
             var warnedForInfinityValue = false;
             var camelize = function(string) {
-              return string.replace(hyphenPattern, function(_2, character2) {
+              return string.replace(hyphenPattern, function(_3, character2) {
                 return character2.toUpperCase();
               });
             };
@@ -5723,7 +5723,7 @@
             /*            */
             256
           );
-          var Ref = (
+          var Ref2 = (
             /*                          */
             512
           );
@@ -5747,7 +5747,7 @@
             /*             */
             16384
           );
-          var LifecycleEffectMask = Passive | Update | Callback | Ref | Snapshot | StoreConsistency;
+          var LifecycleEffectMask = Passive | Update | Callback | Ref2 | Snapshot | StoreConsistency;
           var HostEffectMask = (
             /*               */
             32767
@@ -5793,8 +5793,8 @@
             // flag logic (see #20043)
             Update | Snapshot | 0
           );
-          var MutationMask = Placement | Update | ChildDeletion | ContentReset | Ref | Hydrating | Visibility;
-          var LayoutMask = Update | Callback | Ref | Visibility;
+          var MutationMask = Placement | Update | ChildDeletion | ContentReset | Ref2 | Hydrating | Visibility;
+          var LayoutMask = Update | Callback | Ref2 | Visibility;
           var PassiveMask = Passive | ChildDeletion;
           var StaticMask = LayoutStatic | PassiveStatic | RefStatic;
           var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
@@ -8389,10 +8389,10 @@
             }
             accumulateEnterLeaveTwoPhaseListeners(dispatchQueue, leave, enter, from2, to);
           }
-          function is(x, y) {
+          function is2(x, y) {
             return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
           }
-          var objectIs = typeof Object.is === "function" ? Object.is : is;
+          var objectIs = typeof Object.is === "function" ? Object.is : is2;
           function shallowEqual(objA, objB) {
             if (objectIs(objA, objB)) {
               return true;
@@ -8446,8 +8446,8 @@
             }
           }
           function getOffsets(outerNode) {
-            var ownerDocument2 = outerNode.ownerDocument;
-            var win = ownerDocument2 && ownerDocument2.defaultView || window;
+            var ownerDocument = outerNode.ownerDocument;
+            var win = ownerDocument && ownerDocument.defaultView || window;
             var selection = win.getSelection && win.getSelection();
             if (!selection || selection.rangeCount === 0) {
               return null;
@@ -8579,14 +8579,14 @@
           }
           function getActiveElementDeep() {
             var win = window;
-            var element = getActiveElement2();
+            var element = getActiveElement();
             while (element instanceof win.HTMLIFrameElement) {
               if (isSameOriginFrame(element)) {
                 win = element.contentWindow;
               } else {
                 return element;
               }
-              element = getActiveElement2(win.document);
+              element = getActiveElement(win.document);
             }
             return element;
           }
@@ -8688,7 +8688,7 @@
           }
           function constructSelectEvent(dispatchQueue, nativeEvent, nativeEventTarget) {
             var doc = getEventTargetDocument(nativeEventTarget);
-            if (mouseDown || activeElement$1 == null || activeElement$1 !== getActiveElement2(doc)) {
+            if (mouseDown || activeElement$1 == null || activeElement$1 !== getActiveElement(doc)) {
               return;
             }
             var currentSelection = getSelection$1(activeElement$1);
@@ -9005,11 +9005,11 @@
                   listenToNativeEvent(domEventName, true, rootContainerElement);
                 }
               });
-              var ownerDocument2 = rootContainerElement.nodeType === DOCUMENT_NODE ? rootContainerElement : rootContainerElement.ownerDocument;
-              if (ownerDocument2 !== null) {
-                if (!ownerDocument2[listeningMarker]) {
-                  ownerDocument2[listeningMarker] = true;
-                  listenToNativeEvent("selectionchange", false, ownerDocument2);
+              var ownerDocument = rootContainerElement.nodeType === DOCUMENT_NODE ? rootContainerElement : rootContainerElement.ownerDocument;
+              if (ownerDocument !== null) {
+                if (!ownerDocument[listeningMarker]) {
+                  ownerDocument[listeningMarker] = true;
+                  listenToNativeEvent("selectionchange", false, ownerDocument);
                 }
               }
             }
@@ -9400,7 +9400,7 @@
           }
           function createElement4(type, props, rootContainerElement, parentNamespace) {
             var isCustomComponentTag;
-            var ownerDocument2 = getOwnerDocumentFromRootContainer(rootContainerElement);
+            var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
             var domElement;
             var namespaceURI = parentNamespace;
             if (namespaceURI === HTML_NAMESPACE) {
@@ -9414,16 +9414,16 @@
                 }
               }
               if (type === "script") {
-                var div = ownerDocument2.createElement("div");
+                var div = ownerDocument.createElement("div");
                 div.innerHTML = "<script><\/script>";
                 var firstChild = div.firstChild;
                 domElement = div.removeChild(firstChild);
               } else if (typeof props.is === "string") {
-                domElement = ownerDocument2.createElement(type, {
+                domElement = ownerDocument.createElement(type, {
                   is: props.is
                 });
               } else {
-                domElement = ownerDocument2.createElement(type);
+                domElement = ownerDocument.createElement(type);
                 if (type === "select") {
                   var node2 = domElement;
                   if (props.multiple) {
@@ -9434,7 +9434,7 @@
                 }
               }
             } else {
-              domElement = ownerDocument2.createElementNS(namespaceURI, type);
+              domElement = ownerDocument.createElementNS(namespaceURI, type);
             }
             {
               if (namespaceURI === HTML_NAMESPACE) {
@@ -16479,7 +16479,7 @@
           function markRef(current2, workInProgress2) {
             var ref = workInProgress2.ref;
             if (current2 === null && ref !== null || current2 !== null && current2.ref !== ref) {
-              workInProgress2.flags |= Ref;
+              workInProgress2.flags |= Ref2;
               {
                 workInProgress2.flags |= RefStatic;
               }
@@ -17936,7 +17936,7 @@
             workInProgress2.flags |= Update;
           }
           function markRef$1(workInProgress2) {
-            workInProgress2.flags |= Ref;
+            workInProgress2.flags |= Ref2;
             {
               workInProgress2.flags |= RefStatic;
             }
@@ -19102,7 +19102,7 @@
             }
             if (!offscreenSubtreeWasHidden) {
               {
-                if (finishedWork.flags & Ref) {
+                if (finishedWork.flags & Ref2) {
                   commitAttachRef(finishedWork);
                 }
               }
@@ -19669,7 +19669,7 @@
               case ClassComponent: {
                 recursivelyTraverseMutationEffects(root2, finishedWork);
                 commitReconciliationEffects(finishedWork);
-                if (flags & Ref) {
+                if (flags & Ref2) {
                   if (current2 !== null) {
                     safelyDetachRef(current2, current2.return);
                   }
@@ -19679,7 +19679,7 @@
               case HostComponent: {
                 recursivelyTraverseMutationEffects(root2, finishedWork);
                 commitReconciliationEffects(finishedWork);
-                if (flags & Ref) {
+                if (flags & Ref2) {
                   if (current2 !== null) {
                     safelyDetachRef(current2, current2.return);
                   }
@@ -23922,7 +23922,7 @@
       function emptyFunctionThatReturnsNull() {
         return null;
       }
-      module.exports = function(isValidElement4, throwOnDirectAccess) {
+      module.exports = function(isValidElement5, throwOnDirectAccess) {
         var ITERATOR_SYMBOL = typeof Symbol === "function" && Symbol.iterator;
         var FAUX_ITERATOR_SYMBOL = "@@iterator";
         function getIteratorFn(maybeIterable) {
@@ -23953,7 +23953,7 @@
           shape: createShapeTypeChecker,
           exact: createStrictShapeTypeChecker
         };
-        function is(x, y) {
+        function is2(x, y) {
           if (x === y) {
             return x !== 0 || 1 / x === 1 / y;
           } else {
@@ -24050,7 +24050,7 @@
         function createElementTypeChecker() {
           function validate(props, propName, componentName, location, propFullName) {
             var propValue = props[propName];
-            if (!isValidElement4(propValue)) {
+            if (!isValidElement5(propValue)) {
               var propType = getPropType(propValue);
               return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + propType + "` supplied to `" + componentName + "`, expected a single ReactElement."));
             }
@@ -24096,7 +24096,7 @@
           function validate(props, propName, componentName, location, propFullName) {
             var propValue = props[propName];
             for (var i = 0; i < expectedValues.length; i++) {
-              if (is(propValue, expectedValues[i])) {
+              if (is2(propValue, expectedValues[i])) {
                 return null;
               }
             }
@@ -24238,7 +24238,7 @@
               if (Array.isArray(propValue)) {
                 return propValue.every(isNode);
               }
-              if (propValue === null || isValidElement4(propValue)) {
+              if (propValue === null || isValidElement5(propValue)) {
                 return true;
               }
               var iteratorFn = getIteratorFn(propValue);
@@ -24354,6 +24354,162 @@
     }
   });
 
+  // node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js
+  var require_use_sync_external_store_shim_development = __commonJS({
+    "node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js"(exports) {
+      "use strict";
+      (function() {
+        function is2(x, y) {
+          return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+        }
+        function useSyncExternalStore$2(subscribe, getSnapshot) {
+          didWarnOld18Alpha || void 0 === React73.startTransition || (didWarnOld18Alpha = true, console.error(
+            "You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."
+          ));
+          var value = getSnapshot();
+          if (!didWarnUncachedGetSnapshot) {
+            var cachedValue = getSnapshot();
+            objectIs(value, cachedValue) || (console.error(
+              "The result of getSnapshot should be cached to avoid an infinite loop"
+            ), didWarnUncachedGetSnapshot = true);
+          }
+          cachedValue = useState9({
+            inst: { value, getSnapshot }
+          });
+          var inst = cachedValue[0].inst, forceUpdate = cachedValue[1];
+          useLayoutEffect4(
+            function() {
+              inst.value = value;
+              inst.getSnapshot = getSnapshot;
+              checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+            },
+            [subscribe, value, getSnapshot]
+          );
+          useEffect13(
+            function() {
+              checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+              return subscribe(function() {
+                checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+              });
+            },
+            [subscribe]
+          );
+          useDebugValue2(value);
+          return value;
+        }
+        function checkIfSnapshotChanged(inst) {
+          var latestGetSnapshot = inst.getSnapshot;
+          inst = inst.value;
+          try {
+            var nextValue = latestGetSnapshot();
+            return !objectIs(inst, nextValue);
+          } catch (error) {
+            return true;
+          }
+        }
+        function useSyncExternalStore$1(subscribe, getSnapshot) {
+          return getSnapshot();
+        }
+        "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
+        var React73 = require_react(), objectIs = "function" === typeof Object.is ? Object.is : is2, useState9 = React73.useState, useEffect13 = React73.useEffect, useLayoutEffect4 = React73.useLayoutEffect, useDebugValue2 = React73.useDebugValue, didWarnOld18Alpha = false, didWarnUncachedGetSnapshot = false, shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
+        exports.useSyncExternalStore = void 0 !== React73.useSyncExternalStore ? React73.useSyncExternalStore : shim;
+        "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+      })();
+    }
+  });
+
+  // node_modules/use-sync-external-store/shim/index.js
+  var require_shim = __commonJS({
+    "node_modules/use-sync-external-store/shim/index.js"(exports, module) {
+      "use strict";
+      if (false) {
+        module.exports = null;
+      } else {
+        module.exports = require_use_sync_external_store_shim_development();
+      }
+    }
+  });
+
+  // node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js
+  var require_with_selector_development = __commonJS({
+    "node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js"(exports) {
+      "use strict";
+      (function() {
+        function is2(x, y) {
+          return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+        }
+        "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
+        var React73 = require_react(), shim = require_shim(), objectIs = "function" === typeof Object.is ? Object.is : is2, useSyncExternalStore = shim.useSyncExternalStore, useRef18 = React73.useRef, useEffect13 = React73.useEffect, useMemo8 = React73.useMemo, useDebugValue2 = React73.useDebugValue;
+        exports.useSyncExternalStoreWithSelector = function(subscribe, getSnapshot, getServerSnapshot, selector, isEqual) {
+          var instRef = useRef18(null);
+          if (null === instRef.current) {
+            var inst = { hasValue: false, value: null };
+            instRef.current = inst;
+          } else
+            inst = instRef.current;
+          instRef = useMemo8(
+            function() {
+              function memoizedSelector(nextSnapshot) {
+                if (!hasMemo) {
+                  hasMemo = true;
+                  memoizedSnapshot = nextSnapshot;
+                  nextSnapshot = selector(nextSnapshot);
+                  if (void 0 !== isEqual && inst.hasValue) {
+                    var currentSelection = inst.value;
+                    if (isEqual(currentSelection, nextSnapshot))
+                      return memoizedSelection = currentSelection;
+                  }
+                  return memoizedSelection = nextSnapshot;
+                }
+                currentSelection = memoizedSelection;
+                if (objectIs(memoizedSnapshot, nextSnapshot))
+                  return currentSelection;
+                var nextSelection = selector(nextSnapshot);
+                if (void 0 !== isEqual && isEqual(currentSelection, nextSelection))
+                  return memoizedSnapshot = nextSnapshot, currentSelection;
+                memoizedSnapshot = nextSnapshot;
+                return memoizedSelection = nextSelection;
+              }
+              var hasMemo = false, memoizedSnapshot, memoizedSelection, maybeGetServerSnapshot = void 0 === getServerSnapshot ? null : getServerSnapshot;
+              return [
+                function() {
+                  return memoizedSelector(getSnapshot());
+                },
+                null === maybeGetServerSnapshot ? void 0 : function() {
+                  return memoizedSelector(maybeGetServerSnapshot());
+                }
+              ];
+            },
+            [getSnapshot, getServerSnapshot, selector, isEqual]
+          );
+          var value = useSyncExternalStore(subscribe, instRef[0], instRef[1]);
+          useEffect13(
+            function() {
+              inst.hasValue = true;
+              inst.value = value;
+            },
+            [value]
+          );
+          useDebugValue2(value);
+          return value;
+        };
+        "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+      })();
+    }
+  });
+
+  // node_modules/use-sync-external-store/shim/with-selector.js
+  var require_with_selector = __commonJS({
+    "node_modules/use-sync-external-store/shim/with-selector.js"(exports, module) {
+      "use strict";
+      if (false) {
+        module.exports = null;
+      } else {
+        module.exports = require_with_selector_development();
+      }
+    }
+  });
+
   // node_modules/@babel/runtime/helpers/interopRequireDefault.js
   var require_interopRequireDefault = __commonJS({
     "node_modules/@babel/runtime/helpers/interopRequireDefault.js"(exports, module) {
@@ -24399,6 +24555,491 @@
         }
       });
       var _formatMuiErrorMessage = _interopRequireDefault(require_formatMuiErrorMessage());
+    }
+  });
+
+  // node_modules/@mui/utils/clamp/clamp.js
+  var require_clamp = __commonJS({
+    "node_modules/@mui/utils/clamp/clamp.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      function clamp2(val, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
+        return Math.max(min, Math.min(val, max));
+      }
+      var _default = exports.default = clamp2;
+    }
+  });
+
+  // node_modules/@mui/utils/clamp/index.js
+  var require_clamp2 = __commonJS({
+    "node_modules/@mui/utils/clamp/index.js"(exports) {
+      "use strict";
+      var _interopRequireDefault = require_interopRequireDefault();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "default", {
+        enumerable: true,
+        get: function() {
+          return _clamp.default;
+        }
+      });
+      var _clamp = _interopRequireDefault(require_clamp());
+    }
+  });
+
+  // node_modules/@mui/material/node_modules/@mui/system/colorManipulator.js
+  var require_colorManipulator = __commonJS({
+    "node_modules/@mui/material/node_modules/@mui/system/colorManipulator.js"(exports) {
+      "use strict";
+      var _interopRequireDefault = require_interopRequireDefault();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.alpha = alpha5;
+      exports.blend = blend;
+      exports.colorChannel = void 0;
+      exports.darken = darken4;
+      exports.decomposeColor = decomposeColor2;
+      exports.emphasize = emphasize2;
+      exports.getContrastRatio = getContrastRatio3;
+      exports.getLuminance = getLuminance2;
+      exports.hexToRgb = hexToRgb2;
+      exports.hslToRgb = hslToRgb2;
+      exports.lighten = lighten4;
+      exports.private_safeAlpha = private_safeAlpha;
+      exports.private_safeColorChannel = void 0;
+      exports.private_safeDarken = private_safeDarken;
+      exports.private_safeEmphasize = private_safeEmphasize;
+      exports.private_safeLighten = private_safeLighten;
+      exports.recomposeColor = recomposeColor2;
+      exports.rgbToHex = rgbToHex2;
+      var _formatMuiErrorMessage2 = _interopRequireDefault(require_formatMuiErrorMessage2());
+      var _clamp = _interopRequireDefault(require_clamp2());
+      function clampWrapper2(value, min = 0, max = 1) {
+        if (true) {
+          if (value < min || value > max) {
+            console.error(`MUI: The value provided ${value} is out of range [${min}, ${max}].`);
+          }
+        }
+        return (0, _clamp.default)(value, min, max);
+      }
+      function hexToRgb2(color3) {
+        color3 = color3.slice(1);
+        const re = new RegExp(`.{1,${color3.length >= 6 ? 2 : 1}}`, "g");
+        let colors = color3.match(re);
+        if (colors && colors[0].length === 1) {
+          colors = colors.map((n) => n + n);
+        }
+        return colors ? `rgb${colors.length === 4 ? "a" : ""}(${colors.map((n, index) => {
+          return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1e3) / 1e3;
+        }).join(", ")})` : "";
+      }
+      function intToHex(int) {
+        const hex = int.toString(16);
+        return hex.length === 1 ? `0${hex}` : hex;
+      }
+      function decomposeColor2(color3) {
+        if (color3.type) {
+          return color3;
+        }
+        if (color3.charAt(0) === "#") {
+          return decomposeColor2(hexToRgb2(color3));
+        }
+        const marker = color3.indexOf("(");
+        const type = color3.substring(0, marker);
+        if (["rgb", "rgba", "hsl", "hsla", "color"].indexOf(type) === -1) {
+          throw new Error(true ? `MUI: Unsupported \`${color3}\` color.
+The following formats are supported: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla(), color().` : (0, _formatMuiErrorMessage2.default)(9, color3));
+        }
+        let values4 = color3.substring(marker + 1, color3.length - 1);
+        let colorSpace;
+        if (type === "color") {
+          values4 = values4.split(" ");
+          colorSpace = values4.shift();
+          if (values4.length === 4 && values4[3].charAt(0) === "/") {
+            values4[3] = values4[3].slice(1);
+          }
+          if (["srgb", "display-p3", "a98-rgb", "prophoto-rgb", "rec-2020"].indexOf(colorSpace) === -1) {
+            throw new Error(true ? `MUI: unsupported \`${colorSpace}\` color space.
+The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rgb, rec-2020.` : (0, _formatMuiErrorMessage2.default)(10, colorSpace));
+          }
+        } else {
+          values4 = values4.split(",");
+        }
+        values4 = values4.map((value) => parseFloat(value));
+        return {
+          type,
+          values: values4,
+          colorSpace
+        };
+      }
+      var colorChannel = (color3) => {
+        const decomposedColor = decomposeColor2(color3);
+        return decomposedColor.values.slice(0, 3).map((val, idx) => decomposedColor.type.indexOf("hsl") !== -1 && idx !== 0 ? `${val}%` : val).join(" ");
+      };
+      exports.colorChannel = colorChannel;
+      var private_safeColorChannel = (color3, warning) => {
+        try {
+          return colorChannel(color3);
+        } catch (error) {
+          if (warning && true) {
+            console.warn(warning);
+          }
+          return color3;
+        }
+      };
+      exports.private_safeColorChannel = private_safeColorChannel;
+      function recomposeColor2(color3) {
+        const {
+          type,
+          colorSpace
+        } = color3;
+        let {
+          values: values4
+        } = color3;
+        if (type.indexOf("rgb") !== -1) {
+          values4 = values4.map((n, i) => i < 3 ? parseInt(n, 10) : n);
+        } else if (type.indexOf("hsl") !== -1) {
+          values4[1] = `${values4[1]}%`;
+          values4[2] = `${values4[2]}%`;
+        }
+        if (type.indexOf("color") !== -1) {
+          values4 = `${colorSpace} ${values4.join(" ")}`;
+        } else {
+          values4 = `${values4.join(", ")}`;
+        }
+        return `${type}(${values4})`;
+      }
+      function rgbToHex2(color3) {
+        if (color3.indexOf("#") === 0) {
+          return color3;
+        }
+        const {
+          values: values4
+        } = decomposeColor2(color3);
+        return `#${values4.map((n, i) => intToHex(i === 3 ? Math.round(255 * n) : n)).join("")}`;
+      }
+      function hslToRgb2(color3) {
+        color3 = decomposeColor2(color3);
+        const {
+          values: values4
+        } = color3;
+        const h = values4[0];
+        const s = values4[1] / 100;
+        const l = values4[2] / 100;
+        const a = s * Math.min(l, 1 - l);
+        const f = (n, k = (n + h / 30) % 12) => l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        let type = "rgb";
+        const rgb = [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
+        if (color3.type === "hsla") {
+          type += "a";
+          rgb.push(values4[3]);
+        }
+        return recomposeColor2({
+          type,
+          values: rgb
+        });
+      }
+      function getLuminance2(color3) {
+        color3 = decomposeColor2(color3);
+        let rgb = color3.type === "hsl" || color3.type === "hsla" ? decomposeColor2(hslToRgb2(color3)).values : color3.values;
+        rgb = rgb.map((val) => {
+          if (color3.type !== "color") {
+            val /= 255;
+          }
+          return val <= 0.03928 ? val / 12.92 : ((val + 0.055) / 1.055) ** 2.4;
+        });
+        return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));
+      }
+      function getContrastRatio3(foreground, background) {
+        const lumA = getLuminance2(foreground);
+        const lumB = getLuminance2(background);
+        return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
+      }
+      function alpha5(color3, value) {
+        color3 = decomposeColor2(color3);
+        value = clampWrapper2(value);
+        if (color3.type === "rgb" || color3.type === "hsl") {
+          color3.type += "a";
+        }
+        if (color3.type === "color") {
+          color3.values[3] = `/${value}`;
+        } else {
+          color3.values[3] = value;
+        }
+        return recomposeColor2(color3);
+      }
+      function private_safeAlpha(color3, value, warning) {
+        try {
+          return alpha5(color3, value);
+        } catch (error) {
+          if (warning && true) {
+            console.warn(warning);
+          }
+          return color3;
+        }
+      }
+      function darken4(color3, coefficient) {
+        color3 = decomposeColor2(color3);
+        coefficient = clampWrapper2(coefficient);
+        if (color3.type.indexOf("hsl") !== -1) {
+          color3.values[2] *= 1 - coefficient;
+        } else if (color3.type.indexOf("rgb") !== -1 || color3.type.indexOf("color") !== -1) {
+          for (let i = 0; i < 3; i += 1) {
+            color3.values[i] *= 1 - coefficient;
+          }
+        }
+        return recomposeColor2(color3);
+      }
+      function private_safeDarken(color3, coefficient, warning) {
+        try {
+          return darken4(color3, coefficient);
+        } catch (error) {
+          if (warning && true) {
+            console.warn(warning);
+          }
+          return color3;
+        }
+      }
+      function lighten4(color3, coefficient) {
+        color3 = decomposeColor2(color3);
+        coefficient = clampWrapper2(coefficient);
+        if (color3.type.indexOf("hsl") !== -1) {
+          color3.values[2] += (100 - color3.values[2]) * coefficient;
+        } else if (color3.type.indexOf("rgb") !== -1) {
+          for (let i = 0; i < 3; i += 1) {
+            color3.values[i] += (255 - color3.values[i]) * coefficient;
+          }
+        } else if (color3.type.indexOf("color") !== -1) {
+          for (let i = 0; i < 3; i += 1) {
+            color3.values[i] += (1 - color3.values[i]) * coefficient;
+          }
+        }
+        return recomposeColor2(color3);
+      }
+      function private_safeLighten(color3, coefficient, warning) {
+        try {
+          return lighten4(color3, coefficient);
+        } catch (error) {
+          if (warning && true) {
+            console.warn(warning);
+          }
+          return color3;
+        }
+      }
+      function emphasize2(color3, coefficient = 0.15) {
+        return getLuminance2(color3) > 0.5 ? darken4(color3, coefficient) : lighten4(color3, coefficient);
+      }
+      function private_safeEmphasize(color3, coefficient, warning) {
+        try {
+          return emphasize2(color3, coefficient);
+        } catch (error) {
+          if (warning && true) {
+            console.warn(warning);
+          }
+          return color3;
+        }
+      }
+      function blend(background, overlay, opacity, gamma = 1) {
+        const blendChannel = (b, o) => Math.round((b ** (1 / gamma) * (1 - opacity) + o ** (1 / gamma) * opacity) ** gamma);
+        const backgroundColor3 = decomposeColor2(background);
+        const overlayColor = decomposeColor2(overlay);
+        const rgb = [blendChannel(backgroundColor3.values[0], overlayColor.values[0]), blendChannel(backgroundColor3.values[1], overlayColor.values[1]), blendChannel(backgroundColor3.values[2], overlayColor.values[2])];
+        return recomposeColor2({
+          type: "rgb",
+          values: rgb
+        });
+      }
+    }
+  });
+
+  // node_modules/@babel/runtime/helpers/extends.js
+  var require_extends = __commonJS({
+    "node_modules/@babel/runtime/helpers/extends.js"(exports, module) {
+      function _extends2() {
+        return module.exports = _extends2 = Object.assign ? Object.assign.bind() : function(n) {
+          for (var e = 1; e < arguments.length; e++) {
+            var t = arguments[e];
+            for (var r2 in t)
+              ({}).hasOwnProperty.call(t, r2) && (n[r2] = t[r2]);
+          }
+          return n;
+        }, module.exports.__esModule = true, module.exports["default"] = module.exports, _extends2.apply(null, arguments);
+      }
+      module.exports = _extends2, module.exports.__esModule = true, module.exports["default"] = module.exports;
+    }
+  });
+
+  // node_modules/@mui/utils/deepmerge/deepmerge.js
+  var require_deepmerge = __commonJS({
+    "node_modules/@mui/utils/deepmerge/deepmerge.js"(exports) {
+      "use strict";
+      var _interopRequireDefault = require_interopRequireDefault();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = deepmerge7;
+      exports.isPlainObject = isPlainObject2;
+      var _extends2 = _interopRequireDefault(require_extends());
+      var React73 = _interopRequireWildcard(require_react());
+      function _getRequireWildcardCache(e) {
+        if ("function" != typeof WeakMap)
+          return null;
+        var r2 = /* @__PURE__ */ new WeakMap(), t = /* @__PURE__ */ new WeakMap();
+        return (_getRequireWildcardCache = function(e2) {
+          return e2 ? t : r2;
+        })(e);
+      }
+      function _interopRequireWildcard(e, r2) {
+        if (!r2 && e && e.__esModule)
+          return e;
+        if (null === e || "object" != typeof e && "function" != typeof e)
+          return { default: e };
+        var t = _getRequireWildcardCache(r2);
+        if (t && t.has(e))
+          return t.get(e);
+        var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor;
+        for (var u in e)
+          if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) {
+            var i = a ? Object.getOwnPropertyDescriptor(e, u) : null;
+            i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u];
+          }
+        return n.default = e, t && t.set(e, n), n;
+      }
+      function isPlainObject2(item) {
+        if (typeof item !== "object" || item === null) {
+          return false;
+        }
+        const prototype = Object.getPrototypeOf(item);
+        return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) && !(Symbol.toStringTag in item) && !(Symbol.iterator in item);
+      }
+      function deepClone2(source) {
+        if (/* @__PURE__ */ React73.isValidElement(source) || !isPlainObject2(source)) {
+          return source;
+        }
+        const output = {};
+        Object.keys(source).forEach((key) => {
+          output[key] = deepClone2(source[key]);
+        });
+        return output;
+      }
+      function deepmerge7(target, source, options = {
+        clone: true
+      }) {
+        const output = options.clone ? (0, _extends2.default)({}, target) : target;
+        if (isPlainObject2(target) && isPlainObject2(source)) {
+          Object.keys(source).forEach((key) => {
+            if (/* @__PURE__ */ React73.isValidElement(source[key])) {
+              output[key] = source[key];
+            } else if (isPlainObject2(source[key]) && // Avoid prototype pollution
+            Object.prototype.hasOwnProperty.call(target, key) && isPlainObject2(target[key])) {
+              output[key] = deepmerge7(target[key], source[key], options);
+            } else if (options.clone) {
+              output[key] = isPlainObject2(source[key]) ? deepClone2(source[key]) : source[key];
+            } else {
+              output[key] = source[key];
+            }
+          });
+        }
+        return output;
+      }
+    }
+  });
+
+  // node_modules/@mui/utils/deepmerge/index.js
+  var require_deepmerge2 = __commonJS({
+    "node_modules/@mui/utils/deepmerge/index.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var _exportNames = {};
+      Object.defineProperty(exports, "default", {
+        enumerable: true,
+        get: function() {
+          return _deepmerge.default;
+        }
+      });
+      var _deepmerge = _interopRequireWildcard(require_deepmerge());
+      Object.keys(_deepmerge).forEach(function(key) {
+        if (key === "default" || key === "__esModule")
+          return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key))
+          return;
+        if (key in exports && exports[key] === _deepmerge[key])
+          return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _deepmerge[key];
+          }
+        });
+      });
+      function _getRequireWildcardCache(e) {
+        if ("function" != typeof WeakMap)
+          return null;
+        var r2 = /* @__PURE__ */ new WeakMap(), t = /* @__PURE__ */ new WeakMap();
+        return (_getRequireWildcardCache = function(e2) {
+          return e2 ? t : r2;
+        })(e);
+      }
+      function _interopRequireWildcard(e, r2) {
+        if (!r2 && e && e.__esModule)
+          return e;
+        if (null === e || "object" != typeof e && "function" != typeof e)
+          return { default: e };
+        var t = _getRequireWildcardCache(r2);
+        if (t && t.has(e))
+          return t.get(e);
+        var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor;
+        for (var u in e)
+          if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) {
+            var i = a ? Object.getOwnPropertyDescriptor(e, u) : null;
+            i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u];
+          }
+        return n.default = e, t && t.set(e, n), n;
+      }
+    }
+  });
+
+  // node_modules/@mui/utils/capitalize/capitalize.js
+  var require_capitalize = __commonJS({
+    "node_modules/@mui/utils/capitalize/capitalize.js"(exports) {
+      "use strict";
+      var _interopRequireDefault = require_interopRequireDefault();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = capitalize5;
+      var _formatMuiErrorMessage2 = _interopRequireDefault(require_formatMuiErrorMessage2());
+      function capitalize5(string) {
+        if (typeof string !== "string") {
+          throw new Error(true ? `MUI: \`capitalize(string)\` expects a string argument.` : (0, _formatMuiErrorMessage2.default)(7));
+        }
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+    }
+  });
+
+  // node_modules/@mui/utils/capitalize/index.js
+  var require_capitalize2 = __commonJS({
+    "node_modules/@mui/utils/capitalize/index.js"(exports) {
+      "use strict";
+      var _interopRequireDefault = require_interopRequireDefault();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "default", {
+        enumerable: true,
+        get: function() {
+          return _capitalize.default;
+        }
+      });
+      var _capitalize = _interopRequireDefault(require_capitalize());
     }
   });
 
@@ -24915,7 +25556,7 @@
   });
 
   // node_modules/@emotion/memoize/dist/emotion-memoize.esm.js
-  function memoize(fn) {
+  function memoize2(fn) {
     var cache = /* @__PURE__ */ Object.create(null);
     return function(arg) {
       if (cache[arg] === void 0)
@@ -25810,7 +26451,7 @@
       isProcessableValue = function isProcessableValue2(value) {
         return value != null && typeof value !== "boolean";
       };
-      processStyleName = /* @__PURE__ */ memoize(function(styleName) {
+      processStyleName = /* @__PURE__ */ memoize2(function(styleName) {
         return isCustomProperty(styleName) ? styleName : styleName.replace(hyphenateRegex, "-$&").toLowerCase();
       });
       processStyleValue = function processStyleValue2(key, value) {
@@ -25840,25 +26481,25 @@
   });
 
   // node_modules/@emotion/use-insertion-effect-with-fallbacks/dist/emotion-use-insertion-effect-with-fallbacks.browser.esm.js
-  var React2, syncFallback, useInsertionEffect2, useInsertionEffectAlwaysWithSyncFallback, useInsertionEffectWithLayoutFallback;
+  var React, syncFallback, useInsertionEffect2, useInsertionEffectAlwaysWithSyncFallback, useInsertionEffectWithLayoutFallback;
   var init_emotion_use_insertion_effect_with_fallbacks_browser_esm = __esm({
     "node_modules/@emotion/use-insertion-effect-with-fallbacks/dist/emotion-use-insertion-effect-with-fallbacks.browser.esm.js"() {
-      React2 = __toESM(require_react());
+      React = __toESM(require_react());
       syncFallback = function syncFallback2(create) {
         return create();
       };
-      useInsertionEffect2 = React2["useInsertionEffect"] ? React2["useInsertionEffect"] : false;
+      useInsertionEffect2 = React["useInsertionEffect"] ? React["useInsertionEffect"] : false;
       useInsertionEffectAlwaysWithSyncFallback = useInsertionEffect2 || syncFallback;
-      useInsertionEffectWithLayoutFallback = useInsertionEffect2 || React2.useLayoutEffect;
+      useInsertionEffectWithLayoutFallback = useInsertionEffect2 || React.useLayoutEffect;
     }
   });
 
   // node_modules/@emotion/react/dist/emotion-element-f0de968e.browser.esm.js
   function withTheme(Component) {
     var componentName = Component.displayName || Component.name || "Component";
-    var WithTheme = /* @__PURE__ */ React3.forwardRef(function render(props, ref) {
-      var theme = React3.useContext(ThemeContext);
-      return /* @__PURE__ */ React3.createElement(Component, _extends({
+    var WithTheme = /* @__PURE__ */ React2.forwardRef(function render(props, ref) {
+      var theme = React2.useContext(ThemeContext);
+      return /* @__PURE__ */ React2.createElement(Component, _extends({
         theme,
         ref
       }, props));
@@ -25866,10 +26507,10 @@
     WithTheme.displayName = "WithTheme(" + componentName + ")";
     return hoistNonReactStatics(WithTheme, Component);
   }
-  var React3, import_react, isDevelopment3, EmotionCacheContext, CacheProvider, __unsafe_useEmotionCache, withEmotionCache, ThemeContext, useTheme, getTheme, createCacheWithTheme, ThemeProvider, hasOwn, typePropName, createEmotionProps, Insertion, Emotion, Emotion$1;
+  var React2, import_react, isDevelopment3, EmotionCacheContext, CacheProvider, __unsafe_useEmotionCache, withEmotionCache, ThemeContext, useTheme, getTheme, createCacheWithTheme, ThemeProvider, hasOwn, typePropName, createEmotionProps, Insertion, Emotion, Emotion$1;
   var init_emotion_element_f0de968e_browser_esm = __esm({
     "node_modules/@emotion/react/dist/emotion-element-f0de968e.browser.esm.js"() {
-      React3 = __toESM(require_react());
+      React2 = __toESM(require_react());
       import_react = __toESM(require_react());
       init_emotion_cache_browser_esm();
       init_extends();
@@ -25879,7 +26520,7 @@
       init_emotion_serialize_esm();
       init_emotion_use_insertion_effect_with_fallbacks_browser_esm();
       isDevelopment3 = false;
-      EmotionCacheContext = /* @__PURE__ */ React3.createContext(
+      EmotionCacheContext = /* @__PURE__ */ React2.createContext(
         // we're doing this to avoid preconstruct's dead code elimination in this one case
         // because this module is primarily intended for the browser and node
         // but it's also required in react native and similar environments sometimes
@@ -25900,9 +26541,9 @@
           return func(props, cache, ref);
         });
       };
-      ThemeContext = /* @__PURE__ */ React3.createContext({});
+      ThemeContext = /* @__PURE__ */ React2.createContext({});
       useTheme = function useTheme2() {
-        return React3.useContext(ThemeContext);
+        return React2.useContext(ThemeContext);
       };
       getTheme = function getTheme2(outerTheme, theme) {
         if (typeof theme === "function") {
@@ -25917,11 +26558,11 @@
         });
       });
       ThemeProvider = function ThemeProvider2(props) {
-        var theme = React3.useContext(ThemeContext);
+        var theme = React2.useContext(ThemeContext);
         if (props.theme !== theme) {
           theme = createCacheWithTheme(theme)(props.theme);
         }
-        return /* @__PURE__ */ React3.createElement(ThemeContext.Provider, {
+        return /* @__PURE__ */ React2.createElement(ThemeContext.Provider, {
           value: theme
         }, props.children);
       };
@@ -25958,7 +26599,7 @@
         } else if (props.className != null) {
           className = props.className + " ";
         }
-        var serialized = serializeStyles(registeredStyles, void 0, React3.useContext(ThemeContext));
+        var serialized = serializeStyles(registeredStyles, void 0, React2.useContext(ThemeContext));
         className += cache.key + "-" + serialized.name;
         var newProps = {};
         for (var _key2 in props) {
@@ -25970,11 +26611,11 @@
         if (ref) {
           newProps.ref = ref;
         }
-        return /* @__PURE__ */ React3.createElement(React3.Fragment, null, /* @__PURE__ */ React3.createElement(Insertion, {
+        return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement(Insertion, {
           cache,
           serialized,
           isStringTag: typeof WrappedComponent === "string"
-        }), /* @__PURE__ */ React3.createElement(WrappedComponent, newProps));
+        }), /* @__PURE__ */ React2.createElement(WrappedComponent, newProps));
       });
       Emotion$1 = Emotion;
     }
@@ -26015,7 +26656,7 @@
       }
     };
   }
-  function merge(registered, css3, className) {
+  function merge2(registered, css3, className) {
     var registeredStyles = [];
     var rawClassName = getRegisteredStyles(registered, registeredStyles, className);
     if (registeredStyles.length < 2) {
@@ -26023,12 +26664,12 @@
     }
     return rawClassName + css3(registeredStyles);
   }
-  var React4, import_hoist_non_react_statics2, jsx, Global, classnames, Insertion3, ClassNames;
+  var React3, import_hoist_non_react_statics2, jsx, Global, classnames, Insertion3, ClassNames;
   var init_emotion_react_browser_esm = __esm({
     "node_modules/@emotion/react/dist/emotion-react.browser.esm.js"() {
       init_emotion_element_f0de968e_browser_esm();
       init_emotion_element_f0de968e_browser_esm();
-      React4 = __toESM(require_react());
+      React3 = __toESM(require_react());
       init_emotion_utils_browser_esm();
       init_emotion_use_insertion_effect_with_fallbacks_browser_esm();
       init_emotion_serialize_esm();
@@ -26039,7 +26680,7 @@
       jsx = function jsx2(type, props) {
         var args = arguments;
         if (props == null || !hasOwn.call(props, "css")) {
-          return React4.createElement.apply(void 0, args);
+          return React3.createElement.apply(void 0, args);
         }
         var argsLength = args.length;
         var createElementArgArray = new Array(argsLength);
@@ -26048,17 +26689,17 @@
         for (var i = 2; i < argsLength; i++) {
           createElementArgArray[i] = args[i];
         }
-        return React4.createElement.apply(null, createElementArgArray);
+        return React3.createElement.apply(null, createElementArgArray);
       };
-      (function(_jsx23) {
+      (function(_jsx34) {
         var JSX;
         /* @__PURE__ */ (function(_JSX) {
-        })(JSX || (JSX = _jsx23.JSX || (_jsx23.JSX = {})));
+        })(JSX || (JSX = _jsx34.JSX || (_jsx34.JSX = {})));
       })(jsx || (jsx = {}));
       Global = /* @__PURE__ */ withEmotionCache(function(props, cache) {
         var styles = props.styles;
-        var serialized = serializeStyles([styles], void 0, React4.useContext(ThemeContext));
-        var sheetRef = React4.useRef();
+        var serialized = serializeStyles([styles], void 0, React3.useContext(ThemeContext));
+        var sheetRef = React3.useRef();
         useInsertionEffectWithLayoutFallback(function() {
           var key = cache.key + "-global";
           var sheet = new cache.sheet.constructor({
@@ -26169,16 +26810,16 @@
           for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
             args[_key2] = arguments[_key2];
           }
-          return merge(cache.registered, css3, classnames(args));
+          return merge2(cache.registered, css3, classnames(args));
         };
         var content = {
           css: css3,
           cx,
-          theme: React4.useContext(ThemeContext)
+          theme: React3.useContext(ThemeContext)
         };
         var ele = props.children(content);
         hasRendered = true;
-        return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement(Insertion3, {
+        return /* @__PURE__ */ React3.createElement(React3.Fragment, null, /* @__PURE__ */ React3.createElement(Insertion3, {
           cache,
           serializedArr
         }), ele);
@@ -26192,7 +26833,7 @@
     "node_modules/@emotion/is-prop-valid/dist/emotion-is-prop-valid.esm.js"() {
       init_emotion_memoize_esm();
       reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|fetchpriority|fetchPriority|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/;
-      isPropValid = /* @__PURE__ */ memoize(
+      isPropValid = /* @__PURE__ */ memoize2(
         function(prop) {
           return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111 && prop.charCodeAt(1) === 110 && prop.charCodeAt(2) < 91;
         }
@@ -26202,7 +26843,7 @@
   });
 
   // node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js
-  var React5, isDevelopment4, testOmitPropsOnStringTag, testOmitPropsOnComponent, getDefaultShouldForwardProp, composeShouldForwardProps, Insertion5, createStyled;
+  var React4, isDevelopment4, testOmitPropsOnStringTag, testOmitPropsOnComponent, getDefaultShouldForwardProp, composeShouldForwardProps, Insertion5, createStyled;
   var init_emotion_styled_base_browser_esm = __esm({
     "node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js"() {
       init_extends();
@@ -26210,7 +26851,7 @@
       init_emotion_serialize_esm();
       init_emotion_use_insertion_effect_with_fallbacks_browser_esm();
       init_emotion_utils_browser_esm();
-      React5 = __toESM(require_react());
+      React4 = __toESM(require_react());
       init_emotion_is_prop_valid_esm();
       isDevelopment4 = false;
       testOmitPropsOnStringTag = isPropValid;
@@ -26283,7 +26924,7 @@
               for (var key in props) {
                 mergedProps[key] = props[key];
               }
-              mergedProps.theme = React5.useContext(ThemeContext);
+              mergedProps.theme = React4.useContext(ThemeContext);
             }
             if (typeof props.className === "string") {
               className = getRegisteredStyles(cache.registered, classInterpolations, props.className);
@@ -26308,11 +26949,11 @@
             if (ref) {
               newProps.ref = ref;
             }
-            return /* @__PURE__ */ React5.createElement(React5.Fragment, null, /* @__PURE__ */ React5.createElement(Insertion5, {
+            return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement(Insertion5, {
               cache,
               serialized,
               isStringTag: typeof FinalTag === "string"
-            }), /* @__PURE__ */ React5.createElement(FinalTag, newProps));
+            }), /* @__PURE__ */ React4.createElement(FinalTag, newProps));
           });
           Styled.displayName = identifierName !== void 0 ? identifierName : "Styled(" + (typeof baseTag === "string" ? baseTag : baseTag.displayName || baseTag.name || "Component") + ")";
           Styled.defaultProps = tag.defaultProps;
@@ -26506,7 +27147,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React58 = require_react();
+          var React73 = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -26532,7 +27173,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React58.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React73.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -27160,7 +27801,7 @@
           {
             propTypesMisspellWarningShown = false;
           }
-          function isValidElement4(object) {
+          function isValidElement5(object) {
             {
               return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
             }
@@ -27227,11 +27868,11 @@
               if (isArray(node2)) {
                 for (var i = 0; i < node2.length; i++) {
                   var child = node2[i];
-                  if (isValidElement4(child)) {
+                  if (isValidElement5(child)) {
                     validateExplicitKey(child, parentType);
                   }
                 }
-              } else if (isValidElement4(node2)) {
+              } else if (isValidElement5(node2)) {
                 if (node2._store) {
                   node2._store.validated = true;
                 }
@@ -27242,7 +27883,7 @@
                     var iterator = iteratorFn.call(node2);
                     var step;
                     while (!(step = iterator.next()).done) {
-                      if (isValidElement4(step.value)) {
+                      if (isValidElement5(step.value)) {
                         validateExplicitKey(step.value, parentType);
                       }
                     }
@@ -27382,11 +28023,11 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx3 = jsxWithValidationDynamic;
-          var jsxs = jsxWithValidationStatic;
+          var jsx4 = jsxWithValidationDynamic;
+          var jsxs2 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx3;
-          exports.jsxs = jsxs;
+          exports.jsx = jsx4;
+          exports.jsxs = jsxs2;
         })();
       }
     }
@@ -27414,7 +28055,7 @@
         value: true
       });
       exports.default = StyledEngineProvider2;
-      var React58 = _interopRequireWildcard(require_react());
+      var React73 = _interopRequireWildcard(require_react());
       var _propTypes = _interopRequireDefault(require_prop_types());
       var _react2 = (init_emotion_react_browser_esm(), __toCommonJS(emotion_react_browser_esm_exports));
       var _cache = _interopRequireDefault((init_emotion_cache_browser_esm(), __toCommonJS(emotion_cache_browser_esm_exports)));
@@ -27466,7 +28107,7 @@
           enableCssLayer,
           children
         } = props;
-        const cache = React58.useMemo(() => {
+        const cache = React73.useMemo(() => {
           const cacheKey = `${injectFirst}-${enableCssLayer}`;
           if (typeof document === "object" && cacheMap.has(cacheKey)) {
             return cacheMap.get(cacheKey);
@@ -27532,7 +28173,7 @@
         value: true
       });
       exports.default = GlobalStyles;
-      var React58 = _interopRequireWildcard(require_react());
+      var React73 = _interopRequireWildcard(require_react());
       var _propTypes = _interopRequireDefault(require_prop_types());
       var _react2 = (init_emotion_react_browser_esm(), __toCommonJS(emotion_react_browser_esm_exports));
       var _jsxRuntime = require_jsx_runtime();
@@ -27672,436 +28313,6 @@
         wrapper[0] = styles;
         return (0, _serialize.serializeStyles)(wrapper);
       }
-    }
-  });
-
-  // node_modules/@babel/runtime/helpers/extends.js
-  var require_extends = __commonJS({
-    "node_modules/@babel/runtime/helpers/extends.js"(exports, module) {
-      function _extends2() {
-        return module.exports = _extends2 = Object.assign ? Object.assign.bind() : function(n) {
-          for (var e = 1; e < arguments.length; e++) {
-            var t = arguments[e];
-            for (var r2 in t)
-              ({}).hasOwnProperty.call(t, r2) && (n[r2] = t[r2]);
-          }
-          return n;
-        }, module.exports.__esModule = true, module.exports["default"] = module.exports, _extends2.apply(null, arguments);
-      }
-      module.exports = _extends2, module.exports.__esModule = true, module.exports["default"] = module.exports;
-    }
-  });
-
-  // node_modules/@mui/utils/deepmerge/deepmerge.js
-  var require_deepmerge = __commonJS({
-    "node_modules/@mui/utils/deepmerge/deepmerge.js"(exports) {
-      "use strict";
-      var _interopRequireDefault = require_interopRequireDefault();
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = deepmerge7;
-      exports.isPlainObject = isPlainObject2;
-      var _extends2 = _interopRequireDefault(require_extends());
-      var React58 = _interopRequireWildcard(require_react());
-      function _getRequireWildcardCache(e) {
-        if ("function" != typeof WeakMap)
-          return null;
-        var r2 = /* @__PURE__ */ new WeakMap(), t = /* @__PURE__ */ new WeakMap();
-        return (_getRequireWildcardCache = function(e2) {
-          return e2 ? t : r2;
-        })(e);
-      }
-      function _interopRequireWildcard(e, r2) {
-        if (!r2 && e && e.__esModule)
-          return e;
-        if (null === e || "object" != typeof e && "function" != typeof e)
-          return { default: e };
-        var t = _getRequireWildcardCache(r2);
-        if (t && t.has(e))
-          return t.get(e);
-        var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor;
-        for (var u in e)
-          if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) {
-            var i = a ? Object.getOwnPropertyDescriptor(e, u) : null;
-            i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u];
-          }
-        return n.default = e, t && t.set(e, n), n;
-      }
-      function isPlainObject2(item) {
-        if (typeof item !== "object" || item === null) {
-          return false;
-        }
-        const prototype = Object.getPrototypeOf(item);
-        return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) && !(Symbol.toStringTag in item) && !(Symbol.iterator in item);
-      }
-      function deepClone2(source) {
-        if (/* @__PURE__ */ React58.isValidElement(source) || !isPlainObject2(source)) {
-          return source;
-        }
-        const output = {};
-        Object.keys(source).forEach((key) => {
-          output[key] = deepClone2(source[key]);
-        });
-        return output;
-      }
-      function deepmerge7(target, source, options = {
-        clone: true
-      }) {
-        const output = options.clone ? (0, _extends2.default)({}, target) : target;
-        if (isPlainObject2(target) && isPlainObject2(source)) {
-          Object.keys(source).forEach((key) => {
-            if (/* @__PURE__ */ React58.isValidElement(source[key])) {
-              output[key] = source[key];
-            } else if (isPlainObject2(source[key]) && // Avoid prototype pollution
-            Object.prototype.hasOwnProperty.call(target, key) && isPlainObject2(target[key])) {
-              output[key] = deepmerge7(target[key], source[key], options);
-            } else if (options.clone) {
-              output[key] = isPlainObject2(source[key]) ? deepClone2(source[key]) : source[key];
-            } else {
-              output[key] = source[key];
-            }
-          });
-        }
-        return output;
-      }
-    }
-  });
-
-  // node_modules/@mui/utils/deepmerge/index.js
-  var require_deepmerge2 = __commonJS({
-    "node_modules/@mui/utils/deepmerge/index.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      var _exportNames = {};
-      Object.defineProperty(exports, "default", {
-        enumerable: true,
-        get: function() {
-          return _deepmerge.default;
-        }
-      });
-      var _deepmerge = _interopRequireWildcard(require_deepmerge());
-      Object.keys(_deepmerge).forEach(function(key) {
-        if (key === "default" || key === "__esModule")
-          return;
-        if (Object.prototype.hasOwnProperty.call(_exportNames, key))
-          return;
-        if (key in exports && exports[key] === _deepmerge[key])
-          return;
-        Object.defineProperty(exports, key, {
-          enumerable: true,
-          get: function() {
-            return _deepmerge[key];
-          }
-        });
-      });
-      function _getRequireWildcardCache(e) {
-        if ("function" != typeof WeakMap)
-          return null;
-        var r2 = /* @__PURE__ */ new WeakMap(), t = /* @__PURE__ */ new WeakMap();
-        return (_getRequireWildcardCache = function(e2) {
-          return e2 ? t : r2;
-        })(e);
-      }
-      function _interopRequireWildcard(e, r2) {
-        if (!r2 && e && e.__esModule)
-          return e;
-        if (null === e || "object" != typeof e && "function" != typeof e)
-          return { default: e };
-        var t = _getRequireWildcardCache(r2);
-        if (t && t.has(e))
-          return t.get(e);
-        var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor;
-        for (var u in e)
-          if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) {
-            var i = a ? Object.getOwnPropertyDescriptor(e, u) : null;
-            i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u];
-          }
-        return n.default = e, t && t.set(e, n), n;
-      }
-    }
-  });
-
-  // node_modules/@mui/utils/capitalize/capitalize.js
-  var require_capitalize = __commonJS({
-    "node_modules/@mui/utils/capitalize/capitalize.js"(exports) {
-      "use strict";
-      var _interopRequireDefault = require_interopRequireDefault();
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = capitalize5;
-      var _formatMuiErrorMessage2 = _interopRequireDefault(require_formatMuiErrorMessage2());
-      function capitalize5(string) {
-        if (typeof string !== "string") {
-          throw new Error(true ? `MUI: \`capitalize(string)\` expects a string argument.` : (0, _formatMuiErrorMessage2.default)(7));
-        }
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      }
-    }
-  });
-
-  // node_modules/@mui/utils/capitalize/index.js
-  var require_capitalize2 = __commonJS({
-    "node_modules/@mui/utils/capitalize/index.js"(exports) {
-      "use strict";
-      var _interopRequireDefault = require_interopRequireDefault();
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      Object.defineProperty(exports, "default", {
-        enumerable: true,
-        get: function() {
-          return _capitalize.default;
-        }
-      });
-      var _capitalize = _interopRequireDefault(require_capitalize());
-    }
-  });
-
-  // node_modules/react-is/cjs/react-is.development.js
-  var require_react_is_development3 = __commonJS({
-    "node_modules/react-is/cjs/react-is.development.js"(exports) {
-      "use strict";
-      (function() {
-        function typeOf(object) {
-          if ("object" === typeof object && null !== object) {
-            var $$typeof = object.$$typeof;
-            switch ($$typeof) {
-              case REACT_ELEMENT_TYPE:
-                switch (object = object.type, object) {
-                  case REACT_FRAGMENT_TYPE:
-                  case REACT_PROFILER_TYPE:
-                  case REACT_STRICT_MODE_TYPE:
-                  case REACT_SUSPENSE_TYPE:
-                  case REACT_SUSPENSE_LIST_TYPE:
-                  case REACT_VIEW_TRANSITION_TYPE:
-                    return object;
-                  default:
-                    switch (object = object && object.$$typeof, object) {
-                      case REACT_CONTEXT_TYPE:
-                      case REACT_FORWARD_REF_TYPE:
-                      case REACT_LAZY_TYPE:
-                      case REACT_MEMO_TYPE:
-                        return object;
-                      case REACT_CONSUMER_TYPE:
-                        return object;
-                      default:
-                        return $$typeof;
-                    }
-                }
-              case REACT_PORTAL_TYPE:
-                return $$typeof;
-            }
-          }
-        }
-        var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
-        Symbol.for("react.provider");
-        var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference");
-        exports.ContextConsumer = REACT_CONSUMER_TYPE;
-        exports.ContextProvider = REACT_CONTEXT_TYPE;
-        exports.Element = REACT_ELEMENT_TYPE;
-        exports.ForwardRef = REACT_FORWARD_REF_TYPE;
-        exports.Fragment = REACT_FRAGMENT_TYPE;
-        exports.Lazy = REACT_LAZY_TYPE;
-        exports.Memo = REACT_MEMO_TYPE;
-        exports.Portal = REACT_PORTAL_TYPE;
-        exports.Profiler = REACT_PROFILER_TYPE;
-        exports.StrictMode = REACT_STRICT_MODE_TYPE;
-        exports.Suspense = REACT_SUSPENSE_TYPE;
-        exports.SuspenseList = REACT_SUSPENSE_LIST_TYPE;
-        exports.isContextConsumer = function(object) {
-          return typeOf(object) === REACT_CONSUMER_TYPE;
-        };
-        exports.isContextProvider = function(object) {
-          return typeOf(object) === REACT_CONTEXT_TYPE;
-        };
-        exports.isElement = function(object) {
-          return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
-        };
-        exports.isForwardRef = function(object) {
-          return typeOf(object) === REACT_FORWARD_REF_TYPE;
-        };
-        exports.isFragment = function(object) {
-          return typeOf(object) === REACT_FRAGMENT_TYPE;
-        };
-        exports.isLazy = function(object) {
-          return typeOf(object) === REACT_LAZY_TYPE;
-        };
-        exports.isMemo = function(object) {
-          return typeOf(object) === REACT_MEMO_TYPE;
-        };
-        exports.isPortal = function(object) {
-          return typeOf(object) === REACT_PORTAL_TYPE;
-        };
-        exports.isProfiler = function(object) {
-          return typeOf(object) === REACT_PROFILER_TYPE;
-        };
-        exports.isStrictMode = function(object) {
-          return typeOf(object) === REACT_STRICT_MODE_TYPE;
-        };
-        exports.isSuspense = function(object) {
-          return typeOf(object) === REACT_SUSPENSE_TYPE;
-        };
-        exports.isSuspenseList = function(object) {
-          return typeOf(object) === REACT_SUSPENSE_LIST_TYPE;
-        };
-        exports.isValidElementType = function(type) {
-          return "string" === typeof type || "function" === typeof type || type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || "object" === typeof type && null !== type && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_CONSUMER_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_CLIENT_REFERENCE || void 0 !== type.getModuleId) ? true : false;
-        };
-        exports.typeOf = typeOf;
-      })();
-    }
-  });
-
-  // node_modules/react-is/index.js
-  var require_react_is3 = __commonJS({
-    "node_modules/react-is/index.js"(exports, module) {
-      "use strict";
-      if (false) {
-        module.exports = null;
-      } else {
-        module.exports = require_react_is_development3();
-      }
-    }
-  });
-
-  // node_modules/@mui/utils/getDisplayName/getDisplayName.js
-  var require_getDisplayName = __commonJS({
-    "node_modules/@mui/utils/getDisplayName/getDisplayName.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = getDisplayName;
-      exports.getFunctionName = getFunctionName;
-      var _reactIs = require_react_is3();
-      var fnNameMatchRegex = /^\s*function(?:\s|\s*\/\*.*\*\/\s*)+([^(\s/]*)\s*/;
-      function getFunctionName(fn) {
-        const match2 = `${fn}`.match(fnNameMatchRegex);
-        const name = match2 && match2[1];
-        return name || "";
-      }
-      function getFunctionComponentName(Component, fallback = "") {
-        return Component.displayName || Component.name || getFunctionName(Component) || fallback;
-      }
-      function getWrappedName(outerType, innerType, wrapperName) {
-        const functionName = getFunctionComponentName(innerType);
-        return outerType.displayName || (functionName !== "" ? `${wrapperName}(${functionName})` : wrapperName);
-      }
-      function getDisplayName(Component) {
-        if (Component == null) {
-          return void 0;
-        }
-        if (typeof Component === "string") {
-          return Component;
-        }
-        if (typeof Component === "function") {
-          return getFunctionComponentName(Component, "Component");
-        }
-        if (typeof Component === "object") {
-          switch (Component.$$typeof) {
-            case _reactIs.ForwardRef:
-              return getWrappedName(Component, Component.render, "ForwardRef");
-            case _reactIs.Memo:
-              return getWrappedName(Component, Component.type, "memo");
-            default:
-              return void 0;
-          }
-        }
-        return void 0;
-      }
-    }
-  });
-
-  // node_modules/@mui/utils/getDisplayName/index.js
-  var require_getDisplayName2 = __commonJS({
-    "node_modules/@mui/utils/getDisplayName/index.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      var _exportNames = {};
-      Object.defineProperty(exports, "default", {
-        enumerable: true,
-        get: function() {
-          return _getDisplayName.default;
-        }
-      });
-      var _getDisplayName = _interopRequireWildcard(require_getDisplayName());
-      Object.keys(_getDisplayName).forEach(function(key) {
-        if (key === "default" || key === "__esModule")
-          return;
-        if (Object.prototype.hasOwnProperty.call(_exportNames, key))
-          return;
-        if (key in exports && exports[key] === _getDisplayName[key])
-          return;
-        Object.defineProperty(exports, key, {
-          enumerable: true,
-          get: function() {
-            return _getDisplayName[key];
-          }
-        });
-      });
-      function _getRequireWildcardCache(e) {
-        if ("function" != typeof WeakMap)
-          return null;
-        var r2 = /* @__PURE__ */ new WeakMap(), t = /* @__PURE__ */ new WeakMap();
-        return (_getRequireWildcardCache = function(e2) {
-          return e2 ? t : r2;
-        })(e);
-      }
-      function _interopRequireWildcard(e, r2) {
-        if (!r2 && e && e.__esModule)
-          return e;
-        if (null === e || "object" != typeof e && "function" != typeof e)
-          return { default: e };
-        var t = _getRequireWildcardCache(r2);
-        if (t && t.has(e))
-          return t.get(e);
-        var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor;
-        for (var u in e)
-          if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) {
-            var i = a ? Object.getOwnPropertyDescriptor(e, u) : null;
-            i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u];
-          }
-        return n.default = e, t && t.set(e, n), n;
-      }
-    }
-  });
-
-  // node_modules/@mui/utils/clamp/clamp.js
-  var require_clamp = __commonJS({
-    "node_modules/@mui/utils/clamp/clamp.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      function clamp2(val, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
-        return Math.max(min, Math.min(val, max));
-      }
-      var _default = exports.default = clamp2;
-    }
-  });
-
-  // node_modules/@mui/utils/clamp/index.js
-  var require_clamp2 = __commonJS({
-    "node_modules/@mui/utils/clamp/index.js"(exports) {
-      "use strict";
-      var _interopRequireDefault = require_interopRequireDefault();
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      Object.defineProperty(exports, "default", {
-        enumerable: true,
-        get: function() {
-          return _clamp.default;
-        }
-      });
-      var _clamp = _interopRequireDefault(require_clamp());
     }
   });
 
@@ -29335,12 +29546,12 @@
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.default = extendSxProp;
+      exports.default = extendSxProp2;
       var _extends2 = _interopRequireDefault(require_extends());
       var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require_objectWithoutPropertiesLoose());
       var _deepmerge = require_deepmerge2();
       var _defaultSxConfig = _interopRequireDefault(require_defaultSxConfig());
-      var _excluded19 = ["sx"];
+      var _excluded25 = ["sx"];
       var splitProps = (props) => {
         var _props$theme$unstable, _props$theme;
         const result = {
@@ -29357,10 +29568,10 @@
         });
         return result;
       };
-      function extendSxProp(props) {
+      function extendSxProp2(props) {
         const {
           sx: inSx
-        } = props, other = (0, _objectWithoutPropertiesLoose2.default)(props, _excluded19);
+        } = props, other = (0, _objectWithoutPropertiesLoose2.default)(props, _excluded25);
         const {
           systemProps,
           otherProps
@@ -29460,7 +29671,7 @@
       exports.default = createBreakpoints3;
       var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require_objectWithoutPropertiesLoose());
       var _extends2 = _interopRequireDefault(require_extends());
-      var _excluded19 = ["values", "unit", "step"];
+      var _excluded25 = ["values", "unit", "step"];
       var breakpointKeys = exports.breakpointKeys = ["xs", "sm", "md", "lg", "xl"];
       var sortBreakpointsValues3 = (values4) => {
         const breakpointsAsArray = Object.keys(values4).map((key) => ({
@@ -29492,7 +29703,7 @@
           },
           unit = "px",
           step = 5
-        } = breakpoints, other = (0, _objectWithoutPropertiesLoose2.default)(breakpoints, _excluded19);
+        } = breakpoints, other = (0, _objectWithoutPropertiesLoose2.default)(breakpoints, _excluded25);
         const sortedValues = sortBreakpointsValues3(values4);
         const keys = Object.keys(sortedValues);
         function up(key) {
@@ -29628,14 +29839,14 @@
       var _styleFunctionSx = _interopRequireDefault(require_styleFunctionSx());
       var _defaultSxConfig = _interopRequireDefault(require_defaultSxConfig());
       var _applyStyles = _interopRequireDefault(require_applyStyles());
-      var _excluded19 = ["breakpoints", "palette", "spacing", "shape"];
+      var _excluded25 = ["breakpoints", "palette", "spacing", "shape"];
       function createTheme4(options = {}, ...args) {
         const {
           breakpoints: breakpointsInput = {},
           palette: paletteInput = {},
           spacing: spacingInput,
           shape: shapeInput = {}
-        } = options, other = (0, _objectWithoutPropertiesLoose2.default)(options, _excluded19);
+        } = options, other = (0, _objectWithoutPropertiesLoose2.default)(options, _excluded25);
         const breakpoints = (0, _createBreakpoints.default)(breakpointsInput);
         const spacing3 = (0, _createSpacing.default)(spacingInput);
         let muiTheme = (0, _deepmerge.default)({
@@ -29696,268 +29907,213 @@
     }
   });
 
-  // node_modules/@mui/material/node_modules/@mui/system/colorManipulator.js
-  var require_colorManipulator = __commonJS({
-    "node_modules/@mui/material/node_modules/@mui/system/colorManipulator.js"(exports) {
+  // node_modules/react-is/cjs/react-is.development.js
+  var require_react_is_development3 = __commonJS({
+    "node_modules/react-is/cjs/react-is.development.js"(exports) {
       "use strict";
-      var _interopRequireDefault = require_interopRequireDefault();
+      (function() {
+        function typeOf(object) {
+          if ("object" === typeof object && null !== object) {
+            var $$typeof = object.$$typeof;
+            switch ($$typeof) {
+              case REACT_ELEMENT_TYPE:
+                switch (object = object.type, object) {
+                  case REACT_FRAGMENT_TYPE:
+                  case REACT_PROFILER_TYPE:
+                  case REACT_STRICT_MODE_TYPE:
+                  case REACT_SUSPENSE_TYPE:
+                  case REACT_SUSPENSE_LIST_TYPE:
+                  case REACT_VIEW_TRANSITION_TYPE:
+                    return object;
+                  default:
+                    switch (object = object && object.$$typeof, object) {
+                      case REACT_CONTEXT_TYPE:
+                      case REACT_FORWARD_REF_TYPE:
+                      case REACT_LAZY_TYPE:
+                      case REACT_MEMO_TYPE:
+                        return object;
+                      case REACT_CONSUMER_TYPE:
+                        return object;
+                      default:
+                        return $$typeof;
+                    }
+                }
+              case REACT_PORTAL_TYPE:
+                return $$typeof;
+            }
+          }
+        }
+        var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
+        Symbol.for("react.provider");
+        var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference");
+        exports.ContextConsumer = REACT_CONSUMER_TYPE;
+        exports.ContextProvider = REACT_CONTEXT_TYPE;
+        exports.Element = REACT_ELEMENT_TYPE;
+        exports.ForwardRef = REACT_FORWARD_REF_TYPE;
+        exports.Fragment = REACT_FRAGMENT_TYPE;
+        exports.Lazy = REACT_LAZY_TYPE;
+        exports.Memo = REACT_MEMO_TYPE;
+        exports.Portal = REACT_PORTAL_TYPE;
+        exports.Profiler = REACT_PROFILER_TYPE;
+        exports.StrictMode = REACT_STRICT_MODE_TYPE;
+        exports.Suspense = REACT_SUSPENSE_TYPE;
+        exports.SuspenseList = REACT_SUSPENSE_LIST_TYPE;
+        exports.isContextConsumer = function(object) {
+          return typeOf(object) === REACT_CONSUMER_TYPE;
+        };
+        exports.isContextProvider = function(object) {
+          return typeOf(object) === REACT_CONTEXT_TYPE;
+        };
+        exports.isElement = function(object) {
+          return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
+        };
+        exports.isForwardRef = function(object) {
+          return typeOf(object) === REACT_FORWARD_REF_TYPE;
+        };
+        exports.isFragment = function(object) {
+          return typeOf(object) === REACT_FRAGMENT_TYPE;
+        };
+        exports.isLazy = function(object) {
+          return typeOf(object) === REACT_LAZY_TYPE;
+        };
+        exports.isMemo = function(object) {
+          return typeOf(object) === REACT_MEMO_TYPE;
+        };
+        exports.isPortal = function(object) {
+          return typeOf(object) === REACT_PORTAL_TYPE;
+        };
+        exports.isProfiler = function(object) {
+          return typeOf(object) === REACT_PROFILER_TYPE;
+        };
+        exports.isStrictMode = function(object) {
+          return typeOf(object) === REACT_STRICT_MODE_TYPE;
+        };
+        exports.isSuspense = function(object) {
+          return typeOf(object) === REACT_SUSPENSE_TYPE;
+        };
+        exports.isSuspenseList = function(object) {
+          return typeOf(object) === REACT_SUSPENSE_LIST_TYPE;
+        };
+        exports.isValidElementType = function(type) {
+          return "string" === typeof type || "function" === typeof type || type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || "object" === typeof type && null !== type && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_CONSUMER_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_CLIENT_REFERENCE || void 0 !== type.getModuleId) ? true : false;
+        };
+        exports.typeOf = typeOf;
+      })();
+    }
+  });
+
+  // node_modules/react-is/index.js
+  var require_react_is3 = __commonJS({
+    "node_modules/react-is/index.js"(exports, module) {
+      "use strict";
+      if (false) {
+        module.exports = null;
+      } else {
+        module.exports = require_react_is_development3();
+      }
+    }
+  });
+
+  // node_modules/@mui/utils/getDisplayName/getDisplayName.js
+  var require_getDisplayName = __commonJS({
+    "node_modules/@mui/utils/getDisplayName/getDisplayName.js"(exports) {
+      "use strict";
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.alpha = alpha3;
-      exports.blend = blend;
-      exports.colorChannel = void 0;
-      exports.darken = darken3;
-      exports.decomposeColor = decomposeColor2;
-      exports.emphasize = emphasize2;
-      exports.getContrastRatio = getContrastRatio3;
-      exports.getLuminance = getLuminance2;
-      exports.hexToRgb = hexToRgb2;
-      exports.hslToRgb = hslToRgb2;
-      exports.lighten = lighten3;
-      exports.private_safeAlpha = private_safeAlpha;
-      exports.private_safeColorChannel = void 0;
-      exports.private_safeDarken = private_safeDarken;
-      exports.private_safeEmphasize = private_safeEmphasize;
-      exports.private_safeLighten = private_safeLighten;
-      exports.recomposeColor = recomposeColor2;
-      exports.rgbToHex = rgbToHex2;
-      var _formatMuiErrorMessage2 = _interopRequireDefault(require_formatMuiErrorMessage2());
-      var _clamp = _interopRequireDefault(require_clamp2());
-      function clampWrapper2(value, min = 0, max = 1) {
-        if (true) {
-          if (value < min || value > max) {
-            console.error(`MUI: The value provided ${value} is out of range [${min}, ${max}].`);
+      exports.default = getDisplayName;
+      exports.getFunctionName = getFunctionName;
+      var _reactIs = require_react_is3();
+      var fnNameMatchRegex = /^\s*function(?:\s|\s*\/\*.*\*\/\s*)+([^(\s/]*)\s*/;
+      function getFunctionName(fn) {
+        const match2 = `${fn}`.match(fnNameMatchRegex);
+        const name = match2 && match2[1];
+        return name || "";
+      }
+      function getFunctionComponentName(Component, fallback = "") {
+        return Component.displayName || Component.name || getFunctionName(Component) || fallback;
+      }
+      function getWrappedName(outerType, innerType, wrapperName) {
+        const functionName = getFunctionComponentName(innerType);
+        return outerType.displayName || (functionName !== "" ? `${wrapperName}(${functionName})` : wrapperName);
+      }
+      function getDisplayName(Component) {
+        if (Component == null) {
+          return void 0;
+        }
+        if (typeof Component === "string") {
+          return Component;
+        }
+        if (typeof Component === "function") {
+          return getFunctionComponentName(Component, "Component");
+        }
+        if (typeof Component === "object") {
+          switch (Component.$$typeof) {
+            case _reactIs.ForwardRef:
+              return getWrappedName(Component, Component.render, "ForwardRef");
+            case _reactIs.Memo:
+              return getWrappedName(Component, Component.type, "memo");
+            default:
+              return void 0;
           }
         }
-        return (0, _clamp.default)(value, min, max);
+        return void 0;
       }
-      function hexToRgb2(color3) {
-        color3 = color3.slice(1);
-        const re = new RegExp(`.{1,${color3.length >= 6 ? 2 : 1}}`, "g");
-        let colors = color3.match(re);
-        if (colors && colors[0].length === 1) {
-          colors = colors.map((n) => n + n);
+    }
+  });
+
+  // node_modules/@mui/utils/getDisplayName/index.js
+  var require_getDisplayName2 = __commonJS({
+    "node_modules/@mui/utils/getDisplayName/index.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var _exportNames = {};
+      Object.defineProperty(exports, "default", {
+        enumerable: true,
+        get: function() {
+          return _getDisplayName.default;
         }
-        return colors ? `rgb${colors.length === 4 ? "a" : ""}(${colors.map((n, index) => {
-          return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1e3) / 1e3;
-        }).join(", ")})` : "";
-      }
-      function intToHex(int) {
-        const hex = int.toString(16);
-        return hex.length === 1 ? `0${hex}` : hex;
-      }
-      function decomposeColor2(color3) {
-        if (color3.type) {
-          return color3;
-        }
-        if (color3.charAt(0) === "#") {
-          return decomposeColor2(hexToRgb2(color3));
-        }
-        const marker = color3.indexOf("(");
-        const type = color3.substring(0, marker);
-        if (["rgb", "rgba", "hsl", "hsla", "color"].indexOf(type) === -1) {
-          throw new Error(true ? `MUI: Unsupported \`${color3}\` color.
-The following formats are supported: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla(), color().` : (0, _formatMuiErrorMessage2.default)(9, color3));
-        }
-        let values4 = color3.substring(marker + 1, color3.length - 1);
-        let colorSpace;
-        if (type === "color") {
-          values4 = values4.split(" ");
-          colorSpace = values4.shift();
-          if (values4.length === 4 && values4[3].charAt(0) === "/") {
-            values4[3] = values4[3].slice(1);
+      });
+      var _getDisplayName = _interopRequireWildcard(require_getDisplayName());
+      Object.keys(_getDisplayName).forEach(function(key) {
+        if (key === "default" || key === "__esModule")
+          return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key))
+          return;
+        if (key in exports && exports[key] === _getDisplayName[key])
+          return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _getDisplayName[key];
           }
-          if (["srgb", "display-p3", "a98-rgb", "prophoto-rgb", "rec-2020"].indexOf(colorSpace) === -1) {
-            throw new Error(true ? `MUI: unsupported \`${colorSpace}\` color space.
-The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rgb, rec-2020.` : (0, _formatMuiErrorMessage2.default)(10, colorSpace));
-          }
-        } else {
-          values4 = values4.split(",");
-        }
-        values4 = values4.map((value) => parseFloat(value));
-        return {
-          type,
-          values: values4,
-          colorSpace
-        };
-      }
-      var colorChannel = (color3) => {
-        const decomposedColor = decomposeColor2(color3);
-        return decomposedColor.values.slice(0, 3).map((val, idx) => decomposedColor.type.indexOf("hsl") !== -1 && idx !== 0 ? `${val}%` : val).join(" ");
-      };
-      exports.colorChannel = colorChannel;
-      var private_safeColorChannel = (color3, warning) => {
-        try {
-          return colorChannel(color3);
-        } catch (error) {
-          if (warning && true) {
-            console.warn(warning);
-          }
-          return color3;
-        }
-      };
-      exports.private_safeColorChannel = private_safeColorChannel;
-      function recomposeColor2(color3) {
-        const {
-          type,
-          colorSpace
-        } = color3;
-        let {
-          values: values4
-        } = color3;
-        if (type.indexOf("rgb") !== -1) {
-          values4 = values4.map((n, i) => i < 3 ? parseInt(n, 10) : n);
-        } else if (type.indexOf("hsl") !== -1) {
-          values4[1] = `${values4[1]}%`;
-          values4[2] = `${values4[2]}%`;
-        }
-        if (type.indexOf("color") !== -1) {
-          values4 = `${colorSpace} ${values4.join(" ")}`;
-        } else {
-          values4 = `${values4.join(", ")}`;
-        }
-        return `${type}(${values4})`;
-      }
-      function rgbToHex2(color3) {
-        if (color3.indexOf("#") === 0) {
-          return color3;
-        }
-        const {
-          values: values4
-        } = decomposeColor2(color3);
-        return `#${values4.map((n, i) => intToHex(i === 3 ? Math.round(255 * n) : n)).join("")}`;
-      }
-      function hslToRgb2(color3) {
-        color3 = decomposeColor2(color3);
-        const {
-          values: values4
-        } = color3;
-        const h = values4[0];
-        const s = values4[1] / 100;
-        const l = values4[2] / 100;
-        const a = s * Math.min(l, 1 - l);
-        const f = (n, k = (n + h / 30) % 12) => l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-        let type = "rgb";
-        const rgb = [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
-        if (color3.type === "hsla") {
-          type += "a";
-          rgb.push(values4[3]);
-        }
-        return recomposeColor2({
-          type,
-          values: rgb
         });
+      });
+      function _getRequireWildcardCache(e) {
+        if ("function" != typeof WeakMap)
+          return null;
+        var r2 = /* @__PURE__ */ new WeakMap(), t = /* @__PURE__ */ new WeakMap();
+        return (_getRequireWildcardCache = function(e2) {
+          return e2 ? t : r2;
+        })(e);
       }
-      function getLuminance2(color3) {
-        color3 = decomposeColor2(color3);
-        let rgb = color3.type === "hsl" || color3.type === "hsla" ? decomposeColor2(hslToRgb2(color3)).values : color3.values;
-        rgb = rgb.map((val) => {
-          if (color3.type !== "color") {
-            val /= 255;
+      function _interopRequireWildcard(e, r2) {
+        if (!r2 && e && e.__esModule)
+          return e;
+        if (null === e || "object" != typeof e && "function" != typeof e)
+          return { default: e };
+        var t = _getRequireWildcardCache(r2);
+        if (t && t.has(e))
+          return t.get(e);
+        var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor;
+        for (var u in e)
+          if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) {
+            var i = a ? Object.getOwnPropertyDescriptor(e, u) : null;
+            i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u];
           }
-          return val <= 0.03928 ? val / 12.92 : ((val + 0.055) / 1.055) ** 2.4;
-        });
-        return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));
-      }
-      function getContrastRatio3(foreground, background) {
-        const lumA = getLuminance2(foreground);
-        const lumB = getLuminance2(background);
-        return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
-      }
-      function alpha3(color3, value) {
-        color3 = decomposeColor2(color3);
-        value = clampWrapper2(value);
-        if (color3.type === "rgb" || color3.type === "hsl") {
-          color3.type += "a";
-        }
-        if (color3.type === "color") {
-          color3.values[3] = `/${value}`;
-        } else {
-          color3.values[3] = value;
-        }
-        return recomposeColor2(color3);
-      }
-      function private_safeAlpha(color3, value, warning) {
-        try {
-          return alpha3(color3, value);
-        } catch (error) {
-          if (warning && true) {
-            console.warn(warning);
-          }
-          return color3;
-        }
-      }
-      function darken3(color3, coefficient) {
-        color3 = decomposeColor2(color3);
-        coefficient = clampWrapper2(coefficient);
-        if (color3.type.indexOf("hsl") !== -1) {
-          color3.values[2] *= 1 - coefficient;
-        } else if (color3.type.indexOf("rgb") !== -1 || color3.type.indexOf("color") !== -1) {
-          for (let i = 0; i < 3; i += 1) {
-            color3.values[i] *= 1 - coefficient;
-          }
-        }
-        return recomposeColor2(color3);
-      }
-      function private_safeDarken(color3, coefficient, warning) {
-        try {
-          return darken3(color3, coefficient);
-        } catch (error) {
-          if (warning && true) {
-            console.warn(warning);
-          }
-          return color3;
-        }
-      }
-      function lighten3(color3, coefficient) {
-        color3 = decomposeColor2(color3);
-        coefficient = clampWrapper2(coefficient);
-        if (color3.type.indexOf("hsl") !== -1) {
-          color3.values[2] += (100 - color3.values[2]) * coefficient;
-        } else if (color3.type.indexOf("rgb") !== -1) {
-          for (let i = 0; i < 3; i += 1) {
-            color3.values[i] += (255 - color3.values[i]) * coefficient;
-          }
-        } else if (color3.type.indexOf("color") !== -1) {
-          for (let i = 0; i < 3; i += 1) {
-            color3.values[i] += (1 - color3.values[i]) * coefficient;
-          }
-        }
-        return recomposeColor2(color3);
-      }
-      function private_safeLighten(color3, coefficient, warning) {
-        try {
-          return lighten3(color3, coefficient);
-        } catch (error) {
-          if (warning && true) {
-            console.warn(warning);
-          }
-          return color3;
-        }
-      }
-      function emphasize2(color3, coefficient = 0.15) {
-        return getLuminance2(color3) > 0.5 ? darken3(color3, coefficient) : lighten3(color3, coefficient);
-      }
-      function private_safeEmphasize(color3, coefficient, warning) {
-        try {
-          return emphasize2(color3, coefficient);
-        } catch (error) {
-          if (warning && true) {
-            console.warn(warning);
-          }
-          return color3;
-        }
-      }
-      function blend(background, overlay, opacity, gamma = 1) {
-        const blendChannel = (b, o) => Math.round((b ** (1 / gamma) * (1 - opacity) + o ** (1 / gamma) * opacity) ** gamma);
-        const backgroundColor3 = decomposeColor2(background);
-        const overlayColor = decomposeColor2(overlay);
-        const rgb = [blendChannel(backgroundColor3.values[0], overlayColor.values[0]), blendChannel(backgroundColor3.values[1], overlayColor.values[1]), blendChannel(backgroundColor3.values[2], overlayColor.values[2])];
-        return recomposeColor2({
-          type: "rgb",
-          values: rgb
-        });
+        return n.default = e, t && t.set(e, n), n;
       }
     }
   });
@@ -29981,8 +30137,8 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
       var _getDisplayName = _interopRequireDefault(require_getDisplayName2());
       var _createTheme = _interopRequireDefault(require_createTheme2());
       var _styleFunctionSx = _interopRequireDefault(require_styleFunctionSx2());
-      var _excluded19 = ["ownerState"];
-      var _excluded23 = ["variants"];
+      var _excluded25 = ["ownerState"];
+      var _excluded26 = ["variants"];
       var _excluded33 = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"];
       function _getRequireWildcardCache(e) {
         if ("function" != typeof WeakMap)
@@ -30049,7 +30205,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
       function processStyleArg(callableStyle, _ref, layerName) {
         let {
           ownerState
-        } = _ref, props = (0, _objectWithoutPropertiesLoose2.default)(_ref, _excluded19);
+        } = _ref, props = (0, _objectWithoutPropertiesLoose2.default)(_ref, _excluded25);
         const resolvedStylesArg = typeof callableStyle === "function" ? callableStyle((0, _extends2.default)({
           ownerState
         }, props)) : callableStyle;
@@ -30061,7 +30217,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
         if (!!resolvedStylesArg && typeof resolvedStylesArg === "object" && Array.isArray(resolvedStylesArg.variants)) {
           const {
             variants = []
-          } = resolvedStylesArg, otherStyles = (0, _objectWithoutPropertiesLoose2.default)(resolvedStylesArg, _excluded23);
+          } = resolvedStylesArg, otherStyles = (0, _objectWithoutPropertiesLoose2.default)(resolvedStylesArg, _excluded26);
           let result = otherStyles;
           variants.forEach((variant) => {
             let isMatch = true;
@@ -30232,13 +30388,661 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var import_react9 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
-  // srcts/treeview.ts
+  // srcts/treeview.tsx
   var import_react8 = __toESM(require_react());
 
-  // node_modules/@mui/x-tree-view/RichTreeView/RichTreeView.js
+  // node_modules/@mui/x-tree-view/esm/RichTreeView/RichTreeView.js
   init_extends();
-  var React55 = __toESM(require_react());
-  var import_prop_types22 = __toESM(require_prop_types());
+
+  // node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+  function _objectWithoutPropertiesLoose(r2, e) {
+    if (null == r2)
+      return {};
+    var t = {};
+    for (var n in r2)
+      if ({}.hasOwnProperty.call(r2, n)) {
+        if (-1 !== e.indexOf(n))
+          continue;
+        t[n] = r2[n];
+      }
+    return t;
+  }
+
+  // node_modules/@mui/x-tree-view/esm/RichTreeView/RichTreeView.js
+  var React70 = __toESM(require_react(), 1);
+  var import_prop_types27 = __toESM(require_prop_types(), 1);
+
+  // node_modules/reselect/dist/reselect.mjs
+  var runIdentityFunctionCheck = (resultFunc, inputSelectorsResults, outputSelectorResult) => {
+    if (inputSelectorsResults.length === 1 && inputSelectorsResults[0] === outputSelectorResult) {
+      let isInputSameAsOutput = false;
+      try {
+        const emptyObject = {};
+        if (resultFunc(emptyObject) === emptyObject)
+          isInputSameAsOutput = true;
+      } catch {
+      }
+      if (isInputSameAsOutput) {
+        let stack = void 0;
+        try {
+          throw new Error();
+        } catch (e) {
+          ;
+          ({ stack } = e);
+        }
+        console.warn(
+          "The result function returned its own inputs without modification. e.g\n`createSelector([state => state.todos], todos => todos)`\nThis could lead to inefficient memoization and unnecessary re-renders.\nEnsure transformation logic is in the result function, and extraction logic is in the input selectors.",
+          { stack }
+        );
+      }
+    }
+  };
+  var runInputStabilityCheck = (inputSelectorResultsObject, options, inputSelectorArgs) => {
+    const { memoize: memoize4, memoizeOptions } = options;
+    const { inputSelectorResults, inputSelectorResultsCopy } = inputSelectorResultsObject;
+    const createAnEmptyObject = memoize4(() => ({}), ...memoizeOptions);
+    const areInputSelectorResultsEqual = createAnEmptyObject.apply(null, inputSelectorResults) === createAnEmptyObject.apply(null, inputSelectorResultsCopy);
+    if (!areInputSelectorResultsEqual) {
+      let stack = void 0;
+      try {
+        throw new Error();
+      } catch (e) {
+        ;
+        ({ stack } = e);
+      }
+      console.warn(
+        "An input selector returned a different result when passed same arguments.\nThis means your output selector will likely run more frequently than intended.\nAvoid returning a new reference inside your input selector, e.g.\n`createSelector([state => state.todos.map(todo => todo.id)], todoIds => todoIds.length)`",
+        {
+          arguments: inputSelectorArgs,
+          firstInputs: inputSelectorResults,
+          secondInputs: inputSelectorResultsCopy,
+          stack
+        }
+      );
+    }
+  };
+  var globalDevModeChecks = {
+    inputStabilityCheck: "once",
+    identityFunctionCheck: "once"
+  };
+  var NOT_FOUND = /* @__PURE__ */ Symbol("NOT_FOUND");
+  function assertIsFunction(func, errorMessage = `expected a function, instead received ${typeof func}`) {
+    if (typeof func !== "function") {
+      throw new TypeError(errorMessage);
+    }
+  }
+  function assertIsObject(object, errorMessage = `expected an object, instead received ${typeof object}`) {
+    if (typeof object !== "object") {
+      throw new TypeError(errorMessage);
+    }
+  }
+  function assertIsArrayOfFunctions(array, errorMessage = `expected all items to be functions, instead received the following types: `) {
+    if (!array.every((item) => typeof item === "function")) {
+      const itemTypes = array.map(
+        (item) => typeof item === "function" ? `function ${item.name || "unnamed"}()` : typeof item
+      ).join(", ");
+      throw new TypeError(`${errorMessage}[${itemTypes}]`);
+    }
+  }
+  var ensureIsArray = (item) => {
+    return Array.isArray(item) ? item : [item];
+  };
+  function getDependencies(createSelectorArgs) {
+    const dependencies = Array.isArray(createSelectorArgs[0]) ? createSelectorArgs[0] : createSelectorArgs;
+    assertIsArrayOfFunctions(
+      dependencies,
+      `createSelector expects all input-selectors to be functions, but received the following types: `
+    );
+    return dependencies;
+  }
+  function collectInputSelectorResults(dependencies, inputSelectorArgs) {
+    const inputSelectorResults = [];
+    const { length: length2 } = dependencies;
+    for (let i = 0; i < length2; i++) {
+      inputSelectorResults.push(dependencies[i].apply(null, inputSelectorArgs));
+    }
+    return inputSelectorResults;
+  }
+  var getDevModeChecksExecutionInfo = (firstRun, devModeChecks) => {
+    const { identityFunctionCheck, inputStabilityCheck } = {
+      ...globalDevModeChecks,
+      ...devModeChecks
+    };
+    return {
+      identityFunctionCheck: {
+        shouldRun: identityFunctionCheck === "always" || identityFunctionCheck === "once" && firstRun,
+        run: runIdentityFunctionCheck
+      },
+      inputStabilityCheck: {
+        shouldRun: inputStabilityCheck === "always" || inputStabilityCheck === "once" && firstRun,
+        run: runInputStabilityCheck
+      }
+    };
+  };
+  var REDUX_PROXY_LABEL = Symbol();
+  var proto = Object.getPrototypeOf({});
+  function createSingletonCache(equals) {
+    let entry;
+    return {
+      get(key) {
+        if (entry && equals(entry.key, key)) {
+          return entry.value;
+        }
+        return NOT_FOUND;
+      },
+      put(key, value) {
+        entry = { key, value };
+      },
+      getEntries() {
+        return entry ? [entry] : [];
+      },
+      clear() {
+        entry = void 0;
+      }
+    };
+  }
+  function createLruCache(maxSize, equals) {
+    let entries = [];
+    function get(key) {
+      const cacheIndex = entries.findIndex((entry) => equals(key, entry.key));
+      if (cacheIndex > -1) {
+        const entry = entries[cacheIndex];
+        if (cacheIndex > 0) {
+          entries.splice(cacheIndex, 1);
+          entries.unshift(entry);
+        }
+        return entry.value;
+      }
+      return NOT_FOUND;
+    }
+    function put(key, value) {
+      if (get(key) === NOT_FOUND) {
+        entries.unshift({ key, value });
+        if (entries.length > maxSize) {
+          entries.pop();
+        }
+      }
+    }
+    function getEntries() {
+      return entries;
+    }
+    function clear() {
+      entries = [];
+    }
+    return { get, put, getEntries, clear };
+  }
+  var referenceEqualityCheck = (a, b) => a === b;
+  function createCacheKeyComparator(equalityCheck) {
+    return function areArgumentsShallowlyEqual(prev2, next2) {
+      if (prev2 === null || next2 === null || prev2.length !== next2.length) {
+        return false;
+      }
+      const { length: length2 } = prev2;
+      for (let i = 0; i < length2; i++) {
+        if (!equalityCheck(prev2[i], next2[i])) {
+          return false;
+        }
+      }
+      return true;
+    };
+  }
+  function lruMemoize(func, equalityCheckOrOptions) {
+    const providedOptions = typeof equalityCheckOrOptions === "object" ? equalityCheckOrOptions : { equalityCheck: equalityCheckOrOptions };
+    const {
+      equalityCheck = referenceEqualityCheck,
+      maxSize = 1,
+      resultEqualityCheck
+    } = providedOptions;
+    const comparator = createCacheKeyComparator(equalityCheck);
+    let resultsCount = 0;
+    const cache = maxSize <= 1 ? createSingletonCache(comparator) : createLruCache(maxSize, comparator);
+    function memoized() {
+      let value = cache.get(arguments);
+      if (value === NOT_FOUND) {
+        value = func.apply(null, arguments);
+        resultsCount++;
+        if (resultEqualityCheck) {
+          const entries = cache.getEntries();
+          const matchingEntry = entries.find(
+            (entry) => resultEqualityCheck(entry.value, value)
+          );
+          if (matchingEntry) {
+            value = matchingEntry.value;
+            resultsCount !== 0 && resultsCount--;
+          }
+        }
+        cache.put(arguments, value);
+      }
+      return value;
+    }
+    memoized.clearCache = () => {
+      cache.clear();
+      memoized.resetResultsCount();
+    };
+    memoized.resultsCount = () => resultsCount;
+    memoized.resetResultsCount = () => {
+      resultsCount = 0;
+    };
+    return memoized;
+  }
+  var StrongRef = class {
+    constructor(value) {
+      this.value = value;
+    }
+    deref() {
+      return this.value;
+    }
+  };
+  var Ref = typeof WeakRef !== "undefined" ? WeakRef : StrongRef;
+  var UNTERMINATED = 0;
+  var TERMINATED = 1;
+  function createCacheNode() {
+    return {
+      s: UNTERMINATED,
+      v: void 0,
+      o: null,
+      p: null
+    };
+  }
+  function weakMapMemoize(func, options = {}) {
+    let fnNode = createCacheNode();
+    const { resultEqualityCheck } = options;
+    let lastResult;
+    let resultsCount = 0;
+    function memoized() {
+      let cacheNode = fnNode;
+      const { length: length2 } = arguments;
+      for (let i = 0, l = length2; i < l; i++) {
+        const arg = arguments[i];
+        if (typeof arg === "function" || typeof arg === "object" && arg !== null) {
+          let objectCache = cacheNode.o;
+          if (objectCache === null) {
+            cacheNode.o = objectCache = /* @__PURE__ */ new WeakMap();
+          }
+          const objectNode = objectCache.get(arg);
+          if (objectNode === void 0) {
+            cacheNode = createCacheNode();
+            objectCache.set(arg, cacheNode);
+          } else {
+            cacheNode = objectNode;
+          }
+        } else {
+          let primitiveCache = cacheNode.p;
+          if (primitiveCache === null) {
+            cacheNode.p = primitiveCache = /* @__PURE__ */ new Map();
+          }
+          const primitiveNode = primitiveCache.get(arg);
+          if (primitiveNode === void 0) {
+            cacheNode = createCacheNode();
+            primitiveCache.set(arg, cacheNode);
+          } else {
+            cacheNode = primitiveNode;
+          }
+        }
+      }
+      const terminatedNode = cacheNode;
+      let result;
+      if (cacheNode.s === TERMINATED) {
+        result = cacheNode.v;
+      } else {
+        result = func.apply(null, arguments);
+        resultsCount++;
+        if (resultEqualityCheck) {
+          const lastResultValue = lastResult?.deref?.() ?? lastResult;
+          if (lastResultValue != null && resultEqualityCheck(lastResultValue, result)) {
+            result = lastResultValue;
+            resultsCount !== 0 && resultsCount--;
+          }
+          const needsWeakRef = typeof result === "object" && result !== null || typeof result === "function";
+          lastResult = needsWeakRef ? new Ref(result) : result;
+        }
+      }
+      terminatedNode.s = TERMINATED;
+      terminatedNode.v = result;
+      return result;
+    }
+    memoized.clearCache = () => {
+      fnNode = createCacheNode();
+      memoized.resetResultsCount();
+    };
+    memoized.resultsCount = () => resultsCount;
+    memoized.resetResultsCount = () => {
+      resultsCount = 0;
+    };
+    return memoized;
+  }
+  function createSelectorCreator(memoizeOrOptions, ...memoizeOptionsFromArgs) {
+    const createSelectorCreatorOptions = typeof memoizeOrOptions === "function" ? {
+      memoize: memoizeOrOptions,
+      memoizeOptions: memoizeOptionsFromArgs
+    } : memoizeOrOptions;
+    const createSelector22 = (...createSelectorArgs) => {
+      let recomputations = 0;
+      let dependencyRecomputations = 0;
+      let lastResult;
+      let directlyPassedOptions = {};
+      let resultFunc = createSelectorArgs.pop();
+      if (typeof resultFunc === "object") {
+        directlyPassedOptions = resultFunc;
+        resultFunc = createSelectorArgs.pop();
+      }
+      assertIsFunction(
+        resultFunc,
+        `createSelector expects an output function after the inputs, but received: [${typeof resultFunc}]`
+      );
+      const combinedOptions = {
+        ...createSelectorCreatorOptions,
+        ...directlyPassedOptions
+      };
+      const {
+        memoize: memoize4,
+        memoizeOptions = [],
+        argsMemoize = weakMapMemoize,
+        argsMemoizeOptions = [],
+        devModeChecks = {}
+      } = combinedOptions;
+      const finalMemoizeOptions = ensureIsArray(memoizeOptions);
+      const finalArgsMemoizeOptions = ensureIsArray(argsMemoizeOptions);
+      const dependencies = getDependencies(createSelectorArgs);
+      const memoizedResultFunc = memoize4(function recomputationWrapper() {
+        recomputations++;
+        return resultFunc.apply(
+          null,
+          arguments
+        );
+      }, ...finalMemoizeOptions);
+      let firstRun = true;
+      const selector = argsMemoize(function dependenciesChecker() {
+        dependencyRecomputations++;
+        const inputSelectorResults = collectInputSelectorResults(
+          dependencies,
+          arguments
+        );
+        lastResult = memoizedResultFunc.apply(null, inputSelectorResults);
+        if (true) {
+          const { identityFunctionCheck, inputStabilityCheck } = getDevModeChecksExecutionInfo(firstRun, devModeChecks);
+          if (identityFunctionCheck.shouldRun) {
+            identityFunctionCheck.run(
+              resultFunc,
+              inputSelectorResults,
+              lastResult
+            );
+          }
+          if (inputStabilityCheck.shouldRun) {
+            const inputSelectorResultsCopy = collectInputSelectorResults(
+              dependencies,
+              arguments
+            );
+            inputStabilityCheck.run(
+              { inputSelectorResults, inputSelectorResultsCopy },
+              { memoize: memoize4, memoizeOptions: finalMemoizeOptions },
+              arguments
+            );
+          }
+          if (firstRun)
+            firstRun = false;
+        }
+        return lastResult;
+      }, ...finalArgsMemoizeOptions);
+      return Object.assign(selector, {
+        resultFunc,
+        memoizedResultFunc,
+        dependencies,
+        dependencyRecomputations: () => dependencyRecomputations,
+        resetDependencyRecomputations: () => {
+          dependencyRecomputations = 0;
+        },
+        lastResult: () => lastResult,
+        recomputations: () => recomputations,
+        resetRecomputations: () => {
+          recomputations = 0;
+        },
+        memoize: memoize4,
+        argsMemoize
+      });
+    };
+    Object.assign(createSelector22, {
+      withTypes: () => createSelector22
+    });
+    return createSelector22;
+  }
+  var createSelector = /* @__PURE__ */ createSelectorCreator(weakMapMemoize);
+  var createStructuredSelector = Object.assign(
+    (inputSelectorsObject, selectorCreator = createSelector) => {
+      assertIsObject(
+        inputSelectorsObject,
+        `createStructuredSelector expects first argument to be an object where each property is a selector, instead received a ${typeof inputSelectorsObject}`
+      );
+      const inputSelectorKeys = Object.keys(inputSelectorsObject);
+      const dependencies = inputSelectorKeys.map(
+        (key) => inputSelectorsObject[key]
+      );
+      const structuredSelector = selectorCreator(
+        dependencies,
+        (...inputSelectorResults) => {
+          return inputSelectorResults.reduce((composition, value, index) => {
+            composition[inputSelectorKeys[index]] = value;
+            return composition;
+          }, {});
+        }
+      );
+      return structuredSelector;
+    },
+    { withTypes: () => createStructuredSelector }
+  );
+
+  // node_modules/@mui/x-internals/esm/store/createSelector.js
+  var reselectCreateSelector = createSelectorCreator({
+    memoize: lruMemoize,
+    memoizeOptions: {
+      maxSize: 1,
+      equalityCheck: Object.is
+    }
+  });
+  var createSelector2 = (a, b, c, d, e, f, ...other) => {
+    if (other.length > 0) {
+      throw new Error("Unsupported number of selectors");
+    }
+    let selector;
+    if (a && b && c && d && e && f) {
+      selector = (state, a1, a2, a3) => {
+        const va = a(state, a1, a2, a3);
+        const vb = b(state, a1, a2, a3);
+        const vc = c(state, a1, a2, a3);
+        const vd = d(state, a1, a2, a3);
+        const ve = e(state, a1, a2, a3);
+        return f(va, vb, vc, vd, ve, a1, a2, a3);
+      };
+    } else if (a && b && c && d && e) {
+      selector = (state, a1, a2, a3) => {
+        const va = a(state, a1, a2, a3);
+        const vb = b(state, a1, a2, a3);
+        const vc = c(state, a1, a2, a3);
+        const vd = d(state, a1, a2, a3);
+        return e(va, vb, vc, vd, a1, a2, a3);
+      };
+    } else if (a && b && c && d) {
+      selector = (state, a1, a2, a3) => {
+        const va = a(state, a1, a2, a3);
+        const vb = b(state, a1, a2, a3);
+        const vc = c(state, a1, a2, a3);
+        return d(va, vb, vc, a1, a2, a3);
+      };
+    } else if (a && b && c) {
+      selector = (state, a1, a2, a3) => {
+        const va = a(state, a1, a2, a3);
+        const vb = b(state, a1, a2, a3);
+        return c(va, vb, a1, a2, a3);
+      };
+    } else if (a && b) {
+      selector = (state, a1, a2, a3) => {
+        const va = a(state, a1, a2, a3);
+        return b(va, a1, a2, a3);
+      };
+    } else if (a) {
+      selector = a;
+    } else {
+      throw new Error("Missing arguments");
+    }
+    return selector;
+  };
+  var createSelectorMemoized = (...inputs) => {
+    const cache = /* @__PURE__ */ new WeakMap();
+    let nextCacheId = 1;
+    const combiner = inputs[inputs.length - 1];
+    const nSelectors = inputs.length - 1 || 1;
+    const argsLength = Math.max(combiner.length - nSelectors, 0);
+    if (argsLength > 3) {
+      throw new Error("Unsupported number of arguments");
+    }
+    const selector = (state, a1, a2, a3) => {
+      let cacheKey = state.__cacheKey__;
+      if (!cacheKey) {
+        cacheKey = {
+          id: nextCacheId
+        };
+        state.__cacheKey__ = cacheKey;
+        nextCacheId += 1;
+      }
+      let fn = cache.get(cacheKey);
+      if (!fn) {
+        const selectors = inputs.length === 1 ? [(x) => x, combiner] : inputs;
+        let reselectArgs = inputs;
+        const selectorArgs = [void 0, void 0, void 0];
+        switch (argsLength) {
+          case 0:
+            break;
+          case 1: {
+            reselectArgs = [...selectors.slice(0, -1), () => selectorArgs[0], combiner];
+            break;
+          }
+          case 2: {
+            reselectArgs = [...selectors.slice(0, -1), () => selectorArgs[0], () => selectorArgs[1], combiner];
+            break;
+          }
+          case 3: {
+            reselectArgs = [...selectors.slice(0, -1), () => selectorArgs[0], () => selectorArgs[1], () => selectorArgs[2], combiner];
+            break;
+          }
+          default:
+            throw new Error("Unsupported number of arguments");
+        }
+        fn = reselectCreateSelector(...reselectArgs);
+        fn.selectorArgs = selectorArgs;
+        cache.set(cacheKey, fn);
+      }
+      switch (argsLength) {
+        case 3:
+          fn.selectorArgs[2] = a3;
+        case 2:
+          fn.selectorArgs[1] = a2;
+        case 1:
+          fn.selectorArgs[0] = a1;
+        case 0:
+        default:
+      }
+      switch (argsLength) {
+        case 0:
+          return fn(state);
+        case 1:
+          return fn(state, a1);
+        case 2:
+          return fn(state, a1, a2);
+        case 3:
+          return fn(state, a1, a2, a3);
+        default:
+          throw new Error("unreachable");
+      }
+    };
+    return selector;
+  };
+
+  // node_modules/@mui/x-internals/esm/store/useStore.js
+  var import_with_selector = __toESM(require_with_selector(), 1);
+  function useStore(store, selector, a1, a2, a3) {
+    const selectorWithArgs = (state) => selector(state, a1, a2, a3);
+    return (0, import_with_selector.useSyncExternalStoreWithSelector)(store.subscribe, store.getSnapshot, store.getSnapshot, selectorWithArgs);
+  }
+
+  // node_modules/@mui/x-internals/esm/store/Store.js
+  init_extends();
+  var Store = class _Store {
+    // HACK: `any` fixes adding listeners that accept partial state.
+    // Internal state to handle recursive `setState()` calls
+    static create(state) {
+      return new _Store(state);
+    }
+    constructor(state) {
+      this.state = state;
+      this.listeners = /* @__PURE__ */ new Set();
+      this.updateTick = 0;
+    }
+    subscribe = (fn) => {
+      this.listeners.add(fn);
+      return () => {
+        this.listeners.delete(fn);
+      };
+    };
+    getSnapshot = () => {
+      return this.state;
+    };
+    setState(newState) {
+      this.state = newState;
+      this.updateTick += 1;
+      const currentTick = this.updateTick;
+      const it = this.listeners.values();
+      let result;
+      while (result = it.next(), !result.done) {
+        if (currentTick !== this.updateTick) {
+          return;
+        }
+        const listener = result.value;
+        listener(newState);
+      }
+    }
+    update(changes) {
+      for (const key in changes) {
+        if (!Object.is(this.state[key], changes[key])) {
+          this.setState(_extends({}, this.state, changes));
+          return;
+        }
+      }
+    }
+    set(key, value) {
+      if (!Object.is(this.state[key], value)) {
+        this.setState(_extends({}, this.state, {
+          [key]: value
+        }));
+      }
+    }
+  };
+
+  // node_modules/@mui/material/Alert/Alert.js
+  init_extends();
+  var React31 = __toESM(require_react());
+  var import_prop_types15 = __toESM(require_prop_types());
+
+  // node_modules/clsx/dist/clsx.mjs
+  function r(e) {
+    var t, f, n = "";
+    if ("string" == typeof e || "number" == typeof e)
+      n += e;
+    else if ("object" == typeof e)
+      if (Array.isArray(e)) {
+        var o = e.length;
+        for (t = 0; t < o; t++)
+          e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+      } else
+        for (f in e)
+          e[f] && (n && (n += " "), n += f);
+    return n;
+  }
+  function clsx() {
+    for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++)
+      (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
+    return n;
+  }
+  var clsx_default = clsx;
 
   // node_modules/@mui/utils/esm/composeClasses/composeClasses.js
   function composeClasses(slots, getUtilityClass, classes = void 0) {
@@ -30264,274 +31068,49 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     return output;
   }
 
-  // node_modules/@mui/utils/esm/useSlotProps/useSlotProps.js
+  // node_modules/@mui/material/Alert/Alert.js
+  var import_colorManipulator4 = __toESM(require_colorManipulator());
+
+  // node_modules/@mui/utils/esm/resolveProps/resolveProps.js
   init_extends();
-
-  // node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-  function _objectWithoutPropertiesLoose(r2, e) {
-    if (null == r2)
-      return {};
-    var t = {};
-    for (var n in r2)
-      if ({}.hasOwnProperty.call(r2, n)) {
-        if (-1 !== e.indexOf(n))
-          continue;
-        t[n] = r2[n];
+  function resolveProps(defaultProps2, props) {
+    const output = _extends({}, props);
+    Object.keys(defaultProps2).forEach((propName) => {
+      if (propName.toString().match(/^(components|slots)$/)) {
+        output[propName] = _extends({}, defaultProps2[propName], output[propName]);
+      } else if (propName.toString().match(/^(componentsProps|slotProps)$/)) {
+        const defaultSlotProps = defaultProps2[propName] || {};
+        const slotProps = props[propName];
+        output[propName] = {};
+        if (!slotProps || !Object.keys(slotProps)) {
+          output[propName] = defaultSlotProps;
+        } else if (!defaultSlotProps || !Object.keys(defaultSlotProps)) {
+          output[propName] = slotProps;
+        } else {
+          output[propName] = _extends({}, slotProps);
+          Object.keys(defaultSlotProps).forEach((slotPropName) => {
+            output[propName][slotPropName] = resolveProps(defaultSlotProps[slotPropName], slotProps[slotPropName]);
+          });
+        }
+      } else if (output[propName] === void 0) {
+        output[propName] = defaultProps2[propName];
       }
-    return t;
-  }
-
-  // node_modules/@mui/utils/esm/useForkRef/useForkRef.js
-  var React = __toESM(require_react());
-
-  // node_modules/@mui/utils/esm/setRef/setRef.js
-  function setRef(ref, value) {
-    if (typeof ref === "function") {
-      ref(value);
-    } else if (ref) {
-      ref.current = value;
-    }
-  }
-
-  // node_modules/@mui/utils/esm/useForkRef/useForkRef.js
-  function useForkRef(...refs) {
-    return React.useMemo(() => {
-      if (refs.every((ref) => ref == null)) {
-        return null;
-      }
-      return (instance) => {
-        refs.forEach((ref) => {
-          setRef(ref, instance);
-        });
-      };
-    }, refs);
-  }
-
-  // node_modules/@mui/utils/esm/appendOwnerState/appendOwnerState.js
-  init_extends();
-
-  // node_modules/@mui/utils/esm/isHostComponent/isHostComponent.js
-  function isHostComponent(element) {
-    return typeof element === "string";
-  }
-  var isHostComponent_default = isHostComponent;
-
-  // node_modules/@mui/utils/esm/appendOwnerState/appendOwnerState.js
-  function appendOwnerState(elementType, otherProps, ownerState) {
-    if (elementType === void 0 || isHostComponent_default(elementType)) {
-      return otherProps;
-    }
-    return _extends({}, otherProps, {
-      ownerState: _extends({}, otherProps.ownerState, ownerState)
     });
+    return output;
   }
-  var appendOwnerState_default = appendOwnerState;
 
-  // node_modules/@mui/utils/esm/mergeSlotProps/mergeSlotProps.js
-  init_extends();
-
-  // node_modules/clsx/dist/clsx.mjs
-  function r(e) {
-    var t, f, n = "";
-    if ("string" == typeof e || "number" == typeof e)
-      n += e;
-    else if ("object" == typeof e)
-      if (Array.isArray(e)) {
-        var o = e.length;
-        for (t = 0; t < o; t++)
-          e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
-      } else
-        for (f in e)
-          e[f] && (n && (n += " "), n += f);
-    return n;
-  }
-  function clsx() {
-    for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++)
-      (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
-    return n;
-  }
-  var clsx_default = clsx;
-
-  // node_modules/@mui/utils/esm/extractEventHandlers/extractEventHandlers.js
-  function extractEventHandlers(object, excludeKeys = []) {
-    if (object === void 0) {
-      return {};
-    }
-    const result = {};
-    Object.keys(object).filter((prop) => prop.match(/^on[A-Z]/) && typeof object[prop] === "function" && !excludeKeys.includes(prop)).forEach((prop) => {
-      result[prop] = object[prop];
-    });
-    return result;
-  }
-  var extractEventHandlers_default = extractEventHandlers;
-
-  // node_modules/@mui/utils/esm/omitEventHandlers/omitEventHandlers.js
-  function omitEventHandlers(object) {
-    if (object === void 0) {
-      return {};
-    }
-    const result = {};
-    Object.keys(object).filter((prop) => !(prop.match(/^on[A-Z]/) && typeof object[prop] === "function")).forEach((prop) => {
-      result[prop] = object[prop];
-    });
-    return result;
-  }
-  var omitEventHandlers_default = omitEventHandlers;
-
-  // node_modules/@mui/utils/esm/mergeSlotProps/mergeSlotProps.js
-  function mergeSlotProps(parameters) {
+  // node_modules/@mui/material/node_modules/@mui/system/esm/useThemeProps/getThemeProps.js
+  function getThemeProps(params) {
     const {
-      getSlotProps,
-      additionalProps,
-      externalSlotProps,
-      externalForwardedProps,
-      className
-    } = parameters;
-    if (!getSlotProps) {
-      const joinedClasses2 = clsx_default(additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
-      const mergedStyle2 = _extends({}, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
-      const props2 = _extends({}, additionalProps, externalForwardedProps, externalSlotProps);
-      if (joinedClasses2.length > 0) {
-        props2.className = joinedClasses2;
-      }
-      if (Object.keys(mergedStyle2).length > 0) {
-        props2.style = mergedStyle2;
-      }
-      return {
-        props: props2,
-        internalRef: void 0
-      };
+      theme,
+      name,
+      props
+    } = params;
+    if (!theme || !theme.components || !theme.components[name] || !theme.components[name].defaultProps) {
+      return props;
     }
-    const eventHandlers = extractEventHandlers_default(_extends({}, externalForwardedProps, externalSlotProps));
-    const componentsPropsWithoutEventHandlers = omitEventHandlers_default(externalSlotProps);
-    const otherPropsWithoutEventHandlers = omitEventHandlers_default(externalForwardedProps);
-    const internalSlotProps = getSlotProps(eventHandlers);
-    const joinedClasses = clsx_default(internalSlotProps == null ? void 0 : internalSlotProps.className, additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
-    const mergedStyle = _extends({}, internalSlotProps == null ? void 0 : internalSlotProps.style, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
-    const props = _extends({}, internalSlotProps, additionalProps, otherPropsWithoutEventHandlers, componentsPropsWithoutEventHandlers);
-    if (joinedClasses.length > 0) {
-      props.className = joinedClasses;
-    }
-    if (Object.keys(mergedStyle).length > 0) {
-      props.style = mergedStyle;
-    }
-    return {
-      props,
-      internalRef: internalSlotProps.ref
-    };
+    return resolveProps(theme.components[name].defaultProps, props);
   }
-  var mergeSlotProps_default = mergeSlotProps;
-
-  // node_modules/@mui/utils/esm/resolveComponentProps/resolveComponentProps.js
-  function resolveComponentProps(componentProps, ownerState, slotState) {
-    if (typeof componentProps === "function") {
-      return componentProps(ownerState, slotState);
-    }
-    return componentProps;
-  }
-  var resolveComponentProps_default = resolveComponentProps;
-
-  // node_modules/@mui/utils/esm/useSlotProps/useSlotProps.js
-  var _excluded = ["elementType", "externalSlotProps", "ownerState", "skipResolvingSlotProps"];
-  function useSlotProps(parameters) {
-    var _parameters$additiona;
-    const {
-      elementType,
-      externalSlotProps,
-      ownerState,
-      skipResolvingSlotProps = false
-    } = parameters, rest = _objectWithoutPropertiesLoose(parameters, _excluded);
-    const resolvedComponentsProps = skipResolvingSlotProps ? {} : resolveComponentProps_default(externalSlotProps, ownerState);
-    const {
-      props: mergedProps,
-      internalRef
-    } = mergeSlotProps_default(_extends({}, rest, {
-      externalSlotProps: resolvedComponentsProps
-    }));
-    const ref = useForkRef(internalRef, resolvedComponentsProps == null ? void 0 : resolvedComponentsProps.ref, (_parameters$additiona = parameters.additionalProps) == null ? void 0 : _parameters$additiona.ref);
-    const props = appendOwnerState_default(elementType, _extends({}, mergedProps, {
-      ref
-    }), ownerState);
-    return props;
-  }
-  var useSlotProps_default = useSlotProps;
-
-  // node_modules/@mui/x-internals/esm/warning/warning.js
-  var warnedOnceCache = /* @__PURE__ */ new Set();
-  function warnOnce(message, gravity = "warning") {
-    if (false) {
-      return;
-    }
-    const cleanMessage = Array.isArray(message) ? message.join("\n") : message;
-    if (!warnedOnceCache.has(cleanMessage)) {
-      warnedOnceCache.add(cleanMessage);
-      if (gravity === "error") {
-        console.error(cleanMessage);
-      } else {
-        console.warn(cleanMessage);
-      }
-    }
-  }
-
-  // node_modules/@mui/utils/esm/ClassNameGenerator/ClassNameGenerator.js
-  var defaultGenerator = (componentName) => componentName;
-  var createClassNameGenerator = () => {
-    let generate = defaultGenerator;
-    return {
-      configure(generator) {
-        generate = generator;
-      },
-      generate(componentName) {
-        return generate(componentName);
-      },
-      reset() {
-        generate = defaultGenerator;
-      }
-    };
-  };
-  var ClassNameGenerator = createClassNameGenerator();
-  var ClassNameGenerator_default = ClassNameGenerator;
-
-  // node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js
-  var globalStateClasses = {
-    active: "active",
-    checked: "checked",
-    completed: "completed",
-    disabled: "disabled",
-    error: "error",
-    expanded: "expanded",
-    focused: "focused",
-    focusVisible: "focusVisible",
-    open: "open",
-    readOnly: "readOnly",
-    required: "required",
-    selected: "selected"
-  };
-  function generateUtilityClass(componentName, slot, globalStatePrefix = "Mui") {
-    const globalStateClass = globalStateClasses[slot];
-    return globalStateClass ? `${globalStatePrefix}-${globalStateClass}` : `${ClassNameGenerator_default.generate(componentName)}-${slot}`;
-  }
-
-  // node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js
-  function generateUtilityClasses(componentName, slots, globalStatePrefix = "Mui") {
-    const result = {};
-    slots.forEach((slot) => {
-      result[slot] = generateUtilityClass(componentName, slot, globalStatePrefix);
-    });
-    return result;
-  }
-
-  // node_modules/@mui/x-tree-view/RichTreeView/richTreeViewClasses.js
-  function getRichTreeViewUtilityClass(slot) {
-    return generateUtilityClass("MuiRichTreeView", slot);
-  }
-  var richTreeViewClasses = generateUtilityClasses("MuiRichTreeView", ["root"]);
-
-  // node_modules/@mui/material/styles/identifier.js
-  var identifier_default = "$$material";
-
-  // node_modules/@mui/material/node_modules/@mui/system/esm/index.js
-  var import_styled_engine2 = __toESM(require_node());
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/createTheme/createTheme.js
   init_extends();
@@ -30539,7 +31118,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/createTheme/createBreakpoints.js
   init_extends();
-  var _excluded2 = ["values", "unit", "step"];
+  var _excluded = ["values", "unit", "step"];
   var sortBreakpointsValues = (values4) => {
     const breakpointsAsArray = Object.keys(values4).map((key) => ({
       key,
@@ -30570,7 +31149,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
       },
       unit = "px",
       step = 5
-    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded2);
+    } = breakpoints, other = _objectWithoutPropertiesLoose(breakpoints, _excluded);
     const sortedValues = sortBreakpointsValues(values4);
     const keys = Object.keys(sortedValues);
     function up(key) {
@@ -30629,7 +31208,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/merge.js
   var import_deepmerge = __toESM(require_deepmerge2());
-  function merge2(acc, item) {
+  function merge(acc, item) {
     if (!item) {
       return acc;
     }
@@ -30638,7 +31217,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
       // No need to clone deep, it's way faster.
     });
   }
-  var merge_default = merge2;
+  var merge_default = merge;
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/breakpoints.js
   var values = {
@@ -30774,7 +31353,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var style_default = style;
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/memoize.js
-  function memoize2(fn) {
+  function memoize(fn) {
     const cache = {};
     return (arg) => {
       if (cache[arg] === void 0) {
@@ -30803,7 +31382,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     paddingX: "px",
     paddingY: "py"
   };
-  var getCssProperties = memoize2((prop) => {
+  var getCssProperties = memoize((prop) => {
     if (prop.length > 2) {
       if (aliases[prop]) {
         prop = aliases[prop];
@@ -31593,14 +32172,14 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   }
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/createTheme/createTheme.js
-  var _excluded3 = ["breakpoints", "palette", "spacing", "shape"];
+  var _excluded2 = ["breakpoints", "palette", "spacing", "shape"];
   function createTheme(options = {}, ...args) {
     const {
       breakpoints: breakpointsInput = {},
       palette: paletteInput = {},
       spacing: spacingInput,
       shape: shapeInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded3);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded2);
     const breakpoints = createBreakpoints(breakpointsInput);
     const spacing3 = createSpacing(spacingInput);
     let muiTheme = (0, import_deepmerge2.default)({
@@ -31628,13 +32207,13 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var createTheme_default = createTheme;
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/useThemeWithoutDefault.js
-  var React6 = __toESM(require_react());
+  var React5 = __toESM(require_react());
   var import_styled_engine = __toESM(require_node());
   function isObjectEmpty(obj) {
     return Object.keys(obj).length === 0;
   }
   function useTheme3(defaultTheme2 = null) {
-    const contextTheme = React6.useContext(import_styled_engine.ThemeContext);
+    const contextTheme = React5.useContext(import_styled_engine.ThemeContext);
     return !contextTheme || isObjectEmpty(contextTheme) ? defaultTheme2 : contextTheme;
   }
   var useThemeWithoutDefault_default = useTheme3;
@@ -31645,47 +32224,6 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     return useThemeWithoutDefault_default(defaultTheme2);
   }
   var useTheme_default = useTheme4;
-
-  // node_modules/@mui/utils/esm/resolveProps/resolveProps.js
-  init_extends();
-  function resolveProps(defaultProps2, props) {
-    const output = _extends({}, props);
-    Object.keys(defaultProps2).forEach((propName) => {
-      if (propName.toString().match(/^(components|slots)$/)) {
-        output[propName] = _extends({}, defaultProps2[propName], output[propName]);
-      } else if (propName.toString().match(/^(componentsProps|slotProps)$/)) {
-        const defaultSlotProps = defaultProps2[propName] || {};
-        const slotProps = props[propName];
-        output[propName] = {};
-        if (!slotProps || !Object.keys(slotProps)) {
-          output[propName] = defaultSlotProps;
-        } else if (!defaultSlotProps || !Object.keys(defaultSlotProps)) {
-          output[propName] = slotProps;
-        } else {
-          output[propName] = _extends({}, slotProps);
-          Object.keys(defaultSlotProps).forEach((slotPropName) => {
-            output[propName][slotPropName] = resolveProps(defaultSlotProps[slotPropName], slotProps[slotPropName]);
-          });
-        }
-      } else if (output[propName] === void 0) {
-        output[propName] = defaultProps2[propName];
-      }
-    });
-    return output;
-  }
-
-  // node_modules/@mui/material/node_modules/@mui/system/esm/useThemeProps/getThemeProps.js
-  function getThemeProps(params) {
-    const {
-      theme,
-      name,
-      props
-    } = params;
-    if (!theme || !theme.components || !theme.components[name] || !theme.components[name].defaultProps) {
-      return props;
-    }
-    return resolveProps(theme.components[name].defaultProps, props);
-  }
 
   // node_modules/@mui/material/node_modules/@mui/system/esm/useThemeProps/useThemeProps.js
   function useThemeProps({
@@ -31706,433 +32244,50 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     return mergedProps;
   }
 
-  // node_modules/@mui/utils/esm/useEnhancedEffect/useEnhancedEffect.js
-  var React7 = __toESM(require_react());
-  var useEnhancedEffect = typeof window !== "undefined" ? React7.useLayoutEffect : React7.useEffect;
-  var useEnhancedEffect_default = useEnhancedEffect;
-
-  // node_modules/@mui/material/node_modules/@mui/system/esm/colorManipulator.js
-  var import_clamp = __toESM(require_clamp2());
-  function clampWrapper(value, min = 0, max = 1) {
-    if (true) {
-      if (value < min || value > max) {
-        console.error(`MUI: The value provided ${value} is out of range [${min}, ${max}].`);
-      }
-    }
-    return (0, import_clamp.default)(value, min, max);
-  }
-  function hexToRgb(color3) {
-    color3 = color3.slice(1);
-    const re = new RegExp(`.{1,${color3.length >= 6 ? 2 : 1}}`, "g");
-    let colors = color3.match(re);
-    if (colors && colors[0].length === 1) {
-      colors = colors.map((n) => n + n);
-    }
-    return colors ? `rgb${colors.length === 4 ? "a" : ""}(${colors.map((n, index) => {
-      return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1e3) / 1e3;
-    }).join(", ")})` : "";
-  }
-  function decomposeColor(color3) {
-    if (color3.type) {
-      return color3;
-    }
-    if (color3.charAt(0) === "#") {
-      return decomposeColor(hexToRgb(color3));
-    }
-    const marker = color3.indexOf("(");
-    const type = color3.substring(0, marker);
-    if (["rgb", "rgba", "hsl", "hsla", "color"].indexOf(type) === -1) {
-      throw new Error(true ? `MUI: Unsupported \`${color3}\` color.
-The following formats are supported: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla(), color().` : (0, import_formatMuiErrorMessage.default)(9, color3));
-    }
-    let values4 = color3.substring(marker + 1, color3.length - 1);
-    let colorSpace;
-    if (type === "color") {
-      values4 = values4.split(" ");
-      colorSpace = values4.shift();
-      if (values4.length === 4 && values4[3].charAt(0) === "/") {
-        values4[3] = values4[3].slice(1);
-      }
-      if (["srgb", "display-p3", "a98-rgb", "prophoto-rgb", "rec-2020"].indexOf(colorSpace) === -1) {
-        throw new Error(true ? `MUI: unsupported \`${colorSpace}\` color space.
-The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rgb, rec-2020.` : (0, import_formatMuiErrorMessage.default)(10, colorSpace));
-      }
-    } else {
-      values4 = values4.split(",");
-    }
-    values4 = values4.map((value) => parseFloat(value));
-    return {
-      type,
-      values: values4,
-      colorSpace
-    };
-  }
-  function recomposeColor(color3) {
-    const {
-      type,
-      colorSpace
-    } = color3;
-    let {
-      values: values4
-    } = color3;
-    if (type.indexOf("rgb") !== -1) {
-      values4 = values4.map((n, i) => i < 3 ? parseInt(n, 10) : n);
-    } else if (type.indexOf("hsl") !== -1) {
-      values4[1] = `${values4[1]}%`;
-      values4[2] = `${values4[2]}%`;
-    }
-    if (type.indexOf("color") !== -1) {
-      values4 = `${colorSpace} ${values4.join(" ")}`;
-    } else {
-      values4 = `${values4.join(", ")}`;
-    }
-    return `${type}(${values4})`;
-  }
-  function alpha(color3, value) {
-    color3 = decomposeColor(color3);
-    value = clampWrapper(value);
-    if (color3.type === "rgb" || color3.type === "hsl") {
-      color3.type += "a";
-    }
-    if (color3.type === "color") {
-      color3.values[3] = `/${value}`;
-    } else {
-      color3.values[3] = value;
-    }
-    return recomposeColor(color3);
-  }
-
-  // node_modules/@mui/utils/esm/chainPropTypes/chainPropTypes.js
-  function chainPropTypes(propType1, propType2) {
-    if (false) {
-      return () => null;
-    }
-    return function validate(...args) {
-      return propType1(...args) || propType2(...args);
-    };
-  }
-
-  // node_modules/@mui/utils/esm/elementTypeAcceptingRef/elementTypeAcceptingRef.js
-  var import_prop_types2 = __toESM(require_prop_types());
-  function isClassComponent(elementType) {
-    const {
-      prototype = {}
-    } = elementType;
-    return Boolean(prototype.isReactComponent);
-  }
-  function elementTypeAcceptingRef(props, propName, componentName, location, propFullName) {
-    const propValue = props[propName];
-    const safePropName = propFullName || propName;
-    if (propValue == null || // When server-side rendering React doesn't warn either.
-    // This is not an accurate check for SSR.
-    // This is only in place for emotion compat.
-    // TODO: Revisit once https://github.com/facebook/react/issues/20047 is resolved.
-    typeof window === "undefined") {
-      return null;
-    }
-    let warningHint;
-    if (typeof propValue === "function" && !isClassComponent(propValue)) {
-      warningHint = "Did you accidentally provide a plain function component instead?";
-    }
-    if (warningHint !== void 0) {
-      return new Error(`Invalid ${location} \`${safePropName}\` supplied to \`${componentName}\`. Expected an element type that can hold a ref. ${warningHint} For more information see https://mui.com/r/caveat-with-refs-guide`);
-    }
-    return null;
-  }
-  var elementTypeAcceptingRef_default = chainPropTypes(import_prop_types2.default.elementType, elementTypeAcceptingRef);
-
-  // node_modules/@mui/utils/esm/refType/refType.js
-  var import_prop_types3 = __toESM(require_prop_types());
-  var refType = import_prop_types3.default.oneOfType([import_prop_types3.default.func, import_prop_types3.default.object]);
-  var refType_default = refType;
-
-  // node_modules/@mui/utils/esm/ownerDocument/ownerDocument.js
-  function ownerDocument(node2) {
-    return node2 && node2.ownerDocument || document;
-  }
-
-  // node_modules/@mui/utils/esm/unsupportedProp/unsupportedProp.js
-  function unsupportedProp(props, propName, componentName, location, propFullName) {
-    if (false) {
-      return null;
-    }
-    const propFullNameSafe = propFullName || propName;
-    if (typeof props[propName] !== "undefined") {
-      return new Error(`The prop \`${propFullNameSafe}\` is not supported. Please remove it.`);
-    }
-    return null;
-  }
-
-  // node_modules/@mui/utils/esm/useControlled/useControlled.js
-  var React8 = __toESM(require_react());
-  function useControlled({
-    controlled,
-    default: defaultProp,
-    name,
-    state = "value"
-  }) {
-    const {
-      current: isControlled
-    } = React8.useRef(controlled !== void 0);
-    const [valueState, setValue] = React8.useState(defaultProp);
-    const value = isControlled ? controlled : valueState;
-    if (true) {
-      React8.useEffect(() => {
-        if (isControlled !== (controlled !== void 0)) {
-          console.error([`MUI: A component is changing the ${isControlled ? "" : "un"}controlled ${state} state of ${name} to be ${isControlled ? "un" : ""}controlled.`, "Elements should not switch from uncontrolled to controlled (or vice versa).", `Decide between using a controlled or uncontrolled ${name} element for the lifetime of the component.`, "The nature of the state is determined during the first render. It's considered controlled if the value is not `undefined`.", "More info: https://fb.me/react-controlled-components"].join("\n"));
-        }
-      }, [state, name, controlled]);
-      const {
-        current: defaultValue
-      } = React8.useRef(defaultProp);
-      React8.useEffect(() => {
-        if (!isControlled && !Object.is(defaultValue, defaultProp)) {
-          console.error([`MUI: A component is changing the default ${state} state of an uncontrolled ${name} after being initialized. To suppress this warning opt to use a controlled ${name}.`].join("\n"));
-        }
-      }, [JSON.stringify(defaultProp)]);
-    }
-    const setValueIfUncontrolled = React8.useCallback((newValue) => {
-      if (!isControlled) {
-        setValue(newValue);
-      }
-    }, []);
-    return [value, setValueIfUncontrolled];
-  }
-
-  // node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
-  var React9 = __toESM(require_react());
-  function useEventCallback(fn) {
-    const ref = React9.useRef(fn);
-    useEnhancedEffect_default(() => {
-      ref.current = fn;
-    });
-    return React9.useRef((...args) => (
-      // @ts-expect-error hide `this`
-      (0, ref.current)(...args)
-    )).current;
-  }
-  var useEventCallback_default = useEventCallback;
-
-  // node_modules/@mui/utils/esm/useLazyRef/useLazyRef.js
-  var React10 = __toESM(require_react());
-  var UNINITIALIZED = {};
-  function useLazyRef(init, initArg) {
-    const ref = React10.useRef(UNINITIALIZED);
-    if (ref.current === UNINITIALIZED) {
-      ref.current = init(initArg);
-    }
-    return ref;
-  }
-
-  // node_modules/@mui/utils/esm/useOnMount/useOnMount.js
-  var React11 = __toESM(require_react());
-  var EMPTY = [];
-  function useOnMount(fn) {
-    React11.useEffect(fn, EMPTY);
-  }
-
-  // node_modules/@mui/utils/esm/useTimeout/useTimeout.js
-  var Timeout = class _Timeout {
-    constructor() {
-      this.currentId = null;
-      this.clear = () => {
-        if (this.currentId !== null) {
-          clearTimeout(this.currentId);
-          this.currentId = null;
-        }
-      };
-      this.disposeEffect = () => {
-        return this.clear;
-      };
-    }
-    static create() {
-      return new _Timeout();
-    }
-    /**
-     * Executes `fn` after `delay`, clearing any previously scheduled call.
-     */
-    start(delay, fn) {
-      this.clear();
-      this.currentId = setTimeout(() => {
-        this.currentId = null;
-        fn();
-      }, delay);
-    }
-  };
-  function useTimeout() {
-    const timeout2 = useLazyRef(Timeout.create).current;
-    useOnMount(timeout2.disposeEffect);
-    return timeout2;
-  }
-
-  // node_modules/@mui/utils/esm/useIsFocusVisible/useIsFocusVisible.js
-  var React12 = __toESM(require_react());
-  var hadKeyboardEvent = true;
-  var hadFocusVisibleRecently = false;
-  var hadFocusVisibleRecentlyTimeout = new Timeout();
-  var inputTypesWhitelist = {
-    text: true,
-    search: true,
-    url: true,
-    tel: true,
-    email: true,
-    password: true,
-    number: true,
-    date: true,
-    month: true,
-    week: true,
-    time: true,
-    datetime: true,
-    "datetime-local": true
-  };
-  function focusTriggersKeyboardModality(node2) {
-    const {
-      type,
-      tagName
-    } = node2;
-    if (tagName === "INPUT" && inputTypesWhitelist[type] && !node2.readOnly) {
-      return true;
-    }
-    if (tagName === "TEXTAREA" && !node2.readOnly) {
-      return true;
-    }
-    if (node2.isContentEditable) {
-      return true;
-    }
-    return false;
-  }
-  function handleKeyDown(event) {
-    if (event.metaKey || event.altKey || event.ctrlKey) {
-      return;
-    }
-    hadKeyboardEvent = true;
-  }
-  function handlePointerDown() {
-    hadKeyboardEvent = false;
-  }
-  function handleVisibilityChange() {
-    if (this.visibilityState === "hidden") {
-      if (hadFocusVisibleRecently) {
-        hadKeyboardEvent = true;
-      }
-    }
-  }
-  function prepare(doc) {
-    doc.addEventListener("keydown", handleKeyDown, true);
-    doc.addEventListener("mousedown", handlePointerDown, true);
-    doc.addEventListener("pointerdown", handlePointerDown, true);
-    doc.addEventListener("touchstart", handlePointerDown, true);
-    doc.addEventListener("visibilitychange", handleVisibilityChange, true);
-  }
-  function isFocusVisible(event) {
-    const {
-      target
-    } = event;
-    try {
-      return target.matches(":focus-visible");
-    } catch (error) {
-    }
-    return hadKeyboardEvent || focusTriggersKeyboardModality(target);
-  }
-  function useIsFocusVisible() {
-    const ref = React12.useCallback((node2) => {
-      if (node2 != null) {
-        prepare(node2.ownerDocument);
-      }
-    }, []);
-    const isFocusVisibleRef = React12.useRef(false);
-    function handleBlurVisible() {
-      if (isFocusVisibleRef.current) {
-        hadFocusVisibleRecently = true;
-        hadFocusVisibleRecentlyTimeout.start(100, () => {
-          hadFocusVisibleRecently = false;
-        });
-        isFocusVisibleRef.current = false;
-        return true;
-      }
-      return false;
-    }
-    function handleFocusVisible(event) {
-      if (isFocusVisible(event)) {
-        isFocusVisibleRef.current = true;
-        return true;
-      }
-      return false;
-    }
-    return {
-      isFocusVisibleRef,
-      onFocus: handleFocusVisible,
-      onBlur: handleBlurVisible,
-      ref
-    };
-  }
-
-  // node_modules/@mui/material/node_modules/@mui/system/esm/DefaultPropsProvider/DefaultPropsProvider.js
-  var React13 = __toESM(require_react());
-  var import_prop_types4 = __toESM(require_prop_types());
-  var import_jsx_runtime = __toESM(require_jsx_runtime());
-  var PropsContext = /* @__PURE__ */ React13.createContext(void 0);
-  function DefaultPropsProvider({
-    value,
-    children
-  }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PropsContext.Provider, {
-      value,
-      children
-    });
-  }
-  true ? DefaultPropsProvider.propTypes = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-     * @ignore
-     */
-    children: import_prop_types4.default.node,
-    /**
-     * @ignore
-     */
-    value: import_prop_types4.default.object
-  } : void 0;
-  function getThemeProps2(params) {
-    const {
-      theme,
-      name,
-      props
-    } = params;
-    if (!theme || !theme.components || !theme.components[name]) {
-      return props;
-    }
-    const config = theme.components[name];
-    if (config.defaultProps) {
-      return resolveProps(config.defaultProps, props);
-    }
-    if (!config.styleOverrides && !config.variants) {
-      return resolveProps(config, props);
-    }
-    return props;
-  }
-  function useDefaultProps({
-    props,
-    name
-  }) {
-    const ctx = React13.useContext(PropsContext);
-    return getThemeProps2({
-      props,
-      name,
-      theme: {
-        components: ctx
-      }
-    });
-  }
-  var DefaultPropsProvider_default = DefaultPropsProvider;
-
   // node_modules/@mui/material/styles/createTheme.js
   init_extends();
   var import_deepmerge5 = __toESM(require_deepmerge2());
   var import_styleFunctionSx2 = __toESM(require_styleFunctionSx2());
   var import_createTheme3 = __toESM(require_createTheme2());
+
+  // node_modules/@mui/utils/esm/ClassNameGenerator/ClassNameGenerator.js
+  var defaultGenerator = (componentName) => componentName;
+  var createClassNameGenerator = () => {
+    let generate = defaultGenerator;
+    return {
+      configure(generator) {
+        generate = generator;
+      },
+      generate(componentName) {
+        return generate(componentName);
+      },
+      reset() {
+        generate = defaultGenerator;
+      }
+    };
+  };
+  var ClassNameGenerator = createClassNameGenerator();
+  var ClassNameGenerator_default = ClassNameGenerator;
+
+  // node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js
+  var globalStateClasses = {
+    active: "active",
+    checked: "checked",
+    completed: "completed",
+    disabled: "disabled",
+    error: "error",
+    expanded: "expanded",
+    focused: "focused",
+    focusVisible: "focusVisible",
+    open: "open",
+    readOnly: "readOnly",
+    required: "required",
+    selected: "selected"
+  };
+  function generateUtilityClass(componentName, slot, globalStatePrefix = "Mui") {
+    const globalStateClass = globalStateClasses[slot];
+    return globalStateClass ? `${globalStatePrefix}-${globalStateClass}` : `${ClassNameGenerator_default.generate(componentName)}-${slot}`;
+  }
 
   // node_modules/@mui/material/styles/createMixins.js
   init_extends();
@@ -32298,7 +32453,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var green_default = green;
 
   // node_modules/@mui/material/styles/createPalette.js
-  var _excluded4 = ["mode", "contrastThreshold", "tonalOffset"];
+  var _excluded3 = ["mode", "contrastThreshold", "tonalOffset"];
   var light = {
     // The colors used to style the text.
     text: {
@@ -32466,7 +32621,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
       mode = "light",
       contrastThreshold = 3,
       tonalOffset = 0.2
-    } = palette3, other = _objectWithoutPropertiesLoose(palette3, _excluded4);
+    } = palette3, other = _objectWithoutPropertiesLoose(palette3, _excluded3);
     const primary = palette3.primary || getDefaultPrimary(mode);
     const secondary = palette3.secondary || getDefaultSecondary(mode);
     const error = palette3.error || getDefaultError(mode);
@@ -32589,7 +32744,7 @@ const theme2 = createTheme({ palette: {
   // node_modules/@mui/material/styles/createTypography.js
   init_extends();
   var import_deepmerge4 = __toESM(require_deepmerge2());
-  var _excluded5 = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
+  var _excluded4 = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
   function round(value) {
     return Math.round(value * 1e5) / 1e5;
   }
@@ -32613,7 +32768,7 @@ const theme2 = createTheme({ palette: {
       // Apply the CSS properties to all the variants.
       allVariants,
       pxToRem: pxToRem2
-    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded5);
+    } = _ref, other = _objectWithoutPropertiesLoose(_ref, _excluded4);
     if (true) {
       if (typeof fontSize !== "number") {
         console.error("MUI: `fontSize` is required to be a number.");
@@ -32683,7 +32838,7 @@ const theme2 = createTheme({ palette: {
 
   // node_modules/@mui/material/styles/createTransitions.js
   init_extends();
-  var _excluded6 = ["duration", "easing", "delay"];
+  var _excluded5 = ["duration", "easing", "delay"];
   var easing = {
     // This is the most common easing curve.
     easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -32726,7 +32881,7 @@ const theme2 = createTheme({ palette: {
         duration: durationOption = mergedDuration.standard,
         easing: easingOption = mergedEasing.easeInOut,
         delay = 0
-      } = options, other = _objectWithoutPropertiesLoose(options, _excluded6);
+      } = options, other = _objectWithoutPropertiesLoose(options, _excluded5);
       if (true) {
         const isString = (value) => typeof value === "string";
         const isNumber = (value) => !isNaN(parseFloat(value));
@@ -32774,14 +32929,14 @@ const theme2 = createTheme({ palette: {
   var zIndex_default = zIndex;
 
   // node_modules/@mui/material/styles/createTheme.js
-  var _excluded7 = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
+  var _excluded6 = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
   function createTheme2(options = {}, ...args) {
     const {
       mixins: mixinsInput = {},
       palette: paletteInput = {},
       transitions: transitionsInput = {},
       typography: typographyInput = {}
-    } = options, other = _objectWithoutPropertiesLoose(options, _excluded7);
+    } = options, other = _objectWithoutPropertiesLoose(options, _excluded6);
     if (options.vars && // The error should throw only for the root theme creation because user is not allowed to use a custom node `vars`.
     // `generateCssVars` is the closest identifier for checking that the `options` is a result of `extendTheme` with CSS variables so that user can create new theme for nested ThemeProvider.
     options.generateCssVars === void 0) {
@@ -32838,21 +32993,12 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   }
   var createTheme_default2 = createTheme2;
 
-  // node_modules/@mui/material/styles/useTheme.js
-  var React14 = __toESM(require_react());
-
   // node_modules/@mui/material/styles/defaultTheme.js
   var defaultTheme = createTheme_default2();
   var defaultTheme_default = defaultTheme;
 
-  // node_modules/@mui/material/styles/useTheme.js
-  function useTheme5() {
-    const theme = useTheme_default(defaultTheme_default);
-    if (true) {
-      React14.useDebugValue(theme);
-    }
-    return theme[identifier_default] || theme;
-  }
+  // node_modules/@mui/material/styles/identifier.js
+  var identifier_default = "$$material";
 
   // node_modules/@mui/material/styles/useThemeProps.js
   function useThemeProps2({
@@ -32888,1908 +33034,885 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   });
   var styled_default = styled2;
 
-  // node_modules/@mui/x-tree-view/internals/zero-styled/index.js
-  function createUseThemeProps(name) {
-    return useThemeProps2;
-  }
-
-  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeView.js
+  // node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js
   init_extends();
-  var React18 = __toESM(require_react());
+  var React7 = __toESM(require_react());
+  var import_prop_types3 = __toESM(require_prop_types());
 
-  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeViewModels.js
-  init_extends();
-  var React15 = __toESM(require_react());
-  var useTreeViewModels = (plugins, props) => {
-    const modelsRef = React15.useRef({});
-    const [modelsState, setModelsState] = React15.useState(() => {
-      const initialState = {};
-      plugins.forEach((plugin) => {
-        if (plugin.models) {
-          Object.entries(plugin.models).forEach(([modelName, modelInitializer]) => {
-            modelsRef.current[modelName] = {
-              isControlled: props[modelName] !== void 0,
-              getDefaultValue: modelInitializer.getDefaultValue
-            };
-            initialState[modelName] = modelInitializer.getDefaultValue(props);
-          });
-        }
-      });
-      return initialState;
-    });
-    const models = Object.fromEntries(Object.entries(modelsRef.current).map(([modelName, model]) => {
-      const value = props[modelName] ?? modelsState[modelName];
-      return [modelName, {
-        value,
-        setControlledValue: (newValue) => {
-          if (!model.isControlled) {
-            setModelsState((prevState) => _extends({}, prevState, {
-              [modelName]: newValue
-            }));
-          }
-        }
-      }];
-    }));
-    if (true) {
-      Object.entries(modelsRef.current).forEach(([modelName, model]) => {
-        const controlled = props[modelName];
-        const newDefaultValue = model.getDefaultValue(props);
-        React15.useEffect(() => {
-          if (model.isControlled !== (controlled !== void 0)) {
-            console.error([`MUI X: A component is changing the ${model.isControlled ? "" : "un"}controlled ${modelName} state of TreeView to be ${model.isControlled ? "un" : ""}controlled.`, "Elements should not switch from uncontrolled to controlled (or vice versa).", `Decide between using a controlled or uncontrolled ${modelName} element for the lifetime of the component.`, "The nature of the state is determined during the first render. It's considered controlled if the value is not `undefined`.", "More info: https://fb.me/react-controlled-components"].join("\n"));
-          }
-        }, [controlled]);
-        const {
-          current: defaultValue
-        } = React15.useRef(newDefaultValue);
-        React15.useEffect(() => {
-          if (!model.isControlled && defaultValue !== newDefaultValue) {
-            console.error([`MUI X: A component is changing the default ${modelName} state of an uncontrolled TreeView after being initialized. To suppress this warning opt to use a controlled TreeView.`].join("\n"));
-          }
-        }, [JSON.stringify(newDefaultValue)]);
-      });
-    }
-    return models;
-  };
-
-  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewInstanceEvents/useTreeViewInstanceEvents.js
-  var React16 = __toESM(require_react());
-
-  // node_modules/@mui/x-internals/esm/EventManager/EventManager.js
-  var EventManager = class {
-    constructor() {
-      this.maxListeners = 20;
-      this.warnOnce = false;
-      this.events = {};
-    }
-    on(eventName, listener, options = {}) {
-      let collection = this.events[eventName];
-      if (!collection) {
-        collection = {
-          highPriority: /* @__PURE__ */ new Map(),
-          regular: /* @__PURE__ */ new Map()
-        };
-        this.events[eventName] = collection;
-      }
-      if (options.isFirst) {
-        collection.highPriority.set(listener, true);
-      } else {
-        collection.regular.set(listener, true);
-      }
-      if (true) {
-        const collectionSize = collection.highPriority.size + collection.regular.size;
-        if (collectionSize > this.maxListeners && !this.warnOnce) {
-          this.warnOnce = true;
-          console.warn([`Possible EventEmitter memory leak detected. ${collectionSize} ${eventName} listeners added.`].join("\n"));
-        }
-      }
-    }
-    removeListener(eventName, listener) {
-      if (this.events[eventName]) {
-        this.events[eventName].regular.delete(listener);
-        this.events[eventName].highPriority.delete(listener);
-      }
-    }
-    removeAllListeners() {
-      this.events = {};
-    }
-    emit(eventName, ...args) {
-      const collection = this.events[eventName];
-      if (!collection) {
-        return;
-      }
-      const highPriorityListeners = Array.from(collection.highPriority.keys());
-      const regularListeners = Array.from(collection.regular.keys());
-      for (let i = highPriorityListeners.length - 1; i >= 0; i -= 1) {
-        const listener = highPriorityListeners[i];
-        if (collection.highPriority.has(listener)) {
-          listener.apply(this, args);
-        }
-      }
-      for (let i = 0; i < regularListeners.length; i += 1) {
-        const listener = regularListeners[i];
-        if (collection.regular.has(listener)) {
-          listener.apply(this, args);
-        }
-      }
-    }
-    once(eventName, listener) {
-      const that = this;
-      this.on(eventName, function oneTimeListener(...args) {
-        that.removeListener(eventName, oneTimeListener);
-        listener.apply(that, args);
-      });
-    }
-  };
-
-  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewInstanceEvents/useTreeViewInstanceEvents.js
-  var isSyntheticEvent = (event) => {
-    return event.isPropagationStopped !== void 0;
-  };
-  var useTreeViewInstanceEvents = () => {
-    const [eventManager] = React16.useState(() => new EventManager());
-    const publishEvent = React16.useCallback((...args) => {
-      const [name, params, event = {}] = args;
-      event.defaultMuiPrevented = false;
-      if (isSyntheticEvent(event) && event.isPropagationStopped()) {
-        return;
-      }
-      eventManager.emit(name, params, event);
-    }, [eventManager]);
-    const subscribeEvent = React16.useCallback((event, handler) => {
-      eventManager.on(event, handler);
-      return () => {
-        eventManager.removeListener(event, handler);
-      };
-    }, [eventManager]);
-    return {
-      instance: {
-        $$publishEvent: publishEvent,
-        $$subscribeEvent: subscribeEvent
-      }
-    };
-  };
-  useTreeViewInstanceEvents.params = {};
-
-  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewOptionalPlugins/useTreeViewOptionalPlugins.js
-  var useTreeViewOptionalPlugins = ({
-    plugins
-  }) => {
-    const pluginSet = new Set(plugins);
-    const getAvailablePlugins = () => pluginSet;
-    return {
-      instance: {
-        getAvailablePlugins
-      }
-    };
-  };
-  useTreeViewOptionalPlugins.params = {};
-
-  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewId/useTreeViewId.js
-  init_extends();
-  var React17 = __toESM(require_react());
-
-  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewId/useTreeViewId.utils.js
-  var globalTreeViewDefaultId = 0;
-  var createTreeViewDefaultId = () => {
-    globalTreeViewDefaultId += 1;
-    return `mui-tree-view-${globalTreeViewDefaultId}`;
-  };
-  var generateTreeItemIdAttribute = ({
-    id,
-    treeId = "",
-    itemId
-  }) => {
-    if (id != null) {
-      return id;
-    }
-    return `${treeId}-${itemId}`;
-  };
-
-  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewId/useTreeViewId.js
-  var useTreeViewId = ({
-    params,
-    state,
-    setState
-  }) => {
-    React17.useEffect(() => {
-      setState((prevState) => {
-        if (prevState.id.treeId === params.id && prevState.id.treeId !== void 0) {
-          return prevState;
-        }
-        return _extends({}, prevState, {
-          id: _extends({}, prevState.id, {
-            treeId: params.id ?? createTreeViewDefaultId()
-          })
-        });
-      });
-    }, [setState, params.id]);
-    const treeId = params.id ?? state.id.treeId;
-    return {
-      getRootProps: () => ({
-        id: treeId
-      }),
-      contextValue: {
-        treeId
-      }
-    };
-  };
-  useTreeViewId.params = {
-    id: true
-  };
-  useTreeViewId.getInitialState = ({
-    id
-  }) => ({
-    id: {
-      treeId: id ?? void 0
-    }
-  });
-
-  // node_modules/@mui/x-tree-view/internals/corePlugins/corePlugins.js
-  var TREE_VIEW_CORE_PLUGINS = [useTreeViewInstanceEvents, useTreeViewOptionalPlugins, useTreeViewId];
-
-  // node_modules/@mui/x-tree-view/internals/useTreeView/extractPluginParamsFromProps.js
-  var _excluded8 = ["slots", "slotProps", "apiRef", "experimentalFeatures"];
-  var extractPluginParamsFromProps = (_ref) => {
-    let {
-      props: {
-        slots,
-        slotProps,
-        apiRef,
-        experimentalFeatures: inExperimentalFeatures
-      },
-      plugins
-    } = _ref, props = _objectWithoutPropertiesLoose(_ref.props, _excluded8);
-    const paramsLookup = {};
-    plugins.forEach((plugin) => {
-      Object.assign(paramsLookup, plugin.params);
-    });
-    const pluginParams = {};
-    const forwardedProps = {};
-    Object.keys(props).forEach((propName) => {
-      const prop = props[propName];
-      if (paramsLookup[propName]) {
-        pluginParams[propName] = prop;
-      } else {
-        forwardedProps[propName] = prop;
-      }
-    });
-    const experimentalFeatures = inExperimentalFeatures ?? {};
-    const defaultizedPluginParams = plugins.reduce((acc, plugin) => {
-      if (plugin.getDefaultizedParams) {
-        return plugin.getDefaultizedParams({
-          params: acc,
-          experimentalFeatures
-        });
-      }
-      return acc;
-    }, pluginParams);
-    return {
-      apiRef,
-      forwardedProps,
-      pluginParams: defaultizedPluginParams,
-      slots: slots ?? {},
-      slotProps: slotProps ?? {},
-      experimentalFeatures
-    };
-  };
-
-  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeViewBuildContext.js
-  var useTreeViewBuildContext = ({
-    plugins,
-    instance,
-    publicAPI,
-    rootRef
-  }) => {
-    const runItemPlugins = (itemPluginProps) => {
-      let finalRootRef = null;
-      let finalContentRef = null;
-      const pluginPropEnhancers = [];
-      const pluginPropEnhancersNames = {};
-      plugins.forEach((plugin) => {
-        if (!plugin.itemPlugin) {
-          return;
-        }
-        const itemPluginResponse = plugin.itemPlugin({
-          props: itemPluginProps,
-          rootRef: finalRootRef,
-          contentRef: finalContentRef
-        });
-        if (itemPluginResponse?.rootRef) {
-          finalRootRef = itemPluginResponse.rootRef;
-        }
-        if (itemPluginResponse?.contentRef) {
-          finalContentRef = itemPluginResponse.contentRef;
-        }
-        if (itemPluginResponse?.propsEnhancers) {
-          pluginPropEnhancers.push(itemPluginResponse.propsEnhancers);
-          Object.keys(itemPluginResponse.propsEnhancers).forEach((propsEnhancerName) => {
-            pluginPropEnhancersNames[propsEnhancerName] = true;
-          });
-        }
-      });
-      const resolvePropsEnhancer = (currentSlotName) => (currentSlotParams) => {
-        const enhancedProps = {};
-        pluginPropEnhancers.forEach((propsEnhancersForCurrentPlugin) => {
-          const propsEnhancerForCurrentPluginAndSlot = propsEnhancersForCurrentPlugin[currentSlotName];
-          if (propsEnhancerForCurrentPluginAndSlot != null) {
-            Object.assign(enhancedProps, propsEnhancerForCurrentPluginAndSlot(currentSlotParams));
-          }
-        });
-        return enhancedProps;
-      };
-      const propsEnhancers = Object.fromEntries(Object.keys(pluginPropEnhancersNames).map((propEnhancerName) => [propEnhancerName, resolvePropsEnhancer(propEnhancerName)]));
-      return {
-        contentRef: finalContentRef,
-        rootRef: finalRootRef,
-        propsEnhancers
-      };
-    };
-    const wrapItem = ({
-      itemId,
+  // node_modules/@mui/material/node_modules/@mui/system/esm/DefaultPropsProvider/DefaultPropsProvider.js
+  var React6 = __toESM(require_react());
+  var import_prop_types2 = __toESM(require_prop_types());
+  var import_jsx_runtime = __toESM(require_jsx_runtime());
+  var PropsContext = /* @__PURE__ */ React6.createContext(void 0);
+  function DefaultPropsProvider({
+    value,
+    children
+  }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PropsContext.Provider, {
+      value,
       children
-    }) => {
-      let finalChildren = children;
-      for (let i = plugins.length - 1; i >= 0; i -= 1) {
-        const plugin = plugins[i];
-        if (plugin.wrapItem) {
-          finalChildren = plugin.wrapItem({
-            itemId,
-            children: finalChildren,
-            instance
-          });
-        }
-      }
-      return finalChildren;
-    };
-    const wrapRoot = ({
-      children
-    }) => {
-      let finalChildren = children;
-      for (let i = plugins.length - 1; i >= 0; i -= 1) {
-        const plugin = plugins[i];
-        if (plugin.wrapRoot) {
-          finalChildren = plugin.wrapRoot({
-            children: finalChildren,
-            instance
-          });
-        }
-      }
-      return finalChildren;
-    };
-    return {
-      runItemPlugins,
-      wrapItem,
-      wrapRoot,
-      instance,
-      rootRef,
-      publicAPI
-    };
-  };
-
-  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeView.js
-  function useTreeViewApiInitialization(inputApiRef) {
-    const fallbackPublicApiRef = React18.useRef({});
-    if (inputApiRef) {
-      if (inputApiRef.current == null) {
-        inputApiRef.current = {};
-      }
-      return inputApiRef.current;
-    }
-    return fallbackPublicApiRef.current;
+    });
   }
-  var useTreeView = ({
-    plugins: inPlugins,
-    rootRef,
-    props
-  }) => {
-    const plugins = [...TREE_VIEW_CORE_PLUGINS, ...inPlugins];
+  true ? DefaultPropsProvider.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * @ignore
+     */
+    children: import_prop_types2.default.node,
+    /**
+     * @ignore
+     */
+    value: import_prop_types2.default.object
+  } : void 0;
+  function getThemeProps2(params) {
     const {
-      pluginParams,
-      forwardedProps,
-      apiRef,
-      experimentalFeatures,
-      slots,
-      slotProps
-    } = extractPluginParamsFromProps({
-      plugins,
+      theme,
+      name,
       props
-    });
-    const models = useTreeViewModels(plugins, pluginParams);
-    const instanceRef = React18.useRef({});
-    const instance = instanceRef.current;
-    const publicAPI = useTreeViewApiInitialization(apiRef);
-    const innerRootRef = React18.useRef(null);
-    const handleRootRef = useForkRef(innerRootRef, rootRef);
-    const contextValue = useTreeViewBuildContext({
-      plugins,
-      instance,
-      publicAPI,
-      rootRef: innerRootRef
-    });
-    const [state, setState] = React18.useState(() => {
-      const temp = {};
-      plugins.forEach((plugin) => {
-        if (plugin.getInitialState) {
-          Object.assign(temp, plugin.getInitialState(pluginParams));
-        }
-      });
-      return temp;
-    });
-    const rootPropsGetters = [];
-    const runPlugin = (plugin) => {
-      const pluginResponse = plugin({
-        instance,
-        params: pluginParams,
-        slots,
-        slotProps,
-        experimentalFeatures,
-        state,
-        setState,
-        rootRef: innerRootRef,
-        models,
-        plugins
-      });
-      if (pluginResponse.getRootProps) {
-        rootPropsGetters.push(pluginResponse.getRootProps);
-      }
-      if (pluginResponse.publicAPI) {
-        Object.assign(publicAPI, pluginResponse.publicAPI);
-      }
-      if (pluginResponse.instance) {
-        Object.assign(instance, pluginResponse.instance);
-      }
-      if (pluginResponse.contextValue) {
-        Object.assign(contextValue, pluginResponse.contextValue);
-      }
-    };
-    plugins.forEach(runPlugin);
-    const getRootProps = (otherHandlers = {}) => {
-      const rootProps = _extends({
-        role: "tree"
-      }, forwardedProps, otherHandlers, {
-        ref: handleRootRef
-      });
-      rootPropsGetters.forEach((rootPropsGetter) => {
-        Object.assign(rootProps, rootPropsGetter(otherHandlers));
-      });
-      return rootProps;
-    };
-    return {
-      getRootProps,
-      rootRef: handleRootRef,
-      contextValue,
-      instance
-    };
-  };
-
-  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewProvider.js
-  var React20 = __toESM(require_react());
-
-  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewContext.js
-  var React19 = __toESM(require_react());
-  var TreeViewContext = /* @__PURE__ */ React19.createContext(null);
-  if (true) {
-    TreeViewContext.displayName = "TreeViewContext";
+    } = params;
+    if (!theme || !theme.components || !theme.components[name]) {
+      return props;
+    }
+    const config = theme.components[name];
+    if (config.defaultProps) {
+      return resolveProps(config.defaultProps, props);
+    }
+    if (!config.styleOverrides && !config.variants) {
+      return resolveProps(config, props);
+    }
+    return props;
   }
+  function useDefaultProps({
+    props,
+    name
+  }) {
+    const ctx = React6.useContext(PropsContext);
+    return getThemeProps2({
+      props,
+      name,
+      theme: {
+        components: ctx
+      }
+    });
+  }
+  var DefaultPropsProvider_default = DefaultPropsProvider;
 
-  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewProvider.js
+  // node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
-  function TreeViewProvider(props) {
+  function DefaultPropsProvider2(props) {
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(DefaultPropsProvider_default, _extends({}, props));
+  }
+  true ? DefaultPropsProvider2.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * @ignore
+     */
+    children: import_prop_types3.default.node,
+    /**
+     * @ignore
+     */
+    value: import_prop_types3.default.object.isRequired
+  } : void 0;
+  function useDefaultProps2(params) {
+    return useDefaultProps(params);
+  }
+
+  // node_modules/@mui/material/utils/useSlot.js
+  init_extends();
+
+  // node_modules/@mui/utils/esm/useForkRef/useForkRef.js
+  var React8 = __toESM(require_react());
+
+  // node_modules/@mui/utils/esm/setRef/setRef.js
+  function setRef(ref, value) {
+    if (typeof ref === "function") {
+      ref(value);
+    } else if (ref) {
+      ref.current = value;
+    }
+  }
+
+  // node_modules/@mui/utils/esm/useForkRef/useForkRef.js
+  function useForkRef(...refs) {
+    return React8.useMemo(() => {
+      if (refs.every((ref) => ref == null)) {
+        return null;
+      }
+      return (instance) => {
+        refs.forEach((ref) => {
+          setRef(ref, instance);
+        });
+      };
+    }, refs);
+  }
+
+  // node_modules/@mui/utils/esm/appendOwnerState/appendOwnerState.js
+  init_extends();
+
+  // node_modules/@mui/utils/esm/isHostComponent/isHostComponent.js
+  function isHostComponent(element) {
+    return typeof element === "string";
+  }
+  var isHostComponent_default = isHostComponent;
+
+  // node_modules/@mui/utils/esm/appendOwnerState/appendOwnerState.js
+  function appendOwnerState(elementType, otherProps, ownerState) {
+    if (elementType === void 0 || isHostComponent_default(elementType)) {
+      return otherProps;
+    }
+    return _extends({}, otherProps, {
+      ownerState: _extends({}, otherProps.ownerState, ownerState)
+    });
+  }
+  var appendOwnerState_default = appendOwnerState;
+
+  // node_modules/@mui/utils/esm/resolveComponentProps/resolveComponentProps.js
+  function resolveComponentProps(componentProps, ownerState, slotState) {
+    if (typeof componentProps === "function") {
+      return componentProps(ownerState, slotState);
+    }
+    return componentProps;
+  }
+  var resolveComponentProps_default = resolveComponentProps;
+
+  // node_modules/@mui/utils/esm/mergeSlotProps/mergeSlotProps.js
+  init_extends();
+
+  // node_modules/@mui/utils/esm/extractEventHandlers/extractEventHandlers.js
+  function extractEventHandlers(object, excludeKeys = []) {
+    if (object === void 0) {
+      return {};
+    }
+    const result = {};
+    Object.keys(object).filter((prop) => prop.match(/^on[A-Z]/) && typeof object[prop] === "function" && !excludeKeys.includes(prop)).forEach((prop) => {
+      result[prop] = object[prop];
+    });
+    return result;
+  }
+  var extractEventHandlers_default = extractEventHandlers;
+
+  // node_modules/@mui/utils/esm/omitEventHandlers/omitEventHandlers.js
+  function omitEventHandlers(object) {
+    if (object === void 0) {
+      return {};
+    }
+    const result = {};
+    Object.keys(object).filter((prop) => !(prop.match(/^on[A-Z]/) && typeof object[prop] === "function")).forEach((prop) => {
+      result[prop] = object[prop];
+    });
+    return result;
+  }
+  var omitEventHandlers_default = omitEventHandlers;
+
+  // node_modules/@mui/utils/esm/mergeSlotProps/mergeSlotProps.js
+  function mergeSlotProps(parameters) {
     const {
-      value,
-      children
-    } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(TreeViewContext.Provider, {
-      value,
-      children: value.wrapRoot({
-        children,
-        instance: value.instance
-      })
+      getSlotProps,
+      additionalProps,
+      externalSlotProps,
+      externalForwardedProps,
+      className
+    } = parameters;
+    if (!getSlotProps) {
+      const joinedClasses2 = clsx_default(additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
+      const mergedStyle2 = _extends({}, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
+      const props2 = _extends({}, additionalProps, externalForwardedProps, externalSlotProps);
+      if (joinedClasses2.length > 0) {
+        props2.className = joinedClasses2;
+      }
+      if (Object.keys(mergedStyle2).length > 0) {
+        props2.style = mergedStyle2;
+      }
+      return {
+        props: props2,
+        internalRef: void 0
+      };
+    }
+    const eventHandlers = extractEventHandlers_default(_extends({}, externalForwardedProps, externalSlotProps));
+    const componentsPropsWithoutEventHandlers = omitEventHandlers_default(externalSlotProps);
+    const otherPropsWithoutEventHandlers = omitEventHandlers_default(externalForwardedProps);
+    const internalSlotProps = getSlotProps(eventHandlers);
+    const joinedClasses = clsx_default(internalSlotProps == null ? void 0 : internalSlotProps.className, additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
+    const mergedStyle = _extends({}, internalSlotProps == null ? void 0 : internalSlotProps.style, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
+    const props = _extends({}, internalSlotProps, additionalProps, otherPropsWithoutEventHandlers, componentsPropsWithoutEventHandlers);
+    if (joinedClasses.length > 0) {
+      props.className = joinedClasses;
+    }
+    if (Object.keys(mergedStyle).length > 0) {
+      props.style = mergedStyle;
+    }
+    return {
+      props,
+      internalRef: internalSlotProps.ref
+    };
+  }
+  var mergeSlotProps_default = mergeSlotProps;
+
+  // node_modules/@mui/material/utils/useSlot.js
+  var _excluded7 = ["className", "elementType", "ownerState", "externalForwardedProps", "getSlotOwnerState", "internalForwardedProps"];
+  var _excluded22 = ["component", "slots", "slotProps"];
+  var _excluded32 = ["component"];
+  function useSlot(name, parameters) {
+    const {
+      className,
+      elementType: initialElementType,
+      ownerState,
+      externalForwardedProps,
+      getSlotOwnerState,
+      internalForwardedProps
+    } = parameters, useSlotPropsParams = _objectWithoutPropertiesLoose(parameters, _excluded7);
+    const {
+      component: rootComponent,
+      slots = {
+        [name]: void 0
+      },
+      slotProps = {
+        [name]: void 0
+      }
+    } = externalForwardedProps, other = _objectWithoutPropertiesLoose(externalForwardedProps, _excluded22);
+    const elementType = slots[name] || initialElementType;
+    const resolvedComponentsProps = resolveComponentProps_default(slotProps[name], ownerState);
+    const _mergeSlotProps = mergeSlotProps_default(_extends({
+      className
+    }, useSlotPropsParams, {
+      externalForwardedProps: name === "root" ? other : void 0,
+      externalSlotProps: resolvedComponentsProps
+    })), {
+      props: {
+        component: slotComponent
+      },
+      internalRef
+    } = _mergeSlotProps, mergedProps = _objectWithoutPropertiesLoose(_mergeSlotProps.props, _excluded32);
+    const ref = useForkRef(internalRef, resolvedComponentsProps == null ? void 0 : resolvedComponentsProps.ref, parameters.ref);
+    const slotOwnerState = getSlotOwnerState ? getSlotOwnerState(mergedProps) : {};
+    const finalOwnerState = _extends({}, ownerState, slotOwnerState);
+    const LeafComponent = name === "root" ? slotComponent || rootComponent : slotComponent;
+    const props = appendOwnerState_default(elementType, _extends({}, name === "root" && !rootComponent && !slots[name] && internalForwardedProps, name !== "root" && !slots[name] && internalForwardedProps, mergedProps, LeafComponent && {
+      as: LeafComponent
+    }, {
+      ref
+    }), finalOwnerState);
+    Object.keys(slotOwnerState).forEach((propName) => {
+      delete props[propName];
     });
+    return [elementType, props];
   }
 
-  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/useTreeViewContext.js
-  var React21 = __toESM(require_react());
-  var useTreeViewContext = () => {
-    const context = React21.useContext(TreeViewContext);
-    if (context == null) {
-      throw new Error(["MUI X: Could not find the Tree View context.", "It looks like you rendered your component outside of a SimpleTreeView or RichTreeView parent component.", "This can also happen if you are bundling multiple versions of the Tree View."].join("\n"));
-    }
-    return context;
-  };
+  // node_modules/@mui/material/utils/capitalize.js
+  var import_capitalize3 = __toESM(require_capitalize2());
+  var capitalize_default = import_capitalize3.default;
 
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewItems/useTreeViewItems.js
+  // node_modules/@mui/material/Paper/Paper.js
   init_extends();
-  var React23 = __toESM(require_react());
+  var React16 = __toESM(require_react());
+  var import_prop_types6 = __toESM(require_prop_types());
 
-  // node_modules/@mui/x-tree-view/internals/utils/publishTreeViewEvent.js
-  var publishTreeViewEvent = (instance, eventName, params) => {
-    instance.$$publishEvent(eventName, params);
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewItems/useTreeViewItems.utils.js
-  var TREE_VIEW_ROOT_PARENT_ID = "__TREE_VIEW_ROOT_PARENT_ID__";
-  var buildSiblingIndexes = (siblings) => {
-    const siblingsIndexLookup = {};
-    siblings.forEach((childId, index) => {
-      siblingsIndexLookup[childId] = index;
-    });
-    return siblingsIndexLookup;
-  };
-
-  // node_modules/@mui/x-tree-view/internals/TreeViewItemDepthContext/TreeViewItemDepthContext.js
-  var React22 = __toESM(require_react());
-  var TreeViewItemDepthContext = /* @__PURE__ */ React22.createContext(() => -1);
-  if (true) {
-    TreeViewItemDepthContext.displayName = "TreeViewItemDepthContext";
+  // node_modules/@mui/utils/esm/integerPropType/integerPropType.js
+  function getTypeByValue(value) {
+    const valueType = typeof value;
+    switch (valueType) {
+      case "number":
+        if (Number.isNaN(value)) {
+          return "NaN";
+        }
+        if (!Number.isFinite(value)) {
+          return "Infinity";
+        }
+        if (value !== Math.floor(value)) {
+          return "float";
+        }
+        return "number";
+      case "object":
+        if (value === null) {
+          return "null";
+        }
+        return value.constructor.name;
+      default:
+        return valueType;
+    }
   }
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewItems/useTreeViewItems.js
-  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
-  var _excluded9 = ["children"];
-  var updateItemsState = ({
-    items,
-    isItemDisabled,
-    getItemLabel,
-    getItemId
-  }) => {
-    const itemMetaMap = {};
-    const itemMap = {};
-    const itemOrderedChildrenIds = {
-      [TREE_VIEW_ROOT_PARENT_ID]: []
-    };
-    const processItem = (item, depth, parentId) => {
-      const id = getItemId ? getItemId(item) : item.id;
-      if (id == null) {
-        throw new Error(["MUI X: The Tree View component requires all items to have a unique `id` property.", "Alternatively, you can use the `getItemId` prop to specify a custom id for each item.", "An item was provided without id in the `items` prop:", JSON.stringify(item)].join("\n"));
-      }
-      if (itemMetaMap[id] != null) {
-        throw new Error(["MUI X: The Tree View component requires all items to have a unique `id` property.", "Alternatively, you can use the `getItemId` prop to specify a custom id for each item.", `Two items were provided with the same id in the \`items\` prop: "${id}"`].join("\n"));
-      }
-      const label = getItemLabel ? getItemLabel(item) : item.label;
-      if (label == null) {
-        throw new Error(["MUI X: The Tree View component requires all items to have a `label` property.", "Alternatively, you can use the `getItemLabel` prop to specify a custom label for each item.", "An item was provided without label in the `items` prop:", JSON.stringify(item)].join("\n"));
-      }
-      itemMetaMap[id] = {
-        id,
-        label,
-        parentId,
-        idAttribute: void 0,
-        expandable: !!item.children?.length,
-        disabled: isItemDisabled ? isItemDisabled(item) : false,
-        depth
-      };
-      itemMap[id] = item;
-      const parentIdWithDefault = parentId ?? TREE_VIEW_ROOT_PARENT_ID;
-      if (!itemOrderedChildrenIds[parentIdWithDefault]) {
-        itemOrderedChildrenIds[parentIdWithDefault] = [];
-      }
-      itemOrderedChildrenIds[parentIdWithDefault].push(id);
-      item.children?.forEach((child) => processItem(child, depth + 1, id));
-    };
-    items.forEach((item) => processItem(item, 0, null));
-    const itemChildrenIndexes = {};
-    Object.keys(itemOrderedChildrenIds).forEach((parentId) => {
-      itemChildrenIndexes[parentId] = buildSiblingIndexes(itemOrderedChildrenIds[parentId]);
-    });
-    return {
-      itemMetaMap,
-      itemMap,
-      itemOrderedChildrenIds,
-      itemChildrenIndexes
-    };
-  };
-  var useTreeViewItems = ({
-    instance,
-    params,
-    state,
-    setState,
-    experimentalFeatures
-  }) => {
-    const getItemMeta = React23.useCallback((itemId) => state.items.itemMetaMap[itemId], [state.items.itemMetaMap]);
-    const getItem = React23.useCallback((itemId) => state.items.itemMap[itemId], [state.items.itemMap]);
-    const getItemTree = React23.useCallback(() => {
-      const getItemFromItemId = (id) => {
-        const _state$items$itemMap$ = state.items.itemMap[id], item = _objectWithoutPropertiesLoose(_state$items$itemMap$, _excluded9);
-        const newChildren = state.items.itemOrderedChildrenIds[id];
-        if (newChildren) {
-          item.children = newChildren.map(getItemFromItemId);
-        }
-        return item;
-      };
-      return state.items.itemOrderedChildrenIds[TREE_VIEW_ROOT_PARENT_ID].map(getItemFromItemId);
-    }, [state.items.itemMap, state.items.itemOrderedChildrenIds]);
-    const isItemDisabled = React23.useCallback((itemId) => {
-      if (itemId == null) {
-        return false;
-      }
-      let itemMeta = instance.getItemMeta(itemId);
-      if (!itemMeta) {
-        return false;
-      }
-      if (itemMeta.disabled) {
-        return true;
-      }
-      while (itemMeta.parentId != null) {
-        itemMeta = instance.getItemMeta(itemMeta.parentId);
-        if (itemMeta.disabled) {
-          return true;
-        }
-      }
-      return false;
-    }, [instance]);
-    const getItemIndex = React23.useCallback((itemId) => {
-      const parentId = instance.getItemMeta(itemId).parentId ?? TREE_VIEW_ROOT_PARENT_ID;
-      return state.items.itemChildrenIndexes[parentId][itemId];
-    }, [instance, state.items.itemChildrenIndexes]);
-    const getItemOrderedChildrenIds = React23.useCallback((itemId) => state.items.itemOrderedChildrenIds[itemId ?? TREE_VIEW_ROOT_PARENT_ID] ?? [], [state.items.itemOrderedChildrenIds]);
-    const getItemDOMElement = (itemId) => {
-      const itemMeta = instance.getItemMeta(itemId);
-      if (itemMeta == null) {
-        return null;
-      }
-      return document.getElementById(generateTreeItemIdAttribute({
-        treeId: state.id.treeId,
-        itemId,
-        id: itemMeta.idAttribute
-      }));
-    };
-    const isItemNavigable = (itemId) => {
-      if (params.disabledItemsFocusable) {
-        return true;
-      }
-      return !instance.isItemDisabled(itemId);
-    };
-    const areItemUpdatesPreventedRef = React23.useRef(false);
-    const preventItemUpdates = React23.useCallback(() => {
-      areItemUpdatesPreventedRef.current = true;
-    }, []);
-    const areItemUpdatesPrevented = React23.useCallback(() => areItemUpdatesPreventedRef.current, []);
-    React23.useEffect(() => {
-      if (instance.areItemUpdatesPrevented()) {
-        return;
-      }
-      setState((prevState) => {
-        const newState = updateItemsState({
-          items: params.items,
-          isItemDisabled: params.isItemDisabled,
-          getItemId: params.getItemId,
-          getItemLabel: params.getItemLabel
-        });
-        Object.values(prevState.items.itemMetaMap).forEach((item) => {
-          if (!newState.itemMetaMap[item.id]) {
-            publishTreeViewEvent(instance, "removeItem", {
-              id: item.id
-            });
-          }
-        });
-        return _extends({}, prevState, {
-          items: newState
-        });
-      });
-    }, [instance, setState, params.items, params.isItemDisabled, params.getItemId, params.getItemLabel]);
-    const getItemsToRender = () => {
-      const getPropsFromItemId = (id) => {
-        const item = state.items.itemMetaMap[id];
-        return {
-          label: item.label,
-          itemId: item.id,
-          id: item.idAttribute,
-          children: state.items.itemOrderedChildrenIds[id]?.map(getPropsFromItemId)
-        };
-      };
-      return state.items.itemOrderedChildrenIds[TREE_VIEW_ROOT_PARENT_ID].map(getPropsFromItemId);
-    };
-    return {
-      getRootProps: () => ({
-        style: {
-          "--TreeView-itemChildrenIndentation": typeof params.itemChildrenIndentation === "number" ? `${params.itemChildrenIndentation}px` : params.itemChildrenIndentation
-        }
-      }),
-      publicAPI: {
-        getItem,
-        getItemDOMElement,
-        getItemTree,
-        getItemOrderedChildrenIds
-      },
-      instance: {
-        getItemMeta,
-        getItem,
-        getItemTree,
-        getItemsToRender,
-        getItemIndex,
-        getItemDOMElement,
-        getItemOrderedChildrenIds,
-        isItemDisabled,
-        isItemNavigable,
-        preventItemUpdates,
-        areItemUpdatesPrevented
-      },
-      contextValue: {
-        items: {
-          onItemClick: params.onItemClick,
-          disabledItemsFocusable: params.disabledItemsFocusable,
-          indentationAtItemLevel: experimentalFeatures.indentationAtItemLevel ?? false
-        }
-      }
-    };
-  };
-  useTreeViewItems.getInitialState = (params) => ({
-    items: updateItemsState({
-      items: params.items,
-      isItemDisabled: params.isItemDisabled,
-      getItemId: params.getItemId,
-      getItemLabel: params.getItemLabel
-    })
-  });
-  useTreeViewItems.getDefaultizedParams = ({
-    params
-  }) => _extends({}, params, {
-    disabledItemsFocusable: params.disabledItemsFocusable ?? false,
-    itemChildrenIndentation: params.itemChildrenIndentation ?? "12px"
-  });
-  useTreeViewItems.wrapRoot = ({
-    children,
-    instance
-  }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(TreeViewItemDepthContext.Provider, {
-      value: (itemId) => instance.getItemMeta(itemId)?.depth ?? 0,
-      children
-    });
-  };
-  useTreeViewItems.params = {
-    disabledItemsFocusable: true,
-    items: true,
-    isItemDisabled: true,
-    getItemLabel: true,
-    getItemId: true,
-    onItemClick: true,
-    itemChildrenIndentation: true
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewExpansion/useTreeViewExpansion.js
-  init_extends();
-  var React24 = __toESM(require_react());
-  var useTreeViewExpansion = ({
-    instance,
-    params,
-    models
-  }) => {
-    const expandedItemsMap = React24.useMemo(() => {
-      const temp = /* @__PURE__ */ new Map();
-      models.expandedItems.value.forEach((id) => {
-        temp.set(id, true);
-      });
-      return temp;
-    }, [models.expandedItems.value]);
-    const setExpandedItems = (event, value) => {
-      params.onExpandedItemsChange?.(event, value);
-      models.expandedItems.setControlledValue(value);
-    };
-    const isItemExpanded = React24.useCallback((itemId) => expandedItemsMap.has(itemId), [expandedItemsMap]);
-    const isItemExpandable = React24.useCallback((itemId) => !!instance.getItemMeta(itemId)?.expandable, [instance]);
-    const toggleItemExpansion = useEventCallback_default((event, itemId) => {
-      const isExpandedBefore = instance.isItemExpanded(itemId);
-      instance.setItemExpansion(event, itemId, !isExpandedBefore);
-    });
-    const setItemExpansion = useEventCallback_default((event, itemId, isExpanded) => {
-      const isExpandedBefore = instance.isItemExpanded(itemId);
-      if (isExpandedBefore === isExpanded) {
-        return;
-      }
-      let newExpanded;
-      if (isExpanded) {
-        newExpanded = [itemId].concat(models.expandedItems.value);
-      } else {
-        newExpanded = models.expandedItems.value.filter((id) => id !== itemId);
-      }
-      if (params.onItemExpansionToggle) {
-        params.onItemExpansionToggle(event, itemId, isExpanded);
-      }
-      setExpandedItems(event, newExpanded);
-    });
-    const expandAllSiblings = (event, itemId) => {
-      const itemMeta = instance.getItemMeta(itemId);
-      const siblings = instance.getItemOrderedChildrenIds(itemMeta.parentId);
-      const diff = siblings.filter((child) => instance.isItemExpandable(child) && !instance.isItemExpanded(child));
-      const newExpanded = models.expandedItems.value.concat(diff);
-      if (diff.length > 0) {
-        if (params.onItemExpansionToggle) {
-          diff.forEach((newlyExpandedItemId) => {
-            params.onItemExpansionToggle(event, newlyExpandedItemId, true);
-          });
-        }
-        setExpandedItems(event, newExpanded);
-      }
-    };
-    const expansionTrigger = React24.useMemo(() => {
-      if (params.expansionTrigger) {
-        return params.expansionTrigger;
-      }
-      if (instance.isTreeViewEditable) {
-        return "iconContainer";
-      }
-      return "content";
-    }, [params.expansionTrigger, instance.isTreeViewEditable]);
-    return {
-      publicAPI: {
-        setItemExpansion
-      },
-      instance: {
-        isItemExpanded,
-        isItemExpandable,
-        setItemExpansion,
-        toggleItemExpansion,
-        expandAllSiblings
-      },
-      contextValue: {
-        expansion: {
-          expansionTrigger
-        }
-      }
-    };
-  };
-  useTreeViewExpansion.models = {
-    expandedItems: {
-      getDefaultValue: (params) => params.defaultExpandedItems
-    }
-  };
-  var DEFAULT_EXPANDED_ITEMS = [];
-  useTreeViewExpansion.getDefaultizedParams = ({
-    params
-  }) => _extends({}, params, {
-    defaultExpandedItems: params.defaultExpandedItems ?? DEFAULT_EXPANDED_ITEMS
-  });
-  useTreeViewExpansion.params = {
-    expandedItems: true,
-    defaultExpandedItems: true,
-    onExpandedItemsChange: true,
-    onItemExpansionToggle: true,
-    expansionTrigger: true
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewSelection/useTreeViewSelection.js
-  init_extends();
-  var React25 = __toESM(require_react());
-
-  // node_modules/@mui/x-tree-view/internals/utils/tree.js
-  var getLastNavigableItemInArray = (instance, items) => {
-    let itemIndex = items.length - 1;
-    while (itemIndex >= 0 && !instance.isItemNavigable(items[itemIndex])) {
-      itemIndex -= 1;
-    }
-    if (itemIndex === -1) {
-      return void 0;
-    }
-    return items[itemIndex];
-  };
-  var getPreviousNavigableItem = (instance, itemId) => {
-    const itemMeta = instance.getItemMeta(itemId);
-    const siblings = instance.getItemOrderedChildrenIds(itemMeta.parentId);
-    const itemIndex = instance.getItemIndex(itemId);
-    if (itemIndex === 0) {
-      return itemMeta.parentId;
-    }
-    let previousNavigableSiblingIndex = itemIndex - 1;
-    while (!instance.isItemNavigable(siblings[previousNavigableSiblingIndex]) && previousNavigableSiblingIndex >= 0) {
-      previousNavigableSiblingIndex -= 1;
-    }
-    if (previousNavigableSiblingIndex === -1) {
-      if (itemMeta.parentId == null) {
-        return null;
-      }
-      return getPreviousNavigableItem(instance, itemMeta.parentId);
-    }
-    let currentItemId = siblings[previousNavigableSiblingIndex];
-    let lastNavigableChild = getLastNavigableItemInArray(instance, instance.getItemOrderedChildrenIds(currentItemId));
-    while (instance.isItemExpanded(currentItemId) && lastNavigableChild != null) {
-      currentItemId = lastNavigableChild;
-      lastNavigableChild = instance.getItemOrderedChildrenIds(currentItemId).find(instance.isItemNavigable);
-    }
-    return currentItemId;
-  };
-  var getNextNavigableItem = (instance, itemId) => {
-    if (instance.isItemExpanded(itemId)) {
-      const firstNavigableChild = instance.getItemOrderedChildrenIds(itemId).find(instance.isItemNavigable);
-      if (firstNavigableChild != null) {
-        return firstNavigableChild;
-      }
-    }
-    let itemMeta = instance.getItemMeta(itemId);
-    while (itemMeta != null) {
-      const siblings = instance.getItemOrderedChildrenIds(itemMeta.parentId);
-      const currentItemIndex = instance.getItemIndex(itemMeta.id);
-      if (currentItemIndex < siblings.length - 1) {
-        let nextItemIndex = currentItemIndex + 1;
-        while (!instance.isItemNavigable(siblings[nextItemIndex]) && nextItemIndex < siblings.length - 1) {
-          nextItemIndex += 1;
-        }
-        if (instance.isItemNavigable(siblings[nextItemIndex])) {
-          return siblings[nextItemIndex];
-        }
-      }
-      itemMeta = instance.getItemMeta(itemMeta.parentId);
+  function ponyfillIsInteger(x) {
+    return typeof x === "number" && isFinite(x) && Math.floor(x) === x;
+  }
+  var isInteger = Number.isInteger || ponyfillIsInteger;
+  function requiredInteger(props, propName, componentName, location) {
+    const propValue = props[propName];
+    if (propValue == null || !isInteger(propValue)) {
+      const propType = getTypeByValue(propValue);
+      return new RangeError(`Invalid ${location} \`${propName}\` of type \`${propType}\` supplied to \`${componentName}\`, expected \`integer\`.`);
     }
     return null;
-  };
-  var getLastNavigableItem = (instance) => {
-    let itemId = null;
-    while (itemId == null || instance.isItemExpanded(itemId)) {
-      const children = instance.getItemOrderedChildrenIds(itemId);
-      const lastNavigableChild = getLastNavigableItemInArray(instance, children);
-      if (lastNavigableChild == null) {
-        return itemId;
-      }
-      itemId = lastNavigableChild;
-    }
-    return itemId;
-  };
-  var getFirstNavigableItem = (instance) => instance.getItemOrderedChildrenIds(null).find(instance.isItemNavigable);
-  var findOrderInTremauxTree = (instance, itemAId, itemBId) => {
-    if (itemAId === itemBId) {
-      return [itemAId, itemBId];
-    }
-    const itemMetaA = instance.getItemMeta(itemAId);
-    const itemMetaB = instance.getItemMeta(itemBId);
-    if (itemMetaA.parentId === itemMetaB.id || itemMetaB.parentId === itemMetaA.id) {
-      return itemMetaB.parentId === itemMetaA.id ? [itemMetaA.id, itemMetaB.id] : [itemMetaB.id, itemMetaA.id];
-    }
-    const aFamily = [itemMetaA.id];
-    const bFamily = [itemMetaB.id];
-    let aAncestor = itemMetaA.parentId;
-    let bAncestor = itemMetaB.parentId;
-    let aAncestorIsCommon = bFamily.indexOf(aAncestor) !== -1;
-    let bAncestorIsCommon = aFamily.indexOf(bAncestor) !== -1;
-    let continueA = true;
-    let continueB = true;
-    while (!bAncestorIsCommon && !aAncestorIsCommon) {
-      if (continueA) {
-        aFamily.push(aAncestor);
-        aAncestorIsCommon = bFamily.indexOf(aAncestor) !== -1;
-        continueA = aAncestor !== null;
-        if (!aAncestorIsCommon && continueA) {
-          aAncestor = instance.getItemMeta(aAncestor).parentId;
-        }
-      }
-      if (continueB && !aAncestorIsCommon) {
-        bFamily.push(bAncestor);
-        bAncestorIsCommon = aFamily.indexOf(bAncestor) !== -1;
-        continueB = bAncestor !== null;
-        if (!bAncestorIsCommon && continueB) {
-          bAncestor = instance.getItemMeta(bAncestor).parentId;
-        }
-      }
-    }
-    const commonAncestor = aAncestorIsCommon ? aAncestor : bAncestor;
-    const ancestorFamily = instance.getItemOrderedChildrenIds(commonAncestor);
-    const aSide = aFamily[aFamily.indexOf(commonAncestor) - 1];
-    const bSide = bFamily[bFamily.indexOf(commonAncestor) - 1];
-    return ancestorFamily.indexOf(aSide) < ancestorFamily.indexOf(bSide) ? [itemAId, itemBId] : [itemBId, itemAId];
-  };
-  var getNonDisabledItemsInRange = (instance, itemAId, itemBId) => {
-    const getNextItem = (itemId) => {
-      if (instance.isItemExpandable(itemId) && instance.isItemExpanded(itemId)) {
-        return instance.getItemOrderedChildrenIds(itemId)[0];
-      }
-      let itemMeta = instance.getItemMeta(itemId);
-      while (itemMeta != null) {
-        const siblings = instance.getItemOrderedChildrenIds(itemMeta.parentId);
-        const currentItemIndex = instance.getItemIndex(itemMeta.id);
-        if (currentItemIndex < siblings.length - 1) {
-          return siblings[currentItemIndex + 1];
-        }
-        itemMeta = instance.getItemMeta(itemMeta.parentId);
-      }
-      throw new Error("Invalid range");
-    };
-    const [first, last] = findOrderInTremauxTree(instance, itemAId, itemBId);
-    const items = [first];
-    let current = first;
-    while (current !== last) {
-      current = getNextItem(current);
-      if (!instance.isItemDisabled(current)) {
-        items.push(current);
-      }
-    }
-    return items;
-  };
-  var getAllNavigableItems = (instance) => {
-    let item = getFirstNavigableItem(instance);
-    const navigableItems = [];
-    while (item != null) {
-      navigableItems.push(item);
-      item = getNextNavigableItem(instance, item);
-    }
-    return navigableItems;
-  };
-  var isTargetInDescendants = (target, itemRoot) => {
-    return itemRoot !== target.closest('*[role="treeitem"]');
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewSelection/useTreeViewSelection.utils.js
-  var convertSelectedItemsToArray = (model) => {
-    if (Array.isArray(model)) {
-      return model;
-    }
-    if (model != null) {
-      return [model];
-    }
-    return [];
-  };
-  var getLookupFromArray = (array) => {
-    const lookup = {};
-    array.forEach((itemId) => {
-      lookup[itemId] = true;
-    });
-    return lookup;
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewSelection/useTreeViewSelection.js
-  var useTreeViewSelection = ({
-    instance,
-    params,
-    models
-  }) => {
-    const lastSelectedItem = React25.useRef(null);
-    const lastSelectedRange = React25.useRef({});
-    const selectedItemsMap = React25.useMemo(() => {
-      const temp = /* @__PURE__ */ new Map();
-      if (Array.isArray(models.selectedItems.value)) {
-        models.selectedItems.value.forEach((id) => {
-          temp.set(id, true);
-        });
-      } else if (models.selectedItems.value != null) {
-        temp.set(models.selectedItems.value, true);
-      }
-      return temp;
-    }, [models.selectedItems.value]);
-    const setSelectedItems = (event, newSelectedItems) => {
-      if (params.onItemSelectionToggle) {
-        if (params.multiSelect) {
-          const addedItems = newSelectedItems.filter((itemId) => !instance.isItemSelected(itemId));
-          const removedItems = models.selectedItems.value.filter((itemId) => !newSelectedItems.includes(itemId));
-          addedItems.forEach((itemId) => {
-            params.onItemSelectionToggle(event, itemId, true);
-          });
-          removedItems.forEach((itemId) => {
-            params.onItemSelectionToggle(event, itemId, false);
-          });
-        } else if (newSelectedItems !== models.selectedItems.value) {
-          if (models.selectedItems.value != null) {
-            params.onItemSelectionToggle(event, models.selectedItems.value, false);
-          }
-          if (newSelectedItems != null) {
-            params.onItemSelectionToggle(event, newSelectedItems, true);
-          }
-        }
-      }
-      if (params.onSelectedItemsChange) {
-        params.onSelectedItemsChange(event, newSelectedItems);
-      }
-      models.selectedItems.setControlledValue(newSelectedItems);
-    };
-    const isItemSelected = (itemId) => selectedItemsMap.has(itemId);
-    const selectItem = ({
-      event,
-      itemId,
-      keepExistingSelection = false,
-      shouldBeSelected
-    }) => {
-      if (params.disableSelection) {
-        return;
-      }
-      let newSelected;
-      if (keepExistingSelection) {
-        const cleanSelectedItems = convertSelectedItemsToArray(models.selectedItems.value);
-        const isSelectedBefore = instance.isItemSelected(itemId);
-        if (isSelectedBefore && (shouldBeSelected === false || shouldBeSelected == null)) {
-          newSelected = cleanSelectedItems.filter((id) => id !== itemId);
-        } else if (!isSelectedBefore && (shouldBeSelected === true || shouldBeSelected == null)) {
-          newSelected = [itemId].concat(cleanSelectedItems);
-        } else {
-          newSelected = cleanSelectedItems;
-        }
-      } else {
-        if (shouldBeSelected === false || shouldBeSelected == null && instance.isItemSelected(itemId)) {
-          newSelected = params.multiSelect ? [] : null;
-        } else {
-          newSelected = params.multiSelect ? [itemId] : itemId;
-        }
-      }
-      setSelectedItems(event, newSelected);
-      lastSelectedItem.current = itemId;
-      lastSelectedRange.current = {};
-    };
-    const selectRange = (event, [start, end]) => {
-      if (params.disableSelection || !params.multiSelect) {
-        return;
-      }
-      let newSelectedItems = convertSelectedItemsToArray(models.selectedItems.value).slice();
-      if (Object.keys(lastSelectedRange.current).length > 0) {
-        newSelectedItems = newSelectedItems.filter((id) => !lastSelectedRange.current[id]);
-      }
-      const selectedItemsLookup = getLookupFromArray(newSelectedItems);
-      const range = getNonDisabledItemsInRange(instance, start, end);
-      const itemsToAddToModel = range.filter((id) => !selectedItemsLookup[id]);
-      newSelectedItems = newSelectedItems.concat(itemsToAddToModel);
-      setSelectedItems(event, newSelectedItems);
-      lastSelectedRange.current = getLookupFromArray(range);
-    };
-    const expandSelectionRange = (event, itemId) => {
-      if (lastSelectedItem.current != null) {
-        const [start, end] = findOrderInTremauxTree(instance, itemId, lastSelectedItem.current);
-        selectRange(event, [start, end]);
-      }
-    };
-    const selectRangeFromStartToItem = (event, itemId) => {
-      selectRange(event, [getFirstNavigableItem(instance), itemId]);
-    };
-    const selectRangeFromItemToEnd = (event, itemId) => {
-      selectRange(event, [itemId, getLastNavigableItem(instance)]);
-    };
-    const selectAllNavigableItems = (event) => {
-      if (params.disableSelection || !params.multiSelect) {
-        return;
-      }
-      const navigableItems = getAllNavigableItems(instance);
-      setSelectedItems(event, navigableItems);
-      lastSelectedRange.current = getLookupFromArray(navigableItems);
-    };
-    const selectItemFromArrowNavigation = (event, currentItem, nextItem) => {
-      if (params.disableSelection || !params.multiSelect) {
-        return;
-      }
-      let newSelectedItems = convertSelectedItemsToArray(models.selectedItems.value).slice();
-      if (Object.keys(lastSelectedRange.current).length === 0) {
-        newSelectedItems.push(nextItem);
-        lastSelectedRange.current = {
-          [currentItem]: true,
-          [nextItem]: true
-        };
-      } else {
-        if (!lastSelectedRange.current[currentItem]) {
-          lastSelectedRange.current = {};
-        }
-        if (lastSelectedRange.current[nextItem]) {
-          newSelectedItems = newSelectedItems.filter((id) => id !== currentItem);
-          delete lastSelectedRange.current[currentItem];
-        } else {
-          newSelectedItems.push(nextItem);
-          lastSelectedRange.current[nextItem] = true;
-        }
-      }
-      setSelectedItems(event, newSelectedItems);
-    };
-    return {
-      getRootProps: () => ({
-        "aria-multiselectable": params.multiSelect
-      }),
-      publicAPI: {
-        selectItem
-      },
-      instance: {
-        isItemSelected,
-        selectItem,
-        selectAllNavigableItems,
-        expandSelectionRange,
-        selectRangeFromStartToItem,
-        selectRangeFromItemToEnd,
-        selectItemFromArrowNavigation
-      },
-      contextValue: {
-        selection: {
-          multiSelect: params.multiSelect,
-          checkboxSelection: params.checkboxSelection,
-          disableSelection: params.disableSelection
-        }
-      }
-    };
-  };
-  useTreeViewSelection.models = {
-    selectedItems: {
-      getDefaultValue: (params) => params.defaultSelectedItems
-    }
-  };
-  var DEFAULT_SELECTED_ITEMS = [];
-  useTreeViewSelection.getDefaultizedParams = ({
-    params
-  }) => _extends({}, params, {
-    disableSelection: params.disableSelection ?? false,
-    multiSelect: params.multiSelect ?? false,
-    checkboxSelection: params.checkboxSelection ?? false,
-    defaultSelectedItems: params.defaultSelectedItems ?? (params.multiSelect ? DEFAULT_SELECTED_ITEMS : null)
-  });
-  useTreeViewSelection.params = {
-    disableSelection: true,
-    multiSelect: true,
-    checkboxSelection: true,
-    defaultSelectedItems: true,
-    selectedItems: true,
-    onSelectedItemsChange: true,
-    onItemSelectionToggle: true
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewFocus/useTreeViewFocus.js
-  init_extends();
-  var React27 = __toESM(require_react());
-
-  // node_modules/@mui/x-tree-view/internals/hooks/useInstanceEventHandler.js
-  var React26 = __toESM(require_react());
-
-  // node_modules/@mui/x-tree-view/internals/utils/cleanupTracking/TimerBasedCleanupTracking.js
-  var CLEANUP_TIMER_LOOP_MILLIS = 1e3;
-  var TimerBasedCleanupTracking = class {
-    constructor(timeout2 = CLEANUP_TIMER_LOOP_MILLIS) {
-      this.timeouts = /* @__PURE__ */ new Map();
-      this.cleanupTimeout = CLEANUP_TIMER_LOOP_MILLIS;
-      this.cleanupTimeout = timeout2;
-    }
-    register(object, unsubscribe, unregisterToken) {
-      if (!this.timeouts) {
-        this.timeouts = /* @__PURE__ */ new Map();
-      }
-      const timeout2 = setTimeout(() => {
-        if (typeof unsubscribe === "function") {
-          unsubscribe();
-        }
-        this.timeouts.delete(unregisterToken.cleanupToken);
-      }, this.cleanupTimeout);
-      this.timeouts.set(unregisterToken.cleanupToken, timeout2);
-    }
-    unregister(unregisterToken) {
-      const timeout2 = this.timeouts.get(unregisterToken.cleanupToken);
-      if (timeout2) {
-        this.timeouts.delete(unregisterToken.cleanupToken);
-        clearTimeout(timeout2);
-      }
-    }
-    reset() {
-      if (this.timeouts) {
-        this.timeouts.forEach((value, key) => {
-          this.unregister({
-            cleanupToken: key
-          });
-        });
-        this.timeouts = void 0;
-      }
-    }
-  };
-
-  // node_modules/@mui/x-tree-view/internals/utils/cleanupTracking/FinalizationRegistryBasedCleanupTracking.js
-  var FinalizationRegistryBasedCleanupTracking = class {
-    constructor() {
-      this.registry = new FinalizationRegistry((unsubscribe) => {
-        if (typeof unsubscribe === "function") {
-          unsubscribe();
-        }
-      });
-    }
-    register(object, unsubscribe, unregisterToken) {
-      this.registry.register(object, unsubscribe, unregisterToken);
-    }
-    unregister(unregisterToken) {
-      this.registry.unregister(unregisterToken);
-    }
-    // eslint-disable-next-line class-methods-use-this
-    reset() {
-    }
-  };
-
-  // node_modules/@mui/x-tree-view/internals/hooks/useInstanceEventHandler.js
-  var ObjectToBeRetainedByReact = class {
-  };
-  function createUseInstanceEventHandler(registryContainer2) {
-    let cleanupTokensCounter = 0;
-    return function useInstanceEventHandler2(instance, eventName, handler) {
-      if (registryContainer2.registry === null) {
-        registryContainer2.registry = typeof FinalizationRegistry !== "undefined" ? new FinalizationRegistryBasedCleanupTracking() : new TimerBasedCleanupTracking();
-      }
-      const [objectRetainedByReact] = React26.useState(new ObjectToBeRetainedByReact());
-      const subscription = React26.useRef(null);
-      const handlerRef = React26.useRef(void 0);
-      handlerRef.current = handler;
-      const cleanupTokenRef = React26.useRef(null);
-      if (!subscription.current && handlerRef.current) {
-        const enhancedHandler = (params, event) => {
-          if (!event.defaultMuiPrevented) {
-            handlerRef.current?.(params, event);
-          }
-        };
-        subscription.current = instance.$$subscribeEvent(eventName, enhancedHandler);
-        cleanupTokensCounter += 1;
-        cleanupTokenRef.current = {
-          cleanupToken: cleanupTokensCounter
-        };
-        registryContainer2.registry.register(
-          objectRetainedByReact,
-          // The callback below will be called once this reference stops being retained
-          () => {
-            subscription.current?.();
-            subscription.current = null;
-            cleanupTokenRef.current = null;
-          },
-          cleanupTokenRef.current
-        );
-      } else if (!handlerRef.current && subscription.current) {
-        subscription.current();
-        subscription.current = null;
-        if (cleanupTokenRef.current) {
-          registryContainer2.registry.unregister(cleanupTokenRef.current);
-          cleanupTokenRef.current = null;
-        }
-      }
-      React26.useEffect(() => {
-        if (!subscription.current && handlerRef.current) {
-          const enhancedHandler = (params, event) => {
-            if (!event.defaultMuiPrevented) {
-              handlerRef.current?.(params, event);
-            }
-          };
-          subscription.current = instance.$$subscribeEvent(eventName, enhancedHandler);
-        }
-        if (cleanupTokenRef.current && registryContainer2.registry) {
-          registryContainer2.registry.unregister(cleanupTokenRef.current);
-          cleanupTokenRef.current = null;
-        }
-        return () => {
-          subscription.current?.();
-          subscription.current = null;
-        };
-      }, [instance, eventName]);
-    };
   }
-  var registryContainer = {
-    registry: null
-  };
-  var useInstanceEventHandler = createUseInstanceEventHandler(registryContainer);
-
-  // node_modules/@mui/x-tree-view/internals/utils/utils.js
-  var getActiveElement = (root = document) => {
-    const activeEl = root.activeElement;
-    if (!activeEl) {
+  function validator(props, propName, ...other) {
+    const propValue = props[propName];
+    if (propValue === void 0) {
       return null;
     }
-    if (activeEl.shadowRoot) {
-      return getActiveElement(activeEl.shadowRoot);
-    }
-    return activeEl;
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewFocus/useTreeViewFocus.js
-  var useDefaultFocusableItemId = (instance, selectedItems) => {
-    let tabbableItemId = convertSelectedItemsToArray(selectedItems).find((itemId) => {
-      if (!instance.isItemNavigable(itemId)) {
-        return false;
-      }
-      const itemMeta = instance.getItemMeta(itemId);
-      return itemMeta && (itemMeta.parentId == null || instance.isItemExpanded(itemMeta.parentId));
-    });
-    if (tabbableItemId == null) {
-      tabbableItemId = getFirstNavigableItem(instance);
-    }
-    return tabbableItemId;
-  };
-  var useTreeViewFocus = ({
-    instance,
-    params,
-    state,
-    setState,
-    models,
-    rootRef
-  }) => {
-    const defaultFocusableItemId = useDefaultFocusableItemId(instance, models.selectedItems.value);
-    const setFocusedItemId = useEventCallback_default((itemId) => {
-      const cleanItemId = typeof itemId === "function" ? itemId(state.focusedItemId) : itemId;
-      if (state.focusedItemId !== cleanItemId) {
-        setState((prevState) => _extends({}, prevState, {
-          focusedItemId: cleanItemId
-        }));
-      }
-    });
-    const isTreeViewFocused = React27.useCallback(() => !!rootRef.current && rootRef.current.contains(getActiveElement(ownerDocument(rootRef.current))), [rootRef]);
-    const isItemFocused = React27.useCallback((itemId) => state.focusedItemId === itemId && isTreeViewFocused(), [state.focusedItemId, isTreeViewFocused]);
-    const isItemVisible = (itemId) => {
-      const itemMeta = instance.getItemMeta(itemId);
-      return itemMeta && (itemMeta.parentId == null || instance.isItemExpanded(itemMeta.parentId));
-    };
-    const innerFocusItem = (event, itemId) => {
-      const itemElement = instance.getItemDOMElement(itemId);
-      if (itemElement) {
-        itemElement.focus();
-      }
-      setFocusedItemId(itemId);
-      if (params.onItemFocus) {
-        params.onItemFocus(event, itemId);
-      }
-    };
-    const focusItem = useEventCallback_default((event, itemId) => {
-      if (isItemVisible(itemId)) {
-        innerFocusItem(event, itemId);
-      }
-    });
-    const removeFocusedItem = useEventCallback_default(() => {
-      if (state.focusedItemId == null) {
-        return;
-      }
-      const itemMeta = instance.getItemMeta(state.focusedItemId);
-      if (itemMeta) {
-        const itemElement = instance.getItemDOMElement(state.focusedItemId);
-        if (itemElement) {
-          itemElement.blur();
-        }
-      }
-      setFocusedItemId(null);
-    });
-    const canItemBeTabbed = (itemId) => itemId === defaultFocusableItemId;
-    useInstanceEventHandler(instance, "removeItem", ({
-      id
-    }) => {
-      if (state.focusedItemId === id) {
-        innerFocusItem(null, defaultFocusableItemId);
-      }
-    });
-    const createRootHandleFocus = (otherHandlers) => (event) => {
-      otherHandlers.onFocus?.(event);
-      if (event.defaultMuiPrevented) {
-        return;
-      }
-      if (event.target === event.currentTarget) {
-        innerFocusItem(event, defaultFocusableItemId);
-      }
-    };
-    return {
-      getRootProps: (otherHandlers) => ({
-        onFocus: createRootHandleFocus(otherHandlers)
-      }),
-      publicAPI: {
-        focusItem
-      },
-      instance: {
-        isItemFocused,
-        canItemBeTabbed,
-        focusItem,
-        removeFocusedItem
-      }
-    };
-  };
-  useTreeViewFocus.getInitialState = () => ({
-    focusedItemId: null
-  });
-  useTreeViewFocus.params = {
-    onItemFocus: true
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewKeyboardNavigation/useTreeViewKeyboardNavigation.js
-  var React31 = __toESM(require_react());
-
-  // node_modules/@mui/system/esm/RtlProvider/index.js
-  var React28 = __toESM(require_react(), 1);
-  var import_prop_types5 = __toESM(require_prop_types(), 1);
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
-  var RtlContext = /* @__PURE__ */ React28.createContext();
-  function RtlProvider({
-    value,
-    ...props
-  }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(RtlContext.Provider, {
-      value: value ?? true,
-      ...props
-    });
+    return requiredInteger(props, propName, ...other);
   }
-  true ? RtlProvider.propTypes = {
-    children: import_prop_types5.default.node,
-    value: import_prop_types5.default.bool
-  } : void 0;
-  var useRtl = () => {
-    const value = React28.useContext(RtlContext);
-    return value ?? false;
-  };
+  function validatorNoop() {
+    return null;
+  }
+  validator.isRequired = requiredInteger;
+  validatorNoop.isRequired = validatorNoop;
+  var integerPropType_default = false ? validatorNoop : validator;
 
-  // node_modules/@mui/x-tree-view/internals/utils/plugins.js
-  var hasPlugin = (instance, plugin) => {
-    const plugins = instance.getAvailablePlugins();
-    return plugins.has(plugin);
-  };
+  // node_modules/@mui/utils/esm/chainPropTypes/chainPropTypes.js
+  function chainPropTypes(propType1, propType2) {
+    if (false) {
+      return () => null;
+    }
+    return function validate(...args) {
+      return propType1(...args) || propType2(...args);
+    };
+  }
 
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewLabel/useTreeViewLabel.js
-  init_extends();
-  var React30 = __toESM(require_react());
+  // node_modules/@mui/material/Paper/Paper.js
+  var import_colorManipulator2 = __toESM(require_colorManipulator());
 
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewLabel/useTreeViewLabel.itemPlugin.js
-  var React29 = __toESM(require_react());
-  var useTreeViewLabelItemPlugin = ({
-    props
-  }) => {
-    const {
-      instance
-    } = useTreeViewContext();
-    const {
-      label,
-      itemId
-    } = props;
-    const [labelInputValue, setLabelInputValue] = React29.useState(label);
-    const isItemBeingEdited = instance.isItemBeingEdited(itemId);
-    React29.useEffect(() => {
-      if (!isItemBeingEdited) {
-        setLabelInputValue(label);
-      }
-    }, [isItemBeingEdited, label]);
-    return {
-      propsEnhancers: {
-        labelInput: ({
-          externalEventHandlers,
-          interactions
-        }) => {
-          const editable = instance.isItemEditable(itemId);
-          if (!editable) {
-            return {};
-          }
-          const handleKeydown = (event) => {
-            externalEventHandlers.onKeyDown?.(event);
-            if (event.defaultMuiPrevented) {
-              return;
-            }
-            const target = event.target;
-            if (event.key === "Enter" && target.value) {
-              interactions.handleSaveItemLabel(event, target.value);
-            } else if (event.key === "Escape") {
-              interactions.handleCancelItemLabelEditing(event);
-            }
-          };
-          const handleBlur = (event) => {
-            externalEventHandlers.onBlur?.(event);
-            if (event.defaultMuiPrevented) {
-              return;
-            }
-            if (event.target.value) {
-              interactions.handleSaveItemLabel(event, event.target.value);
-            }
-          };
-          const handleInputChange = (event) => {
-            externalEventHandlers.onChange?.(event);
-            setLabelInputValue(event.target.value);
-          };
-          return {
-            value: labelInputValue ?? "",
-            "data-element": "labelInput",
-            onChange: handleInputChange,
-            onKeyDown: handleKeydown,
-            onBlur: handleBlur,
-            autoFocus: true,
-            type: "text"
-          };
-        }
-      }
-    };
+  // node_modules/@mui/material/styles/getOverlayAlpha.js
+  var getOverlayAlpha = (elevation) => {
+    let alphaValue;
+    if (elevation < 1) {
+      alphaValue = 5.11916 * elevation ** 2;
+    } else {
+      alphaValue = 4.5 * Math.log(elevation + 1) + 2;
+    }
+    return (alphaValue / 100).toFixed(2);
   };
+  var getOverlayAlpha_default = getOverlayAlpha;
 
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewLabel/useTreeViewLabel.js
-  var useTreeViewLabel = ({
-    instance,
-    state,
-    setState,
-    params
-  }) => {
-    const editedItemRef = React30.useRef(state.editedItemId);
-    const isItemBeingEditedRef = (itemId) => editedItemRef.current === itemId;
-    const setEditedItemId = (editedItemId) => {
-      setState((prevState) => _extends({}, prevState, {
-        editedItemId
-      }));
-      editedItemRef.current = editedItemId;
-    };
-    const isItemBeingEdited = (itemId) => itemId === state.editedItemId;
-    const isTreeViewEditable = Boolean(params.isItemEditable);
-    const isItemEditable = (itemId) => {
-      if (itemId == null || !isTreeViewEditable) {
-        return false;
-      }
-      const item = instance.getItem(itemId);
-      if (!item) {
-        return false;
-      }
-      return typeof params.isItemEditable === "function" ? params.isItemEditable(item) : Boolean(params.isItemEditable);
-    };
-    const updateItemLabel = (itemId, label) => {
-      if (!label) {
-        throw new Error(["MUI X: The Tree View component requires all items to have a `label` property.", "The label of an item cannot be empty.", itemId].join("\n"));
-      }
-      setState((prevState) => {
-        const item = prevState.items.itemMetaMap[itemId];
-        if (item.label !== label) {
-          return _extends({}, prevState, {
-            items: _extends({}, prevState.items, {
-              itemMetaMap: _extends({}, prevState.items.itemMetaMap, {
-                [itemId]: _extends({}, item, {
-                  label
-                })
-              })
-            })
-          });
-        }
-        return prevState;
-      });
-      if (params.onItemLabelChange) {
-        params.onItemLabelChange(itemId, label);
-      }
-    };
-    return {
-      instance: {
-        setEditedItemId,
-        isItemBeingEdited,
-        updateItemLabel,
-        isItemEditable,
-        isTreeViewEditable,
-        isItemBeingEditedRef
-      },
-      publicAPI: {
-        updateItemLabel
-      }
-    };
-  };
-  useTreeViewLabel.itemPlugin = useTreeViewLabelItemPlugin;
-  useTreeViewLabel.getDefaultizedParams = ({
-    params,
-    experimentalFeatures
-  }) => {
-    const canUseFeature = experimentalFeatures?.labelEditing;
+  // node_modules/@mui/material/styles/useTheme.js
+  var React15 = __toESM(require_react());
+
+  // node_modules/@mui/material/node_modules/@mui/system/esm/index.js
+  var import_styled_engine2 = __toESM(require_node());
+
+  // node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js
+  function generateUtilityClasses(componentName, slots, globalStatePrefix = "Mui") {
+    const result = {};
+    slots.forEach((slot) => {
+      result[slot] = generateUtilityClass(componentName, slot, globalStatePrefix);
+    });
+    return result;
+  }
+
+  // node_modules/@mui/utils/esm/useEnhancedEffect/useEnhancedEffect.js
+  var React9 = __toESM(require_react());
+  var useEnhancedEffect = typeof window !== "undefined" ? React9.useLayoutEffect : React9.useEffect;
+  var useEnhancedEffect_default = useEnhancedEffect;
+
+  // node_modules/@mui/material/node_modules/@mui/system/esm/colorManipulator.js
+  var import_clamp = __toESM(require_clamp2());
+  function clampWrapper(value, min = 0, max = 1) {
     if (true) {
-      if (params.isItemEditable && !canUseFeature) {
-        warnOnce(["MUI X: The label editing feature requires the `labelEditing` experimental feature to be enabled.", "You can do it by passing `experimentalFeatures={{ labelEditing: true}}` to the Rich Tree View Pro component.", "Check the documentation for more details: https://mui.com/x/react-tree-view/rich-tree-view/editing/"]);
+      if (value < min || value > max) {
+        console.error(`MUI: The value provided ${value} is out of range [${min}, ${max}].`);
       }
     }
-    return _extends({}, params, {
-      isItemEditable: canUseFeature ? params.isItemEditable ?? false : false
-    });
-  };
-  useTreeViewLabel.getInitialState = () => ({
-    editedItemId: null
-  });
-  useTreeViewLabel.params = {
-    onItemLabelChange: true,
-    isItemEditable: true
-  };
-
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewKeyboardNavigation/useTreeViewKeyboardNavigation.js
-  function isPrintableKey(string) {
-    return !!string && string.length === 1 && !!string.match(/\S/);
+    return (0, import_clamp.default)(value, min, max);
   }
-  var useTreeViewKeyboardNavigation = ({
-    instance,
-    params,
-    state
-  }) => {
-    const isRtl = useRtl();
-    const firstCharMap = React31.useRef({});
-    const updateFirstCharMap = useEventCallback_default((callback) => {
-      firstCharMap.current = callback(firstCharMap.current);
+  function hexToRgb(color3) {
+    color3 = color3.slice(1);
+    const re = new RegExp(`.{1,${color3.length >= 6 ? 2 : 1}}`, "g");
+    let colors = color3.match(re);
+    if (colors && colors[0].length === 1) {
+      colors = colors.map((n) => n + n);
+    }
+    return colors ? `rgb${colors.length === 4 ? "a" : ""}(${colors.map((n, index) => {
+      return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1e3) / 1e3;
+    }).join(", ")})` : "";
+  }
+  function decomposeColor(color3) {
+    if (color3.type) {
+      return color3;
+    }
+    if (color3.charAt(0) === "#") {
+      return decomposeColor(hexToRgb(color3));
+    }
+    const marker = color3.indexOf("(");
+    const type = color3.substring(0, marker);
+    if (["rgb", "rgba", "hsl", "hsla", "color"].indexOf(type) === -1) {
+      throw new Error(true ? `MUI: Unsupported \`${color3}\` color.
+The following formats are supported: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla(), color().` : (0, import_formatMuiErrorMessage.default)(9, color3));
+    }
+    let values4 = color3.substring(marker + 1, color3.length - 1);
+    let colorSpace;
+    if (type === "color") {
+      values4 = values4.split(" ");
+      colorSpace = values4.shift();
+      if (values4.length === 4 && values4[3].charAt(0) === "/") {
+        values4[3] = values4[3].slice(1);
+      }
+      if (["srgb", "display-p3", "a98-rgb", "prophoto-rgb", "rec-2020"].indexOf(colorSpace) === -1) {
+        throw new Error(true ? `MUI: unsupported \`${colorSpace}\` color space.
+The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rgb, rec-2020.` : (0, import_formatMuiErrorMessage.default)(10, colorSpace));
+      }
+    } else {
+      values4 = values4.split(",");
+    }
+    values4 = values4.map((value) => parseFloat(value));
+    return {
+      type,
+      values: values4,
+      colorSpace
+    };
+  }
+  function recomposeColor(color3) {
+    const {
+      type,
+      colorSpace
+    } = color3;
+    let {
+      values: values4
+    } = color3;
+    if (type.indexOf("rgb") !== -1) {
+      values4 = values4.map((n, i) => i < 3 ? parseInt(n, 10) : n);
+    } else if (type.indexOf("hsl") !== -1) {
+      values4[1] = `${values4[1]}%`;
+      values4[2] = `${values4[2]}%`;
+    }
+    if (type.indexOf("color") !== -1) {
+      values4 = `${colorSpace} ${values4.join(" ")}`;
+    } else {
+      values4 = `${values4.join(", ")}`;
+    }
+    return `${type}(${values4})`;
+  }
+  function alpha(color3, value) {
+    color3 = decomposeColor(color3);
+    value = clampWrapper(value);
+    if (color3.type === "rgb" || color3.type === "hsl") {
+      color3.type += "a";
+    }
+    if (color3.type === "color") {
+      color3.values[3] = `/${value}`;
+    } else {
+      color3.values[3] = value;
+    }
+    return recomposeColor(color3);
+  }
+
+  // node_modules/@mui/utils/esm/elementTypeAcceptingRef/elementTypeAcceptingRef.js
+  var import_prop_types4 = __toESM(require_prop_types());
+  function isClassComponent(elementType) {
+    const {
+      prototype = {}
+    } = elementType;
+    return Boolean(prototype.isReactComponent);
+  }
+  function elementTypeAcceptingRef(props, propName, componentName, location, propFullName) {
+    const propValue = props[propName];
+    const safePropName = propFullName || propName;
+    if (propValue == null || // When server-side rendering React doesn't warn either.
+    // This is not an accurate check for SSR.
+    // This is only in place for emotion compat.
+    // TODO: Revisit once https://github.com/facebook/react/issues/20047 is resolved.
+    typeof window === "undefined") {
+      return null;
+    }
+    let warningHint;
+    if (typeof propValue === "function" && !isClassComponent(propValue)) {
+      warningHint = "Did you accidentally provide a plain function component instead?";
+    }
+    if (warningHint !== void 0) {
+      return new Error(`Invalid ${location} \`${safePropName}\` supplied to \`${componentName}\`. Expected an element type that can hold a ref. ${warningHint} For more information see https://mui.com/r/caveat-with-refs-guide`);
+    }
+    return null;
+  }
+  var elementTypeAcceptingRef_default = chainPropTypes(import_prop_types4.default.elementType, elementTypeAcceptingRef);
+
+  // node_modules/@mui/utils/esm/refType/refType.js
+  var import_prop_types5 = __toESM(require_prop_types());
+  var refType = import_prop_types5.default.oneOfType([import_prop_types5.default.func, import_prop_types5.default.object]);
+  var refType_default = refType;
+
+  // node_modules/@mui/utils/esm/useControlled/useControlled.js
+  var React10 = __toESM(require_react());
+  function useControlled({
+    controlled,
+    default: defaultProp,
+    name,
+    state = "value"
+  }) {
+    const {
+      current: isControlled
+    } = React10.useRef(controlled !== void 0);
+    const [valueState, setValue] = React10.useState(defaultProp);
+    const value = isControlled ? controlled : valueState;
+    if (true) {
+      React10.useEffect(() => {
+        if (isControlled !== (controlled !== void 0)) {
+          console.error([`MUI: A component is changing the ${isControlled ? "" : "un"}controlled ${state} state of ${name} to be ${isControlled ? "un" : ""}controlled.`, "Elements should not switch from uncontrolled to controlled (or vice versa).", `Decide between using a controlled or uncontrolled ${name} element for the lifetime of the component.`, "The nature of the state is determined during the first render. It's considered controlled if the value is not `undefined`.", "More info: https://fb.me/react-controlled-components"].join("\n"));
+        }
+      }, [state, name, controlled]);
+      const {
+        current: defaultValue
+      } = React10.useRef(defaultProp);
+      React10.useEffect(() => {
+        if (!isControlled && !Object.is(defaultValue, defaultProp)) {
+          console.error([`MUI: A component is changing the default ${state} state of an uncontrolled ${name} after being initialized. To suppress this warning opt to use a controlled ${name}.`].join("\n"));
+        }
+      }, [JSON.stringify(defaultProp)]);
+    }
+    const setValueIfUncontrolled = React10.useCallback((newValue) => {
+      if (!isControlled) {
+        setValue(newValue);
+      }
+    }, []);
+    return [value, setValueIfUncontrolled];
+  }
+
+  // node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
+  var React11 = __toESM(require_react());
+  function useEventCallback(fn) {
+    const ref = React11.useRef(fn);
+    useEnhancedEffect_default(() => {
+      ref.current = fn;
     });
-    React31.useEffect(() => {
-      if (instance.areItemUpdatesPrevented()) {
-        return;
-      }
-      const newFirstCharMap = {};
-      const processItem = (item) => {
-        newFirstCharMap[item.id] = item.label.substring(0, 1).toLowerCase();
-      };
-      Object.values(state.items.itemMetaMap).forEach(processItem);
-      firstCharMap.current = newFirstCharMap;
-    }, [state.items.itemMetaMap, params.getItemId, instance]);
-    const getFirstMatchingItem = (itemId, query) => {
-      const cleanQuery = query.toLowerCase();
-      const getNextItem = (itemIdToCheck) => {
-        const nextItemId = getNextNavigableItem(instance, itemIdToCheck);
-        if (nextItemId === null) {
-          return getFirstNavigableItem(instance);
-        }
-        return nextItemId;
-      };
-      let matchingItemId = null;
-      let currentItemId = getNextItem(itemId);
-      const checkedItems = {};
-      while (matchingItemId == null && !checkedItems[currentItemId]) {
-        if (firstCharMap.current[currentItemId] === cleanQuery) {
-          matchingItemId = currentItemId;
-        } else {
-          checkedItems[currentItemId] = true;
-          currentItemId = getNextItem(currentItemId);
-        }
-      }
-      return matchingItemId;
-    };
-    const canToggleItemSelection = (itemId) => !params.disableSelection && !instance.isItemDisabled(itemId);
-    const canToggleItemExpansion = (itemId) => {
-      return !instance.isItemDisabled(itemId) && instance.isItemExpandable(itemId);
-    };
-    const handleItemKeyDown = (event, itemId) => {
-      if (event.defaultMuiPrevented) {
-        return;
-      }
-      if (event.altKey || isTargetInDescendants(event.target, event.currentTarget)) {
-        return;
-      }
-      const ctrlPressed = event.ctrlKey || event.metaKey;
-      const key = event.key;
-      switch (true) {
-        case (key === " " && canToggleItemSelection(itemId)): {
-          event.preventDefault();
-          if (params.multiSelect && event.shiftKey) {
-            instance.expandSelectionRange(event, itemId);
-          } else {
-            instance.selectItem({
-              event,
-              itemId,
-              keepExistingSelection: params.multiSelect,
-              shouldBeSelected: params.multiSelect ? void 0 : true
-            });
-          }
-          break;
-        }
-        case key === "Enter": {
-          if (hasPlugin(instance, useTreeViewLabel) && instance.isItemEditable(itemId) && !instance.isItemBeingEdited(itemId)) {
-            instance.setEditedItemId(itemId);
-          } else if (canToggleItemExpansion(itemId)) {
-            instance.toggleItemExpansion(event, itemId);
-            event.preventDefault();
-          } else if (canToggleItemSelection(itemId)) {
-            if (params.multiSelect) {
-              event.preventDefault();
-              instance.selectItem({
-                event,
-                itemId,
-                keepExistingSelection: true
-              });
-            } else if (!instance.isItemSelected(itemId)) {
-              instance.selectItem({
-                event,
-                itemId
-              });
-              event.preventDefault();
-            }
-          }
-          break;
-        }
-        case key === "ArrowDown": {
-          const nextItem = getNextNavigableItem(instance, itemId);
-          if (nextItem) {
-            event.preventDefault();
-            instance.focusItem(event, nextItem);
-            if (params.multiSelect && event.shiftKey && canToggleItemSelection(nextItem)) {
-              instance.selectItemFromArrowNavigation(event, itemId, nextItem);
-            }
-          }
-          break;
-        }
-        case key === "ArrowUp": {
-          const previousItem = getPreviousNavigableItem(instance, itemId);
-          if (previousItem) {
-            event.preventDefault();
-            instance.focusItem(event, previousItem);
-            if (params.multiSelect && event.shiftKey && canToggleItemSelection(previousItem)) {
-              instance.selectItemFromArrowNavigation(event, itemId, previousItem);
-            }
-          }
-          break;
-        }
-        case (key === "ArrowRight" && !isRtl || key === "ArrowLeft" && isRtl): {
-          if (ctrlPressed) {
-            return;
-          }
-          if (instance.isItemExpanded(itemId)) {
-            const nextItemId = getNextNavigableItem(instance, itemId);
-            if (nextItemId) {
-              instance.focusItem(event, nextItemId);
-              event.preventDefault();
-            }
-          } else if (canToggleItemExpansion(itemId)) {
-            instance.toggleItemExpansion(event, itemId);
-            event.preventDefault();
-          }
-          break;
-        }
-        case (key === "ArrowLeft" && !isRtl || key === "ArrowRight" && isRtl): {
-          if (ctrlPressed) {
-            return;
-          }
-          if (canToggleItemExpansion(itemId) && instance.isItemExpanded(itemId)) {
-            instance.toggleItemExpansion(event, itemId);
-            event.preventDefault();
-          } else {
-            const parent = instance.getItemMeta(itemId).parentId;
-            if (parent) {
-              instance.focusItem(event, parent);
-              event.preventDefault();
-            }
-          }
-          break;
-        }
-        case key === "Home": {
-          if (canToggleItemSelection(itemId) && params.multiSelect && ctrlPressed && event.shiftKey) {
-            instance.selectRangeFromStartToItem(event, itemId);
-          } else {
-            instance.focusItem(event, getFirstNavigableItem(instance));
-          }
-          event.preventDefault();
-          break;
-        }
-        case key === "End": {
-          if (canToggleItemSelection(itemId) && params.multiSelect && ctrlPressed && event.shiftKey) {
-            instance.selectRangeFromItemToEnd(event, itemId);
-          } else {
-            instance.focusItem(event, getLastNavigableItem(instance));
-          }
-          event.preventDefault();
-          break;
-        }
-        case key === "*": {
-          instance.expandAllSiblings(event, itemId);
-          event.preventDefault();
-          break;
-        }
-        case (String.fromCharCode(event.keyCode) === "A" && ctrlPressed && params.multiSelect && !params.disableSelection): {
-          instance.selectAllNavigableItems(event);
-          event.preventDefault();
-          break;
-        }
-        case (!ctrlPressed && !event.shiftKey && isPrintableKey(key)): {
-          const matchingItem = getFirstMatchingItem(itemId, key);
-          if (matchingItem != null) {
-            instance.focusItem(event, matchingItem);
-            event.preventDefault();
-          }
-          break;
-        }
-      }
-    };
-    return {
-      instance: {
-        updateFirstCharMap,
-        handleItemKeyDown
-      }
-    };
-  };
-  useTreeViewKeyboardNavigation.params = {};
+    return React11.useRef((...args) => (
+      // @ts-expect-error hide `this`
+      (0, ref.current)(...args)
+    )).current;
+  }
+  var useEventCallback_default = useEventCallback;
 
-  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewIcons/useTreeViewIcons.js
-  var useTreeViewIcons = ({
-    slots,
-    slotProps
+  // node_modules/@mui/utils/esm/useLazyRef/useLazyRef.js
+  var React12 = __toESM(require_react());
+  var UNINITIALIZED = {};
+  function useLazyRef(init, initArg) {
+    const ref = React12.useRef(UNINITIALIZED);
+    if (ref.current === UNINITIALIZED) {
+      ref.current = init(initArg);
+    }
+    return ref;
+  }
+
+  // node_modules/@mui/utils/esm/useOnMount/useOnMount.js
+  var React13 = __toESM(require_react());
+  var EMPTY = [];
+  function useOnMount(fn) {
+    React13.useEffect(fn, EMPTY);
+  }
+
+  // node_modules/@mui/utils/esm/useTimeout/useTimeout.js
+  var Timeout = class _Timeout {
+    constructor() {
+      this.currentId = null;
+      this.clear = () => {
+        if (this.currentId !== null) {
+          clearTimeout(this.currentId);
+          this.currentId = null;
+        }
+      };
+      this.disposeEffect = () => {
+        return this.clear;
+      };
+    }
+    static create() {
+      return new _Timeout();
+    }
+    /**
+     * Executes `fn` after `delay`, clearing any previously scheduled call.
+     */
+    start(delay, fn) {
+      this.clear();
+      this.currentId = setTimeout(() => {
+        this.currentId = null;
+        fn();
+      }, delay);
+    }
+  };
+  function useTimeout() {
+    const timeout2 = useLazyRef(Timeout.create).current;
+    useOnMount(timeout2.disposeEffect);
+    return timeout2;
+  }
+
+  // node_modules/@mui/utils/esm/useIsFocusVisible/useIsFocusVisible.js
+  var React14 = __toESM(require_react());
+  var hadKeyboardEvent = true;
+  var hadFocusVisibleRecently = false;
+  var hadFocusVisibleRecentlyTimeout = new Timeout();
+  var inputTypesWhitelist = {
+    text: true,
+    search: true,
+    url: true,
+    tel: true,
+    email: true,
+    password: true,
+    number: true,
+    date: true,
+    month: true,
+    week: true,
+    time: true,
+    datetime: true,
+    "datetime-local": true
+  };
+  function focusTriggersKeyboardModality(node2) {
+    const {
+      type,
+      tagName
+    } = node2;
+    if (tagName === "INPUT" && inputTypesWhitelist[type] && !node2.readOnly) {
+      return true;
+    }
+    if (tagName === "TEXTAREA" && !node2.readOnly) {
+      return true;
+    }
+    if (node2.isContentEditable) {
+      return true;
+    }
+    return false;
+  }
+  function handleKeyDown(event) {
+    if (event.metaKey || event.altKey || event.ctrlKey) {
+      return;
+    }
+    hadKeyboardEvent = true;
+  }
+  function handlePointerDown() {
+    hadKeyboardEvent = false;
+  }
+  function handleVisibilityChange() {
+    if (this.visibilityState === "hidden") {
+      if (hadFocusVisibleRecently) {
+        hadKeyboardEvent = true;
+      }
+    }
+  }
+  function prepare(doc) {
+    doc.addEventListener("keydown", handleKeyDown, true);
+    doc.addEventListener("mousedown", handlePointerDown, true);
+    doc.addEventListener("pointerdown", handlePointerDown, true);
+    doc.addEventListener("touchstart", handlePointerDown, true);
+    doc.addEventListener("visibilitychange", handleVisibilityChange, true);
+  }
+  function isFocusVisible(event) {
+    const {
+      target
+    } = event;
+    try {
+      return target.matches(":focus-visible");
+    } catch (error) {
+    }
+    return hadKeyboardEvent || focusTriggersKeyboardModality(target);
+  }
+  function useIsFocusVisible() {
+    const ref = React14.useCallback((node2) => {
+      if (node2 != null) {
+        prepare(node2.ownerDocument);
+      }
+    }, []);
+    const isFocusVisibleRef = React14.useRef(false);
+    function handleBlurVisible() {
+      if (isFocusVisibleRef.current) {
+        hadFocusVisibleRecently = true;
+        hadFocusVisibleRecentlyTimeout.start(100, () => {
+          hadFocusVisibleRecently = false;
+        });
+        isFocusVisibleRef.current = false;
+        return true;
+      }
+      return false;
+    }
+    function handleFocusVisible(event) {
+      if (isFocusVisible(event)) {
+        isFocusVisibleRef.current = true;
+        return true;
+      }
+      return false;
+    }
+    return {
+      isFocusVisibleRef,
+      onFocus: handleFocusVisible,
+      onBlur: handleBlurVisible,
+      ref
+    };
+  }
+
+  // node_modules/@mui/material/styles/useTheme.js
+  function useTheme5() {
+    const theme = useTheme_default(defaultTheme_default);
+    if (true) {
+      React15.useDebugValue(theme);
+    }
+    return theme[identifier_default] || theme;
+  }
+
+  // node_modules/@mui/material/Paper/paperClasses.js
+  function getPaperUtilityClass(slot) {
+    return generateUtilityClass("MuiPaper", slot);
+  }
+  var paperClasses = generateUtilityClasses("MuiPaper", ["root", "rounded", "outlined", "elevation", "elevation0", "elevation1", "elevation2", "elevation3", "elevation4", "elevation5", "elevation6", "elevation7", "elevation8", "elevation9", "elevation10", "elevation11", "elevation12", "elevation13", "elevation14", "elevation15", "elevation16", "elevation17", "elevation18", "elevation19", "elevation20", "elevation21", "elevation22", "elevation23", "elevation24"]);
+
+  // node_modules/@mui/material/Paper/Paper.js
+  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  var _excluded8 = ["className", "component", "elevation", "square", "variant"];
+  var useUtilityClasses = (ownerState) => {
+    const {
+      square,
+      elevation,
+      variant,
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root", variant, !square && "rounded", variant === "elevation" && `elevation${elevation}`]
+    };
+    return composeClasses(slots, getPaperUtilityClass, classes);
+  };
+  var PaperRoot = styled_default("div", {
+    name: "MuiPaper",
+    slot: "Root",
+    overridesResolver: (props, styles) => {
+      const {
+        ownerState
+      } = props;
+      return [styles.root, styles[ownerState.variant], !ownerState.square && styles.rounded, ownerState.variant === "elevation" && styles[`elevation${ownerState.elevation}`]];
+    }
+  })(({
+    theme,
+    ownerState
   }) => {
-    return {
-      contextValue: {
-        icons: {
-          slots: {
-            collapseIcon: slots.collapseIcon,
-            expandIcon: slots.expandIcon,
-            endIcon: slots.endIcon
-          },
-          slotProps: {
-            collapseIcon: slotProps.collapseIcon,
-            expandIcon: slotProps.expandIcon,
-            endIcon: slotProps.endIcon
-          }
-        }
+    var _theme$vars$overlays;
+    return _extends({
+      backgroundColor: (theme.vars || theme).palette.background.paper,
+      color: (theme.vars || theme).palette.text.primary,
+      transition: theme.transitions.create("box-shadow")
+    }, !ownerState.square && {
+      borderRadius: theme.shape.borderRadius
+    }, ownerState.variant === "outlined" && {
+      border: `1px solid ${(theme.vars || theme).palette.divider}`
+    }, ownerState.variant === "elevation" && _extends({
+      boxShadow: (theme.vars || theme).shadows[ownerState.elevation]
+    }, !theme.vars && theme.palette.mode === "dark" && {
+      backgroundImage: `linear-gradient(${(0, import_colorManipulator2.alpha)("#fff", getOverlayAlpha_default(ownerState.elevation))}, ${(0, import_colorManipulator2.alpha)("#fff", getOverlayAlpha_default(ownerState.elevation))})`
+    }, theme.vars && {
+      backgroundImage: (_theme$vars$overlays = theme.vars.overlays) == null ? void 0 : _theme$vars$overlays[ownerState.elevation]
+    }));
+  });
+  var Paper = /* @__PURE__ */ React16.forwardRef(function Paper2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiPaper"
+    });
+    const {
+      className,
+      component = "div",
+      elevation = 1,
+      square = false,
+      variant = "elevation"
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded8);
+    const ownerState = _extends({}, props, {
+      component,
+      elevation,
+      square,
+      variant
+    });
+    const classes = useUtilityClasses(ownerState);
+    if (true) {
+      const theme = useTheme5();
+      if (theme.shadows[elevation] === void 0) {
+        console.error([`MUI: The elevation provided <Paper elevation={${elevation}}> is not available in the theme.`, `Please make sure that \`theme.shadows[${elevation}]\` is defined.`].join("\n"));
       }
-    };
-  };
-  useTreeViewIcons.params = {};
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(PaperRoot, _extends({
+      as: component,
+      ownerState,
+      className: clsx_default(classes.root, className),
+      ref
+    }, other));
+  });
+  true ? Paper.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types6.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types6.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types6.default.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types6.default.elementType,
+    /**
+     * Shadow depth, corresponds to `dp` in the spec.
+     * It accepts values between 0 and 24 inclusive.
+     * @default 1
+     */
+    elevation: chainPropTypes(integerPropType_default, (props) => {
+      const {
+        elevation,
+        variant
+      } = props;
+      if (elevation > 0 && variant === "outlined") {
+        return new Error(`MUI: Combining \`elevation={${elevation}}\` with \`variant="${variant}"\` has no effect. Either use \`elevation={0}\` or use a different \`variant\`.`);
+      }
+      return null;
+    }),
+    /**
+     * If `true`, rounded corners are disabled.
+     * @default false
+     */
+    square: import_prop_types6.default.bool,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types6.default.oneOfType([import_prop_types6.default.arrayOf(import_prop_types6.default.oneOfType([import_prop_types6.default.func, import_prop_types6.default.object, import_prop_types6.default.bool])), import_prop_types6.default.func, import_prop_types6.default.object]),
+    /**
+     * The variant to use.
+     * @default 'elevation'
+     */
+    variant: import_prop_types6.default.oneOfType([import_prop_types6.default.oneOf(["elevation", "outlined"]), import_prop_types6.default.string])
+  } : void 0;
+  var Paper_default = Paper;
 
-  // node_modules/@mui/x-tree-view/RichTreeView/RichTreeView.plugins.js
-  var RICH_TREE_VIEW_PLUGINS = [useTreeViewItems, useTreeViewExpansion, useTreeViewSelection, useTreeViewFocus, useTreeViewKeyboardNavigation, useTreeViewIcons, useTreeViewLabel];
+  // node_modules/@mui/material/Alert/alertClasses.js
+  function getAlertUtilityClass(slot) {
+    return generateUtilityClass("MuiAlert", slot);
+  }
+  var alertClasses = generateUtilityClasses("MuiAlert", ["root", "action", "icon", "message", "filled", "colorSuccess", "colorInfo", "colorWarning", "colorError", "filledSuccess", "filledInfo", "filledWarning", "filledError", "outlined", "outlinedSuccess", "outlinedInfo", "outlinedWarning", "outlinedError", "standard", "standardSuccess", "standardInfo", "standardWarning", "standardError"]);
+  var alertClasses_default = alertClasses;
 
-  // node_modules/@mui/x-tree-view/internals/components/RichTreeViewItems.js
+  // node_modules/@mui/material/IconButton/IconButton.js
   init_extends();
-  var React54 = __toESM(require_react());
+  var React23 = __toESM(require_react());
+  var import_prop_types13 = __toESM(require_prop_types());
+  var import_colorManipulator3 = __toESM(require_colorManipulator());
 
-  // node_modules/@mui/x-tree-view/TreeItem/TreeItem.js
+  // node_modules/@mui/material/ButtonBase/ButtonBase.js
   init_extends();
-  var React53 = __toESM(require_react());
-  var import_prop_types21 = __toESM(require_prop_types());
+  var React22 = __toESM(require_react());
+  var import_prop_types12 = __toESM(require_prop_types());
 
-  // node_modules/@mui/material/Collapse/Collapse.js
+  // node_modules/@mui/material/utils/useForkRef.js
+  var useForkRef_default = useForkRef;
+
+  // node_modules/@mui/material/utils/useEventCallback.js
+  var useEventCallback_default2 = useEventCallback_default;
+
+  // node_modules/@mui/material/utils/useIsFocusVisible.js
+  var useIsFocusVisible_default = useIsFocusVisible;
+
+  // node_modules/@mui/material/ButtonBase/TouchRipple.js
   init_extends();
-  var React38 = __toESM(require_react());
+  var React21 = __toESM(require_react());
   var import_prop_types11 = __toESM(require_prop_types());
 
   // node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
@@ -34805,7 +33928,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   }
 
   // node_modules/react-transition-group/esm/Transition.js
-  var import_prop_types7 = __toESM(require_prop_types());
+  var import_prop_types8 = __toESM(require_prop_types());
   var import_react5 = __toESM(require_react());
   var import_react_dom = __toESM(require_react_dom());
 
@@ -34815,23 +33938,23 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   };
 
   // node_modules/react-transition-group/esm/utils/PropTypes.js
-  var import_prop_types6 = __toESM(require_prop_types());
-  var timeoutsShape = true ? import_prop_types6.default.oneOfType([import_prop_types6.default.number, import_prop_types6.default.shape({
-    enter: import_prop_types6.default.number,
-    exit: import_prop_types6.default.number,
-    appear: import_prop_types6.default.number
+  var import_prop_types7 = __toESM(require_prop_types());
+  var timeoutsShape = true ? import_prop_types7.default.oneOfType([import_prop_types7.default.number, import_prop_types7.default.shape({
+    enter: import_prop_types7.default.number,
+    exit: import_prop_types7.default.number,
+    appear: import_prop_types7.default.number
   }).isRequired]) : null;
-  var classNamesShape = true ? import_prop_types6.default.oneOfType([import_prop_types6.default.string, import_prop_types6.default.shape({
-    enter: import_prop_types6.default.string,
-    exit: import_prop_types6.default.string,
-    active: import_prop_types6.default.string
-  }), import_prop_types6.default.shape({
-    enter: import_prop_types6.default.string,
-    enterDone: import_prop_types6.default.string,
-    enterActive: import_prop_types6.default.string,
-    exit: import_prop_types6.default.string,
-    exitDone: import_prop_types6.default.string,
-    exitActive: import_prop_types6.default.string
+  var classNamesShape = true ? import_prop_types7.default.oneOfType([import_prop_types7.default.string, import_prop_types7.default.shape({
+    enter: import_prop_types7.default.string,
+    exit: import_prop_types7.default.string,
+    active: import_prop_types7.default.string
+  }), import_prop_types7.default.shape({
+    enter: import_prop_types7.default.string,
+    enterDone: import_prop_types7.default.string,
+    enterActive: import_prop_types7.default.string,
+    exit: import_prop_types7.default.string,
+    exitDone: import_prop_types7.default.string,
+    exitActive: import_prop_types7.default.string
   })]) : null;
 
   // node_modules/react-transition-group/esm/TransitionGroupContext.js
@@ -35072,10 +34195,10 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *     (see
      *     [test/CSSTransition-test.js](https://github.com/reactjs/react-transition-group/blob/13435f897b3ab71f6e19d724f145596f5910581c/test/CSSTransition-test.js#L362-L437)).
      */
-    nodeRef: import_prop_types7.default.shape({
-      current: typeof Element === "undefined" ? import_prop_types7.default.any : function(propValue, key, componentName, location, propFullName, secret) {
+    nodeRef: import_prop_types8.default.shape({
+      current: typeof Element === "undefined" ? import_prop_types8.default.any : function(propValue, key, componentName, location, propFullName, secret) {
         var value = propValue[key];
-        return import_prop_types7.default.instanceOf(value && "ownerDocument" in value ? value.ownerDocument.defaultView.Element : Element)(propValue, key, componentName, location, propFullName, secret);
+        return import_prop_types8.default.instanceOf(value && "ownerDocument" in value ? value.ownerDocument.defaultView.Element : Element)(propValue, key, componentName, location, propFullName, secret);
       }
     }),
     /**
@@ -35092,23 +34215,23 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * </Transition>
      * ```
      */
-    children: import_prop_types7.default.oneOfType([import_prop_types7.default.func.isRequired, import_prop_types7.default.element.isRequired]).isRequired,
+    children: import_prop_types8.default.oneOfType([import_prop_types8.default.func.isRequired, import_prop_types8.default.element.isRequired]).isRequired,
     /**
      * Show the component; triggers the enter or exit states
      */
-    in: import_prop_types7.default.bool,
+    in: import_prop_types8.default.bool,
     /**
      * By default the child component is mounted immediately along with
      * the parent `Transition` component. If you want to "lazy mount" the component on the
      * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
      * mounted, even on "exited", unless you also specify `unmountOnExit`.
      */
-    mountOnEnter: import_prop_types7.default.bool,
+    mountOnEnter: import_prop_types8.default.bool,
     /**
      * By default the child component stays mounted after it reaches the `'exited'` state.
      * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
      */
-    unmountOnExit: import_prop_types7.default.bool,
+    unmountOnExit: import_prop_types8.default.bool,
     /**
      * By default the child component does not perform the enter transition when
      * it first mounts, regardless of the value of `in`. If you want this
@@ -35120,15 +34243,15 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * > additional `.appear-*` classes, that way you can choose to style it
      * > differently.
      */
-    appear: import_prop_types7.default.bool,
+    appear: import_prop_types8.default.bool,
     /**
      * Enable or disable enter transitions.
      */
-    enter: import_prop_types7.default.bool,
+    enter: import_prop_types8.default.bool,
     /**
      * Enable or disable exit transitions.
      */
-    exit: import_prop_types7.default.bool,
+    exit: import_prop_types8.default.bool,
     /**
      * The duration of the transition, in milliseconds.
      * Required unless `addEndListener` is provided.
@@ -35178,7 +34301,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * }}
      * ```
      */
-    addEndListener: import_prop_types7.default.func,
+    addEndListener: import_prop_types8.default.func,
     /**
      * Callback fired before the "entering" status is applied. An extra parameter
      * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
@@ -35187,7 +34310,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *
      * @type Function(node: HtmlElement, isAppearing: bool) -> void
      */
-    onEnter: import_prop_types7.default.func,
+    onEnter: import_prop_types8.default.func,
     /**
      * Callback fired after the "entering" status is applied. An extra parameter
      * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
@@ -35196,7 +34319,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *
      * @type Function(node: HtmlElement, isAppearing: bool)
      */
-    onEntering: import_prop_types7.default.func,
+    onEntering: import_prop_types8.default.func,
     /**
      * Callback fired after the "entered" status is applied. An extra parameter
      * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
@@ -35205,7 +34328,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *
      * @type Function(node: HtmlElement, isAppearing: bool) -> void
      */
-    onEntered: import_prop_types7.default.func,
+    onEntered: import_prop_types8.default.func,
     /**
      * Callback fired before the "exiting" status is applied.
      *
@@ -35213,7 +34336,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *
      * @type Function(node: HtmlElement) -> void
      */
-    onExit: import_prop_types7.default.func,
+    onExit: import_prop_types8.default.func,
     /**
      * Callback fired after the "exiting" status is applied.
      *
@@ -35221,7 +34344,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *
      * @type Function(node: HtmlElement) -> void
      */
-    onExiting: import_prop_types7.default.func,
+    onExiting: import_prop_types8.default.func,
     /**
      * Callback fired after the "exited" status is applied.
      *
@@ -35229,7 +34352,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *
      * @type Function(node: HtmlElement) -> void
      */
-    onExited: import_prop_types7.default.func
+    onExited: import_prop_types8.default.func
   } : {};
   function noop() {
   }
@@ -35265,7 +34388,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   }
 
   // node_modules/react-transition-group/esm/TransitionGroup.js
-  var import_prop_types8 = __toESM(require_prop_types());
+  var import_prop_types9 = __toESM(require_prop_types());
   var import_react7 = __toESM(require_react());
 
   // node_modules/react-transition-group/esm/utils/ChildMapping.js
@@ -35454,7 +34577,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * you can pass in `component={null}`. This is useful if the wrapping div
      * borks your css styles.
      */
-    component: import_prop_types8.default.any,
+    component: import_prop_types9.default.any,
     /**
      * A set of `<Transition>` components, that are toggled `in` and out as they
      * leave. the `<TransitionGroup>` will inject specific transition props, so
@@ -35468,25 +34591,25 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * the transition child as you change its content, this will cause
      * `TransitionGroup` to transition the child out and back in.
      */
-    children: import_prop_types8.default.node,
+    children: import_prop_types9.default.node,
     /**
      * A convenience prop that enables or disables appear animations
      * for all children. Note that specifying this will override any defaults set
      * on individual children Transitions.
      */
-    appear: import_prop_types8.default.bool,
+    appear: import_prop_types9.default.bool,
     /**
      * A convenience prop that enables or disables enter animations
      * for all children. Note that specifying this will override any defaults set
      * on individual children Transitions.
      */
-    enter: import_prop_types8.default.bool,
+    enter: import_prop_types9.default.bool,
     /**
      * A convenience prop that enables or disables exit animations
      * for all children. Note that specifying this will override any defaults set
      * on individual children Transitions.
      */
-    exit: import_prop_types8.default.bool,
+    exit: import_prop_types9.default.bool,
     /**
      * You may need to apply reactive updates to a child as it is exiting.
      * This is generally done by using `cloneElement` however in the case of an exiting
@@ -35497,64 +34620,1043 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      *
      * @type Function(child: ReactElement) -> ReactElement
      */
-    childFactory: import_prop_types8.default.func
+    childFactory: import_prop_types9.default.func
   } : {};
   TransitionGroup.defaultProps = defaultProps;
   var TransitionGroup_default = TransitionGroup;
 
-  // node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js
-  init_extends();
-  var React35 = __toESM(require_react());
-  var import_prop_types9 = __toESM(require_prop_types());
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
-  function DefaultPropsProvider2(props) {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(DefaultPropsProvider_default, _extends({}, props));
+  // node_modules/@mui/material/ButtonBase/Ripple.js
+  var React20 = __toESM(require_react());
+  var import_prop_types10 = __toESM(require_prop_types());
+  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+  function Ripple(props) {
+    const {
+      className,
+      classes,
+      pulsate = false,
+      rippleX,
+      rippleY,
+      rippleSize,
+      in: inProp,
+      onExited,
+      timeout: timeout2
+    } = props;
+    const [leaving, setLeaving] = React20.useState(false);
+    const rippleClassName = clsx_default(className, classes.ripple, classes.rippleVisible, pulsate && classes.ripplePulsate);
+    const rippleStyles = {
+      width: rippleSize,
+      height: rippleSize,
+      top: -(rippleSize / 2) + rippleY,
+      left: -(rippleSize / 2) + rippleX
+    };
+    const childClassName = clsx_default(classes.child, leaving && classes.childLeaving, pulsate && classes.childPulsate);
+    if (!inProp && !leaving) {
+      setLeaving(true);
+    }
+    React20.useEffect(() => {
+      if (!inProp && onExited != null) {
+        const timeoutId = setTimeout(onExited, timeout2);
+        return () => {
+          clearTimeout(timeoutId);
+        };
+      }
+      return void 0;
+    }, [onExited, inProp, timeout2]);
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", {
+      className: rippleClassName,
+      style: rippleStyles,
+      children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", {
+        className: childClassName
+      })
+    });
   }
-  true ? DefaultPropsProvider2.propTypes = {
+  true ? Ripple.propTypes = {
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types10.default.object.isRequired,
+    className: import_prop_types10.default.string,
+    /**
+     * @ignore - injected from TransitionGroup
+     */
+    in: import_prop_types10.default.bool,
+    /**
+     * @ignore - injected from TransitionGroup
+     */
+    onExited: import_prop_types10.default.func,
+    /**
+     * If `true`, the ripple pulsates, typically indicating the keyboard focus state of an element.
+     */
+    pulsate: import_prop_types10.default.bool,
+    /**
+     * Diameter of the ripple.
+     */
+    rippleSize: import_prop_types10.default.number,
+    /**
+     * Horizontal position of the ripple center.
+     */
+    rippleX: import_prop_types10.default.number,
+    /**
+     * Vertical position of the ripple center.
+     */
+    rippleY: import_prop_types10.default.number,
+    /**
+     * exit delay
+     */
+    timeout: import_prop_types10.default.number.isRequired
+  } : void 0;
+  var Ripple_default = Ripple;
+
+  // node_modules/@mui/material/ButtonBase/touchRippleClasses.js
+  var touchRippleClasses = generateUtilityClasses("MuiTouchRipple", ["root", "ripple", "rippleVisible", "ripplePulsate", "child", "childLeaving", "childPulsate"]);
+  var touchRippleClasses_default = touchRippleClasses;
+
+  // node_modules/@mui/material/ButtonBase/TouchRipple.js
+  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+  var _excluded9 = ["center", "classes", "className"];
+  var _ = (t) => t;
+  var _t;
+  var _t2;
+  var _t3;
+  var _t4;
+  var DURATION = 550;
+  var DELAY_RIPPLE = 80;
+  var enterKeyframe = (0, import_styled_engine2.keyframes)(_t || (_t = _`
+  0% {
+    transform: scale(0);
+    opacity: 0.1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+`));
+  var exitKeyframe = (0, import_styled_engine2.keyframes)(_t2 || (_t2 = _`
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+`));
+  var pulsateKeyframe = (0, import_styled_engine2.keyframes)(_t3 || (_t3 = _`
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.92);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+`));
+  var TouchRippleRoot = styled_default("span", {
+    name: "MuiTouchRipple",
+    slot: "Root"
+  })({
+    overflow: "hidden",
+    pointerEvents: "none",
+    position: "absolute",
+    zIndex: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    borderRadius: "inherit"
+  });
+  var TouchRippleRipple = styled_default(Ripple_default, {
+    name: "MuiTouchRipple",
+    slot: "Ripple"
+  })(_t4 || (_t4 = _`
+  opacity: 0;
+  position: absolute;
+
+  &.${0} {
+    opacity: 0.3;
+    transform: scale(1);
+    animation-name: ${0};
+    animation-duration: ${0}ms;
+    animation-timing-function: ${0};
+  }
+
+  &.${0} {
+    animation-duration: ${0}ms;
+  }
+
+  & .${0} {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+
+  & .${0} {
+    opacity: 0;
+    animation-name: ${0};
+    animation-duration: ${0}ms;
+    animation-timing-function: ${0};
+  }
+
+  & .${0} {
+    position: absolute;
+    /* @noflip */
+    left: 0px;
+    top: 0;
+    animation-name: ${0};
+    animation-duration: 2500ms;
+    animation-timing-function: ${0};
+    animation-iteration-count: infinite;
+    animation-delay: 200ms;
+  }
+`), touchRippleClasses_default.rippleVisible, enterKeyframe, DURATION, ({
+    theme
+  }) => theme.transitions.easing.easeInOut, touchRippleClasses_default.ripplePulsate, ({
+    theme
+  }) => theme.transitions.duration.shorter, touchRippleClasses_default.child, touchRippleClasses_default.childLeaving, exitKeyframe, DURATION, ({
+    theme
+  }) => theme.transitions.easing.easeInOut, touchRippleClasses_default.childPulsate, pulsateKeyframe, ({
+    theme
+  }) => theme.transitions.easing.easeInOut);
+  var TouchRipple = /* @__PURE__ */ React21.forwardRef(function TouchRipple2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiTouchRipple"
+    });
+    const {
+      center: centerProp = false,
+      classes = {},
+      className
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded9);
+    const [ripples, setRipples] = React21.useState([]);
+    const nextKey = React21.useRef(0);
+    const rippleCallback = React21.useRef(null);
+    React21.useEffect(() => {
+      if (rippleCallback.current) {
+        rippleCallback.current();
+        rippleCallback.current = null;
+      }
+    }, [ripples]);
+    const ignoringMouseDown = React21.useRef(false);
+    const startTimer = useTimeout();
+    const startTimerCommit = React21.useRef(null);
+    const container = React21.useRef(null);
+    const startCommit = React21.useCallback((params) => {
+      const {
+        pulsate: pulsate2,
+        rippleX,
+        rippleY,
+        rippleSize,
+        cb
+      } = params;
+      setRipples((oldRipples) => [...oldRipples, /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(TouchRippleRipple, {
+        classes: {
+          ripple: clsx_default(classes.ripple, touchRippleClasses_default.ripple),
+          rippleVisible: clsx_default(classes.rippleVisible, touchRippleClasses_default.rippleVisible),
+          ripplePulsate: clsx_default(classes.ripplePulsate, touchRippleClasses_default.ripplePulsate),
+          child: clsx_default(classes.child, touchRippleClasses_default.child),
+          childLeaving: clsx_default(classes.childLeaving, touchRippleClasses_default.childLeaving),
+          childPulsate: clsx_default(classes.childPulsate, touchRippleClasses_default.childPulsate)
+        },
+        timeout: DURATION,
+        pulsate: pulsate2,
+        rippleX,
+        rippleY,
+        rippleSize
+      }, nextKey.current)]);
+      nextKey.current += 1;
+      rippleCallback.current = cb;
+    }, [classes]);
+    const start = React21.useCallback((event = {}, options = {}, cb = () => {
+    }) => {
+      const {
+        pulsate: pulsate2 = false,
+        center = centerProp || options.pulsate,
+        fakeElement = false
+        // For test purposes
+      } = options;
+      if ((event == null ? void 0 : event.type) === "mousedown" && ignoringMouseDown.current) {
+        ignoringMouseDown.current = false;
+        return;
+      }
+      if ((event == null ? void 0 : event.type) === "touchstart") {
+        ignoringMouseDown.current = true;
+      }
+      const element = fakeElement ? null : container.current;
+      const rect = element ? element.getBoundingClientRect() : {
+        width: 0,
+        height: 0,
+        left: 0,
+        top: 0
+      };
+      let rippleX;
+      let rippleY;
+      let rippleSize;
+      if (center || event === void 0 || event.clientX === 0 && event.clientY === 0 || !event.clientX && !event.touches) {
+        rippleX = Math.round(rect.width / 2);
+        rippleY = Math.round(rect.height / 2);
+      } else {
+        const {
+          clientX,
+          clientY
+        } = event.touches && event.touches.length > 0 ? event.touches[0] : event;
+        rippleX = Math.round(clientX - rect.left);
+        rippleY = Math.round(clientY - rect.top);
+      }
+      if (center) {
+        rippleSize = Math.sqrt((2 * rect.width ** 2 + rect.height ** 2) / 3);
+        if (rippleSize % 2 === 0) {
+          rippleSize += 1;
+        }
+      } else {
+        const sizeX = Math.max(Math.abs((element ? element.clientWidth : 0) - rippleX), rippleX) * 2 + 2;
+        const sizeY = Math.max(Math.abs((element ? element.clientHeight : 0) - rippleY), rippleY) * 2 + 2;
+        rippleSize = Math.sqrt(sizeX ** 2 + sizeY ** 2);
+      }
+      if (event != null && event.touches) {
+        if (startTimerCommit.current === null) {
+          startTimerCommit.current = () => {
+            startCommit({
+              pulsate: pulsate2,
+              rippleX,
+              rippleY,
+              rippleSize,
+              cb
+            });
+          };
+          startTimer.start(DELAY_RIPPLE, () => {
+            if (startTimerCommit.current) {
+              startTimerCommit.current();
+              startTimerCommit.current = null;
+            }
+          });
+        }
+      } else {
+        startCommit({
+          pulsate: pulsate2,
+          rippleX,
+          rippleY,
+          rippleSize,
+          cb
+        });
+      }
+    }, [centerProp, startCommit, startTimer]);
+    const pulsate = React21.useCallback(() => {
+      start({}, {
+        pulsate: true
+      });
+    }, [start]);
+    const stop = React21.useCallback((event, cb) => {
+      startTimer.clear();
+      if ((event == null ? void 0 : event.type) === "touchend" && startTimerCommit.current) {
+        startTimerCommit.current();
+        startTimerCommit.current = null;
+        startTimer.start(0, () => {
+          stop(event, cb);
+        });
+        return;
+      }
+      startTimerCommit.current = null;
+      setRipples((oldRipples) => {
+        if (oldRipples.length > 0) {
+          return oldRipples.slice(1);
+        }
+        return oldRipples;
+      });
+      rippleCallback.current = cb;
+    }, [startTimer]);
+    React21.useImperativeHandle(ref, () => ({
+      pulsate,
+      start,
+      stop
+    }), [pulsate, start, stop]);
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(TouchRippleRoot, _extends({
+      className: clsx_default(touchRippleClasses_default.root, classes.root, className),
+      ref: container
+    }, other, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(TransitionGroup_default, {
+        component: null,
+        exit: true,
+        children: ripples
+      })
+    }));
+  });
+  true ? TouchRipple.propTypes = {
+    /**
+     * If `true`, the ripple starts at the center of the component
+     * rather than at the point of interaction.
+     */
+    center: import_prop_types11.default.bool,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types11.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types11.default.string
+  } : void 0;
+  var TouchRipple_default = TouchRipple;
+
+  // node_modules/@mui/material/ButtonBase/buttonBaseClasses.js
+  function getButtonBaseUtilityClass(slot) {
+    return generateUtilityClass("MuiButtonBase", slot);
+  }
+  var buttonBaseClasses = generateUtilityClasses("MuiButtonBase", ["root", "disabled", "focusVisible"]);
+  var buttonBaseClasses_default = buttonBaseClasses;
+
+  // node_modules/@mui/material/ButtonBase/ButtonBase.js
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+  var _excluded10 = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
+  var useUtilityClasses2 = (ownerState) => {
+    const {
+      disabled,
+      focusVisible,
+      focusVisibleClassName,
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root", disabled && "disabled", focusVisible && "focusVisible"]
+    };
+    const composedClasses = composeClasses(slots, getButtonBaseUtilityClass, classes);
+    if (focusVisible && focusVisibleClassName) {
+      composedClasses.root += ` ${focusVisibleClassName}`;
+    }
+    return composedClasses;
+  };
+  var ButtonBaseRoot = styled_default("button", {
+    name: "MuiButtonBase",
+    slot: "Root",
+    overridesResolver: (props, styles) => styles.root
+  })({
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+    boxSizing: "border-box",
+    WebkitTapHighlightColor: "transparent",
+    backgroundColor: "transparent",
+    // Reset default value
+    // We disable the focus ring for mouse, touch and keyboard users.
+    outline: 0,
+    border: 0,
+    margin: 0,
+    // Remove the margin in Safari
+    borderRadius: 0,
+    padding: 0,
+    // Remove the padding in Firefox
+    cursor: "pointer",
+    userSelect: "none",
+    verticalAlign: "middle",
+    MozAppearance: "none",
+    // Reset
+    WebkitAppearance: "none",
+    // Reset
+    textDecoration: "none",
+    // So we take precedent over the style of a native <a /> element.
+    color: "inherit",
+    "&::-moz-focus-inner": {
+      borderStyle: "none"
+      // Remove Firefox dotted outline.
+    },
+    [`&.${buttonBaseClasses_default.disabled}`]: {
+      pointerEvents: "none",
+      // Disable link interactions
+      cursor: "default"
+    },
+    "@media print": {
+      colorAdjust: "exact"
+    }
+  });
+  var ButtonBase = /* @__PURE__ */ React22.forwardRef(function ButtonBase2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiButtonBase"
+    });
+    const {
+      action,
+      centerRipple = false,
+      children,
+      className,
+      component = "button",
+      disabled = false,
+      disableRipple = false,
+      disableTouchRipple = false,
+      focusRipple = false,
+      LinkComponent = "a",
+      onBlur,
+      onClick,
+      onContextMenu,
+      onDragLeave,
+      onFocus,
+      onFocusVisible,
+      onKeyDown,
+      onKeyUp,
+      onMouseDown,
+      onMouseLeave,
+      onMouseUp,
+      onTouchEnd,
+      onTouchMove,
+      onTouchStart,
+      tabIndex = 0,
+      TouchRippleProps,
+      touchRippleRef,
+      type
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded10);
+    const buttonRef = React22.useRef(null);
+    const rippleRef = React22.useRef(null);
+    const handleRippleRef = useForkRef_default(rippleRef, touchRippleRef);
+    const {
+      isFocusVisibleRef,
+      onFocus: handleFocusVisible,
+      onBlur: handleBlurVisible,
+      ref: focusVisibleRef
+    } = useIsFocusVisible_default();
+    const [focusVisible, setFocusVisible] = React22.useState(false);
+    if (disabled && focusVisible) {
+      setFocusVisible(false);
+    }
+    React22.useImperativeHandle(action, () => ({
+      focusVisible: () => {
+        setFocusVisible(true);
+        buttonRef.current.focus();
+      }
+    }), []);
+    const [mountedState, setMountedState] = React22.useState(false);
+    React22.useEffect(() => {
+      setMountedState(true);
+    }, []);
+    const enableTouchRipple = mountedState && !disableRipple && !disabled;
+    React22.useEffect(() => {
+      if (focusVisible && focusRipple && !disableRipple && mountedState) {
+        rippleRef.current.pulsate();
+      }
+    }, [disableRipple, focusRipple, focusVisible, mountedState]);
+    function useRippleHandler(rippleAction, eventCallback, skipRippleAction = disableTouchRipple) {
+      return useEventCallback_default2((event) => {
+        if (eventCallback) {
+          eventCallback(event);
+        }
+        const ignore = skipRippleAction;
+        if (!ignore && rippleRef.current) {
+          rippleRef.current[rippleAction](event);
+        }
+        return true;
+      });
+    }
+    const handleMouseDown = useRippleHandler("start", onMouseDown);
+    const handleContextMenu = useRippleHandler("stop", onContextMenu);
+    const handleDragLeave = useRippleHandler("stop", onDragLeave);
+    const handleMouseUp = useRippleHandler("stop", onMouseUp);
+    const handleMouseLeave = useRippleHandler("stop", (event) => {
+      if (focusVisible) {
+        event.preventDefault();
+      }
+      if (onMouseLeave) {
+        onMouseLeave(event);
+      }
+    });
+    const handleTouchStart = useRippleHandler("start", onTouchStart);
+    const handleTouchEnd = useRippleHandler("stop", onTouchEnd);
+    const handleTouchMove = useRippleHandler("stop", onTouchMove);
+    const handleBlur = useRippleHandler("stop", (event) => {
+      handleBlurVisible(event);
+      if (isFocusVisibleRef.current === false) {
+        setFocusVisible(false);
+      }
+      if (onBlur) {
+        onBlur(event);
+      }
+    }, false);
+    const handleFocus = useEventCallback_default2((event) => {
+      if (!buttonRef.current) {
+        buttonRef.current = event.currentTarget;
+      }
+      handleFocusVisible(event);
+      if (isFocusVisibleRef.current === true) {
+        setFocusVisible(true);
+        if (onFocusVisible) {
+          onFocusVisible(event);
+        }
+      }
+      if (onFocus) {
+        onFocus(event);
+      }
+    });
+    const isNonNativeButton = () => {
+      const button = buttonRef.current;
+      return component && component !== "button" && !(button.tagName === "A" && button.href);
+    };
+    const keydownRef = React22.useRef(false);
+    const handleKeyDown2 = useEventCallback_default2((event) => {
+      if (focusRipple && !keydownRef.current && focusVisible && rippleRef.current && event.key === " ") {
+        keydownRef.current = true;
+        rippleRef.current.stop(event, () => {
+          rippleRef.current.start(event);
+        });
+      }
+      if (event.target === event.currentTarget && isNonNativeButton() && event.key === " ") {
+        event.preventDefault();
+      }
+      if (onKeyDown) {
+        onKeyDown(event);
+      }
+      if (event.target === event.currentTarget && isNonNativeButton() && event.key === "Enter" && !disabled) {
+        event.preventDefault();
+        if (onClick) {
+          onClick(event);
+        }
+      }
+    });
+    const handleKeyUp = useEventCallback_default2((event) => {
+      if (focusRipple && event.key === " " && rippleRef.current && focusVisible && !event.defaultPrevented) {
+        keydownRef.current = false;
+        rippleRef.current.stop(event, () => {
+          rippleRef.current.pulsate(event);
+        });
+      }
+      if (onKeyUp) {
+        onKeyUp(event);
+      }
+      if (onClick && event.target === event.currentTarget && isNonNativeButton() && event.key === " " && !event.defaultPrevented) {
+        onClick(event);
+      }
+    });
+    let ComponentProp = component;
+    if (ComponentProp === "button" && (other.href || other.to)) {
+      ComponentProp = LinkComponent;
+    }
+    const buttonProps = {};
+    if (ComponentProp === "button") {
+      buttonProps.type = type === void 0 ? "button" : type;
+      buttonProps.disabled = disabled;
+    } else {
+      if (!other.href && !other.to) {
+        buttonProps.role = "button";
+      }
+      if (disabled) {
+        buttonProps["aria-disabled"] = disabled;
+      }
+    }
+    const handleRef = useForkRef_default(ref, focusVisibleRef, buttonRef);
+    if (true) {
+      React22.useEffect(() => {
+        if (enableTouchRipple && !rippleRef.current) {
+          console.error(["MUI: The `component` prop provided to ButtonBase is invalid.", "Please make sure the children prop is rendered in this custom component."].join("\n"));
+        }
+      }, [enableTouchRipple]);
+    }
+    const ownerState = _extends({}, props, {
+      centerRipple,
+      component,
+      disabled,
+      disableRipple,
+      disableTouchRipple,
+      focusRipple,
+      tabIndex,
+      focusVisible
+    });
+    const classes = useUtilityClasses2(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(ButtonBaseRoot, _extends({
+      as: ComponentProp,
+      className: clsx_default(classes.root, className),
+      ownerState,
+      onBlur: handleBlur,
+      onClick,
+      onContextMenu: handleContextMenu,
+      onFocus: handleFocus,
+      onKeyDown: handleKeyDown2,
+      onKeyUp: handleKeyUp,
+      onMouseDown: handleMouseDown,
+      onMouseLeave: handleMouseLeave,
+      onMouseUp: handleMouseUp,
+      onDragLeave: handleDragLeave,
+      onTouchEnd: handleTouchEnd,
+      onTouchMove: handleTouchMove,
+      onTouchStart: handleTouchStart,
+      ref: handleRef,
+      tabIndex: disabled ? -1 : tabIndex,
+      type
+    }, buttonProps, other, {
+      children: [children, enableTouchRipple ? (
+        /* TouchRipple is only needed client-side, x2 boost on the server. */
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(TouchRipple_default, _extends({
+          ref: handleRippleRef,
+          center: centerRipple
+        }, TouchRippleProps))
+      ) : null]
+    }));
+  });
+  true ? ButtonBase.propTypes = {
     // ┌────────────────────────────── Warning ──────────────────────────────┐
     // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
     // └─────────────────────────────────────────────────────────────────────┘
     /**
-     * @ignore
+     * A ref for imperative actions.
+     * It currently only supports `focusVisible()` action.
      */
-    children: import_prop_types9.default.node,
+    action: refType_default,
+    /**
+     * If `true`, the ripples are centered.
+     * They won't start at the cursor interaction position.
+     * @default false
+     */
+    centerRipple: import_prop_types12.default.bool,
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types12.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types12.default.object,
     /**
      * @ignore
      */
-    value: import_prop_types9.default.object.isRequired
+    className: import_prop_types12.default.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: elementTypeAcceptingRef_default,
+    /**
+     * If `true`, the component is disabled.
+     * @default false
+     */
+    disabled: import_prop_types12.default.bool,
+    /**
+     * If `true`, the ripple effect is disabled.
+     *
+     * ⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure
+     * to highlight the element by applying separate styles with the `.Mui-focusVisible` class.
+     * @default false
+     */
+    disableRipple: import_prop_types12.default.bool,
+    /**
+     * If `true`, the touch ripple effect is disabled.
+     * @default false
+     */
+    disableTouchRipple: import_prop_types12.default.bool,
+    /**
+     * If `true`, the base button will have a keyboard focus ripple.
+     * @default false
+     */
+    focusRipple: import_prop_types12.default.bool,
+    /**
+     * This prop can help identify which element has keyboard focus.
+     * The class name will be applied when the element gains the focus through keyboard interaction.
+     * It's a polyfill for the [CSS :focus-visible selector](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo).
+     * The rationale for using this feature [is explained here](https://github.com/WICG/focus-visible/blob/HEAD/explainer.md).
+     * A [polyfill can be used](https://github.com/WICG/focus-visible) to apply a `focus-visible` class to other components
+     * if needed.
+     */
+    focusVisibleClassName: import_prop_types12.default.string,
+    /**
+     * @ignore
+     */
+    href: import_prop_types12.default.any,
+    /**
+     * The component used to render a link when the `href` prop is provided.
+     * @default 'a'
+     */
+    LinkComponent: import_prop_types12.default.elementType,
+    /**
+     * @ignore
+     */
+    onBlur: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onClick: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onContextMenu: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onDragLeave: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onFocus: import_prop_types12.default.func,
+    /**
+     * Callback fired when the component is focused with a keyboard.
+     * We trigger a `onFocus` callback too.
+     */
+    onFocusVisible: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onKeyDown: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onKeyUp: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onMouseDown: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onMouseLeave: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onMouseUp: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onTouchEnd: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onTouchMove: import_prop_types12.default.func,
+    /**
+     * @ignore
+     */
+    onTouchStart: import_prop_types12.default.func,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types12.default.oneOfType([import_prop_types12.default.arrayOf(import_prop_types12.default.oneOfType([import_prop_types12.default.func, import_prop_types12.default.object, import_prop_types12.default.bool])), import_prop_types12.default.func, import_prop_types12.default.object]),
+    /**
+     * @default 0
+     */
+    tabIndex: import_prop_types12.default.number,
+    /**
+     * Props applied to the `TouchRipple` element.
+     */
+    TouchRippleProps: import_prop_types12.default.object,
+    /**
+     * A ref that points to the `TouchRipple` element.
+     */
+    touchRippleRef: import_prop_types12.default.oneOfType([import_prop_types12.default.func, import_prop_types12.default.shape({
+      current: import_prop_types12.default.shape({
+        pulsate: import_prop_types12.default.func.isRequired,
+        start: import_prop_types12.default.func.isRequired,
+        stop: import_prop_types12.default.func.isRequired
+      })
+    })]),
+    /**
+     * @ignore
+     */
+    type: import_prop_types12.default.oneOfType([import_prop_types12.default.oneOf(["button", "reset", "submit"]), import_prop_types12.default.string])
   } : void 0;
-  function useDefaultProps2(params) {
-    return useDefaultProps(params);
-  }
+  var ButtonBase_default = ButtonBase;
 
-  // node_modules/@mui/material/transitions/utils.js
-  function getTransitionProps(props, options) {
-    var _style$transitionDura, _style$transitionTimi;
+  // node_modules/@mui/material/IconButton/iconButtonClasses.js
+  function getIconButtonUtilityClass(slot) {
+    return generateUtilityClass("MuiIconButton", slot);
+  }
+  var iconButtonClasses = generateUtilityClasses("MuiIconButton", ["root", "disabled", "colorInherit", "colorPrimary", "colorSecondary", "colorError", "colorInfo", "colorSuccess", "colorWarning", "edgeStart", "edgeEnd", "sizeSmall", "sizeMedium", "sizeLarge"]);
+  var iconButtonClasses_default = iconButtonClasses;
+
+  // node_modules/@mui/material/IconButton/IconButton.js
+  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
+  var _excluded11 = ["edge", "children", "className", "color", "disabled", "disableFocusRipple", "size"];
+  var useUtilityClasses3 = (ownerState) => {
     const {
-      timeout: timeout2,
-      easing: easing2,
-      style: style5 = {}
-    } = props;
-    return {
-      duration: (_style$transitionDura = style5.transitionDuration) != null ? _style$transitionDura : typeof timeout2 === "number" ? timeout2 : timeout2[options.mode] || 0,
-      easing: (_style$transitionTimi = style5.transitionTimingFunction) != null ? _style$transitionTimi : typeof easing2 === "object" ? easing2[options.mode] : easing2,
-      delay: style5.transitionDelay
+      classes,
+      disabled,
+      color: color3,
+      edge,
+      size
+    } = ownerState;
+    const slots = {
+      root: ["root", disabled && "disabled", color3 !== "default" && `color${capitalize_default(color3)}`, edge && `edge${capitalize_default(edge)}`, `size${capitalize_default(size)}`]
     };
-  }
+    return composeClasses(slots, getIconButtonUtilityClass, classes);
+  };
+  var IconButtonRoot = styled_default(ButtonBase_default, {
+    name: "MuiIconButton",
+    slot: "Root",
+    overridesResolver: (props, styles) => {
+      const {
+        ownerState
+      } = props;
+      return [styles.root, ownerState.color !== "default" && styles[`color${capitalize_default(ownerState.color)}`], ownerState.edge && styles[`edge${capitalize_default(ownerState.edge)}`], styles[`size${capitalize_default(ownerState.size)}`]];
+    }
+  })(({
+    theme,
+    ownerState
+  }) => _extends({
+    textAlign: "center",
+    flex: "0 0 auto",
+    fontSize: theme.typography.pxToRem(24),
+    padding: 8,
+    borderRadius: "50%",
+    overflow: "visible",
+    // Explicitly set the default value to solve a bug on IE11.
+    color: (theme.vars || theme).palette.action.active,
+    transition: theme.transitions.create("background-color", {
+      duration: theme.transitions.duration.shortest
+    })
+  }, !ownerState.disableRipple && {
+    "&:hover": {
+      backgroundColor: theme.vars ? `rgba(${theme.vars.palette.action.activeChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, import_colorManipulator3.alpha)(theme.palette.action.active, theme.palette.action.hoverOpacity),
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    }
+  }, ownerState.edge === "start" && {
+    marginLeft: ownerState.size === "small" ? -3 : -12
+  }, ownerState.edge === "end" && {
+    marginRight: ownerState.size === "small" ? -3 : -12
+  }), ({
+    theme,
+    ownerState
+  }) => {
+    var _palette;
+    const palette3 = (_palette = (theme.vars || theme).palette) == null ? void 0 : _palette[ownerState.color];
+    return _extends({}, ownerState.color === "inherit" && {
+      color: "inherit"
+    }, ownerState.color !== "inherit" && ownerState.color !== "default" && _extends({
+      color: palette3 == null ? void 0 : palette3.main
+    }, !ownerState.disableRipple && {
+      "&:hover": _extends({}, palette3 && {
+        backgroundColor: theme.vars ? `rgba(${palette3.mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, import_colorManipulator3.alpha)(palette3.main, theme.palette.action.hoverOpacity)
+      }, {
+        // Reset on touch devices, it doesn't add specificity
+        "@media (hover: none)": {
+          backgroundColor: "transparent"
+        }
+      })
+    }), ownerState.size === "small" && {
+      padding: 5,
+      fontSize: theme.typography.pxToRem(18)
+    }, ownerState.size === "large" && {
+      padding: 12,
+      fontSize: theme.typography.pxToRem(28)
+    }, {
+      [`&.${iconButtonClasses_default.disabled}`]: {
+        backgroundColor: "transparent",
+        color: (theme.vars || theme).palette.action.disabled
+      }
+    });
+  });
+  var IconButton = /* @__PURE__ */ React23.forwardRef(function IconButton2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiIconButton"
+    });
+    const {
+      edge = false,
+      children,
+      className,
+      color: color3 = "default",
+      disabled = false,
+      disableFocusRipple = false,
+      size = "medium"
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded11);
+    const ownerState = _extends({}, props, {
+      edge,
+      color: color3,
+      disabled,
+      disableFocusRipple,
+      size
+    });
+    const classes = useUtilityClasses3(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(IconButtonRoot, _extends({
+      className: clsx_default(classes.root, className),
+      centerRipple: true,
+      focusRipple: !disableFocusRipple,
+      disabled,
+      ref
+    }, other, {
+      ownerState,
+      children
+    }));
+  });
+  true ? IconButton.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The icon to display.
+     */
+    children: chainPropTypes(import_prop_types13.default.node, (props) => {
+      const found = React23.Children.toArray(props.children).some((child) => /* @__PURE__ */ React23.isValidElement(child) && child.props.onClick);
+      if (found) {
+        return new Error(["MUI: You are providing an onClick event listener to a child of a button element.", "Prefer applying it to the IconButton directly.", "This guarantees that the whole <button> will be responsive to click events."].join("\n"));
+      }
+      return null;
+    }),
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types13.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types13.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     * @default 'default'
+     */
+    color: import_prop_types13.default.oneOfType([import_prop_types13.default.oneOf(["inherit", "default", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types13.default.string]),
+    /**
+     * If `true`, the component is disabled.
+     * @default false
+     */
+    disabled: import_prop_types13.default.bool,
+    /**
+     * If `true`, the  keyboard focus ripple is disabled.
+     * @default false
+     */
+    disableFocusRipple: import_prop_types13.default.bool,
+    /**
+     * If `true`, the ripple effect is disabled.
+     *
+     * ⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure
+     * to highlight the element by applying separate styles with the `.Mui-focusVisible` class.
+     * @default false
+     */
+    disableRipple: import_prop_types13.default.bool,
+    /**
+     * If given, uses a negative margin to counteract the padding on one
+     * side (this is often helpful for aligning the left or right
+     * side of the icon with content above or below, without ruining the border
+     * size and shape).
+     * @default false
+     */
+    edge: import_prop_types13.default.oneOf(["end", "start", false]),
+    /**
+     * The size of the component.
+     * `small` is equivalent to the dense button styling.
+     * @default 'medium'
+     */
+    size: import_prop_types13.default.oneOfType([import_prop_types13.default.oneOf(["small", "medium", "large"]), import_prop_types13.default.string]),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types13.default.oneOfType([import_prop_types13.default.arrayOf(import_prop_types13.default.oneOfType([import_prop_types13.default.func, import_prop_types13.default.object, import_prop_types13.default.bool])), import_prop_types13.default.func, import_prop_types13.default.object])
+  } : void 0;
+  var IconButton_default = IconButton;
 
-  // node_modules/@mui/material/utils/capitalize.js
-  var import_capitalize3 = __toESM(require_capitalize2());
-  var capitalize_default = import_capitalize3.default;
+  // node_modules/@mui/material/internal/svg-icons/SuccessOutlined.js
+  var React26 = __toESM(require_react());
 
   // node_modules/@mui/material/utils/createSvgIcon.js
   init_extends();
-  var React37 = __toESM(require_react());
+  var React25 = __toESM(require_react());
 
   // node_modules/@mui/material/SvgIcon/SvgIcon.js
   init_extends();
-  var React36 = __toESM(require_react());
-  var import_prop_types10 = __toESM(require_prop_types());
+  var React24 = __toESM(require_react());
+  var import_prop_types14 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/SvgIcon/svgIconClasses.js
   function getSvgIconUtilityClass(slot) {
@@ -35563,10 +35665,10 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   var svgIconClasses = generateUtilityClasses("MuiSvgIcon", ["root", "colorPrimary", "colorSecondary", "colorAction", "colorError", "colorDisabled", "fontSizeInherit", "fontSizeSmall", "fontSizeMedium", "fontSizeLarge"]);
 
   // node_modules/@mui/material/SvgIcon/SvgIcon.js
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
-  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
-  var _excluded10 = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
-  var useUtilityClasses = (ownerState) => {
+  var import_jsx_runtime9 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
+  var _excluded12 = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
+  var useUtilityClasses4 = (ownerState) => {
     const {
       color: color3,
       fontSize,
@@ -35617,7 +35719,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       }[ownerState.color]
     };
   });
-  var SvgIcon = /* @__PURE__ */ React36.forwardRef(function SvgIcon2(inProps, ref) {
+  var SvgIcon = /* @__PURE__ */ React24.forwardRef(function SvgIcon2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiSvgIcon"
@@ -35632,8 +35734,8 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       inheritViewBox = false,
       titleAccess,
       viewBox = "0 0 24 24"
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded10);
-    const hasSvgAsChild = /* @__PURE__ */ React36.isValidElement(children) && children.type === "svg";
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded12);
+    const hasSvgAsChild = /* @__PURE__ */ React24.isValidElement(children) && children.type === "svg";
     const ownerState = _extends({}, props, {
       color: color3,
       component,
@@ -35647,8 +35749,8 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     if (!inheritViewBox) {
       more.viewBox = viewBox;
     }
-    const classes = useUtilityClasses(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(SvgIconRoot, _extends({
+    const classes = useUtilityClasses4(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(SvgIconRoot, _extends({
       as: component,
       className: clsx_default(classes.root, className),
       focusable: "false",
@@ -35658,7 +35760,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       ref
     }, more, other, hasSvgAsChild && children.props, {
       ownerState,
-      children: [hasSvgAsChild ? children.props.children : children, titleAccess ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("title", {
+      children: [hasSvgAsChild ? children.props.children : children, titleAccess ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("title", {
         children: titleAccess
       }) : null]
     }));
@@ -35671,15 +35773,15 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     /**
      * Node passed into the SVG element.
      */
-    children: import_prop_types10.default.node,
+    children: import_prop_types14.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types10.default.object,
+    classes: import_prop_types14.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types10.default.string,
+    className: import_prop_types14.default.string,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
@@ -35687,21 +35789,21 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * You can use the `htmlColor` prop to apply a color attribute to the SVG element.
      * @default 'inherit'
      */
-    color: import_prop_types10.default.oneOfType([import_prop_types10.default.oneOf(["inherit", "action", "disabled", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types10.default.string]),
+    color: import_prop_types14.default.oneOfType([import_prop_types14.default.oneOf(["inherit", "action", "disabled", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types14.default.string]),
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types10.default.elementType,
+    component: import_prop_types14.default.elementType,
     /**
      * The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size.
      * @default 'medium'
      */
-    fontSize: import_prop_types10.default.oneOfType([import_prop_types10.default.oneOf(["inherit", "large", "medium", "small"]), import_prop_types10.default.string]),
+    fontSize: import_prop_types14.default.oneOfType([import_prop_types14.default.oneOf(["inherit", "large", "medium", "small"]), import_prop_types14.default.string]),
     /**
      * Applies a color attribute to the SVG element.
      */
-    htmlColor: import_prop_types10.default.string,
+    htmlColor: import_prop_types14.default.string,
     /**
      * If `true`, the root node will inherit the custom `component`'s viewBox and the `viewBox`
      * prop will be ignored.
@@ -35709,22 +35811,22 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * `component`'s viewBox to the root node.
      * @default false
      */
-    inheritViewBox: import_prop_types10.default.bool,
+    inheritViewBox: import_prop_types14.default.bool,
     /**
      * The shape-rendering attribute. The behavior of the different options is described on the
      * [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shape-rendering).
      * If you are having issues with blurry icons you should investigate this prop.
      */
-    shapeRendering: import_prop_types10.default.string,
+    shapeRendering: import_prop_types14.default.string,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types10.default.oneOfType([import_prop_types10.default.arrayOf(import_prop_types10.default.oneOfType([import_prop_types10.default.func, import_prop_types10.default.object, import_prop_types10.default.bool])), import_prop_types10.default.func, import_prop_types10.default.object]),
+    sx: import_prop_types14.default.oneOfType([import_prop_types14.default.arrayOf(import_prop_types14.default.oneOfType([import_prop_types14.default.func, import_prop_types14.default.object, import_prop_types14.default.bool])), import_prop_types14.default.func, import_prop_types14.default.object]),
     /**
      * Provides a human-readable title for the element that contains it.
      * https://www.w3.org/TR/SVG-access/#Equivalent
      */
-    titleAccess: import_prop_types10.default.string,
+    titleAccess: import_prop_types14.default.string,
     /**
      * Allows you to redefine what the coordinates without units mean inside an SVG element.
      * For example, if the SVG element is 500 (width) by 200 (height),
@@ -35733,16 +35835,16 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * to bottom right (50,20) and each unit will be worth 10px.
      * @default '0 0 24 24'
      */
-    viewBox: import_prop_types10.default.string
+    viewBox: import_prop_types14.default.string
   } : void 0;
   SvgIcon.muiName = "SvgIcon";
   var SvgIcon_default = SvgIcon;
 
   // node_modules/@mui/material/utils/createSvgIcon.js
-  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   function createSvgIcon(path, displayName) {
     function Component(props, ref) {
-      return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SvgIcon_default, _extends({
+      return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(SvgIcon_default, _extends({
         "data-testid": `${displayName}Icon`,
         ref
       }, props, {
@@ -35753,20 +35855,3595 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       Component.displayName = `${displayName}Icon`;
     }
     Component.muiName = SvgIcon_default.muiName;
-    return /* @__PURE__ */ React37.memo(/* @__PURE__ */ React37.forwardRef(Component));
+    return /* @__PURE__ */ React25.memo(/* @__PURE__ */ React25.forwardRef(Component));
+  }
+
+  // node_modules/@mui/material/internal/svg-icons/SuccessOutlined.js
+  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
+  var SuccessOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", {
+    d: "M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+  }), "SuccessOutlined");
+
+  // node_modules/@mui/material/internal/svg-icons/ReportProblemOutlined.js
+  var React27 = __toESM(require_react());
+  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
+  var ReportProblemOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime13.jsx)("path", {
+    d: "M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"
+  }), "ReportProblemOutlined");
+
+  // node_modules/@mui/material/internal/svg-icons/ErrorOutline.js
+  var React28 = __toESM(require_react());
+  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+  var ErrorOutline_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", {
+    d: "M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+  }), "ErrorOutline");
+
+  // node_modules/@mui/material/internal/svg-icons/InfoOutlined.js
+  var React29 = __toESM(require_react());
+  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
+  var InfoOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime15.jsx)("path", {
+    d: "M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+  }), "InfoOutlined");
+
+  // node_modules/@mui/material/internal/svg-icons/Close.js
+  var React30 = __toESM(require_react());
+  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
+  var Close_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", {
+    d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+  }), "Close");
+
+  // node_modules/@mui/material/Alert/Alert.js
+  var import_jsx_runtime17 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime18 = __toESM(require_jsx_runtime());
+  var _excluded13 = ["action", "children", "className", "closeText", "color", "components", "componentsProps", "icon", "iconMapping", "onClose", "role", "severity", "slotProps", "slots", "variant"];
+  var useUtilityClasses5 = (ownerState) => {
+    const {
+      variant,
+      color: color3,
+      severity,
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root", `color${capitalize_default(color3 || severity)}`, `${variant}${capitalize_default(color3 || severity)}`, `${variant}`],
+      icon: ["icon"],
+      message: ["message"],
+      action: ["action"]
+    };
+    return composeClasses(slots, getAlertUtilityClass, classes);
+  };
+  var AlertRoot = styled_default(Paper_default, {
+    name: "MuiAlert",
+    slot: "Root",
+    overridesResolver: (props, styles) => {
+      const {
+        ownerState
+      } = props;
+      return [styles.root, styles[ownerState.variant], styles[`${ownerState.variant}${capitalize_default(ownerState.color || ownerState.severity)}`]];
+    }
+  })(({
+    theme
+  }) => {
+    const getColor = theme.palette.mode === "light" ? import_colorManipulator4.darken : import_colorManipulator4.lighten;
+    const getBackgroundColor = theme.palette.mode === "light" ? import_colorManipulator4.lighten : import_colorManipulator4.darken;
+    return _extends({}, theme.typography.body2, {
+      backgroundColor: "transparent",
+      display: "flex",
+      padding: "6px 16px",
+      variants: [...Object.entries(theme.palette).filter(([, value]) => value.main && value.light).map(([color3]) => ({
+        props: {
+          colorSeverity: color3,
+          variant: "standard"
+        },
+        style: {
+          color: theme.vars ? theme.vars.palette.Alert[`${color3}Color`] : getColor(theme.palette[color3].light, 0.6),
+          backgroundColor: theme.vars ? theme.vars.palette.Alert[`${color3}StandardBg`] : getBackgroundColor(theme.palette[color3].light, 0.9),
+          [`& .${alertClasses_default.icon}`]: theme.vars ? {
+            color: theme.vars.palette.Alert[`${color3}IconColor`]
+          } : {
+            color: theme.palette[color3].main
+          }
+        }
+      })), ...Object.entries(theme.palette).filter(([, value]) => value.main && value.light).map(([color3]) => ({
+        props: {
+          colorSeverity: color3,
+          variant: "outlined"
+        },
+        style: {
+          color: theme.vars ? theme.vars.palette.Alert[`${color3}Color`] : getColor(theme.palette[color3].light, 0.6),
+          border: `1px solid ${(theme.vars || theme).palette[color3].light}`,
+          [`& .${alertClasses_default.icon}`]: theme.vars ? {
+            color: theme.vars.palette.Alert[`${color3}IconColor`]
+          } : {
+            color: theme.palette[color3].main
+          }
+        }
+      })), ...Object.entries(theme.palette).filter(([, value]) => value.main && value.dark).map(([color3]) => ({
+        props: {
+          colorSeverity: color3,
+          variant: "filled"
+        },
+        style: _extends({
+          fontWeight: theme.typography.fontWeightMedium
+        }, theme.vars ? {
+          color: theme.vars.palette.Alert[`${color3}FilledColor`],
+          backgroundColor: theme.vars.palette.Alert[`${color3}FilledBg`]
+        } : {
+          backgroundColor: theme.palette.mode === "dark" ? theme.palette[color3].dark : theme.palette[color3].main,
+          color: theme.palette.getContrastText(theme.palette[color3].main)
+        })
+      }))]
+    });
+  });
+  var AlertIcon = styled_default("div", {
+    name: "MuiAlert",
+    slot: "Icon",
+    overridesResolver: (props, styles) => styles.icon
+  })({
+    marginRight: 12,
+    padding: "7px 0",
+    display: "flex",
+    fontSize: 22,
+    opacity: 0.9
+  });
+  var AlertMessage = styled_default("div", {
+    name: "MuiAlert",
+    slot: "Message",
+    overridesResolver: (props, styles) => styles.message
+  })({
+    padding: "8px 0",
+    minWidth: 0,
+    overflow: "auto"
+  });
+  var AlertAction = styled_default("div", {
+    name: "MuiAlert",
+    slot: "Action",
+    overridesResolver: (props, styles) => styles.action
+  })({
+    display: "flex",
+    alignItems: "flex-start",
+    padding: "4px 0 0 16px",
+    marginLeft: "auto",
+    marginRight: -8
+  });
+  var defaultIconMapping = {
+    success: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SuccessOutlined_default, {
+      fontSize: "inherit"
+    }),
+    warning: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ReportProblemOutlined_default, {
+      fontSize: "inherit"
+    }),
+    error: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ErrorOutline_default, {
+      fontSize: "inherit"
+    }),
+    info: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(InfoOutlined_default, {
+      fontSize: "inherit"
+    })
+  };
+  var Alert = /* @__PURE__ */ React31.forwardRef(function Alert2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiAlert"
+    });
+    const {
+      action,
+      children,
+      className,
+      closeText = "Close",
+      color: color3,
+      components = {},
+      componentsProps = {},
+      icon,
+      iconMapping = defaultIconMapping,
+      onClose,
+      role = "alert",
+      severity = "success",
+      slotProps = {},
+      slots = {},
+      variant = "standard"
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded13);
+    const ownerState = _extends({}, props, {
+      color: color3,
+      severity,
+      variant,
+      colorSeverity: color3 || severity
+    });
+    const classes = useUtilityClasses5(ownerState);
+    const externalForwardedProps = {
+      slots: _extends({
+        closeButton: components.CloseButton,
+        closeIcon: components.CloseIcon
+      }, slots),
+      slotProps: _extends({}, componentsProps, slotProps)
+    };
+    const [CloseButtonSlot, closeButtonProps] = useSlot("closeButton", {
+      elementType: IconButton_default,
+      externalForwardedProps,
+      ownerState
+    });
+    const [CloseIconSlot, closeIconProps] = useSlot("closeIcon", {
+      elementType: Close_default,
+      externalForwardedProps,
+      ownerState
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(AlertRoot, _extends({
+      role,
+      elevation: 0,
+      ownerState,
+      className: clsx_default(classes.root, className),
+      ref
+    }, other, {
+      children: [icon !== false ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(AlertIcon, {
+        ownerState,
+        className: classes.icon,
+        children: icon || iconMapping[severity] || defaultIconMapping[severity]
+      }) : null, /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(AlertMessage, {
+        ownerState,
+        className: classes.message,
+        children
+      }), action != null ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(AlertAction, {
+        ownerState,
+        className: classes.action,
+        children: action
+      }) : null, action == null && onClose ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(AlertAction, {
+        ownerState,
+        className: classes.action,
+        children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(CloseButtonSlot, _extends({
+          size: "small",
+          "aria-label": closeText,
+          title: closeText,
+          color: "inherit",
+          onClick: onClose
+        }, closeButtonProps, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(CloseIconSlot, _extends({
+            fontSize: "small"
+          }, closeIconProps))
+        }))
+      }) : null]
+    }));
+  });
+  true ? Alert.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The action to display. It renders after the message, at the end of the alert.
+     */
+    action: import_prop_types15.default.node,
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types15.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types15.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types15.default.string,
+    /**
+     * Override the default label for the *close popup* icon button.
+     *
+     * For localization purposes, you can use the provided [translations](/material-ui/guides/localization/).
+     * @default 'Close'
+     */
+    closeText: import_prop_types15.default.string,
+    /**
+     * The color of the component. Unless provided, the value is taken from the `severity` prop.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     */
+    color: import_prop_types15.default.oneOfType([import_prop_types15.default.oneOf(["error", "info", "success", "warning"]), import_prop_types15.default.string]),
+    /**
+     * The components used for each slot inside.
+     *
+     * @deprecated use the `slots` prop instead. This prop will be removed in v7. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
+     *
+     * @default {}
+     */
+    components: import_prop_types15.default.shape({
+      CloseButton: import_prop_types15.default.elementType,
+      CloseIcon: import_prop_types15.default.elementType
+    }),
+    /**
+     * The extra props for the slot components.
+     * You can override the existing props or add new ones.
+     *
+     * @deprecated use the `slotProps` prop instead. This prop will be removed in v7. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
+     *
+     * @default {}
+     */
+    componentsProps: import_prop_types15.default.shape({
+      closeButton: import_prop_types15.default.object,
+      closeIcon: import_prop_types15.default.object
+    }),
+    /**
+     * Override the icon displayed before the children.
+     * Unless provided, the icon is mapped to the value of the `severity` prop.
+     * Set to `false` to remove the `icon`.
+     */
+    icon: import_prop_types15.default.node,
+    /**
+     * The component maps the `severity` prop to a range of different icons,
+     * for instance success to `<SuccessOutlined>`.
+     * If you wish to change this mapping, you can provide your own.
+     * Alternatively, you can use the `icon` prop to override the icon displayed.
+     */
+    iconMapping: import_prop_types15.default.shape({
+      error: import_prop_types15.default.node,
+      info: import_prop_types15.default.node,
+      success: import_prop_types15.default.node,
+      warning: import_prop_types15.default.node
+    }),
+    /**
+     * Callback fired when the component requests to be closed.
+     * When provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.
+     * @param {React.SyntheticEvent} event The event source of the callback.
+     */
+    onClose: import_prop_types15.default.func,
+    /**
+     * The ARIA role attribute of the element.
+     * @default 'alert'
+     */
+    role: import_prop_types15.default.string,
+    /**
+     * The severity of the alert. This defines the color and icon used.
+     * @default 'success'
+     */
+    severity: import_prop_types15.default.oneOfType([import_prop_types15.default.oneOf(["error", "info", "success", "warning"]), import_prop_types15.default.string]),
+    /**
+     * The props used for each slot inside.
+     * @default {}
+     */
+    slotProps: import_prop_types15.default.shape({
+      closeButton: import_prop_types15.default.oneOfType([import_prop_types15.default.func, import_prop_types15.default.object]),
+      closeIcon: import_prop_types15.default.oneOfType([import_prop_types15.default.func, import_prop_types15.default.object])
+    }),
+    /**
+     * The components used for each slot inside.
+     * @default {}
+     */
+    slots: import_prop_types15.default.shape({
+      closeButton: import_prop_types15.default.elementType,
+      closeIcon: import_prop_types15.default.elementType
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types15.default.oneOfType([import_prop_types15.default.arrayOf(import_prop_types15.default.oneOfType([import_prop_types15.default.func, import_prop_types15.default.object, import_prop_types15.default.bool])), import_prop_types15.default.func, import_prop_types15.default.object]),
+    /**
+     * The variant to use.
+     * @default 'standard'
+     */
+    variant: import_prop_types15.default.oneOfType([import_prop_types15.default.oneOf(["filled", "outlined", "standard"]), import_prop_types15.default.string])
+  } : void 0;
+  var Alert_default = Alert;
+
+  // node_modules/@mui/material/Typography/Typography.js
+  init_extends();
+  var React32 = __toESM(require_react());
+  var import_prop_types16 = __toESM(require_prop_types());
+  var import_styleFunctionSx3 = __toESM(require_styleFunctionSx2());
+
+  // node_modules/@mui/material/Typography/typographyClasses.js
+  function getTypographyUtilityClass(slot) {
+    return generateUtilityClass("MuiTypography", slot);
+  }
+  var typographyClasses = generateUtilityClasses("MuiTypography", ["root", "h1", "h2", "h3", "h4", "h5", "h6", "subtitle1", "subtitle2", "body1", "body2", "inherit", "button", "caption", "overline", "alignLeft", "alignRight", "alignCenter", "alignJustify", "noWrap", "gutterBottom", "paragraph"]);
+
+  // node_modules/@mui/material/Typography/Typography.js
+  var import_jsx_runtime19 = __toESM(require_jsx_runtime());
+  var _excluded14 = ["align", "className", "component", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"];
+  var useUtilityClasses6 = (ownerState) => {
+    const {
+      align,
+      gutterBottom,
+      noWrap,
+      paragraph,
+      variant,
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root", variant, ownerState.align !== "inherit" && `align${capitalize_default(align)}`, gutterBottom && "gutterBottom", noWrap && "noWrap", paragraph && "paragraph"]
+    };
+    return composeClasses(slots, getTypographyUtilityClass, classes);
+  };
+  var TypographyRoot = styled_default("span", {
+    name: "MuiTypography",
+    slot: "Root",
+    overridesResolver: (props, styles) => {
+      const {
+        ownerState
+      } = props;
+      return [styles.root, ownerState.variant && styles[ownerState.variant], ownerState.align !== "inherit" && styles[`align${capitalize_default(ownerState.align)}`], ownerState.noWrap && styles.noWrap, ownerState.gutterBottom && styles.gutterBottom, ownerState.paragraph && styles.paragraph];
+    }
+  })(({
+    theme,
+    ownerState
+  }) => _extends({
+    margin: 0
+  }, ownerState.variant === "inherit" && {
+    // Some elements, like <button> on Chrome have default font that doesn't inherit, reset this.
+    font: "inherit"
+  }, ownerState.variant !== "inherit" && theme.typography[ownerState.variant], ownerState.align !== "inherit" && {
+    textAlign: ownerState.align
+  }, ownerState.noWrap && {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap"
+  }, ownerState.gutterBottom && {
+    marginBottom: "0.35em"
+  }, ownerState.paragraph && {
+    marginBottom: 16
+  }));
+  var defaultVariantMapping = {
+    h1: "h1",
+    h2: "h2",
+    h3: "h3",
+    h4: "h4",
+    h5: "h5",
+    h6: "h6",
+    subtitle1: "h6",
+    subtitle2: "h6",
+    body1: "p",
+    body2: "p",
+    inherit: "p"
+  };
+  var colorTransformations = {
+    primary: "primary.main",
+    textPrimary: "text.primary",
+    secondary: "secondary.main",
+    textSecondary: "text.secondary",
+    error: "error.main"
+  };
+  var transformDeprecatedColors = (color3) => {
+    return colorTransformations[color3] || color3;
+  };
+  var Typography = /* @__PURE__ */ React32.forwardRef(function Typography2(inProps, ref) {
+    const themeProps = useDefaultProps2({
+      props: inProps,
+      name: "MuiTypography"
+    });
+    const color3 = transformDeprecatedColors(themeProps.color);
+    const props = (0, import_styleFunctionSx3.extendSxProp)(_extends({}, themeProps, {
+      color: color3
+    }));
+    const {
+      align = "inherit",
+      className,
+      component,
+      gutterBottom = false,
+      noWrap = false,
+      paragraph = false,
+      variant = "body1",
+      variantMapping = defaultVariantMapping
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded14);
+    const ownerState = _extends({}, props, {
+      align,
+      color: color3,
+      className,
+      component,
+      gutterBottom,
+      noWrap,
+      paragraph,
+      variant,
+      variantMapping
+    });
+    const Component = component || (paragraph ? "p" : variantMapping[variant] || defaultVariantMapping[variant]) || "span";
+    const classes = useUtilityClasses6(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(TypographyRoot, _extends({
+      as: Component,
+      ref,
+      ownerState,
+      className: clsx_default(classes.root, className)
+    }, other));
+  });
+  true ? Typography.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Set the text-align on the component.
+     * @default 'inherit'
+     */
+    align: import_prop_types16.default.oneOf(["center", "inherit", "justify", "left", "right"]),
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types16.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types16.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types16.default.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types16.default.elementType,
+    /**
+     * If `true`, the text will have a bottom margin.
+     * @default false
+     */
+    gutterBottom: import_prop_types16.default.bool,
+    /**
+     * If `true`, the text will not wrap, but instead will truncate with a text overflow ellipsis.
+     *
+     * Note that text overflow can only happen with block or inline-block level elements
+     * (the element needs to have a width in order to overflow).
+     * @default false
+     */
+    noWrap: import_prop_types16.default.bool,
+    /**
+     * If `true`, the element will be a paragraph element.
+     * @default false
+     */
+    paragraph: import_prop_types16.default.bool,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types16.default.oneOfType([import_prop_types16.default.arrayOf(import_prop_types16.default.oneOfType([import_prop_types16.default.func, import_prop_types16.default.object, import_prop_types16.default.bool])), import_prop_types16.default.func, import_prop_types16.default.object]),
+    /**
+     * Applies the theme typography styles.
+     * @default 'body1'
+     */
+    variant: import_prop_types16.default.oneOfType([import_prop_types16.default.oneOf(["body1", "body2", "button", "caption", "h1", "h2", "h3", "h4", "h5", "h6", "inherit", "overline", "subtitle1", "subtitle2"]), import_prop_types16.default.string]),
+    /**
+     * The component maps the variant prop to a range of different HTML element types.
+     * For instance, subtitle1 to `<h6>`.
+     * If you wish to change that mapping, you can provide your own.
+     * Alternatively, you can use the `component` prop.
+     * @default {
+     *   h1: 'h1',
+     *   h2: 'h2',
+     *   h3: 'h3',
+     *   h4: 'h4',
+     *   h5: 'h5',
+     *   h6: 'h6',
+     *   subtitle1: 'h6',
+     *   subtitle2: 'h6',
+     *   body1: 'p',
+     *   body2: 'p',
+     *   inherit: 'p',
+     * }
+     */
+    variantMapping: import_prop_types16.default.object
+  } : void 0;
+  var Typography_default = Typography;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/composeClasses/composeClasses.js
+  function composeClasses2(slots, getUtilityClass, classes = void 0) {
+    const output = {};
+    for (const slotName in slots) {
+      const slot = slots[slotName];
+      let buffer = "";
+      let start = true;
+      for (let i = 0; i < slot.length; i += 1) {
+        const value = slot[i];
+        if (value) {
+          buffer += (start === true ? "" : " ") + getUtilityClass(value);
+          start = false;
+          if (classes && classes[value]) {
+            buffer += " " + classes[value];
+          }
+        }
+      }
+      output[slotName] = buffer;
+    }
+    return output;
+  }
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useForkRef/useForkRef.js
+  var React33 = __toESM(require_react(), 1);
+  function useForkRef2(...refs) {
+    const cleanupRef = React33.useRef(void 0);
+    const refEffect = React33.useCallback((instance) => {
+      const cleanups = refs.map((ref) => {
+        if (ref == null) {
+          return null;
+        }
+        if (typeof ref === "function") {
+          const refCallback = ref;
+          const refCleanup = refCallback(instance);
+          return typeof refCleanup === "function" ? refCleanup : () => {
+            refCallback(null);
+          };
+        }
+        ref.current = instance;
+        return () => {
+          ref.current = null;
+        };
+      });
+      return () => {
+        cleanups.forEach((refCleanup) => refCleanup?.());
+      };
+    }, refs);
+    return React33.useMemo(() => {
+      if (refs.every((ref) => ref == null)) {
+        return null;
+      }
+      return (value) => {
+        if (cleanupRef.current) {
+          cleanupRef.current();
+          cleanupRef.current = void 0;
+        }
+        if (value != null) {
+          cleanupRef.current = refEffect(value);
+        }
+      };
+    }, refs);
+  }
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/isHostComponent/isHostComponent.js
+  function isHostComponent2(element) {
+    return typeof element === "string";
+  }
+  var isHostComponent_default2 = isHostComponent2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/appendOwnerState/appendOwnerState.js
+  function appendOwnerState2(elementType, otherProps, ownerState) {
+    if (elementType === void 0 || isHostComponent_default2(elementType)) {
+      return otherProps;
+    }
+    return {
+      ...otherProps,
+      ownerState: {
+        ...otherProps.ownerState,
+        ...ownerState
+      }
+    };
+  }
+  var appendOwnerState_default2 = appendOwnerState2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/extractEventHandlers/extractEventHandlers.js
+  function extractEventHandlers2(object, excludeKeys = []) {
+    if (object === void 0) {
+      return {};
+    }
+    const result = {};
+    Object.keys(object).filter((prop) => prop.match(/^on[A-Z]/) && typeof object[prop] === "function" && !excludeKeys.includes(prop)).forEach((prop) => {
+      result[prop] = object[prop];
+    });
+    return result;
+  }
+  var extractEventHandlers_default2 = extractEventHandlers2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/omitEventHandlers/omitEventHandlers.js
+  function omitEventHandlers2(object) {
+    if (object === void 0) {
+      return {};
+    }
+    const result = {};
+    Object.keys(object).filter((prop) => !(prop.match(/^on[A-Z]/) && typeof object[prop] === "function")).forEach((prop) => {
+      result[prop] = object[prop];
+    });
+    return result;
+  }
+  var omitEventHandlers_default2 = omitEventHandlers2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/mergeSlotProps/mergeSlotProps.js
+  function mergeSlotProps2(parameters) {
+    const {
+      getSlotProps,
+      additionalProps,
+      externalSlotProps,
+      externalForwardedProps,
+      className
+    } = parameters;
+    if (!getSlotProps) {
+      const joinedClasses2 = clsx_default(additionalProps?.className, className, externalForwardedProps?.className, externalSlotProps?.className);
+      const mergedStyle2 = {
+        ...additionalProps?.style,
+        ...externalForwardedProps?.style,
+        ...externalSlotProps?.style
+      };
+      const props2 = {
+        ...additionalProps,
+        ...externalForwardedProps,
+        ...externalSlotProps
+      };
+      if (joinedClasses2.length > 0) {
+        props2.className = joinedClasses2;
+      }
+      if (Object.keys(mergedStyle2).length > 0) {
+        props2.style = mergedStyle2;
+      }
+      return {
+        props: props2,
+        internalRef: void 0
+      };
+    }
+    const eventHandlers = extractEventHandlers_default2({
+      ...externalForwardedProps,
+      ...externalSlotProps
+    });
+    const componentsPropsWithoutEventHandlers = omitEventHandlers_default2(externalSlotProps);
+    const otherPropsWithoutEventHandlers = omitEventHandlers_default2(externalForwardedProps);
+    const internalSlotProps = getSlotProps(eventHandlers);
+    const joinedClasses = clsx_default(internalSlotProps?.className, additionalProps?.className, className, externalForwardedProps?.className, externalSlotProps?.className);
+    const mergedStyle = {
+      ...internalSlotProps?.style,
+      ...additionalProps?.style,
+      ...externalForwardedProps?.style,
+      ...externalSlotProps?.style
+    };
+    const props = {
+      ...internalSlotProps,
+      ...additionalProps,
+      ...otherPropsWithoutEventHandlers,
+      ...componentsPropsWithoutEventHandlers
+    };
+    if (joinedClasses.length > 0) {
+      props.className = joinedClasses;
+    }
+    if (Object.keys(mergedStyle).length > 0) {
+      props.style = mergedStyle;
+    }
+    return {
+      props,
+      internalRef: internalSlotProps.ref
+    };
+  }
+  var mergeSlotProps_default2 = mergeSlotProps2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/resolveComponentProps/resolveComponentProps.js
+  function resolveComponentProps2(componentProps, ownerState, slotState) {
+    if (typeof componentProps === "function") {
+      return componentProps(ownerState, slotState);
+    }
+    return componentProps;
+  }
+  var resolveComponentProps_default2 = resolveComponentProps2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useSlotProps/useSlotProps.js
+  function useSlotProps(parameters) {
+    const {
+      elementType,
+      externalSlotProps,
+      ownerState,
+      skipResolvingSlotProps = false,
+      ...other
+    } = parameters;
+    const resolvedComponentsProps = skipResolvingSlotProps ? {} : resolveComponentProps_default2(externalSlotProps, ownerState);
+    const {
+      props: mergedProps,
+      internalRef
+    } = mergeSlotProps_default2({
+      ...other,
+      externalSlotProps: resolvedComponentsProps
+    });
+    const ref = useForkRef2(internalRef, resolvedComponentsProps?.ref, parameters.additionalProps?.ref);
+    const props = appendOwnerState_default2(elementType, {
+      ...mergedProps,
+      ref
+    }, ownerState);
+    return props;
+  }
+  var useSlotProps_default = useSlotProps;
+
+  // node_modules/@mui/x-internals/esm/warning/warning.js
+  var warnedOnceCache = /* @__PURE__ */ new Set();
+  function warnOnce(message, gravity = "warning") {
+    if (false) {
+      return;
+    }
+    const cleanMessage = Array.isArray(message) ? message.join("\n") : message;
+    if (!warnedOnceCache.has(cleanMessage)) {
+      warnedOnceCache.add(cleanMessage);
+      if (gravity === "error") {
+        console.error(cleanMessage);
+      } else {
+        console.warn(cleanMessage);
+      }
+    }
+  }
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/ClassNameGenerator/ClassNameGenerator.js
+  var defaultGenerator2 = (componentName) => componentName;
+  var createClassNameGenerator2 = () => {
+    let generate = defaultGenerator2;
+    return {
+      configure(generator) {
+        generate = generator;
+      },
+      generate(componentName) {
+        return generate(componentName);
+      },
+      reset() {
+        generate = defaultGenerator2;
+      }
+    };
+  };
+  var ClassNameGenerator2 = createClassNameGenerator2();
+  var ClassNameGenerator_default2 = ClassNameGenerator2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js
+  var globalStateClasses2 = {
+    active: "active",
+    checked: "checked",
+    completed: "completed",
+    disabled: "disabled",
+    error: "error",
+    expanded: "expanded",
+    focused: "focused",
+    focusVisible: "focusVisible",
+    open: "open",
+    readOnly: "readOnly",
+    required: "required",
+    selected: "selected"
+  };
+  function generateUtilityClass2(componentName, slot, globalStatePrefix = "Mui") {
+    const globalStateClass = globalStateClasses2[slot];
+    return globalStateClass ? `${globalStatePrefix}-${globalStateClass}` : `${ClassNameGenerator_default2.generate(componentName)}-${slot}`;
+  }
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js
+  function generateUtilityClasses2(componentName, slots, globalStatePrefix = "Mui") {
+    const result = {};
+    slots.forEach((slot) => {
+      result[slot] = generateUtilityClass2(componentName, slot, globalStatePrefix);
+    });
+    return result;
+  }
+
+  // node_modules/@mui/x-tree-view/esm/RichTreeView/richTreeViewClasses.js
+  function getRichTreeViewUtilityClass(slot) {
+    return generateUtilityClass2("MuiRichTreeView", slot);
+  }
+  var richTreeViewClasses = generateUtilityClasses2("MuiRichTreeView", ["root", "item", "itemContent", "itemGroupTransition", "itemIconContainer", "itemLabel", "itemCheckbox", "itemLabelInput"]);
+
+  // node_modules/@mui/x-tree-view/esm/internals/zero-styled/index.js
+  function createUseThemeProps(name) {
+    return useThemeProps2;
+  }
+
+  // node_modules/@mui/x-tree-view/esm/internals/useTreeView/useTreeView.js
+  init_extends();
+  var React39 = __toESM(require_react(), 1);
+
+  // node_modules/@base-ui-components/utils/esm/useRefWithInit.js
+  var React34 = __toESM(require_react(), 1);
+  var UNINITIALIZED2 = {};
+  function useRefWithInit(init, initArg) {
+    const ref = React34.useRef(UNINITIALIZED2);
+    if (ref.current === UNINITIALIZED2) {
+      ref.current = init(initArg);
+    }
+    return ref;
+  }
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/useTreeViewInstanceEvents/useTreeViewInstanceEvents.js
+  var React35 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-internals/esm/EventManager/EventManager.js
+  var EventManager = class {
+    maxListeners = 20;
+    warnOnce = false;
+    events = {};
+    on(eventName, listener, options = {}) {
+      let collection = this.events[eventName];
+      if (!collection) {
+        collection = {
+          highPriority: /* @__PURE__ */ new Map(),
+          regular: /* @__PURE__ */ new Map()
+        };
+        this.events[eventName] = collection;
+      }
+      if (options.isFirst) {
+        collection.highPriority.set(listener, true);
+      } else {
+        collection.regular.set(listener, true);
+      }
+      if (true) {
+        const collectionSize = collection.highPriority.size + collection.regular.size;
+        if (collectionSize > this.maxListeners && !this.warnOnce) {
+          this.warnOnce = true;
+          console.warn([`Possible EventEmitter memory leak detected. ${collectionSize} ${eventName} listeners added.`].join("\n"));
+        }
+      }
+    }
+    removeListener(eventName, listener) {
+      if (this.events[eventName]) {
+        this.events[eventName].regular.delete(listener);
+        this.events[eventName].highPriority.delete(listener);
+      }
+    }
+    removeAllListeners() {
+      this.events = {};
+    }
+    emit(eventName, ...args) {
+      const collection = this.events[eventName];
+      if (!collection) {
+        return;
+      }
+      const highPriorityListeners = Array.from(collection.highPriority.keys());
+      const regularListeners = Array.from(collection.regular.keys());
+      for (let i = highPriorityListeners.length - 1; i >= 0; i -= 1) {
+        const listener = highPriorityListeners[i];
+        if (collection.highPriority.has(listener)) {
+          listener.apply(this, args);
+        }
+      }
+      for (let i = 0; i < regularListeners.length; i += 1) {
+        const listener = regularListeners[i];
+        if (collection.regular.has(listener)) {
+          listener.apply(this, args);
+        }
+      }
+    }
+    once(eventName, listener) {
+      const that = this;
+      this.on(eventName, function oneTimeListener(...args) {
+        that.removeListener(eventName, oneTimeListener);
+        listener.apply(that, args);
+      });
+    }
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/useTreeViewInstanceEvents/useTreeViewInstanceEvents.js
+  var isSyntheticEvent = (event) => {
+    return event.isPropagationStopped !== void 0;
+  };
+  var useTreeViewInstanceEvents = () => {
+    const [eventManager] = React35.useState(() => new EventManager());
+    const publishEvent = React35.useCallback((...args) => {
+      const [name, params, event = {}] = args;
+      event.defaultMuiPrevented = false;
+      if (isSyntheticEvent(event) && event.isPropagationStopped()) {
+        return;
+      }
+      eventManager.emit(name, params, event);
+    }, [eventManager]);
+    const subscribeEvent = React35.useCallback((event, handler) => {
+      eventManager.on(event, handler);
+      return () => {
+        eventManager.removeListener(event, handler);
+      };
+    }, [eventManager]);
+    return {
+      instance: {
+        $$publishEvent: publishEvent,
+        $$subscribeEvent: subscribeEvent
+      }
+    };
+  };
+  useTreeViewInstanceEvents.params = {};
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/useTreeViewOptionalPlugins/useTreeViewOptionalPlugins.js
+  var useTreeViewOptionalPlugins = ({
+    plugins
+  }) => {
+    const pluginSet = new Set(plugins);
+    const getAvailablePlugins = () => pluginSet;
+    return {
+      instance: {
+        getAvailablePlugins
+      }
+    };
+  };
+  useTreeViewOptionalPlugins.params = {};
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/useTreeViewId/useTreeViewId.js
+  init_extends();
+  var React36 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/useTreeViewId/useTreeViewId.selectors.js
+  var idSelectors = {
+    /**
+     * Get the id attribute of the tree view.
+     * @param {TreeViewState<[UseTreeViewIdSignature]>} state The state of the tree view.
+     * @returns {string} The id attribute of the tree view.
+     */
+    treeId: createSelector2((state) => state.id.treeId)
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/useTreeViewId/useTreeViewId.utils.js
+  var globalTreeViewDefaultId = 0;
+  var createTreeViewDefaultId = () => {
+    globalTreeViewDefaultId += 1;
+    return `mui-tree-view-${globalTreeViewDefaultId}`;
+  };
+  var generateTreeItemIdAttribute = ({
+    id,
+    treeId = "",
+    itemId
+  }) => {
+    if (id != null) {
+      return id;
+    }
+    return `${treeId}-${itemId}`;
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/useTreeViewId/useTreeViewId.js
+  var useTreeViewId = ({
+    params,
+    store
+  }) => {
+    React36.useEffect(() => {
+      const prevIdState = store.state.id;
+      if (params.id === prevIdState.providedTreeId && prevIdState.treeId !== void 0) {
+        return;
+      }
+      store.set("id", _extends({}, prevIdState, {
+        treeId: params.id ?? createTreeViewDefaultId()
+      }));
+    }, [store, params.id]);
+    const treeId = useStore(store, idSelectors.treeId);
+    return {
+      getRootProps: () => ({
+        id: treeId
+      })
+    };
+  };
+  useTreeViewId.params = {
+    id: true
+  };
+  useTreeViewId.getInitialState = ({
+    id
+  }) => ({
+    id: {
+      treeId: void 0,
+      providedTreeId: id
+    }
+  });
+
+  // node_modules/@mui/x-tree-view/esm/internals/corePlugins/corePlugins.js
+  var TREE_VIEW_CORE_PLUGINS = [useTreeViewInstanceEvents, useTreeViewOptionalPlugins, useTreeViewId];
+
+  // node_modules/@mui/x-tree-view/esm/internals/useTreeView/useExtractPluginParamsFromProps.js
+  var React37 = __toESM(require_react(), 1);
+  var _excluded15 = ["apiRef"];
+  var useExtractPluginParamsFromProps = (_ref) => {
+    let {
+      props: {
+        apiRef
+      },
+      plugins
+    } = _ref, props = _objectWithoutPropertiesLoose(_ref.props, _excluded15);
+    const paramsLookup = React37.useMemo(() => {
+      const tempParamsLookup = {};
+      plugins.forEach((plugin) => {
+        Object.assign(tempParamsLookup, plugin.params);
+      });
+      return tempParamsLookup;
+    }, [plugins]);
+    const {
+      forwardedProps,
+      pluginParams
+    } = React37.useMemo(() => {
+      const tempPluginParams = {};
+      const tempForwardedProps = {};
+      Object.keys(props).forEach((propName) => {
+        const prop = props[propName];
+        if (paramsLookup[propName]) {
+          tempPluginParams[propName] = prop;
+        } else {
+          tempForwardedProps[propName] = prop;
+        }
+      });
+      const pluginParamsWithDefaults = plugins.reduce((acc, plugin) => {
+        if (plugin.applyDefaultValuesToParams) {
+          return plugin.applyDefaultValuesToParams({
+            params: acc
+          });
+        }
+        return acc;
+      }, tempPluginParams);
+      return {
+        forwardedProps: tempForwardedProps,
+        pluginParams: pluginParamsWithDefaults
+      };
+    }, [plugins, props, paramsLookup]);
+    return {
+      forwardedProps,
+      pluginParams,
+      apiRef
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/useTreeView/useTreeViewBuildContext.js
+  var React38 = __toESM(require_react(), 1);
+  var useTreeViewBuildContext = (parameters) => {
+    const {
+      plugins,
+      instance,
+      publicAPI,
+      store,
+      rootRef
+    } = parameters;
+    const runItemPlugins = React38.useCallback((itemPluginProps) => {
+      let finalRootRef = null;
+      let finalContentRef = null;
+      const pluginPropEnhancers = [];
+      const pluginPropEnhancersNames = {};
+      plugins.forEach((plugin) => {
+        if (!plugin.itemPlugin) {
+          return;
+        }
+        const itemPluginResponse = plugin.itemPlugin({
+          props: itemPluginProps,
+          rootRef: finalRootRef,
+          contentRef: finalContentRef
+        });
+        if (itemPluginResponse?.rootRef) {
+          finalRootRef = itemPluginResponse.rootRef;
+        }
+        if (itemPluginResponse?.contentRef) {
+          finalContentRef = itemPluginResponse.contentRef;
+        }
+        if (itemPluginResponse?.propsEnhancers) {
+          pluginPropEnhancers.push(itemPluginResponse.propsEnhancers);
+          Object.keys(itemPluginResponse.propsEnhancers).forEach((propsEnhancerName) => {
+            pluginPropEnhancersNames[propsEnhancerName] = true;
+          });
+        }
+      });
+      const resolvePropsEnhancer = (currentSlotName) => (currentSlotParams) => {
+        const enhancedProps = {};
+        pluginPropEnhancers.forEach((propsEnhancersForCurrentPlugin) => {
+          const propsEnhancerForCurrentPluginAndSlot = propsEnhancersForCurrentPlugin[currentSlotName];
+          if (propsEnhancerForCurrentPluginAndSlot != null) {
+            Object.assign(enhancedProps, propsEnhancerForCurrentPluginAndSlot(currentSlotParams));
+          }
+        });
+        return enhancedProps;
+      };
+      const propsEnhancers = Object.fromEntries(Object.keys(pluginPropEnhancersNames).map((propEnhancerName) => [propEnhancerName, resolvePropsEnhancer(propEnhancerName)]));
+      return {
+        contentRef: finalContentRef,
+        rootRef: finalRootRef,
+        propsEnhancers
+      };
+    }, [plugins]);
+    const wrapItem = React38.useCallback(({
+      itemId,
+      children,
+      idAttribute
+    }) => {
+      let finalChildren = children;
+      for (let i = plugins.length - 1; i >= 0; i -= 1) {
+        const plugin = plugins[i];
+        if (plugin.wrapItem) {
+          finalChildren = plugin.wrapItem({
+            instance,
+            itemId,
+            children: finalChildren,
+            idAttribute
+          });
+        }
+      }
+      return finalChildren;
+    }, [plugins, instance]);
+    const wrapRoot = React38.useCallback(({
+      children
+    }) => {
+      let finalChildren = children;
+      for (let i = plugins.length - 1; i >= 0; i -= 1) {
+        const plugin = plugins[i];
+        if (plugin.wrapRoot) {
+          finalChildren = plugin.wrapRoot({
+            children: finalChildren
+          });
+        }
+      }
+      return finalChildren;
+    }, [plugins]);
+    return React38.useMemo(() => ({
+      runItemPlugins,
+      wrapItem,
+      wrapRoot,
+      instance,
+      publicAPI,
+      store,
+      rootRef
+    }), [runItemPlugins, wrapItem, wrapRoot, instance, publicAPI, store, rootRef]);
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/useTreeView/useTreeView.js
+  function initializeInputApiRef(inputApiRef) {
+    if (inputApiRef.current == null) {
+      inputApiRef.current = {};
+    }
+    return inputApiRef;
+  }
+  function useTreeViewApiInitialization(inputApiRef) {
+    const fallbackPublicApiRef = React39.useRef({});
+    if (inputApiRef) {
+      return initializeInputApiRef(inputApiRef);
+    }
+    return fallbackPublicApiRef;
+  }
+  var useTreeView = ({
+    plugins: inPlugins,
+    rootRef,
+    props
+  }) => {
+    const plugins = React39.useMemo(() => [...TREE_VIEW_CORE_PLUGINS, ...inPlugins], [inPlugins]);
+    const {
+      pluginParams,
+      forwardedProps,
+      apiRef
+    } = useExtractPluginParamsFromProps({
+      plugins,
+      props
+    });
+    const instance = useRefWithInit(() => ({})).current;
+    const publicAPI = useTreeViewApiInitialization(apiRef);
+    const innerRootRef = React39.useRef(null);
+    const handleRootRef = useForkRef2(innerRootRef, rootRef);
+    const store = useRefWithInit(() => {
+      const initialState = {};
+      for (const plugin of plugins) {
+        if (plugin.getInitialState) {
+          Object.assign(initialState, plugin.getInitialState(pluginParams));
+        }
+      }
+      return new Store(initialState);
+    }).current;
+    const contextValue = useTreeViewBuildContext({
+      plugins,
+      instance,
+      publicAPI: publicAPI.current,
+      store,
+      rootRef: innerRootRef
+    });
+    const rootPropsGetters = [];
+    const runPlugin = (plugin) => {
+      const pluginResponse = plugin({
+        instance,
+        params: pluginParams,
+        rootRef: innerRootRef,
+        plugins,
+        store
+      });
+      if (pluginResponse.getRootProps) {
+        rootPropsGetters.push(pluginResponse.getRootProps);
+      }
+      if (pluginResponse.publicAPI) {
+        Object.assign(publicAPI.current, pluginResponse.publicAPI);
+      }
+      if (pluginResponse.instance) {
+        Object.assign(instance, pluginResponse.instance);
+      }
+    };
+    plugins.forEach(runPlugin);
+    const getRootProps = (otherHandlers = {}) => {
+      const rootProps = _extends({
+        role: "tree"
+      }, forwardedProps, otherHandlers, {
+        ref: handleRootRef
+      });
+      rootPropsGetters.forEach((rootPropsGetter) => {
+        Object.assign(rootProps, rootPropsGetter(otherHandlers));
+      });
+      return rootProps;
+    };
+    return {
+      getRootProps,
+      rootRef: handleRootRef,
+      contextValue
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/TreeViewProvider/TreeViewProvider.js
+  var React42 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/esm/internals/TreeViewProvider/TreeViewContext.js
+  var React40 = __toESM(require_react(), 1);
+  var TreeViewContext = /* @__PURE__ */ React40.createContext(null);
+  if (true)
+    TreeViewContext.displayName = "TreeViewContext";
+  var useTreeViewContext = () => {
+    const context = React40.useContext(TreeViewContext);
+    if (context == null) {
+      throw new Error(["MUI X: Could not find the Tree View context.", "It looks like you rendered your component outside of a SimpleTreeView or RichTreeView parent component.", "This can also happen if you are bundling multiple versions of the Tree View."].join("\n"));
+    }
+    return context;
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/TreeViewProvider/TreeViewStyleContext.js
+  var React41 = __toESM(require_react(), 1);
+  var TreeViewStyleContext = /* @__PURE__ */ React41.createContext({
+    classes: {},
+    slots: {},
+    slotProps: {}
+  });
+  if (true)
+    TreeViewStyleContext.displayName = "TreeViewStyleContext";
+  var useTreeViewStyleContext = () => {
+    return React41.useContext(TreeViewStyleContext);
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/TreeViewProvider/TreeViewProvider.js
+  var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
+  var EMPTY_OBJECT = {};
+  function TreeViewProvider(props) {
+    const {
+      contextValue,
+      classes = EMPTY_OBJECT,
+      slots = EMPTY_OBJECT,
+      slotProps = EMPTY_OBJECT,
+      children
+    } = props;
+    const styleContextValue = React42.useMemo(() => ({
+      classes,
+      slots: {
+        collapseIcon: slots.collapseIcon,
+        expandIcon: slots.expandIcon,
+        endIcon: slots.endIcon
+      },
+      slotProps: {
+        collapseIcon: slotProps.collapseIcon,
+        expandIcon: slotProps.expandIcon,
+        endIcon: slotProps.endIcon
+      }
+    }), [classes, slots.collapseIcon, slots.expandIcon, slots.endIcon, slotProps.collapseIcon, slotProps.expandIcon, slotProps.endIcon]);
+    return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(TreeViewContext.Provider, {
+      value: contextValue,
+      children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(TreeViewStyleContext.Provider, {
+        value: styleContextValue,
+        children: contextValue.wrapRoot({
+          children
+        })
+      })
+    });
+  }
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewItems/useTreeViewItems.js
+  init_extends();
+  var React46 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
+  var React44 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useEnhancedEffect/useEnhancedEffect.js
+  var React43 = __toESM(require_react(), 1);
+  var useEnhancedEffect2 = typeof window !== "undefined" ? React43.useLayoutEffect : React43.useEffect;
+  var useEnhancedEffect_default2 = useEnhancedEffect2;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
+  function useEventCallback2(fn) {
+    const ref = React44.useRef(fn);
+    useEnhancedEffect_default2(() => {
+      ref.current = fn;
+    });
+    return React44.useRef((...args) => (
+      // @ts-expect-error hide `this`
+      (0, ref.current)(...args)
+    )).current;
+  }
+  var useEventCallback_default3 = useEventCallback2;
+
+  // node_modules/@mui/x-tree-view/esm/internals/utils/publishTreeViewEvent.js
+  var publishTreeViewEvent = (instance, eventName, params) => {
+    instance.$$publishEvent(eventName, params);
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewItems/useTreeViewItems.utils.js
+  var TREE_VIEW_ROOT_PARENT_ID = "__TREE_VIEW_ROOT_PARENT_ID__";
+  var buildSiblingIndexes = (siblings) => {
+    const siblingsIndexLookup = {};
+    siblings.forEach((childId, index) => {
+      siblingsIndexLookup[childId] = index;
+    });
+    return siblingsIndexLookup;
+  };
+  var isItemDisabled = (itemMetaLookup, itemId) => {
+    if (itemId == null) {
+      return false;
+    }
+    let itemMeta = itemMetaLookup[itemId];
+    if (!itemMeta) {
+      return false;
+    }
+    if (itemMeta.disabled) {
+      return true;
+    }
+    while (itemMeta.parentId != null) {
+      itemMeta = itemMetaLookup[itemMeta.parentId];
+      if (!itemMeta) {
+        return false;
+      }
+      if (itemMeta.disabled) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/TreeViewItemDepthContext/TreeViewItemDepthContext.js
+  var React45 = __toESM(require_react(), 1);
+  var TreeViewItemDepthContext = /* @__PURE__ */ React45.createContext(() => -1);
+  if (true)
+    TreeViewItemDepthContext.displayName = "TreeViewItemDepthContext";
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewItems/useTreeViewItems.selectors.js
+  var EMPTY_CHILDREN = [];
+  var itemsSelectors = {
+    /**
+     * Gets the loading state for the Tree View.
+     */
+    isLoading: createSelector2((state) => state.items.loading),
+    /**
+     * Gets the error state for the Tree View.
+     */
+    error: createSelector2((state) => state.items.error),
+    /**
+     * Checks whether the disabled items are focusable.
+     */
+    disabledItemFocusable: createSelector2((state) => state.items.disabledItemsFocusable),
+    /**
+     * Gets the meta-information of all items.
+     */
+    itemMetaLookup: createSelector2((state) => state.items.itemMetaLookup),
+    /**
+     * Gets the meta-information of an item.
+     */
+    itemMeta: createSelector2((state, itemId) => state.items.itemMetaLookup[itemId ?? TREE_VIEW_ROOT_PARENT_ID] ?? null),
+    /**
+     * Gets the ordered children ids of an item.
+     */
+    itemOrderedChildrenIds: createSelector2((state, itemId) => state.items.itemOrderedChildrenIdsLookup[itemId ?? TREE_VIEW_ROOT_PARENT_ID] ?? EMPTY_CHILDREN),
+    /**
+     * Gets the model of an item.
+     */
+    itemModel: createSelector2((state, itemId) => state.items.itemModelLookup[itemId]),
+    /**
+     * Checks whether an item is disabled.
+     */
+    isItemDisabled: createSelector2((state, itemId) => isItemDisabled(state.items.itemMetaLookup, itemId)),
+    /**
+     * Gets the index of an item in its parent's children.
+     */
+    itemIndex: createSelector2((state, itemId) => {
+      const itemMeta = state.items.itemMetaLookup[itemId];
+      if (itemMeta == null) {
+        return -1;
+      }
+      const parentIndexes = state.items.itemChildrenIndexesLookup[itemMeta.parentId ?? TREE_VIEW_ROOT_PARENT_ID];
+      return parentIndexes[itemMeta.id];
+    }),
+    /**
+     * Gets the id of an item's parent.
+     */
+    itemParentId: createSelector2((state, itemId) => state.items.itemMetaLookup[itemId]?.parentId ?? null),
+    /**
+     * Gets the depth of an item (items at the root level have a depth of 0).
+     */
+    itemDepth: createSelector2((state, itemId) => state.items.itemMetaLookup[itemId]?.depth ?? 0),
+    /**
+     * Checks whether an item can be focused.
+     */
+    canItemBeFocused: createSelector2((state, itemId) => state.items.disabledItemsFocusable || !isItemDisabled(state.items.itemMetaLookup, itemId))
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewItems/useTreeViewItems.js
+  var import_jsx_runtime21 = __toESM(require_jsx_runtime(), 1);
+  var checkId = (id, item, itemMetaLookup) => {
+    if (id == null) {
+      throw new Error(["MUI X: The Tree View component requires all items to have a unique `id` property.", "Alternatively, you can use the `getItemId` prop to specify a custom id for each item.", "An item was provided without id in the `items` prop:", JSON.stringify(item)].join("\n"));
+    }
+    if (itemMetaLookup[id] != null) {
+      throw new Error(["MUI X: The Tree View component requires all items to have a unique `id` property.", "Alternatively, you can use the `getItemId` prop to specify a custom id for each item.", `Two items were provided with the same id in the \`items\` prop: "${id}"`].join("\n"));
+    }
+  };
+  var processItemsLookups = ({
+    disabledItemsFocusable,
+    items,
+    isItemDisabled: isItemDisabled2,
+    getItemLabel,
+    getItemChildren,
+    getItemId,
+    initialDepth = 0,
+    initialParentId = null,
+    getChildrenCount,
+    ignoreChildren = false
+  }) => {
+    const itemMetaLookup = {};
+    const itemModelLookup = {};
+    const itemOrderedChildrenIdsLookup = {
+      [TREE_VIEW_ROOT_PARENT_ID]: []
+    };
+    const processItem = (item, depth, parentId) => {
+      const id = getItemId ? getItemId(item) : item.id;
+      checkId(id, item, itemMetaLookup);
+      const label = getItemLabel ? getItemLabel(item) : item.label;
+      if (label == null) {
+        throw new Error(["MUI X: The Tree View component requires all items to have a `label` property.", "Alternatively, you can use the `getItemLabel` prop to specify a custom label for each item.", "An item was provided without label in the `items` prop:", JSON.stringify(item)].join("\n"));
+      }
+      const children = getItemChildren ? getItemChildren(item) : item.children;
+      itemMetaLookup[id] = {
+        id,
+        label,
+        parentId,
+        idAttribute: void 0,
+        expandable: getChildrenCount ? getChildrenCount(item) > 0 : !!children?.length,
+        disabled: isItemDisabled2 ? isItemDisabled2(item) : false,
+        depth
+      };
+      itemModelLookup[id] = item;
+      const parentIdWithDefault = parentId ?? TREE_VIEW_ROOT_PARENT_ID;
+      if (!itemOrderedChildrenIdsLookup[parentIdWithDefault]) {
+        itemOrderedChildrenIdsLookup[parentIdWithDefault] = [];
+      }
+      itemOrderedChildrenIdsLookup[parentIdWithDefault].push(id);
+      if (!ignoreChildren) {
+        children?.forEach((child) => processItem(child, depth + 1, id));
+      }
+    };
+    items?.forEach((item) => processItem(item, initialDepth, initialParentId));
+    const itemChildrenIndexesLookup = {};
+    Object.keys(itemOrderedChildrenIdsLookup).forEach((parentId) => {
+      itemChildrenIndexesLookup[parentId] = buildSiblingIndexes(itemOrderedChildrenIdsLookup[parentId]);
+    });
+    return {
+      disabledItemsFocusable,
+      itemMetaLookup,
+      itemModelLookup,
+      itemOrderedChildrenIdsLookup,
+      itemChildrenIndexesLookup
+    };
+  };
+  var useTreeViewItems = ({
+    instance,
+    params,
+    store
+  }) => {
+    const getItem = React46.useCallback((itemId) => itemsSelectors.itemModel(store.state, itemId), [store]);
+    const getParentId = React46.useCallback((itemId) => {
+      const itemMeta = itemsSelectors.itemMeta(store.state, itemId);
+      return itemMeta?.parentId || null;
+    }, [store]);
+    const setTreeViewLoading = useEventCallback_default3((isLoading) => {
+      store.set("items", _extends({}, store.state.items, {
+        loading: isLoading
+      }));
+    });
+    const setTreeViewError = useEventCallback_default3((error) => {
+      store.set("items", _extends({}, store.state.items, {
+        error
+      }));
+    });
+    const setIsItemDisabled = useEventCallback_default3(({
+      itemId,
+      shouldBeDisabled
+    }) => {
+      if (!store.state.items.itemMetaLookup[itemId]) {
+        return;
+      }
+      const itemMetaLookup = _extends({}, store.state.items.itemMetaLookup);
+      itemMetaLookup[itemId] = _extends({}, itemMetaLookup[itemId], {
+        disabled: shouldBeDisabled ?? !itemMetaLookup[itemId].disabled
+      });
+      store.set("items", _extends({}, store.state.items, {
+        itemMetaLookup
+      }));
+    });
+    const getItemTree = React46.useCallback(() => {
+      const getItemFromItemId = (itemId) => {
+        const item = itemsSelectors.itemModel(store.state, itemId);
+        const newChildren = itemsSelectors.itemOrderedChildrenIds(store.state, itemId);
+        if (newChildren.length > 0) {
+          item.children = newChildren.map(getItemFromItemId);
+        } else {
+          delete item.children;
+        }
+        return item;
+      };
+      return itemsSelectors.itemOrderedChildrenIds(store.state, null).map(getItemFromItemId);
+    }, [store]);
+    const getItemOrderedChildrenIds = React46.useCallback((itemId) => itemsSelectors.itemOrderedChildrenIds(store.state, itemId), [store]);
+    const getItemDOMElement = (itemId) => {
+      const itemMeta = itemsSelectors.itemMeta(store.state, itemId);
+      if (itemMeta == null) {
+        return null;
+      }
+      const idAttribute = generateTreeItemIdAttribute({
+        treeId: idSelectors.treeId(store.state),
+        itemId,
+        id: itemMeta.idAttribute
+      });
+      return document.getElementById(idAttribute);
+    };
+    const areItemUpdatesPreventedRef = React46.useRef(false);
+    const preventItemUpdates = React46.useCallback(() => {
+      areItemUpdatesPreventedRef.current = true;
+    }, []);
+    const areItemUpdatesPrevented = React46.useCallback(() => areItemUpdatesPreventedRef.current, []);
+    const addItems = ({
+      items,
+      parentId,
+      depth,
+      getChildrenCount
+    }) => {
+      if (items) {
+        const newState = processItemsLookups({
+          disabledItemsFocusable: params.disabledItemsFocusable,
+          items,
+          isItemDisabled: params.isItemDisabled,
+          getItemId: params.getItemId,
+          getItemLabel: params.getItemLabel,
+          getItemChildren: params.getItemChildren,
+          getChildrenCount,
+          initialDepth: depth,
+          initialParentId: parentId,
+          ignoreChildren: true
+        });
+        let newItems;
+        if (parentId) {
+          newItems = {
+            itemModelLookup: _extends({}, store.state.items.itemModelLookup, newState.itemModelLookup),
+            itemMetaLookup: _extends({}, store.state.items.itemMetaLookup, newState.itemMetaLookup),
+            itemOrderedChildrenIdsLookup: _extends({}, newState.itemOrderedChildrenIdsLookup, store.state.items.itemOrderedChildrenIdsLookup),
+            itemChildrenIndexesLookup: _extends({}, newState.itemChildrenIndexesLookup, store.state.items.itemChildrenIndexesLookup)
+          };
+        } else {
+          newItems = {
+            itemModelLookup: newState.itemModelLookup,
+            itemMetaLookup: newState.itemMetaLookup,
+            itemOrderedChildrenIdsLookup: newState.itemOrderedChildrenIdsLookup,
+            itemChildrenIndexesLookup: newState.itemChildrenIndexesLookup
+          };
+        }
+        Object.values(store.state.items.itemMetaLookup).forEach((item) => {
+          if (!newItems.itemMetaLookup[item.id]) {
+            publishTreeViewEvent(instance, "removeItem", {
+              id: item.id
+            });
+          }
+        });
+        store.set("items", _extends({}, store.state.items, newItems));
+      }
+    };
+    const removeChildren = (parentId) => {
+      if (parentId == null) {
+        store.set("items", _extends({}, store.state.items, {
+          itemMetaLookup: {},
+          itemOrderedChildrenIdsLookup: {},
+          itemChildrenIndexesLookup: {}
+        }));
+      } else {
+        const newMetaMap = Object.keys(store.state.items.itemMetaLookup).reduce((acc, key) => {
+          const item = store.state.items.itemMetaLookup[key];
+          if (item.parentId === parentId) {
+            publishTreeViewEvent(instance, "removeItem", {
+              id: item.id
+            });
+            return acc;
+          }
+          return _extends({}, acc, {
+            [item.id]: item
+          });
+        }, {});
+        const newItemOrderedChildrenIdsLookup = _extends({}, store.state.items.itemOrderedChildrenIdsLookup);
+        const newItemChildrenIndexesLookup = _extends({}, store.state.items.itemChildrenIndexesLookup);
+        delete newItemChildrenIndexesLookup[parentId];
+        delete newItemOrderedChildrenIdsLookup[parentId];
+        store.set("items", _extends({}, store.state.items, {
+          itemMetaLookup: newMetaMap,
+          itemOrderedChildrenIdsLookup: newItemOrderedChildrenIdsLookup,
+          itemChildrenIndexesLookup: newItemChildrenIndexesLookup
+        }));
+      }
+    };
+    React46.useEffect(() => {
+      if (instance.areItemUpdatesPrevented()) {
+        return;
+      }
+      const newState = processItemsLookups({
+        disabledItemsFocusable: params.disabledItemsFocusable,
+        items: params.items,
+        isItemDisabled: params.isItemDisabled,
+        getItemId: params.getItemId,
+        getItemLabel: params.getItemLabel,
+        getItemChildren: params.getItemChildren
+      });
+      Object.values(store.state.items.itemMetaLookup).forEach((item) => {
+        if (!newState.itemMetaLookup[item.id]) {
+          publishTreeViewEvent(instance, "removeItem", {
+            id: item.id
+          });
+        }
+      });
+      store.set("items", _extends({}, store.state.items, newState));
+    }, [instance, store, params.items, params.disabledItemsFocusable, params.isItemDisabled, params.getItemId, params.getItemLabel, params.getItemChildren]);
+    const handleItemClick = useEventCallback_default3((event, itemId) => {
+      if (params.onItemClick) {
+        params.onItemClick(event, itemId);
+      }
+    });
+    return {
+      getRootProps: () => ({
+        style: {
+          "--TreeView-itemChildrenIndentation": typeof params.itemChildrenIndentation === "number" ? `${params.itemChildrenIndentation}px` : params.itemChildrenIndentation
+        }
+      }),
+      publicAPI: {
+        getItem,
+        getItemDOMElement,
+        getItemTree,
+        getItemOrderedChildrenIds,
+        setIsItemDisabled,
+        getParentId
+      },
+      instance: {
+        getItemDOMElement,
+        preventItemUpdates,
+        areItemUpdatesPrevented,
+        addItems,
+        setTreeViewLoading,
+        setTreeViewError,
+        removeChildren,
+        handleItemClick
+      }
+    };
+  };
+  useTreeViewItems.getInitialState = (params) => ({
+    items: _extends({}, processItemsLookups({
+      disabledItemsFocusable: params.disabledItemsFocusable,
+      items: params.items,
+      isItemDisabled: params.isItemDisabled,
+      getItemId: params.getItemId,
+      getItemLabel: params.getItemLabel,
+      getItemChildren: params.getItemChildren
+    }), {
+      loading: false,
+      error: null
+    })
+  });
+  useTreeViewItems.applyDefaultValuesToParams = ({
+    params
+  }) => _extends({}, params, {
+    disabledItemsFocusable: params.disabledItemsFocusable ?? false,
+    itemChildrenIndentation: params.itemChildrenIndentation ?? "12px"
+  });
+  useTreeViewItems.wrapRoot = ({
+    children
+  }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(TreeViewItemDepthContext.Provider, {
+      value: itemsSelectors.itemDepth,
+      children
+    });
+  };
+  if (true)
+    useTreeViewItems.wrapRoot.displayName = "useTreeViewItems.wrapRoot";
+  useTreeViewItems.params = {
+    disabledItemsFocusable: true,
+    items: true,
+    isItemDisabled: true,
+    getItemLabel: true,
+    getItemChildren: true,
+    getItemId: true,
+    onItemClick: true,
+    itemChildrenIndentation: true
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewExpansion/useTreeViewExpansion.js
+  init_extends();
+
+  // node_modules/@mui/x-internals/esm/useAssertModelConsistency/useAssertModelConsistency.js
+  var React47 = __toESM(require_react(), 1);
+  function useAssertModelConsistencyOutsideOfProduction(parameters) {
+    const {
+      componentName,
+      propName,
+      controlled,
+      defaultValue,
+      warningPrefix = "MUI X"
+    } = parameters;
+    const [{
+      initialDefaultValue,
+      isControlled
+    }] = React47.useState({
+      initialDefaultValue: defaultValue,
+      isControlled: controlled !== void 0
+    });
+    if (isControlled !== (controlled !== void 0)) {
+      warnOnce([`${warningPrefix}: A component is changing the ${isControlled ? "" : "un"}controlled ${propName} state of ${componentName} to be ${isControlled ? "un" : ""}controlled.`, "Elements should not switch from uncontrolled to controlled (or vice versa).", `Decide between using a controlled or uncontrolled ${propName} element for the lifetime of the component.`, "The nature of the state is determined during the first render. It's considered controlled if the value is not `undefined`.", "More info: https://fb.me/react-controlled-components"], "error");
+    }
+    if (JSON.stringify(initialDefaultValue) !== JSON.stringify(defaultValue)) {
+      warnOnce([`${warningPrefix}: A component is changing the default ${propName} state of an uncontrolled ${componentName} after being initialized. To suppress this warning opt to use a controlled ${componentName}.`], "error");
+    }
+  }
+  var useAssertModelConsistency = false ? () => {
+  } : useAssertModelConsistencyOutsideOfProduction;
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewExpansion/useTreeViewExpansion.selectors.js
+  var expandedItemMapSelector = createSelectorMemoized((state) => state.expansion.expandedItems, (expandedItems) => {
+    const expandedItemsMap = /* @__PURE__ */ new Map();
+    expandedItems.forEach((id) => {
+      expandedItemsMap.set(id, true);
+    });
+    return expandedItemsMap;
+  });
+  var expansionSelectors = {
+    /**
+     * Gets the expanded items as provided to the component.
+     */
+    expandedItemsRaw: createSelector2((state) => state.expansion.expandedItems),
+    /**
+     * Get the expanded items as a Map.
+     * @param {TreeViewState<[UseTreeViewExpansionSignature]>} state The state of the tree view.
+     * @returns {TreeViewExpansionValue} The expanded items as a Map.
+     */
+    expandedItemsMap: expandedItemMapSelector,
+    /**
+     * Gets the slot that triggers the item's expansion when clicked.
+     */
+    triggerSlot: createSelector2((state) => state.expansion.expansionTrigger),
+    /**
+     * Checks whether an item is expanded.
+     */
+    isItemExpanded: createSelector2(expandedItemMapSelector, (expandedItemsMap, itemId) => expandedItemsMap.has(itemId)),
+    /**
+     * Checks whether an item is expandable.
+     */
+    isItemExpandable: createSelector2(itemsSelectors.itemMeta, (itemMeta, _itemId) => itemMeta?.expandable ?? false)
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewExpansion/useTreeViewExpansion.utils.js
+  var getExpansionTrigger = ({
+    isItemEditable,
+    expansionTrigger
+  }) => {
+    if (expansionTrigger) {
+      return expansionTrigger;
+    }
+    if (isItemEditable) {
+      return "iconContainer";
+    }
+    return "content";
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewExpansion/useTreeViewExpansion.js
+  var useTreeViewExpansion = ({
+    instance,
+    store,
+    params
+  }) => {
+    useAssertModelConsistency({
+      componentName: "Tree View",
+      propName: "expandedItems",
+      controlled: params.expandedItems,
+      defaultValue: params.defaultExpandedItems
+    });
+    useEnhancedEffect_default2(() => {
+      const newExpansionTrigger = getExpansionTrigger({
+        isItemEditable: params.isItemEditable,
+        expansionTrigger: params.expansionTrigger
+      });
+      if (store.state.expansion.expansionTrigger === newExpansionTrigger) {
+        return;
+      }
+      store.set("expansion", _extends({}, store.state.expansion, {
+        expansionTrigger: newExpansionTrigger
+      }));
+    }, [store, params.isItemEditable, params.expansionTrigger]);
+    const setExpandedItems = (event, value) => {
+      if (params.expandedItems === void 0) {
+        store.set("expansion", _extends({}, store.state.expansion, {
+          expandedItems: value
+        }));
+      }
+      params.onExpandedItemsChange?.(event, value);
+    };
+    const resetItemExpansion = useEventCallback_default3(() => {
+      setExpandedItems(null, []);
+    });
+    const applyItemExpansion = useEventCallback_default3(({
+      itemId,
+      event,
+      shouldBeExpanded
+    }) => {
+      const oldExpanded = expansionSelectors.expandedItemsRaw(store.state);
+      let newExpanded;
+      if (shouldBeExpanded) {
+        newExpanded = [itemId].concat(oldExpanded);
+      } else {
+        newExpanded = oldExpanded.filter((id) => id !== itemId);
+      }
+      if (params.onItemExpansionToggle) {
+        params.onItemExpansionToggle(event, itemId, shouldBeExpanded);
+      }
+      setExpandedItems(event, newExpanded);
+    });
+    const setItemExpansion = useEventCallback_default3(({
+      itemId,
+      event = null,
+      shouldBeExpanded
+    }) => {
+      const isExpandedBefore = expansionSelectors.isItemExpanded(store.state, itemId);
+      const cleanShouldBeExpanded = shouldBeExpanded ?? !isExpandedBefore;
+      if (isExpandedBefore === cleanShouldBeExpanded) {
+        return;
+      }
+      const eventParameters = {
+        isExpansionPrevented: false,
+        shouldBeExpanded: cleanShouldBeExpanded,
+        event,
+        itemId
+      };
+      publishTreeViewEvent(instance, "beforeItemToggleExpansion", eventParameters);
+      if (eventParameters.isExpansionPrevented) {
+        return;
+      }
+      instance.applyItemExpansion({
+        itemId,
+        event,
+        shouldBeExpanded: cleanShouldBeExpanded
+      });
+    });
+    const isItemExpanded = useEventCallback_default3((itemId) => {
+      return expansionSelectors.isItemExpandable(store.state, itemId);
+    });
+    const expandAllSiblings = (event, itemId) => {
+      const itemMeta = itemsSelectors.itemMeta(store.state, itemId);
+      if (itemMeta == null) {
+        return;
+      }
+      const siblings = itemsSelectors.itemOrderedChildrenIds(store.state, itemMeta.parentId);
+      const diff = siblings.filter((child) => expansionSelectors.isItemExpandable(store.state, child) && !expansionSelectors.isItemExpanded(store.state, child));
+      const newExpanded = expansionSelectors.expandedItemsRaw(store.state).concat(diff);
+      if (diff.length > 0) {
+        if (params.onItemExpansionToggle) {
+          diff.forEach((newlyExpandedItemId) => {
+            params.onItemExpansionToggle(event, newlyExpandedItemId, true);
+          });
+        }
+        setExpandedItems(event, newExpanded);
+      }
+    };
+    useEnhancedEffect_default2(() => {
+      const expandedItems = params.expandedItems;
+      if (expandedItems !== void 0) {
+        store.set("expansion", _extends({}, store.state.expansion, {
+          expandedItems
+        }));
+      }
+    }, [store, params.expandedItems]);
+    return {
+      publicAPI: {
+        setItemExpansion,
+        isItemExpanded
+      },
+      instance: {
+        setItemExpansion,
+        applyItemExpansion,
+        expandAllSiblings,
+        resetItemExpansion
+      }
+    };
+  };
+  var DEFAULT_EXPANDED_ITEMS = [];
+  useTreeViewExpansion.applyDefaultValuesToParams = ({
+    params
+  }) => _extends({}, params, {
+    defaultExpandedItems: params.defaultExpandedItems ?? DEFAULT_EXPANDED_ITEMS
+  });
+  useTreeViewExpansion.getInitialState = (params) => ({
+    expansion: {
+      expandedItems: params.expandedItems === void 0 ? params.defaultExpandedItems : params.expandedItems,
+      expansionTrigger: getExpansionTrigger(params)
+    }
+  });
+  useTreeViewExpansion.params = {
+    expandedItems: true,
+    defaultExpandedItems: true,
+    onExpandedItemsChange: true,
+    onItemExpansionToggle: true,
+    expansionTrigger: true
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewSelection/useTreeViewSelection.js
+  init_extends();
+  var React48 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/esm/internals/utils/tree.js
+  var getLastNavigableItemInArray = (state, items) => {
+    let itemIndex = items.length - 1;
+    while (itemIndex >= 0 && !itemsSelectors.canItemBeFocused(state, items[itemIndex])) {
+      itemIndex -= 1;
+    }
+    if (itemIndex === -1) {
+      return void 0;
+    }
+    return items[itemIndex];
+  };
+  var getPreviousNavigableItem = (state, itemId) => {
+    const itemMeta = itemsSelectors.itemMeta(state, itemId);
+    if (!itemMeta) {
+      return null;
+    }
+    const siblings = itemsSelectors.itemOrderedChildrenIds(state, itemMeta.parentId);
+    const itemIndex = itemsSelectors.itemIndex(state, itemId);
+    if (itemIndex === 0) {
+      return itemMeta.parentId;
+    }
+    let previousNavigableSiblingIndex = itemIndex - 1;
+    while (!itemsSelectors.canItemBeFocused(state, siblings[previousNavigableSiblingIndex]) && previousNavigableSiblingIndex >= 0) {
+      previousNavigableSiblingIndex -= 1;
+    }
+    if (previousNavigableSiblingIndex === -1) {
+      if (itemMeta.parentId == null) {
+        return null;
+      }
+      return getPreviousNavigableItem(state, itemMeta.parentId);
+    }
+    let currentItemId = siblings[previousNavigableSiblingIndex];
+    let lastNavigableChild = getLastNavigableItemInArray(state, itemsSelectors.itemOrderedChildrenIds(state, currentItemId));
+    while (expansionSelectors.isItemExpanded(state, currentItemId) && lastNavigableChild != null) {
+      currentItemId = lastNavigableChild;
+      lastNavigableChild = getLastNavigableItemInArray(state, itemsSelectors.itemOrderedChildrenIds(state, currentItemId));
+    }
+    return currentItemId;
+  };
+  var getNextNavigableItem = (state, itemId) => {
+    if (expansionSelectors.isItemExpanded(state, itemId)) {
+      const firstNavigableChild = itemsSelectors.itemOrderedChildrenIds(state, itemId).find((childId) => itemsSelectors.canItemBeFocused(state, childId));
+      if (firstNavigableChild != null) {
+        return firstNavigableChild;
+      }
+    }
+    let itemMeta = itemsSelectors.itemMeta(state, itemId);
+    while (itemMeta != null) {
+      const siblings = itemsSelectors.itemOrderedChildrenIds(state, itemMeta.parentId);
+      const currentItemIndex = itemsSelectors.itemIndex(state, itemMeta.id);
+      if (currentItemIndex < siblings.length - 1) {
+        let nextItemIndex = currentItemIndex + 1;
+        while (!itemsSelectors.canItemBeFocused(state, siblings[nextItemIndex]) && nextItemIndex < siblings.length - 1) {
+          nextItemIndex += 1;
+        }
+        if (itemsSelectors.canItemBeFocused(state, siblings[nextItemIndex])) {
+          return siblings[nextItemIndex];
+        }
+      }
+      itemMeta = itemsSelectors.itemMeta(state, itemMeta.parentId);
+    }
+    return null;
+  };
+  var getLastNavigableItem = (state) => {
+    let itemId = null;
+    while (itemId == null || expansionSelectors.isItemExpanded(state, itemId)) {
+      const children = itemsSelectors.itemOrderedChildrenIds(state, itemId);
+      const lastNavigableChild = getLastNavigableItemInArray(state, children);
+      if (lastNavigableChild == null) {
+        return itemId;
+      }
+      itemId = lastNavigableChild;
+    }
+    return itemId;
+  };
+  var getFirstNavigableItem = (state) => itemsSelectors.itemOrderedChildrenIds(state, null).find((itemId) => itemsSelectors.canItemBeFocused(state, itemId));
+  var findOrderInTremauxTree = (state, itemAId, itemBId) => {
+    if (itemAId === itemBId) {
+      return [itemAId, itemBId];
+    }
+    const itemMetaA = itemsSelectors.itemMeta(state, itemAId);
+    const itemMetaB = itemsSelectors.itemMeta(state, itemBId);
+    if (!itemMetaA || !itemMetaB) {
+      return [itemAId, itemBId];
+    }
+    if (itemMetaA.parentId === itemMetaB.id || itemMetaB.parentId === itemMetaA.id) {
+      return itemMetaB.parentId === itemMetaA.id ? [itemMetaA.id, itemMetaB.id] : [itemMetaB.id, itemMetaA.id];
+    }
+    const aFamily = [itemMetaA.id];
+    const bFamily = [itemMetaB.id];
+    let aAncestor = itemMetaA.parentId;
+    let bAncestor = itemMetaB.parentId;
+    let aAncestorIsCommon = bFamily.indexOf(aAncestor) !== -1;
+    let bAncestorIsCommon = aFamily.indexOf(bAncestor) !== -1;
+    let continueA = true;
+    let continueB = true;
+    while (!bAncestorIsCommon && !aAncestorIsCommon) {
+      if (continueA) {
+        aFamily.push(aAncestor);
+        aAncestorIsCommon = bFamily.indexOf(aAncestor) !== -1;
+        continueA = aAncestor !== null;
+        if (!aAncestorIsCommon && continueA) {
+          aAncestor = itemsSelectors.itemParentId(state, aAncestor);
+        }
+      }
+      if (continueB && !aAncestorIsCommon) {
+        bFamily.push(bAncestor);
+        bAncestorIsCommon = aFamily.indexOf(bAncestor) !== -1;
+        continueB = bAncestor !== null;
+        if (!bAncestorIsCommon && continueB) {
+          bAncestor = itemsSelectors.itemParentId(state, bAncestor);
+        }
+      }
+    }
+    const commonAncestor = aAncestorIsCommon ? aAncestor : bAncestor;
+    const ancestorFamily = itemsSelectors.itemOrderedChildrenIds(state, commonAncestor);
+    const aSide = aFamily[aFamily.indexOf(commonAncestor) - 1];
+    const bSide = bFamily[bFamily.indexOf(commonAncestor) - 1];
+    return ancestorFamily.indexOf(aSide) < ancestorFamily.indexOf(bSide) ? [itemAId, itemBId] : [itemBId, itemAId];
+  };
+  var getNonDisabledItemsInRange = (state, itemAId, itemBId) => {
+    const getNextItem = (itemId) => {
+      if (expansionSelectors.isItemExpandable(state, itemId) && expansionSelectors.isItemExpanded(state, itemId)) {
+        return itemsSelectors.itemOrderedChildrenIds(state, itemId)[0];
+      }
+      let itemMeta = itemsSelectors.itemMeta(state, itemId);
+      while (itemMeta != null) {
+        const siblings = itemsSelectors.itemOrderedChildrenIds(state, itemMeta.parentId);
+        const currentItemIndex = itemsSelectors.itemIndex(state, itemMeta.id);
+        if (currentItemIndex < siblings.length - 1) {
+          return siblings[currentItemIndex + 1];
+        }
+        itemMeta = itemMeta.parentId ? itemsSelectors.itemMeta(state, itemMeta.parentId) : null;
+      }
+      throw new Error("Invalid range");
+    };
+    const [first, last] = findOrderInTremauxTree(state, itemAId, itemBId);
+    const items = [first];
+    let current = first;
+    while (current !== last) {
+      current = getNextItem(current);
+      if (!itemsSelectors.isItemDisabled(state, current)) {
+        items.push(current);
+      }
+    }
+    return items;
+  };
+  var getAllNavigableItems = (state) => {
+    let item = getFirstNavigableItem(state);
+    const navigableItems = [];
+    while (item != null) {
+      navigableItems.push(item);
+      item = getNextNavigableItem(state, item);
+    }
+    return navigableItems;
+  };
+  var isTargetInDescendants = (target, itemRoot) => {
+    return itemRoot !== target.closest('*[role="treeitem"]');
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewSelection/useTreeViewSelection.selectors.js
+  var selectedItemsSelector = createSelectorMemoized((state) => state.selection.selectedItems, (selectedItemsRaw) => {
+    if (Array.isArray(selectedItemsRaw)) {
+      return selectedItemsRaw;
+    }
+    if (selectedItemsRaw != null) {
+      return [selectedItemsRaw];
+    }
+    return [];
+  });
+  var selectedItemsMapSelector = createSelectorMemoized(selectedItemsSelector, (selectedItems) => {
+    const selectedItemsMap = /* @__PURE__ */ new Map();
+    selectedItems.forEach((id) => {
+      selectedItemsMap.set(id, true);
+    });
+    return selectedItemsMap;
+  });
+  var selectionSelectors = {
+    /**
+     * Gets the selected items as provided to the component.
+     */
+    selectedItemsRaw: createSelector2((state) => state.selection.selectedItems),
+    /**
+     * Gets the selected items as an array.
+     */
+    selectedItems: selectedItemsSelector,
+    /**
+     * Gets the selected items as a Map.
+     */
+    selectedItemsMap: selectedItemsMapSelector,
+    /**
+     * Checks whether selection is enabled.
+     */
+    enabled: createSelector2((state) => state.selection.isEnabled),
+    /**
+     * Checks whether multi selection is enabled.
+     */
+    isMultiSelectEnabled: createSelector2((state) => state.selection.isMultiSelectEnabled),
+    /**
+     * Checks whether checkbox selection is enabled.
+     */
+    isCheckboxSelectionEnabled: createSelector2((state) => state.selection.isCheckboxSelectionEnabled),
+    /**
+     * Gets the selection propagation rules.
+     */
+    propagationRules: createSelector2((state) => state.selection.selectionPropagation),
+    /**
+     * Checks whether an item is selected.
+     */
+    isItemSelected: createSelector2(selectedItemsMapSelector, (selectedItemsMap, itemId) => selectedItemsMap.has(itemId)),
+    /**
+     * Checks whether an item can be selected (if selection is enabled and if the item is not disabled).
+     */
+    canItemBeSelected: createSelector2(itemsSelectors.isItemDisabled, (state) => state.selection.isEnabled, (isItemDisabled2, isSelectionEnabled, _itemId) => isSelectionEnabled && !isItemDisabled2)
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewSelection/useTreeViewSelection.utils.js
+  var getLookupFromArray = (array) => {
+    const lookup = {};
+    array.forEach((itemId) => {
+      lookup[itemId] = true;
+    });
+    return lookup;
+  };
+  var getAddedAndRemovedItems = ({
+    store,
+    oldModel,
+    newModel
+  }) => {
+    const newModelMap = /* @__PURE__ */ new Map();
+    newModel.forEach((id) => {
+      newModelMap.set(id, true);
+    });
+    return {
+      added: newModel.filter((itemId) => !selectionSelectors.isItemSelected(store.state, itemId)),
+      removed: oldModel.filter((itemId) => !newModelMap.has(itemId))
+    };
+  };
+  var propagateSelection = ({
+    store,
+    selectionPropagation,
+    newModel,
+    oldModel,
+    additionalItemsToPropagate
+  }) => {
+    if (!selectionPropagation.descendants && !selectionPropagation.parents) {
+      return newModel;
+    }
+    let shouldRegenerateModel = false;
+    const newModelLookup = getLookupFromArray(newModel);
+    const changes = getAddedAndRemovedItems({
+      store,
+      newModel,
+      oldModel
+    });
+    additionalItemsToPropagate?.forEach((itemId) => {
+      if (newModelLookup[itemId]) {
+        if (!changes.added.includes(itemId)) {
+          changes.added.push(itemId);
+        }
+      } else if (!changes.removed.includes(itemId)) {
+        changes.removed.push(itemId);
+      }
+    });
+    changes.added.forEach((addedItemId) => {
+      if (selectionPropagation.descendants) {
+        const selectDescendants = (itemId) => {
+          if (itemId !== addedItemId) {
+            shouldRegenerateModel = true;
+            newModelLookup[itemId] = true;
+          }
+          itemsSelectors.itemOrderedChildrenIds(store.state, itemId).forEach(selectDescendants);
+        };
+        selectDescendants(addedItemId);
+      }
+      if (selectionPropagation.parents) {
+        const checkAllDescendantsSelected = (itemId) => {
+          if (!newModelLookup[itemId]) {
+            return false;
+          }
+          const children = itemsSelectors.itemOrderedChildrenIds(store.state, itemId);
+          return children.every(checkAllDescendantsSelected);
+        };
+        const selectParents = (itemId) => {
+          const parentId = itemsSelectors.itemParentId(store.state, itemId);
+          if (parentId == null) {
+            return;
+          }
+          const siblings = itemsSelectors.itemOrderedChildrenIds(store.state, parentId);
+          if (siblings.every(checkAllDescendantsSelected)) {
+            shouldRegenerateModel = true;
+            newModelLookup[parentId] = true;
+            selectParents(parentId);
+          }
+        };
+        selectParents(addedItemId);
+      }
+    });
+    changes.removed.forEach((removedItemId) => {
+      if (selectionPropagation.parents) {
+        let parentId = itemsSelectors.itemParentId(store.state, removedItemId);
+        while (parentId != null) {
+          if (newModelLookup[parentId]) {
+            shouldRegenerateModel = true;
+            delete newModelLookup[parentId];
+          }
+          parentId = itemsSelectors.itemParentId(store.state, parentId);
+        }
+      }
+      if (selectionPropagation.descendants) {
+        const deSelectDescendants = (itemId) => {
+          if (itemId !== removedItemId) {
+            shouldRegenerateModel = true;
+            delete newModelLookup[itemId];
+          }
+          itemsSelectors.itemOrderedChildrenIds(store.state, itemId).forEach(deSelectDescendants);
+        };
+        deSelectDescendants(removedItemId);
+      }
+    });
+    return shouldRegenerateModel ? Object.keys(newModelLookup) : newModel;
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewSelection/useTreeViewSelection.itemPlugin.js
+  var selectorCheckboxSelectionStatus = createSelector2((state, itemId) => {
+    if (selectionSelectors.isItemSelected(state, itemId)) {
+      return "checked";
+    }
+    let hasSelectedDescendant = false;
+    let hasUnSelectedDescendant = false;
+    const traverseDescendants = (itemToTraverseId) => {
+      if (itemToTraverseId !== itemId) {
+        if (selectionSelectors.isItemSelected(state, itemToTraverseId)) {
+          hasSelectedDescendant = true;
+        } else {
+          hasUnSelectedDescendant = true;
+        }
+      }
+      itemsSelectors.itemOrderedChildrenIds(state, itemToTraverseId).forEach(traverseDescendants);
+    };
+    traverseDescendants(itemId);
+    if (hasSelectedDescendant && hasUnSelectedDescendant) {
+      return "indeterminate";
+    }
+    const shouldSelectBasedOnDescendants = selectionSelectors.propagationRules(state).parents;
+    return shouldSelectBasedOnDescendants && hasSelectedDescendant && !hasUnSelectedDescendant ? "checked" : "empty";
+  });
+  var useTreeViewSelectionItemPlugin = ({
+    props
+  }) => {
+    const {
+      itemId
+    } = props;
+    const {
+      store
+    } = useTreeViewContext();
+    const isCheckboxSelectionEnabled = useStore(store, selectionSelectors.isCheckboxSelectionEnabled);
+    const isItemSelectionEnabled = useStore(store, selectionSelectors.canItemBeSelected, itemId);
+    const checkboxSelectionStatus = useStore(store, selectorCheckboxSelectionStatus, itemId);
+    return {
+      propsEnhancers: {
+        checkbox: ({
+          externalEventHandlers,
+          interactions
+        }) => {
+          const handleChange = (event) => {
+            externalEventHandlers.onChange?.(event);
+            if (event.defaultMuiPrevented) {
+              return;
+            }
+            if (!selectionSelectors.canItemBeSelected(store.state, itemId)) {
+              return;
+            }
+            interactions.handleCheckboxSelection(event);
+          };
+          return {
+            tabIndex: -1,
+            onChange: handleChange,
+            visible: isCheckboxSelectionEnabled,
+            disabled: !isItemSelectionEnabled,
+            checked: checkboxSelectionStatus === "checked",
+            indeterminate: checkboxSelectionStatus === "indeterminate"
+          };
+        }
+      }
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewSelection/useTreeViewSelection.js
+  var useTreeViewSelection = ({
+    store,
+    params
+  }) => {
+    useAssertModelConsistency({
+      componentName: "Tree View",
+      propName: "selectedItems",
+      controlled: params.selectedItems,
+      defaultValue: params.defaultSelectedItems
+    });
+    const lastSelectedItem = React48.useRef(null);
+    const lastSelectedRange = React48.useRef({});
+    const setSelectedItems = (event, newModel, additionalItemsToPropagate) => {
+      const oldModel = selectionSelectors.selectedItemsRaw(store.state);
+      let cleanModel;
+      const isMultiSelectEnabled = selectionSelectors.isMultiSelectEnabled(store.state);
+      if (isMultiSelectEnabled && (params.selectionPropagation.descendants || params.selectionPropagation.parents)) {
+        cleanModel = propagateSelection({
+          store,
+          selectionPropagation: params.selectionPropagation,
+          newModel,
+          oldModel,
+          additionalItemsToPropagate
+        });
+      } else {
+        cleanModel = newModel;
+      }
+      if (params.onItemSelectionToggle) {
+        if (isMultiSelectEnabled) {
+          const changes = getAddedAndRemovedItems({
+            store,
+            newModel: cleanModel,
+            oldModel
+          });
+          if (params.onItemSelectionToggle) {
+            changes.added.forEach((itemId) => {
+              params.onItemSelectionToggle(event, itemId, true);
+            });
+            changes.removed.forEach((itemId) => {
+              params.onItemSelectionToggle(event, itemId, false);
+            });
+          }
+        } else if (params.onItemSelectionToggle && cleanModel !== oldModel) {
+          if (oldModel != null) {
+            params.onItemSelectionToggle(event, oldModel, false);
+          }
+          if (cleanModel != null) {
+            params.onItemSelectionToggle(event, cleanModel, true);
+          }
+        }
+      }
+      if (params.selectedItems === void 0) {
+        store.set("selection", _extends({}, store.state.selection, {
+          selectedItems: cleanModel
+        }));
+      }
+      params.onSelectedItemsChange?.(event, cleanModel);
+    };
+    const setItemSelection = ({
+      itemId,
+      event = null,
+      keepExistingSelection = false,
+      shouldBeSelected
+    }) => {
+      if (!selectionSelectors.enabled(store.state)) {
+        return;
+      }
+      let newSelected;
+      const isMultiSelectEnabled = selectionSelectors.isMultiSelectEnabled(store.state);
+      if (keepExistingSelection) {
+        const oldSelected = selectionSelectors.selectedItems(store.state);
+        const isSelectedBefore = selectionSelectors.isItemSelected(store.state, itemId);
+        if (isSelectedBefore && (shouldBeSelected === false || shouldBeSelected == null)) {
+          newSelected = oldSelected.filter((id) => id !== itemId);
+        } else if (!isSelectedBefore && (shouldBeSelected === true || shouldBeSelected == null)) {
+          newSelected = [itemId].concat(oldSelected);
+        } else {
+          newSelected = oldSelected;
+        }
+      } else {
+        if (shouldBeSelected === false || shouldBeSelected == null && selectionSelectors.isItemSelected(store.state, itemId)) {
+          newSelected = isMultiSelectEnabled ? [] : null;
+        } else {
+          newSelected = isMultiSelectEnabled ? [itemId] : itemId;
+        }
+      }
+      setSelectedItems(
+        event,
+        newSelected,
+        // If shouldBeSelected === selectionSelectors.isItemSelected(store, itemId), we still want to propagate the select.
+        // This is useful when the element is in an indeterminate state.
+        [itemId]
+      );
+      lastSelectedItem.current = itemId;
+      lastSelectedRange.current = {};
+    };
+    const selectRange = (event, [start, end]) => {
+      const isMultiSelectEnabled = selectionSelectors.isMultiSelectEnabled(store.state);
+      if (!isMultiSelectEnabled) {
+        return;
+      }
+      let newSelectedItems = selectionSelectors.selectedItems(store.state).slice();
+      if (Object.keys(lastSelectedRange.current).length > 0) {
+        newSelectedItems = newSelectedItems.filter((id) => !lastSelectedRange.current[id]);
+      }
+      const selectedItemsLookup = getLookupFromArray(newSelectedItems);
+      const range = getNonDisabledItemsInRange(store.state, start, end);
+      const itemsToAddToModel = range.filter((id) => !selectedItemsLookup[id]);
+      newSelectedItems = newSelectedItems.concat(itemsToAddToModel);
+      setSelectedItems(event, newSelectedItems);
+      lastSelectedRange.current = getLookupFromArray(range);
+    };
+    const expandSelectionRange = (event, itemId) => {
+      if (lastSelectedItem.current != null) {
+        const [start, end] = findOrderInTremauxTree(store.state, itemId, lastSelectedItem.current);
+        selectRange(event, [start, end]);
+      }
+    };
+    const selectRangeFromStartToItem = (event, itemId) => {
+      selectRange(event, [getFirstNavigableItem(store.state), itemId]);
+    };
+    const selectRangeFromItemToEnd = (event, itemId) => {
+      selectRange(event, [itemId, getLastNavigableItem(store.state)]);
+    };
+    const selectAllNavigableItems = (event) => {
+      const isMultiSelectEnabled = selectionSelectors.isMultiSelectEnabled(store.state);
+      if (!isMultiSelectEnabled) {
+        return;
+      }
+      const navigableItems = getAllNavigableItems(store.state);
+      setSelectedItems(event, navigableItems);
+      lastSelectedRange.current = getLookupFromArray(navigableItems);
+    };
+    const selectItemFromArrowNavigation = (event, currentItem, nextItem) => {
+      const isMultiSelectEnabled = selectionSelectors.isMultiSelectEnabled(store.state);
+      if (!isMultiSelectEnabled) {
+        return;
+      }
+      let newSelectedItems = selectionSelectors.selectedItems(store.state).slice();
+      if (Object.keys(lastSelectedRange.current).length === 0) {
+        newSelectedItems.push(nextItem);
+        lastSelectedRange.current = {
+          [currentItem]: true,
+          [nextItem]: true
+        };
+      } else {
+        if (!lastSelectedRange.current[currentItem]) {
+          lastSelectedRange.current = {};
+        }
+        if (lastSelectedRange.current[nextItem]) {
+          newSelectedItems = newSelectedItems.filter((id) => id !== currentItem);
+          delete lastSelectedRange.current[currentItem];
+        } else {
+          newSelectedItems.push(nextItem);
+          lastSelectedRange.current[nextItem] = true;
+        }
+      }
+      setSelectedItems(event, newSelectedItems);
+    };
+    useEnhancedEffect_default2(() => {
+      store.set("selection", {
+        selectedItems: params.selectedItems === void 0 ? store.state.selection.selectedItems : params.selectedItems,
+        isEnabled: !params.disableSelection,
+        isMultiSelectEnabled: params.multiSelect,
+        isCheckboxSelectionEnabled: params.checkboxSelection,
+        selectionPropagation: {
+          descendants: params.selectionPropagation.descendants,
+          parents: params.selectionPropagation.parents
+        }
+      });
+    }, [store, params.selectedItems, params.multiSelect, params.checkboxSelection, params.disableSelection, params.selectionPropagation.descendants, params.selectionPropagation.parents]);
+    return {
+      getRootProps: () => ({
+        "aria-multiselectable": params.multiSelect
+      }),
+      publicAPI: {
+        setItemSelection
+      },
+      instance: {
+        setItemSelection,
+        selectAllNavigableItems,
+        expandSelectionRange,
+        selectRangeFromStartToItem,
+        selectRangeFromItemToEnd,
+        selectItemFromArrowNavigation
+      }
+    };
+  };
+  useTreeViewSelection.itemPlugin = useTreeViewSelectionItemPlugin;
+  var DEFAULT_SELECTED_ITEMS = [];
+  var EMPTY_SELECTION_PROPAGATION = {};
+  useTreeViewSelection.applyDefaultValuesToParams = ({
+    params
+  }) => _extends({}, params, {
+    disableSelection: params.disableSelection ?? false,
+    multiSelect: params.multiSelect ?? false,
+    checkboxSelection: params.checkboxSelection ?? false,
+    defaultSelectedItems: params.defaultSelectedItems ?? (params.multiSelect ? DEFAULT_SELECTED_ITEMS : null),
+    selectionPropagation: params.selectionPropagation ?? EMPTY_SELECTION_PROPAGATION
+  });
+  useTreeViewSelection.getInitialState = (params) => ({
+    selection: {
+      selectedItems: params.selectedItems === void 0 ? params.defaultSelectedItems : params.selectedItems,
+      isEnabled: !params.disableSelection,
+      isMultiSelectEnabled: params.multiSelect,
+      isCheckboxSelectionEnabled: params.checkboxSelection,
+      selectionPropagation: params.selectionPropagation
+    }
+  });
+  useTreeViewSelection.params = {
+    disableSelection: true,
+    multiSelect: true,
+    checkboxSelection: true,
+    defaultSelectedItems: true,
+    selectedItems: true,
+    onSelectedItemsChange: true,
+    onItemSelectionToggle: true,
+    selectionPropagation: true
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewFocus/useTreeViewFocus.js
+  init_extends();
+
+  // node_modules/@mui/x-tree-view/esm/internals/hooks/useInstanceEventHandler.js
+  var React49 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/esm/internals/utils/cleanupTracking/TimerBasedCleanupTracking.js
+  var CLEANUP_TIMER_LOOP_MILLIS = 1e3;
+  var TimerBasedCleanupTracking = class {
+    timeouts = (() => /* @__PURE__ */ new Map())();
+    cleanupTimeout = (() => CLEANUP_TIMER_LOOP_MILLIS)();
+    constructor(timeout2 = CLEANUP_TIMER_LOOP_MILLIS) {
+      this.cleanupTimeout = timeout2;
+    }
+    register(object, unsubscribe, unregisterToken) {
+      if (!this.timeouts) {
+        this.timeouts = /* @__PURE__ */ new Map();
+      }
+      const timeout2 = setTimeout(() => {
+        if (typeof unsubscribe === "function") {
+          unsubscribe();
+        }
+        this.timeouts.delete(unregisterToken.cleanupToken);
+      }, this.cleanupTimeout);
+      this.timeouts.set(unregisterToken.cleanupToken, timeout2);
+    }
+    unregister(unregisterToken) {
+      const timeout2 = this.timeouts.get(unregisterToken.cleanupToken);
+      if (timeout2) {
+        this.timeouts.delete(unregisterToken.cleanupToken);
+        clearTimeout(timeout2);
+      }
+    }
+    reset() {
+      if (this.timeouts) {
+        this.timeouts.forEach((value, key) => {
+          this.unregister({
+            cleanupToken: key
+          });
+        });
+        this.timeouts = void 0;
+      }
+    }
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/utils/cleanupTracking/FinalizationRegistryBasedCleanupTracking.js
+  var FinalizationRegistryBasedCleanupTracking = class {
+    registry = (() => new FinalizationRegistry((unsubscribe) => {
+      if (typeof unsubscribe === "function") {
+        unsubscribe();
+      }
+    }))();
+    register(object, unsubscribe, unregisterToken) {
+      this.registry.register(object, unsubscribe, unregisterToken);
+    }
+    unregister(unregisterToken) {
+      this.registry.unregister(unregisterToken);
+    }
+    reset() {
+    }
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/hooks/useInstanceEventHandler.js
+  var ObjectToBeRetainedByReact = class {
+  };
+  function createUseInstanceEventHandler(registryContainer2) {
+    let cleanupTokensCounter = 0;
+    return function useInstanceEventHandler2(instance, eventName, handler) {
+      if (registryContainer2.registry === null) {
+        registryContainer2.registry = typeof FinalizationRegistry !== "undefined" ? new FinalizationRegistryBasedCleanupTracking() : new TimerBasedCleanupTracking();
+      }
+      const [objectRetainedByReact] = React49.useState(new ObjectToBeRetainedByReact());
+      const subscription = React49.useRef(null);
+      const handlerRef = React49.useRef(void 0);
+      handlerRef.current = handler;
+      const cleanupTokenRef = React49.useRef(null);
+      if (!subscription.current && handlerRef.current) {
+        const enhancedHandler = (params, event) => {
+          if (!event.defaultMuiPrevented) {
+            handlerRef.current?.(params, event);
+          }
+        };
+        subscription.current = instance.$$subscribeEvent(eventName, enhancedHandler);
+        cleanupTokensCounter += 1;
+        cleanupTokenRef.current = {
+          cleanupToken: cleanupTokensCounter
+        };
+        registryContainer2.registry.register(
+          objectRetainedByReact,
+          // The callback below will be called once this reference stops being retained
+          () => {
+            subscription.current?.();
+            subscription.current = null;
+            cleanupTokenRef.current = null;
+          },
+          cleanupTokenRef.current
+        );
+      } else if (!handlerRef.current && subscription.current) {
+        subscription.current();
+        subscription.current = null;
+        if (cleanupTokenRef.current) {
+          registryContainer2.registry.unregister(cleanupTokenRef.current);
+          cleanupTokenRef.current = null;
+        }
+      }
+      React49.useEffect(() => {
+        if (!subscription.current && handlerRef.current) {
+          const enhancedHandler = (params, event) => {
+            if (!event.defaultMuiPrevented) {
+              handlerRef.current?.(params, event);
+            }
+          };
+          subscription.current = instance.$$subscribeEvent(eventName, enhancedHandler);
+        }
+        if (cleanupTokenRef.current && registryContainer2.registry) {
+          registryContainer2.registry.unregister(cleanupTokenRef.current);
+          cleanupTokenRef.current = null;
+        }
+        return () => {
+          subscription.current?.();
+          subscription.current = null;
+        };
+      }, [instance, eventName]);
+    };
+  }
+  var registryContainer = {
+    registry: null
+  };
+  var useInstanceEventHandler = createUseInstanceEventHandler(registryContainer);
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewFocus/useTreeViewFocus.selectors.js
+  var defaultFocusableItemIdSelector = createSelectorMemoized(selectionSelectors.selectedItems, expansionSelectors.expandedItemsMap, itemsSelectors.itemMetaLookup, itemsSelectors.disabledItemFocusable, (state) => itemsSelectors.itemOrderedChildrenIds(state, null), (selectedItems, expandedItemsMap, itemMetaLookup, disabledItemsFocusable, orderedRootItemIds) => {
+    const firstSelectedItem = selectedItems.find((itemId) => {
+      if (!disabledItemsFocusable && isItemDisabled(itemMetaLookup, itemId)) {
+        return false;
+      }
+      const itemMeta = itemMetaLookup[itemId];
+      return itemMeta && (itemMeta.parentId == null || expandedItemsMap.has(itemMeta.parentId));
+    });
+    if (firstSelectedItem != null) {
+      return firstSelectedItem;
+    }
+    const firstNavigableItem = orderedRootItemIds.find((itemId) => disabledItemsFocusable || !isItemDisabled(itemMetaLookup, itemId));
+    if (firstNavigableItem != null) {
+      return firstNavigableItem;
+    }
+    return null;
+  });
+  var focusSelectors = {
+    /**
+     * Gets the item that should be sequentially focusable (usually with the Tab key).
+     * At any point in time, there is a single item that can be sequentially focused in the Tree View.
+     * This item is the first selected item (that is both visible and navigable), if any, or the first navigable item if no item is selected.
+     */
+    defaultFocusableItemId: defaultFocusableItemIdSelector,
+    /**
+     * Checks whether an item is the default focusable item.
+     */
+    isItemTheDefaultFocusableItem: createSelector2(defaultFocusableItemIdSelector, (defaultFocusableItemId, itemId) => defaultFocusableItemId === itemId),
+    /**
+     * Gets the id of the item that is currently focused.
+     */
+    focusedItemId: createSelector2((state) => state.focus.focusedItemId),
+    /**
+     * Checks whether an item is focused.
+     */
+    isItemFocused: createSelector2((state, itemId) => state.focus.focusedItemId === itemId)
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewFocus/useTreeViewFocus.js
+  var useTreeViewFocus = ({
+    instance,
+    params,
+    store
+  }) => {
+    const setFocusedItemId = useEventCallback_default3((itemId) => {
+      const focusedItemId = focusSelectors.focusedItemId(store.state);
+      if (focusedItemId === itemId) {
+        return;
+      }
+      store.set("focus", _extends({}, store.state.focus, {
+        focusedItemId: itemId
+      }));
+    });
+    const isItemVisible = (itemId) => {
+      const itemMeta = itemsSelectors.itemMeta(store.state, itemId);
+      return itemMeta && (itemMeta.parentId == null || expansionSelectors.isItemExpanded(store.state, itemMeta.parentId));
+    };
+    const innerFocusItem = (event, itemId) => {
+      const itemElement = instance.getItemDOMElement(itemId);
+      if (itemElement) {
+        itemElement.focus();
+      }
+      setFocusedItemId(itemId);
+      if (params.onItemFocus) {
+        params.onItemFocus(event, itemId);
+      }
+    };
+    const focusItem = useEventCallback_default3((event, itemId) => {
+      if (isItemVisible(itemId)) {
+        innerFocusItem(event, itemId);
+      }
+    });
+    const removeFocusedItem = useEventCallback_default3(() => {
+      const focusedItemId = focusSelectors.focusedItemId(store.state);
+      if (focusedItemId == null) {
+        return;
+      }
+      const itemMeta = itemsSelectors.itemMeta(store.state, focusedItemId);
+      if (itemMeta) {
+        const itemElement = instance.getItemDOMElement(focusedItemId);
+        if (itemElement) {
+          itemElement.blur();
+        }
+      }
+      setFocusedItemId(null);
+    });
+    useInstanceEventHandler(instance, "removeItem", ({
+      id
+    }) => {
+      const focusedItemId = focusSelectors.focusedItemId(store.state);
+      const defaultFocusableItemId = focusSelectors.defaultFocusableItemId(store.state);
+      if (focusedItemId === id && defaultFocusableItemId != null) {
+        innerFocusItem(null, defaultFocusableItemId);
+      }
+    });
+    const createRootHandleFocus = (otherHandlers) => (event) => {
+      otherHandlers.onFocus?.(event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      const defaultFocusableItemId = focusSelectors.defaultFocusableItemId(store.state);
+      if (event.target === event.currentTarget && defaultFocusableItemId != null) {
+        innerFocusItem(event, defaultFocusableItemId);
+      }
+    };
+    const createRootHandleBlur = (otherHandlers) => (event) => {
+      otherHandlers.onBlur?.(event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      setFocusedItemId(null);
+    };
+    return {
+      getRootProps: (otherHandlers) => ({
+        onFocus: createRootHandleFocus(otherHandlers),
+        onBlur: createRootHandleBlur(otherHandlers)
+      }),
+      publicAPI: {
+        focusItem
+      },
+      instance: {
+        focusItem,
+        removeFocusedItem
+      }
+    };
+  };
+  useTreeViewFocus.getInitialState = () => ({
+    focus: {
+      focusedItemId: null
+    }
+  });
+  useTreeViewFocus.params = {
+    onItemFocus: true
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewKeyboardNavigation/useTreeViewKeyboardNavigation.js
+  var React52 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/system/esm/RtlProvider/index.js
+  var React50 = __toESM(require_react(), 1);
+  var import_prop_types17 = __toESM(require_prop_types(), 1);
+  var import_jsx_runtime22 = __toESM(require_jsx_runtime(), 1);
+  var RtlContext = /* @__PURE__ */ React50.createContext();
+  function RtlProvider({
+    value,
+    ...props
+  }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(RtlContext.Provider, {
+      value: value ?? true,
+      ...props
+    });
+  }
+  true ? RtlProvider.propTypes = {
+    children: import_prop_types17.default.node,
+    value: import_prop_types17.default.bool
+  } : void 0;
+  var useRtl = () => {
+    const value = React50.useContext(RtlContext);
+    return value ?? false;
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/utils/plugins.js
+  var hasPlugin = (instance, plugin) => {
+    const plugins = instance.getAvailablePlugins();
+    return plugins.has(plugin);
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewLabel/useTreeViewLabel.js
+  init_extends();
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewLabel/useTreeViewLabel.itemPlugin.js
+  var React51 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewLabel/useTreeViewLabel.selectors.js
+  var labelSelectors = {
+    /**
+     * Checks whether an item is editable.
+     */
+    isItemEditable: createSelector2((state) => state.label?.isItemEditable, itemsSelectors.itemModel, (isItemEditable, itemModel, _itemId) => {
+      if (!itemModel || isItemEditable == null) {
+        return false;
+      }
+      if (typeof isItemEditable === "boolean") {
+        return isItemEditable;
+      }
+      return isItemEditable(itemModel);
+    }),
+    /**
+     * Checks whether an item is being edited.
+     */
+    isItemBeingEdited: createSelector2((state, itemId) => itemId == null ? false : state.label?.editedItemId === itemId),
+    /**
+     * Checks whether any item is being edited.
+     */
+    isAnyItemBeingEdited: createSelector2((state) => !!state.label?.editedItemId)
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewLabel/useTreeViewLabel.itemPlugin.js
+  var useTreeViewLabelItemPlugin = ({
+    props
+  }) => {
+    const {
+      store
+    } = useTreeViewContext();
+    const {
+      label,
+      itemId
+    } = props;
+    const [labelInputValue, setLabelInputValue] = React51.useState(label);
+    const isItemEditable = useStore(store, labelSelectors.isItemEditable, itemId);
+    const isItemBeingEdited = useStore(store, labelSelectors.isItemBeingEdited, itemId);
+    React51.useEffect(() => {
+      if (!isItemBeingEdited) {
+        setLabelInputValue(label);
+      }
+    }, [isItemBeingEdited, label]);
+    return {
+      propsEnhancers: {
+        label: () => ({
+          editable: isItemEditable
+        }),
+        labelInput: ({
+          externalEventHandlers,
+          interactions
+        }) => {
+          if (!isItemEditable) {
+            return {};
+          }
+          const handleKeydown = (event) => {
+            externalEventHandlers.onKeyDown?.(event);
+            if (event.defaultMuiPrevented) {
+              return;
+            }
+            const target = event.target;
+            if (event.key === "Enter" && target.value) {
+              interactions.handleSaveItemLabel(event, target.value);
+            } else if (event.key === "Escape") {
+              interactions.handleCancelItemLabelEditing(event);
+            }
+          };
+          const handleBlur = (event) => {
+            externalEventHandlers.onBlur?.(event);
+            if (event.defaultMuiPrevented) {
+              return;
+            }
+            if (event.target.value) {
+              interactions.handleSaveItemLabel(event, event.target.value);
+            }
+          };
+          const handleInputChange = (event) => {
+            externalEventHandlers.onChange?.(event);
+            setLabelInputValue(event.target.value);
+          };
+          return {
+            value: labelInputValue ?? "",
+            "data-element": "labelInput",
+            onChange: handleInputChange,
+            onKeyDown: handleKeydown,
+            onBlur: handleBlur,
+            autoFocus: true,
+            type: "text"
+          };
+        }
+      }
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewLabel/useTreeViewLabel.js
+  var useTreeViewLabel = ({
+    store,
+    params
+  }) => {
+    const setEditedItem = (editedItemId) => {
+      if (editedItemId !== null) {
+        const isEditable = labelSelectors.isItemEditable(store.state, editedItemId);
+        if (!isEditable) {
+          return;
+        }
+      }
+      store.set("label", _extends({}, store.state.label, {
+        editedItemId
+      }));
+    };
+    const updateItemLabel = (itemId, label) => {
+      if (!label) {
+        throw new Error(["MUI X: The Tree View component requires all items to have a `label` property.", "The label of an item cannot be empty.", itemId].join("\n"));
+      }
+      const item = store.state.items.itemMetaLookup[itemId];
+      if (item.label === label) {
+        return;
+      }
+      store.set("items", _extends({}, store.state.items, {
+        itemMetaLookup: _extends({}, store.state.items.itemMetaLookup, {
+          [itemId]: _extends({}, item, {
+            label
+          })
+        })
+      }));
+      if (params.onItemLabelChange) {
+        params.onItemLabelChange(itemId, label);
+      }
+    };
+    useEnhancedEffect_default2(() => {
+      store.set("label", _extends({}, store.state.items, {
+        isItemEditable: params.isItemEditable
+      }));
+    }, [store, params.isItemEditable]);
+    return {
+      instance: {
+        setEditedItem,
+        updateItemLabel
+      },
+      publicAPI: {
+        setEditedItem,
+        updateItemLabel
+      }
+    };
+  };
+  useTreeViewLabel.itemPlugin = useTreeViewLabelItemPlugin;
+  useTreeViewLabel.applyDefaultValuesToParams = ({
+    params
+  }) => _extends({}, params, {
+    isItemEditable: params.isItemEditable ?? false
+  });
+  useTreeViewLabel.getInitialState = (params) => ({
+    label: {
+      isItemEditable: params.isItemEditable,
+      editedItemId: null
+    }
+  });
+  useTreeViewLabel.params = {
+    onItemLabelChange: true,
+    isItemEditable: true
+  };
+
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewKeyboardNavigation/useTreeViewKeyboardNavigation.js
+  function isPrintableKey(string) {
+    return !!string && string.length === 1 && !!string.match(/\S/);
+  }
+  var useTreeViewKeyboardNavigation = ({
+    instance,
+    store,
+    params
+  }) => {
+    const isRtl = useRtl();
+    const firstCharMap = React52.useRef({});
+    const updateFirstCharMap = useEventCallback_default3((callback) => {
+      firstCharMap.current = callback(firstCharMap.current);
+    });
+    const itemMetaLookup = useStore(store, itemsSelectors.itemMetaLookup);
+    React52.useEffect(() => {
+      if (instance.areItemUpdatesPrevented()) {
+        return;
+      }
+      const newFirstCharMap = {};
+      const processItem = (item) => {
+        newFirstCharMap[item.id] = item.label.substring(0, 1).toLowerCase();
+      };
+      Object.values(itemMetaLookup).forEach(processItem);
+      firstCharMap.current = newFirstCharMap;
+    }, [itemMetaLookup, params.getItemId, instance]);
+    const getFirstMatchingItem = (itemId, query) => {
+      const cleanQuery = query.toLowerCase();
+      const getNextItem = (itemIdToCheck) => {
+        const nextItemId = getNextNavigableItem(store.state, itemIdToCheck);
+        if (nextItemId === null) {
+          return getFirstNavigableItem(store.state);
+        }
+        return nextItemId;
+      };
+      let matchingItemId = null;
+      let currentItemId = getNextItem(itemId);
+      const checkedItems = {};
+      while (matchingItemId == null && !checkedItems[currentItemId]) {
+        if (firstCharMap.current[currentItemId] === cleanQuery) {
+          matchingItemId = currentItemId;
+        } else {
+          checkedItems[currentItemId] = true;
+          currentItemId = getNextItem(currentItemId);
+        }
+      }
+      return matchingItemId;
+    };
+    const canToggleItemSelection = (itemId) => selectionSelectors.enabled(store.state) && !itemsSelectors.isItemDisabled(store.state, itemId);
+    const canToggleItemExpansion = (itemId) => {
+      return !itemsSelectors.isItemDisabled(store.state, itemId) && expansionSelectors.isItemExpandable(store.state, itemId);
+    };
+    const handleItemKeyDown = async (event, itemId) => {
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      if (event.altKey || isTargetInDescendants(event.target, event.currentTarget)) {
+        return;
+      }
+      const ctrlPressed = event.ctrlKey || event.metaKey;
+      const key = event.key;
+      const isMultiSelectEnabled = selectionSelectors.isMultiSelectEnabled(store.state);
+      switch (true) {
+        case (key === " " && canToggleItemSelection(itemId)): {
+          event.preventDefault();
+          if (isMultiSelectEnabled && event.shiftKey) {
+            instance.expandSelectionRange(event, itemId);
+          } else {
+            instance.setItemSelection({
+              event,
+              itemId,
+              keepExistingSelection: isMultiSelectEnabled,
+              shouldBeSelected: void 0
+            });
+          }
+          break;
+        }
+        case key === "Enter": {
+          if (hasPlugin(instance, useTreeViewLabel) && labelSelectors.isItemEditable(store.state, itemId) && !labelSelectors.isItemBeingEdited(store.state, itemId)) {
+            instance.setEditedItem(itemId);
+          } else if (canToggleItemExpansion(itemId)) {
+            instance.setItemExpansion({
+              event,
+              itemId
+            });
+            event.preventDefault();
+          } else if (canToggleItemSelection(itemId)) {
+            if (isMultiSelectEnabled) {
+              event.preventDefault();
+              instance.setItemSelection({
+                event,
+                itemId,
+                keepExistingSelection: true
+              });
+            } else if (!selectionSelectors.isItemSelected(store.state, itemId)) {
+              instance.setItemSelection({
+                event,
+                itemId
+              });
+              event.preventDefault();
+            }
+          }
+          break;
+        }
+        case key === "ArrowDown": {
+          const nextItem = getNextNavigableItem(store.state, itemId);
+          if (nextItem) {
+            event.preventDefault();
+            instance.focusItem(event, nextItem);
+            if (isMultiSelectEnabled && event.shiftKey && canToggleItemSelection(nextItem)) {
+              instance.selectItemFromArrowNavigation(event, itemId, nextItem);
+            }
+          }
+          break;
+        }
+        case key === "ArrowUp": {
+          const previousItem = getPreviousNavigableItem(store.state, itemId);
+          if (previousItem) {
+            event.preventDefault();
+            instance.focusItem(event, previousItem);
+            if (isMultiSelectEnabled && event.shiftKey && canToggleItemSelection(previousItem)) {
+              instance.selectItemFromArrowNavigation(event, itemId, previousItem);
+            }
+          }
+          break;
+        }
+        case (key === "ArrowRight" && !isRtl || key === "ArrowLeft" && isRtl): {
+          if (ctrlPressed) {
+            return;
+          }
+          if (expansionSelectors.isItemExpanded(store.state, itemId)) {
+            const nextItemId = getNextNavigableItem(store.state, itemId);
+            if (nextItemId) {
+              instance.focusItem(event, nextItemId);
+              event.preventDefault();
+            }
+          } else if (canToggleItemExpansion(itemId)) {
+            instance.setItemExpansion({
+              event,
+              itemId
+            });
+            event.preventDefault();
+          }
+          break;
+        }
+        case (key === "ArrowLeft" && !isRtl || key === "ArrowRight" && isRtl): {
+          if (ctrlPressed) {
+            return;
+          }
+          if (canToggleItemExpansion(itemId) && expansionSelectors.isItemExpanded(store.state, itemId)) {
+            instance.setItemExpansion({
+              event,
+              itemId
+            });
+            event.preventDefault();
+          } else {
+            const parent = itemsSelectors.itemParentId(store.state, itemId);
+            if (parent) {
+              instance.focusItem(event, parent);
+              event.preventDefault();
+            }
+          }
+          break;
+        }
+        case key === "Home": {
+          if (canToggleItemSelection(itemId) && isMultiSelectEnabled && ctrlPressed && event.shiftKey) {
+            instance.selectRangeFromStartToItem(event, itemId);
+          } else {
+            instance.focusItem(event, getFirstNavigableItem(store.state));
+          }
+          event.preventDefault();
+          break;
+        }
+        case key === "End": {
+          if (canToggleItemSelection(itemId) && isMultiSelectEnabled && ctrlPressed && event.shiftKey) {
+            instance.selectRangeFromItemToEnd(event, itemId);
+          } else {
+            instance.focusItem(event, getLastNavigableItem(store.state));
+          }
+          event.preventDefault();
+          break;
+        }
+        case key === "*": {
+          instance.expandAllSiblings(event, itemId);
+          event.preventDefault();
+          break;
+        }
+        case (String.fromCharCode(event.keyCode) === "A" && ctrlPressed && isMultiSelectEnabled && selectionSelectors.enabled(store.state)): {
+          instance.selectAllNavigableItems(event);
+          event.preventDefault();
+          break;
+        }
+        case (!ctrlPressed && !event.shiftKey && isPrintableKey(key)): {
+          const matchingItem = getFirstMatchingItem(itemId, key);
+          if (matchingItem != null) {
+            instance.focusItem(event, matchingItem);
+            event.preventDefault();
+          }
+          break;
+        }
+      }
+    };
+    return {
+      instance: {
+        updateFirstCharMap,
+        handleItemKeyDown
+      }
+    };
+  };
+  useTreeViewKeyboardNavigation.params = {};
+
+  // node_modules/@mui/x-tree-view/esm/RichTreeView/RichTreeView.plugins.js
+  var RICH_TREE_VIEW_PLUGINS = [useTreeViewItems, useTreeViewExpansion, useTreeViewSelection, useTreeViewFocus, useTreeViewKeyboardNavigation, useTreeViewLabel];
+
+  // node_modules/@mui/x-tree-view/esm/internals/components/RichTreeViewItems.js
+  init_extends();
+  var React69 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-internals/esm/fastObjectShallowCompare/fastObjectShallowCompare.js
+  var is = Object.is;
+  function fastObjectShallowCompare(a, b) {
+    if (a === b) {
+      return true;
+    }
+    if (!(a instanceof Object) || !(b instanceof Object)) {
+      return false;
+    }
+    let aLength = 0;
+    let bLength = 0;
+    for (const key in a) {
+      aLength += 1;
+      if (!is(a[key], b[key])) {
+        return false;
+      }
+      if (!(key in b)) {
+        return false;
+      }
+    }
+    for (const _3 in b) {
+      bLength += 1;
+    }
+    return aLength === bLength;
+  }
+
+  // node_modules/@mui/x-tree-view/esm/TreeItem/TreeItem.js
+  init_extends();
+  var React68 = __toESM(require_react(), 1);
+  var import_prop_types26 = __toESM(require_prop_types(), 1);
+
+  // node_modules/@mui/material/CircularProgress/CircularProgress.js
+  init_extends();
+  var React53 = __toESM(require_react());
+  var import_prop_types18 = __toESM(require_prop_types());
+
+  // node_modules/@mui/material/CircularProgress/circularProgressClasses.js
+  function getCircularProgressUtilityClass(slot) {
+    return generateUtilityClass("MuiCircularProgress", slot);
+  }
+  var circularProgressClasses = generateUtilityClasses("MuiCircularProgress", ["root", "determinate", "indeterminate", "colorPrimary", "colorSecondary", "svg", "circle", "circleDeterminate", "circleIndeterminate", "circleDisableShrink"]);
+
+  // node_modules/@mui/material/CircularProgress/CircularProgress.js
+  var import_jsx_runtime23 = __toESM(require_jsx_runtime());
+  var _excluded16 = ["className", "color", "disableShrink", "size", "style", "thickness", "value", "variant"];
+  var _2 = (t) => t;
+  var _t5;
+  var _t22;
+  var _t32;
+  var _t42;
+  var SIZE = 44;
+  var circularRotateKeyframe = (0, import_styled_engine2.keyframes)(_t5 || (_t5 = _2`
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+`));
+  var circularDashKeyframe = (0, import_styled_engine2.keyframes)(_t22 || (_t22 = _2`
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+`));
+  var useUtilityClasses7 = (ownerState) => {
+    const {
+      classes,
+      variant,
+      color: color3,
+      disableShrink
+    } = ownerState;
+    const slots = {
+      root: ["root", variant, `color${capitalize_default(color3)}`],
+      svg: ["svg"],
+      circle: ["circle", `circle${capitalize_default(variant)}`, disableShrink && "circleDisableShrink"]
+    };
+    return composeClasses(slots, getCircularProgressUtilityClass, classes);
+  };
+  var CircularProgressRoot = styled_default("span", {
+    name: "MuiCircularProgress",
+    slot: "Root",
+    overridesResolver: (props, styles) => {
+      const {
+        ownerState
+      } = props;
+      return [styles.root, styles[ownerState.variant], styles[`color${capitalize_default(ownerState.color)}`]];
+    }
+  })(({
+    ownerState,
+    theme
+  }) => _extends({
+    display: "inline-block"
+  }, ownerState.variant === "determinate" && {
+    transition: theme.transitions.create("transform")
+  }, ownerState.color !== "inherit" && {
+    color: (theme.vars || theme).palette[ownerState.color].main
+  }), ({
+    ownerState
+  }) => ownerState.variant === "indeterminate" && (0, import_styled_engine2.css)(_t32 || (_t32 = _2`
+      animation: ${0} 1.4s linear infinite;
+    `), circularRotateKeyframe));
+  var CircularProgressSVG = styled_default("svg", {
+    name: "MuiCircularProgress",
+    slot: "Svg",
+    overridesResolver: (props, styles) => styles.svg
+  })({
+    display: "block"
+    // Keeps the progress centered
+  });
+  var CircularProgressCircle = styled_default("circle", {
+    name: "MuiCircularProgress",
+    slot: "Circle",
+    overridesResolver: (props, styles) => {
+      const {
+        ownerState
+      } = props;
+      return [styles.circle, styles[`circle${capitalize_default(ownerState.variant)}`], ownerState.disableShrink && styles.circleDisableShrink];
+    }
+  })(({
+    ownerState,
+    theme
+  }) => _extends({
+    stroke: "currentColor"
+  }, ownerState.variant === "determinate" && {
+    transition: theme.transitions.create("stroke-dashoffset")
+  }, ownerState.variant === "indeterminate" && {
+    // Some default value that looks fine waiting for the animation to kicks in.
+    strokeDasharray: "80px, 200px",
+    strokeDashoffset: 0
+    // Add the unit to fix a Edge 16 and below bug.
+  }), ({
+    ownerState
+  }) => ownerState.variant === "indeterminate" && !ownerState.disableShrink && (0, import_styled_engine2.css)(_t42 || (_t42 = _2`
+      animation: ${0} 1.4s ease-in-out infinite;
+    `), circularDashKeyframe));
+  var CircularProgress = /* @__PURE__ */ React53.forwardRef(function CircularProgress2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiCircularProgress"
+    });
+    const {
+      className,
+      color: color3 = "primary",
+      disableShrink = false,
+      size = 40,
+      style: style5,
+      thickness = 3.6,
+      value = 0,
+      variant = "indeterminate"
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded16);
+    const ownerState = _extends({}, props, {
+      color: color3,
+      disableShrink,
+      size,
+      thickness,
+      value,
+      variant
+    });
+    const classes = useUtilityClasses7(ownerState);
+    const circleStyle = {};
+    const rootStyle = {};
+    const rootProps = {};
+    if (variant === "determinate") {
+      const circumference = 2 * Math.PI * ((SIZE - thickness) / 2);
+      circleStyle.strokeDasharray = circumference.toFixed(3);
+      rootProps["aria-valuenow"] = Math.round(value);
+      circleStyle.strokeDashoffset = `${((100 - value) / 100 * circumference).toFixed(3)}px`;
+      rootStyle.transform = "rotate(-90deg)";
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(CircularProgressRoot, _extends({
+      className: clsx_default(classes.root, className),
+      style: _extends({
+        width: size,
+        height: size
+      }, rootStyle, style5),
+      ownerState,
+      ref,
+      role: "progressbar"
+    }, rootProps, other, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(CircularProgressSVG, {
+        className: classes.svg,
+        ownerState,
+        viewBox: `${SIZE / 2} ${SIZE / 2} ${SIZE} ${SIZE}`,
+        children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(CircularProgressCircle, {
+          className: classes.circle,
+          style: circleStyle,
+          ownerState,
+          cx: SIZE,
+          cy: SIZE,
+          r: (SIZE - thickness) / 2,
+          fill: "none",
+          strokeWidth: thickness
+        })
+      })
+    }));
+  });
+  true ? CircularProgress.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types18.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types18.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     * @default 'primary'
+     */
+    color: import_prop_types18.default.oneOfType([import_prop_types18.default.oneOf(["inherit", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types18.default.string]),
+    /**
+     * If `true`, the shrink animation is disabled.
+     * This only works if variant is `indeterminate`.
+     * @default false
+     */
+    disableShrink: chainPropTypes(import_prop_types18.default.bool, (props) => {
+      if (props.disableShrink && props.variant && props.variant !== "indeterminate") {
+        return new Error("MUI: You have provided the `disableShrink` prop with a variant other than `indeterminate`. This will have no effect.");
+      }
+      return null;
+    }),
+    /**
+     * The size of the component.
+     * If using a number, the pixel unit is assumed.
+     * If using a string, you need to provide the CSS unit, for example '3rem'.
+     * @default 40
+     */
+    size: import_prop_types18.default.oneOfType([import_prop_types18.default.number, import_prop_types18.default.string]),
+    /**
+     * @ignore
+     */
+    style: import_prop_types18.default.object,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types18.default.oneOfType([import_prop_types18.default.arrayOf(import_prop_types18.default.oneOfType([import_prop_types18.default.func, import_prop_types18.default.object, import_prop_types18.default.bool])), import_prop_types18.default.func, import_prop_types18.default.object]),
+    /**
+     * The thickness of the circle.
+     * @default 3.6
+     */
+    thickness: import_prop_types18.default.number,
+    /**
+     * The value of the progress indicator for the determinate variant.
+     * Value between 0 and 100.
+     * @default 0
+     */
+    value: import_prop_types18.default.number,
+    /**
+     * The variant to use.
+     * Use indeterminate when there is no progress value.
+     * @default 'indeterminate'
+     */
+    variant: import_prop_types18.default.oneOf(["determinate", "indeterminate"])
+  } : void 0;
+  var CircularProgress_default = CircularProgress;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/unsupportedProp/unsupportedProp.js
+  function unsupportedProp(props, propName, componentName, location, propFullName) {
+    if (false) {
+      return null;
+    }
+    const propFullNameSafe = propFullName || propName;
+    if (typeof props[propName] !== "undefined") {
+      return new Error(`The prop \`${propFullNameSafe}\` is not supported. Please remove it.`);
+    }
+    return null;
+  }
+
+  // node_modules/@mui/material/Collapse/Collapse.js
+  init_extends();
+  var React54 = __toESM(require_react());
+  var import_prop_types19 = __toESM(require_prop_types());
+
+  // node_modules/@mui/material/transitions/utils.js
+  function getTransitionProps(props, options) {
+    var _style$transitionDura, _style$transitionTimi;
+    const {
+      timeout: timeout2,
+      easing: easing2,
+      style: style5 = {}
+    } = props;
+    return {
+      duration: (_style$transitionDura = style5.transitionDuration) != null ? _style$transitionDura : typeof timeout2 === "number" ? timeout2 : timeout2[options.mode] || 0,
+      easing: (_style$transitionTimi = style5.transitionTimingFunction) != null ? _style$transitionTimi : typeof easing2 === "object" ? easing2[options.mode] : easing2,
+      delay: style5.transitionDelay
+    };
   }
 
   // node_modules/@mui/material/utils/useControlled.js
   var useControlled_default = useControlled;
-
-  // node_modules/@mui/material/utils/useEventCallback.js
-  var useEventCallback_default2 = useEventCallback_default;
-
-  // node_modules/@mui/material/utils/useForkRef.js
-  var useForkRef_default = useForkRef;
-
-  // node_modules/@mui/material/utils/useIsFocusVisible.js
-  var useIsFocusVisible_default = useIsFocusVisible;
 
   // node_modules/@mui/material/Collapse/collapseClasses.js
   function getCollapseUtilityClass(slot) {
@@ -35775,9 +39452,9 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   var collapseClasses = generateUtilityClasses("MuiCollapse", ["root", "horizontal", "vertical", "entered", "hidden", "wrapper", "wrapperInner"]);
 
   // node_modules/@mui/material/Collapse/Collapse.js
-  var import_jsx_runtime9 = __toESM(require_jsx_runtime());
-  var _excluded11 = ["addEndListener", "children", "className", "collapsedSize", "component", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "orientation", "style", "timeout", "TransitionComponent"];
-  var useUtilityClasses2 = (ownerState) => {
+  var import_jsx_runtime24 = __toESM(require_jsx_runtime());
+  var _excluded17 = ["addEndListener", "children", "className", "collapsedSize", "component", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "orientation", "style", "timeout", "TransitionComponent"];
+  var useUtilityClasses8 = (ownerState) => {
     const {
       orientation,
       classes
@@ -35845,7 +39522,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     width: "auto",
     height: "100%"
   }));
-  var Collapse = /* @__PURE__ */ React38.forwardRef(function Collapse2(inProps, ref) {
+  var Collapse = /* @__PURE__ */ React54.forwardRef(function Collapse2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiCollapse"
@@ -35869,20 +39546,20 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       timeout: timeout2 = duration.standard,
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition_default
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded11);
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded17);
     const ownerState = _extends({}, props, {
       orientation,
       collapsedSize: collapsedSizeProp
     });
-    const classes = useUtilityClasses2(ownerState);
+    const classes = useUtilityClasses8(ownerState);
     const theme = useTheme5();
     const timer = useTimeout();
-    const wrapperRef = React38.useRef(null);
-    const autoTransitionDuration = React38.useRef();
+    const wrapperRef = React54.useRef(null);
+    const autoTransitionDuration = React54.useRef();
     const collapsedSize = typeof collapsedSizeProp === "number" ? `${collapsedSizeProp}px` : collapsedSizeProp;
     const isHorizontal = orientation === "horizontal";
     const size = isHorizontal ? "width" : "height";
-    const nodeRef = React38.useRef(null);
+    const nodeRef = React54.useRef(null);
     const handleRef = useForkRef_default(ref, nodeRef);
     const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
       if (callback) {
@@ -35978,7 +39655,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
         addEndListener(nodeRef.current, next2);
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TransitionComponent, _extends({
+    return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(TransitionComponent, _extends({
       in: inProp,
       onEnter: handleEnter,
       onEntered: handleEntered,
@@ -35990,7 +39667,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       nodeRef,
       timeout: timeout2 === "auto" ? null : timeout2
     }, other, {
-      children: (state, childProps) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CollapseRoot, _extends({
+      children: (state, childProps) => /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(CollapseRoot, _extends({
         as: component,
         className: clsx_default(classes.root, className, {
           "entered": classes.entered,
@@ -36006,13 +39683,13 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
         ownerState: _extends({}, ownerState, {
           state
         }),
-        children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CollapseWrapper, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(CollapseWrapper, {
           ownerState: _extends({}, ownerState, {
             state
           }),
           className: classes.wrapper,
           ref: wrapperRef,
-          children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CollapseWrapperInner, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(CollapseWrapperInner, {
             ownerState: _extends({}, ownerState, {
               state
             }),
@@ -36033,24 +39710,24 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * node and a done callback. Allows for more fine grained transition end
      * logic. Note: Timeouts are still used as a fallback if provided.
      */
-    addEndListener: import_prop_types11.default.func,
+    addEndListener: import_prop_types19.default.func,
     /**
      * The content node to be collapsed.
      */
-    children: import_prop_types11.default.node,
+    children: import_prop_types19.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types11.default.object,
+    classes: import_prop_types19.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types11.default.string,
+    className: import_prop_types19.default.string,
     /**
      * The width (horizontal) or height (vertical) of the container when collapsed.
      * @default '0px'
      */
-    collapsedSize: import_prop_types11.default.oneOfType([import_prop_types11.default.number, import_prop_types11.default.string]),
+    collapsedSize: import_prop_types19.default.oneOfType([import_prop_types19.default.number, import_prop_types19.default.string]),
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
@@ -36060,51 +39737,51 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * The transition timing function.
      * You may specify a single easing or a object containing enter and exit values.
      */
-    easing: import_prop_types11.default.oneOfType([import_prop_types11.default.shape({
-      enter: import_prop_types11.default.string,
-      exit: import_prop_types11.default.string
-    }), import_prop_types11.default.string]),
+    easing: import_prop_types19.default.oneOfType([import_prop_types19.default.shape({
+      enter: import_prop_types19.default.string,
+      exit: import_prop_types19.default.string
+    }), import_prop_types19.default.string]),
     /**
      * If `true`, the component will transition in.
      */
-    in: import_prop_types11.default.bool,
+    in: import_prop_types19.default.bool,
     /**
      * @ignore
      */
-    onEnter: import_prop_types11.default.func,
+    onEnter: import_prop_types19.default.func,
     /**
      * @ignore
      */
-    onEntered: import_prop_types11.default.func,
+    onEntered: import_prop_types19.default.func,
     /**
      * @ignore
      */
-    onEntering: import_prop_types11.default.func,
+    onEntering: import_prop_types19.default.func,
     /**
      * @ignore
      */
-    onExit: import_prop_types11.default.func,
+    onExit: import_prop_types19.default.func,
     /**
      * @ignore
      */
-    onExited: import_prop_types11.default.func,
+    onExited: import_prop_types19.default.func,
     /**
      * @ignore
      */
-    onExiting: import_prop_types11.default.func,
+    onExiting: import_prop_types19.default.func,
     /**
      * The transition orientation.
      * @default 'vertical'
      */
-    orientation: import_prop_types11.default.oneOf(["horizontal", "vertical"]),
+    orientation: import_prop_types19.default.oneOf(["horizontal", "vertical"]),
     /**
      * @ignore
      */
-    style: import_prop_types11.default.object,
+    style: import_prop_types19.default.object,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types11.default.oneOfType([import_prop_types11.default.arrayOf(import_prop_types11.default.oneOfType([import_prop_types11.default.func, import_prop_types11.default.object, import_prop_types11.default.bool])), import_prop_types11.default.func, import_prop_types11.default.object]),
+    sx: import_prop_types19.default.oneOfType([import_prop_types19.default.arrayOf(import_prop_types19.default.oneOfType([import_prop_types19.default.func, import_prop_types19.default.object, import_prop_types19.default.bool])), import_prop_types19.default.func, import_prop_types19.default.object]),
     /**
      * The duration for the transition, in milliseconds.
      * You may specify a single timeout for all transitions, or individually with an object.
@@ -36112,17 +39789,526 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
      * Set to 'auto' to automatically calculate transition time based on height.
      * @default duration.standard
      */
-    timeout: import_prop_types11.default.oneOfType([import_prop_types11.default.oneOf(["auto"]), import_prop_types11.default.number, import_prop_types11.default.shape({
-      appear: import_prop_types11.default.number,
-      enter: import_prop_types11.default.number,
-      exit: import_prop_types11.default.number
+    timeout: import_prop_types19.default.oneOfType([import_prop_types19.default.oneOf(["auto"]), import_prop_types19.default.number, import_prop_types19.default.shape({
+      appear: import_prop_types19.default.number,
+      enter: import_prop_types19.default.number,
+      exit: import_prop_types19.default.number
     })])
   } : void 0;
   Collapse.muiSupportAuto = true;
   var Collapse_default = Collapse;
 
+  // node_modules/@mui/material/Checkbox/Checkbox.js
+  init_extends();
+  var React61 = __toESM(require_react());
+  var import_prop_types21 = __toESM(require_prop_types());
+  var import_colorManipulator5 = __toESM(require_colorManipulator());
+
+  // node_modules/@mui/material/internal/SwitchBase.js
+  init_extends();
+  var React57 = __toESM(require_react());
+  var import_prop_types20 = __toESM(require_prop_types());
+
+  // node_modules/@mui/material/FormControl/useFormControl.js
+  var React56 = __toESM(require_react());
+
+  // node_modules/@mui/material/FormControl/FormControlContext.js
+  var React55 = __toESM(require_react());
+  var FormControlContext = /* @__PURE__ */ React55.createContext(void 0);
+  if (true) {
+    FormControlContext.displayName = "FormControlContext";
+  }
+  var FormControlContext_default = FormControlContext;
+
+  // node_modules/@mui/material/FormControl/useFormControl.js
+  function useFormControl() {
+    return React56.useContext(FormControlContext_default);
+  }
+
+  // node_modules/@mui/material/internal/switchBaseClasses.js
+  function getSwitchBaseUtilityClass(slot) {
+    return generateUtilityClass("PrivateSwitchBase", slot);
+  }
+  var switchBaseClasses = generateUtilityClasses("PrivateSwitchBase", ["root", "checked", "disabled", "input", "edgeStart", "edgeEnd"]);
+
+  // node_modules/@mui/material/internal/SwitchBase.js
+  var import_jsx_runtime25 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime26 = __toESM(require_jsx_runtime());
+  var _excluded18 = ["autoFocus", "checked", "checkedIcon", "className", "defaultChecked", "disabled", "disableFocusRipple", "edge", "icon", "id", "inputProps", "inputRef", "name", "onBlur", "onChange", "onFocus", "readOnly", "required", "tabIndex", "type", "value"];
+  var useUtilityClasses9 = (ownerState) => {
+    const {
+      classes,
+      checked,
+      disabled,
+      edge
+    } = ownerState;
+    const slots = {
+      root: ["root", checked && "checked", disabled && "disabled", edge && `edge${capitalize_default(edge)}`],
+      input: ["input"]
+    };
+    return composeClasses(slots, getSwitchBaseUtilityClass, classes);
+  };
+  var SwitchBaseRoot = styled_default(ButtonBase_default, {
+    name: "MuiSwitchBase"
+  })(({
+    ownerState
+  }) => _extends({
+    padding: 9,
+    borderRadius: "50%"
+  }, ownerState.edge === "start" && {
+    marginLeft: ownerState.size === "small" ? -3 : -12
+  }, ownerState.edge === "end" && {
+    marginRight: ownerState.size === "small" ? -3 : -12
+  }));
+  var SwitchBaseInput = styled_default("input", {
+    name: "MuiSwitchBase",
+    shouldForwardProp: rootShouldForwardProp_default
+  })({
+    cursor: "inherit",
+    position: "absolute",
+    opacity: 0,
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    margin: 0,
+    padding: 0,
+    zIndex: 1
+  });
+  var SwitchBase = /* @__PURE__ */ React57.forwardRef(function SwitchBase2(props, ref) {
+    const {
+      autoFocus,
+      checked: checkedProp,
+      checkedIcon,
+      className,
+      defaultChecked,
+      disabled: disabledProp,
+      disableFocusRipple = false,
+      edge = false,
+      icon,
+      id,
+      inputProps,
+      inputRef,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      readOnly,
+      required = false,
+      tabIndex,
+      type,
+      value
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded18);
+    const [checked, setCheckedState] = useControlled_default({
+      controlled: checkedProp,
+      default: Boolean(defaultChecked),
+      name: "SwitchBase",
+      state: "checked"
+    });
+    const muiFormControl = useFormControl();
+    const handleFocus = (event) => {
+      if (onFocus) {
+        onFocus(event);
+      }
+      if (muiFormControl && muiFormControl.onFocus) {
+        muiFormControl.onFocus(event);
+      }
+    };
+    const handleBlur = (event) => {
+      if (onBlur) {
+        onBlur(event);
+      }
+      if (muiFormControl && muiFormControl.onBlur) {
+        muiFormControl.onBlur(event);
+      }
+    };
+    const handleInputChange = (event) => {
+      if (event.nativeEvent.defaultPrevented) {
+        return;
+      }
+      const newChecked = event.target.checked;
+      setCheckedState(newChecked);
+      if (onChange) {
+        onChange(event, newChecked);
+      }
+    };
+    let disabled = disabledProp;
+    if (muiFormControl) {
+      if (typeof disabled === "undefined") {
+        disabled = muiFormControl.disabled;
+      }
+    }
+    const hasLabelFor = type === "checkbox" || type === "radio";
+    const ownerState = _extends({}, props, {
+      checked,
+      disabled,
+      disableFocusRipple,
+      edge
+    });
+    const classes = useUtilityClasses9(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(SwitchBaseRoot, _extends({
+      component: "span",
+      className: clsx_default(classes.root, className),
+      centerRipple: true,
+      focusRipple: !disableFocusRipple,
+      disabled,
+      tabIndex: null,
+      role: void 0,
+      onFocus: handleFocus,
+      onBlur: handleBlur,
+      ownerState,
+      ref
+    }, other, {
+      children: [/* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SwitchBaseInput, _extends({
+        autoFocus,
+        checked: checkedProp,
+        defaultChecked,
+        className: classes.input,
+        disabled,
+        id: hasLabelFor ? id : void 0,
+        name,
+        onChange: handleInputChange,
+        readOnly,
+        ref: inputRef,
+        required,
+        ownerState,
+        tabIndex,
+        type
+      }, type === "checkbox" && value === void 0 ? {} : {
+        value
+      }, inputProps)), checked ? checkedIcon : icon]
+    }));
+  });
+  true ? SwitchBase.propTypes = {
+    /**
+     * If `true`, the `input` element is focused during the first mount.
+     */
+    autoFocus: import_prop_types20.default.bool,
+    /**
+     * If `true`, the component is checked.
+     */
+    checked: import_prop_types20.default.bool,
+    /**
+     * The icon to display when the component is checked.
+     */
+    checkedIcon: import_prop_types20.default.node.isRequired,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types20.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types20.default.string,
+    /**
+     * @ignore
+     */
+    defaultChecked: import_prop_types20.default.bool,
+    /**
+     * If `true`, the component is disabled.
+     */
+    disabled: import_prop_types20.default.bool,
+    /**
+     * If `true`, the  keyboard focus ripple is disabled.
+     * @default false
+     */
+    disableFocusRipple: import_prop_types20.default.bool,
+    /**
+     * If given, uses a negative margin to counteract the padding on one
+     * side (this is often helpful for aligning the left or right
+     * side of the icon with content above or below, without ruining the border
+     * size and shape).
+     * @default false
+     */
+    edge: import_prop_types20.default.oneOf(["end", "start", false]),
+    /**
+     * The icon to display when the component is unchecked.
+     */
+    icon: import_prop_types20.default.node.isRequired,
+    /**
+     * The id of the `input` element.
+     */
+    id: import_prop_types20.default.string,
+    /**
+     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+     */
+    inputProps: import_prop_types20.default.object,
+    /**
+     * Pass a ref to the `input` element.
+     */
+    inputRef: refType_default,
+    /*
+     * @ignore
+     */
+    name: import_prop_types20.default.string,
+    /**
+     * @ignore
+     */
+    onBlur: import_prop_types20.default.func,
+    /**
+     * Callback fired when the state is changed.
+     *
+     * @param {object} event The event source of the callback.
+     * You can pull out the new checked state by accessing `event.target.checked` (boolean).
+     */
+    onChange: import_prop_types20.default.func,
+    /**
+     * @ignore
+     */
+    onFocus: import_prop_types20.default.func,
+    /**
+     * It prevents the user from changing the value of the field
+     * (not from interacting with the field).
+     */
+    readOnly: import_prop_types20.default.bool,
+    /**
+     * If `true`, the `input` element is required.
+     */
+    required: import_prop_types20.default.bool,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types20.default.object,
+    /**
+     * @ignore
+     */
+    tabIndex: import_prop_types20.default.oneOfType([import_prop_types20.default.number, import_prop_types20.default.string]),
+    /**
+     * The input component prop `type`.
+     */
+    type: import_prop_types20.default.string.isRequired,
+    /**
+     * The value of the component.
+     */
+    value: import_prop_types20.default.any
+  } : void 0;
+  var SwitchBase_default = SwitchBase;
+
+  // node_modules/@mui/material/internal/svg-icons/CheckBoxOutlineBlank.js
+  var React58 = __toESM(require_react());
+  var import_jsx_runtime27 = __toESM(require_jsx_runtime());
+  var CheckBoxOutlineBlank_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime27.jsx)("path", {
+    d: "M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+  }), "CheckBoxOutlineBlank");
+
+  // node_modules/@mui/material/internal/svg-icons/CheckBox.js
+  var React59 = __toESM(require_react());
+  var import_jsx_runtime28 = __toESM(require_jsx_runtime());
+  var CheckBox_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime28.jsx)("path", {
+    d: "M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+  }), "CheckBox");
+
+  // node_modules/@mui/material/internal/svg-icons/IndeterminateCheckBox.js
+  var React60 = __toESM(require_react());
+  var import_jsx_runtime29 = __toESM(require_jsx_runtime());
+  var IndeterminateCheckBox_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime29.jsx)("path", {
+    d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"
+  }), "IndeterminateCheckBox");
+
+  // node_modules/@mui/material/Checkbox/checkboxClasses.js
+  function getCheckboxUtilityClass(slot) {
+    return generateUtilityClass("MuiCheckbox", slot);
+  }
+  var checkboxClasses = generateUtilityClasses("MuiCheckbox", ["root", "checked", "disabled", "indeterminate", "colorPrimary", "colorSecondary", "sizeSmall", "sizeMedium"]);
+  var checkboxClasses_default = checkboxClasses;
+
+  // node_modules/@mui/material/Checkbox/Checkbox.js
+  var import_jsx_runtime30 = __toESM(require_jsx_runtime());
+  var _excluded19 = ["checkedIcon", "color", "icon", "indeterminate", "indeterminateIcon", "inputProps", "size", "className"];
+  var useUtilityClasses10 = (ownerState) => {
+    const {
+      classes,
+      indeterminate,
+      color: color3,
+      size
+    } = ownerState;
+    const slots = {
+      root: ["root", indeterminate && "indeterminate", `color${capitalize_default(color3)}`, `size${capitalize_default(size)}`]
+    };
+    const composedClasses = composeClasses(slots, getCheckboxUtilityClass, classes);
+    return _extends({}, classes, composedClasses);
+  };
+  var CheckboxRoot = styled_default(SwitchBase_default, {
+    shouldForwardProp: (prop) => rootShouldForwardProp_default(prop) || prop === "classes",
+    name: "MuiCheckbox",
+    slot: "Root",
+    overridesResolver: (props, styles) => {
+      const {
+        ownerState
+      } = props;
+      return [styles.root, ownerState.indeterminate && styles.indeterminate, styles[`size${capitalize_default(ownerState.size)}`], ownerState.color !== "default" && styles[`color${capitalize_default(ownerState.color)}`]];
+    }
+  })(({
+    theme,
+    ownerState
+  }) => _extends({
+    color: (theme.vars || theme).palette.text.secondary
+  }, !ownerState.disableRipple && {
+    "&:hover": {
+      backgroundColor: theme.vars ? `rgba(${ownerState.color === "default" ? theme.vars.palette.action.activeChannel : theme.vars.palette[ownerState.color].mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, import_colorManipulator5.alpha)(ownerState.color === "default" ? theme.palette.action.active : theme.palette[ownerState.color].main, theme.palette.action.hoverOpacity),
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    }
+  }, ownerState.color !== "default" && {
+    [`&.${checkboxClasses_default.checked}, &.${checkboxClasses_default.indeterminate}`]: {
+      color: (theme.vars || theme).palette[ownerState.color].main
+    },
+    [`&.${checkboxClasses_default.disabled}`]: {
+      color: (theme.vars || theme).palette.action.disabled
+    }
+  }));
+  var defaultCheckedIcon = /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(CheckBox_default, {});
+  var defaultIcon = /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(CheckBoxOutlineBlank_default, {});
+  var defaultIndeterminateIcon = /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(IndeterminateCheckBox_default, {});
+  var Checkbox = /* @__PURE__ */ React61.forwardRef(function Checkbox2(inProps, ref) {
+    var _icon$props$fontSize, _indeterminateIcon$pr;
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiCheckbox"
+    });
+    const {
+      checkedIcon = defaultCheckedIcon,
+      color: color3 = "primary",
+      icon: iconProp = defaultIcon,
+      indeterminate = false,
+      indeterminateIcon: indeterminateIconProp = defaultIndeterminateIcon,
+      inputProps,
+      size = "medium",
+      className
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded19);
+    const icon = indeterminate ? indeterminateIconProp : iconProp;
+    const indeterminateIcon = indeterminate ? indeterminateIconProp : checkedIcon;
+    const ownerState = _extends({}, props, {
+      color: color3,
+      indeterminate,
+      size
+    });
+    const classes = useUtilityClasses10(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(CheckboxRoot, _extends({
+      type: "checkbox",
+      inputProps: _extends({
+        "data-indeterminate": indeterminate
+      }, inputProps),
+      icon: /* @__PURE__ */ React61.cloneElement(icon, {
+        fontSize: (_icon$props$fontSize = icon.props.fontSize) != null ? _icon$props$fontSize : size
+      }),
+      checkedIcon: /* @__PURE__ */ React61.cloneElement(indeterminateIcon, {
+        fontSize: (_indeterminateIcon$pr = indeterminateIcon.props.fontSize) != null ? _indeterminateIcon$pr : size
+      }),
+      ownerState,
+      ref,
+      className: clsx_default(classes.root, className)
+    }, other, {
+      classes
+    }));
+  });
+  true ? Checkbox.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * If `true`, the component is checked.
+     */
+    checked: import_prop_types21.default.bool,
+    /**
+     * The icon to display when the component is checked.
+     * @default <CheckBoxIcon />
+     */
+    checkedIcon: import_prop_types21.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types21.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types21.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     * @default 'primary'
+     */
+    color: import_prop_types21.default.oneOfType([import_prop_types21.default.oneOf(["default", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types21.default.string]),
+    /**
+     * The default checked state. Use when the component is not controlled.
+     */
+    defaultChecked: import_prop_types21.default.bool,
+    /**
+     * If `true`, the component is disabled.
+     * @default false
+     */
+    disabled: import_prop_types21.default.bool,
+    /**
+     * If `true`, the ripple effect is disabled.
+     * @default false
+     */
+    disableRipple: import_prop_types21.default.bool,
+    /**
+     * The icon to display when the component is unchecked.
+     * @default <CheckBoxOutlineBlankIcon />
+     */
+    icon: import_prop_types21.default.node,
+    /**
+     * The id of the `input` element.
+     */
+    id: import_prop_types21.default.string,
+    /**
+     * If `true`, the component appears indeterminate.
+     * This does not set the native input element to indeterminate due
+     * to inconsistent behavior across browsers.
+     * However, we set a `data-indeterminate` attribute on the `input`.
+     * @default false
+     */
+    indeterminate: import_prop_types21.default.bool,
+    /**
+     * The icon to display when the component is indeterminate.
+     * @default <IndeterminateCheckBoxIcon />
+     */
+    indeterminateIcon: import_prop_types21.default.node,
+    /**
+     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+     */
+    inputProps: import_prop_types21.default.object,
+    /**
+     * Pass a ref to the `input` element.
+     */
+    inputRef: refType_default,
+    /**
+     * Callback fired when the state is changed.
+     *
+     * @param {React.ChangeEvent<HTMLInputElement>} event The event source of the callback.
+     * You can pull out the new checked state by accessing `event.target.checked` (boolean).
+     */
+    onChange: import_prop_types21.default.func,
+    /**
+     * If `true`, the `input` element is required.
+     * @default false
+     */
+    required: import_prop_types21.default.bool,
+    /**
+     * The size of the component.
+     * `small` is equivalent to the dense checkbox styling.
+     * @default 'medium'
+     */
+    size: import_prop_types21.default.oneOfType([import_prop_types21.default.oneOf(["medium", "small"]), import_prop_types21.default.string]),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types21.default.oneOfType([import_prop_types21.default.arrayOf(import_prop_types21.default.oneOfType([import_prop_types21.default.func, import_prop_types21.default.object, import_prop_types21.default.bool])), import_prop_types21.default.func, import_prop_types21.default.object]),
+    /**
+     * The value of the component. The DOM API casts this to a string.
+     * The browser uses "on" as the default value.
+     */
+    value: import_prop_types21.default.any
+  } : void 0;
+  var Checkbox_default = Checkbox;
+
   // node_modules/@mui/system/node_modules/@mui/utils/esm/deepmerge/deepmerge.js
-  var React39 = __toESM(require_react(), 1);
+  var React62 = __toESM(require_react(), 1);
   var import_react_is = __toESM(require_react_is3(), 1);
   function isPlainObject(item) {
     if (typeof item !== "object" || item === null) {
@@ -36132,7 +40318,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) && !(Symbol.toStringTag in item) && !(Symbol.iterator in item);
   }
   function deepClone(source) {
-    if (/* @__PURE__ */ React39.isValidElement(source) || (0, import_react_is.isValidElementType)(source) || !isPlainObject(source)) {
+    if (/* @__PURE__ */ React62.isValidElement(source) || (0, import_react_is.isValidElementType)(source) || !isPlainObject(source)) {
       return source;
     }
     const output = {};
@@ -36149,7 +40335,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     } : target;
     if (isPlainObject(target) && isPlainObject(source)) {
       Object.keys(source).forEach((key) => {
-        if (/* @__PURE__ */ React39.isValidElement(source[key]) || (0, import_react_is.isValidElementType)(source[key])) {
+        if (/* @__PURE__ */ React62.isValidElement(source[key]) || (0, import_react_is.isValidElementType)(source[key])) {
           output[key] = source[key];
         } else if (isPlainObject(source[key]) && // Avoid prototype pollution
         Object.prototype.hasOwnProperty.call(target, key) && isPlainObject(target[key])) {
@@ -36320,8 +40506,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   var shape_default2 = shape2;
 
   // node_modules/@mui/system/esm/responsivePropType/responsivePropType.js
-  var import_prop_types12 = __toESM(require_prop_types(), 1);
-  var responsivePropType2 = true ? import_prop_types12.default.oneOfType([import_prop_types12.default.number, import_prop_types12.default.string, import_prop_types12.default.object, import_prop_types12.default.array]) : {};
+  var import_prop_types22 = __toESM(require_prop_types(), 1);
+  var responsivePropType2 = true ? import_prop_types22.default.oneOfType([import_prop_types22.default.number, import_prop_types22.default.string, import_prop_types22.default.object, import_prop_types22.default.array]) : {};
   var responsivePropType_default2 = responsivePropType2;
 
   // node_modules/@mui/system/esm/merge/merge.js
@@ -37368,1456 +41554,134 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     return prop !== "ownerState" && prop !== "theme" && prop !== "sx" && prop !== "as";
   }
 
-  // node_modules/@mui/x-tree-view/TreeItem/TreeItemContent.js
+  // node_modules/@mui/x-tree-view/esm/useTreeItem/useTreeItem.js
   init_extends();
-  var React51 = __toESM(require_react());
-  var import_prop_types19 = __toESM(require_prop_types());
+  var React63 = __toESM(require_react(), 1);
 
-  // node_modules/@mui/material/Checkbox/Checkbox.js
-  init_extends();
-  var React49 = __toESM(require_react());
-  var import_prop_types17 = __toESM(require_prop_types());
-  var import_colorManipulator2 = __toESM(require_colorManipulator());
-
-  // node_modules/@mui/material/internal/SwitchBase.js
-  init_extends();
-  var React45 = __toESM(require_react());
-  var import_prop_types16 = __toESM(require_prop_types());
-
-  // node_modules/@mui/material/FormControl/useFormControl.js
-  var React41 = __toESM(require_react());
-
-  // node_modules/@mui/material/FormControl/FormControlContext.js
-  var React40 = __toESM(require_react());
-  var FormControlContext = /* @__PURE__ */ React40.createContext(void 0);
-  if (true) {
-    FormControlContext.displayName = "FormControlContext";
-  }
-  var FormControlContext_default = FormControlContext;
-
-  // node_modules/@mui/material/FormControl/useFormControl.js
-  function useFormControl() {
-    return React41.useContext(FormControlContext_default);
-  }
-
-  // node_modules/@mui/material/ButtonBase/ButtonBase.js
-  init_extends();
-  var React44 = __toESM(require_react());
-  var import_prop_types15 = __toESM(require_prop_types());
-
-  // node_modules/@mui/material/ButtonBase/TouchRipple.js
-  init_extends();
-  var React43 = __toESM(require_react());
-  var import_prop_types14 = __toESM(require_prop_types());
-
-  // node_modules/@mui/material/ButtonBase/Ripple.js
-  var React42 = __toESM(require_react());
-  var import_prop_types13 = __toESM(require_prop_types());
-  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
-  function Ripple(props) {
-    const {
-      className,
-      classes,
-      pulsate = false,
-      rippleX,
-      rippleY,
-      rippleSize,
-      in: inProp,
-      onExited,
-      timeout: timeout2
-    } = props;
-    const [leaving, setLeaving] = React42.useState(false);
-    const rippleClassName = clsx_default(className, classes.ripple, classes.rippleVisible, pulsate && classes.ripplePulsate);
-    const rippleStyles = {
-      width: rippleSize,
-      height: rippleSize,
-      top: -(rippleSize / 2) + rippleY,
-      left: -(rippleSize / 2) + rippleX
-    };
-    const childClassName = clsx_default(classes.child, leaving && classes.childLeaving, pulsate && classes.childPulsate);
-    if (!inProp && !leaving) {
-      setLeaving(true);
-    }
-    React42.useEffect(() => {
-      if (!inProp && onExited != null) {
-        const timeoutId = setTimeout(onExited, timeout2);
-        return () => {
-          clearTimeout(timeoutId);
-        };
-      }
-      return void 0;
-    }, [onExited, inProp, timeout2]);
-    return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", {
-      className: rippleClassName,
-      style: rippleStyles,
-      children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", {
-        className: childClassName
-      })
-    });
-  }
-  true ? Ripple.propTypes = {
+  // node_modules/@mui/x-tree-view/esm/internals/plugins/useTreeViewLazyLoading/useTreeViewLazyLoading.selectors.js
+  var lazyLoadingSelectors = {
     /**
-     * Override or extend the styles applied to the component.
+     * Gets the data source used to lazy load items.
      */
-    classes: import_prop_types13.default.object.isRequired,
-    className: import_prop_types13.default.string,
+    dataSource: createSelector2((state) => state.lazyLoading?.dataSource),
     /**
-     * @ignore - injected from TransitionGroup
+     * Checks whether an item is loading.
      */
-    in: import_prop_types13.default.bool,
+    isItemLoading: createSelector2((state, itemId) => state.lazyLoading?.dataSource.loading[itemId] ?? false),
     /**
-     * @ignore - injected from TransitionGroup
+     * Checks whether an item has errors.
      */
-    onExited: import_prop_types13.default.func,
-    /**
-     * If `true`, the ripple pulsates, typically indicating the keyboard focus state of an element.
-     */
-    pulsate: import_prop_types13.default.bool,
-    /**
-     * Diameter of the ripple.
-     */
-    rippleSize: import_prop_types13.default.number,
-    /**
-     * Horizontal position of the ripple center.
-     */
-    rippleX: import_prop_types13.default.number,
-    /**
-     * Vertical position of the ripple center.
-     */
-    rippleY: import_prop_types13.default.number,
-    /**
-     * exit delay
-     */
-    timeout: import_prop_types13.default.number.isRequired
-  } : void 0;
-  var Ripple_default = Ripple;
-
-  // node_modules/@mui/material/ButtonBase/touchRippleClasses.js
-  var touchRippleClasses = generateUtilityClasses("MuiTouchRipple", ["root", "ripple", "rippleVisible", "ripplePulsate", "child", "childLeaving", "childPulsate"]);
-  var touchRippleClasses_default = touchRippleClasses;
-
-  // node_modules/@mui/material/ButtonBase/TouchRipple.js
-  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
-  var _excluded12 = ["center", "classes", "className"];
-  var _ = (t) => t;
-  var _t;
-  var _t2;
-  var _t3;
-  var _t4;
-  var DURATION = 550;
-  var DELAY_RIPPLE = 80;
-  var enterKeyframe = (0, import_styled_engine2.keyframes)(_t || (_t = _`
-  0% {
-    transform: scale(0);
-    opacity: 0.1;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-`));
-  var exitKeyframe = (0, import_styled_engine2.keyframes)(_t2 || (_t2 = _`
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-`));
-  var pulsateKeyframe = (0, import_styled_engine2.keyframes)(_t3 || (_t3 = _`
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(0.92);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-`));
-  var TouchRippleRoot = styled_default("span", {
-    name: "MuiTouchRipple",
-    slot: "Root"
-  })({
-    overflow: "hidden",
-    pointerEvents: "none",
-    position: "absolute",
-    zIndex: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    borderRadius: "inherit"
-  });
-  var TouchRippleRipple = styled_default(Ripple_default, {
-    name: "MuiTouchRipple",
-    slot: "Ripple"
-  })(_t4 || (_t4 = _`
-  opacity: 0;
-  position: absolute;
-
-  &.${0} {
-    opacity: 0.3;
-    transform: scale(1);
-    animation-name: ${0};
-    animation-duration: ${0}ms;
-    animation-timing-function: ${0};
-  }
-
-  &.${0} {
-    animation-duration: ${0}ms;
-  }
-
-  & .${0} {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: currentColor;
-  }
-
-  & .${0} {
-    opacity: 0;
-    animation-name: ${0};
-    animation-duration: ${0}ms;
-    animation-timing-function: ${0};
-  }
-
-  & .${0} {
-    position: absolute;
-    /* @noflip */
-    left: 0px;
-    top: 0;
-    animation-name: ${0};
-    animation-duration: 2500ms;
-    animation-timing-function: ${0};
-    animation-iteration-count: infinite;
-    animation-delay: 200ms;
-  }
-`), touchRippleClasses_default.rippleVisible, enterKeyframe, DURATION, ({
-    theme
-  }) => theme.transitions.easing.easeInOut, touchRippleClasses_default.ripplePulsate, ({
-    theme
-  }) => theme.transitions.duration.shorter, touchRippleClasses_default.child, touchRippleClasses_default.childLeaving, exitKeyframe, DURATION, ({
-    theme
-  }) => theme.transitions.easing.easeInOut, touchRippleClasses_default.childPulsate, pulsateKeyframe, ({
-    theme
-  }) => theme.transitions.easing.easeInOut);
-  var TouchRipple = /* @__PURE__ */ React43.forwardRef(function TouchRipple2(inProps, ref) {
-    const props = useDefaultProps2({
-      props: inProps,
-      name: "MuiTouchRipple"
-    });
-    const {
-      center: centerProp = false,
-      classes = {},
-      className
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded12);
-    const [ripples, setRipples] = React43.useState([]);
-    const nextKey = React43.useRef(0);
-    const rippleCallback = React43.useRef(null);
-    React43.useEffect(() => {
-      if (rippleCallback.current) {
-        rippleCallback.current();
-        rippleCallback.current = null;
-      }
-    }, [ripples]);
-    const ignoringMouseDown = React43.useRef(false);
-    const startTimer = useTimeout();
-    const startTimerCommit = React43.useRef(null);
-    const container = React43.useRef(null);
-    const startCommit = React43.useCallback((params) => {
-      const {
-        pulsate: pulsate2,
-        rippleX,
-        rippleY,
-        rippleSize,
-        cb
-      } = params;
-      setRipples((oldRipples) => [...oldRipples, /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(TouchRippleRipple, {
-        classes: {
-          ripple: clsx_default(classes.ripple, touchRippleClasses_default.ripple),
-          rippleVisible: clsx_default(classes.rippleVisible, touchRippleClasses_default.rippleVisible),
-          ripplePulsate: clsx_default(classes.ripplePulsate, touchRippleClasses_default.ripplePulsate),
-          child: clsx_default(classes.child, touchRippleClasses_default.child),
-          childLeaving: clsx_default(classes.childLeaving, touchRippleClasses_default.childLeaving),
-          childPulsate: clsx_default(classes.childPulsate, touchRippleClasses_default.childPulsate)
-        },
-        timeout: DURATION,
-        pulsate: pulsate2,
-        rippleX,
-        rippleY,
-        rippleSize
-      }, nextKey.current)]);
-      nextKey.current += 1;
-      rippleCallback.current = cb;
-    }, [classes]);
-    const start = React43.useCallback((event = {}, options = {}, cb = () => {
-    }) => {
-      const {
-        pulsate: pulsate2 = false,
-        center = centerProp || options.pulsate,
-        fakeElement = false
-        // For test purposes
-      } = options;
-      if ((event == null ? void 0 : event.type) === "mousedown" && ignoringMouseDown.current) {
-        ignoringMouseDown.current = false;
-        return;
-      }
-      if ((event == null ? void 0 : event.type) === "touchstart") {
-        ignoringMouseDown.current = true;
-      }
-      const element = fakeElement ? null : container.current;
-      const rect = element ? element.getBoundingClientRect() : {
-        width: 0,
-        height: 0,
-        left: 0,
-        top: 0
-      };
-      let rippleX;
-      let rippleY;
-      let rippleSize;
-      if (center || event === void 0 || event.clientX === 0 && event.clientY === 0 || !event.clientX && !event.touches) {
-        rippleX = Math.round(rect.width / 2);
-        rippleY = Math.round(rect.height / 2);
-      } else {
-        const {
-          clientX,
-          clientY
-        } = event.touches && event.touches.length > 0 ? event.touches[0] : event;
-        rippleX = Math.round(clientX - rect.left);
-        rippleY = Math.round(clientY - rect.top);
-      }
-      if (center) {
-        rippleSize = Math.sqrt((2 * rect.width ** 2 + rect.height ** 2) / 3);
-        if (rippleSize % 2 === 0) {
-          rippleSize += 1;
-        }
-      } else {
-        const sizeX = Math.max(Math.abs((element ? element.clientWidth : 0) - rippleX), rippleX) * 2 + 2;
-        const sizeY = Math.max(Math.abs((element ? element.clientHeight : 0) - rippleY), rippleY) * 2 + 2;
-        rippleSize = Math.sqrt(sizeX ** 2 + sizeY ** 2);
-      }
-      if (event != null && event.touches) {
-        if (startTimerCommit.current === null) {
-          startTimerCommit.current = () => {
-            startCommit({
-              pulsate: pulsate2,
-              rippleX,
-              rippleY,
-              rippleSize,
-              cb
-            });
-          };
-          startTimer.start(DELAY_RIPPLE, () => {
-            if (startTimerCommit.current) {
-              startTimerCommit.current();
-              startTimerCommit.current = null;
-            }
-          });
-        }
-      } else {
-        startCommit({
-          pulsate: pulsate2,
-          rippleX,
-          rippleY,
-          rippleSize,
-          cb
-        });
-      }
-    }, [centerProp, startCommit, startTimer]);
-    const pulsate = React43.useCallback(() => {
-      start({}, {
-        pulsate: true
-      });
-    }, [start]);
-    const stop = React43.useCallback((event, cb) => {
-      startTimer.clear();
-      if ((event == null ? void 0 : event.type) === "touchend" && startTimerCommit.current) {
-        startTimerCommit.current();
-        startTimerCommit.current = null;
-        startTimer.start(0, () => {
-          stop(event, cb);
-        });
-        return;
-      }
-      startTimerCommit.current = null;
-      setRipples((oldRipples) => {
-        if (oldRipples.length > 0) {
-          return oldRipples.slice(1);
-        }
-        return oldRipples;
-      });
-      rippleCallback.current = cb;
-    }, [startTimer]);
-    React43.useImperativeHandle(ref, () => ({
-      pulsate,
-      start,
-      stop
-    }), [pulsate, start, stop]);
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(TouchRippleRoot, _extends({
-      className: clsx_default(touchRippleClasses_default.root, classes.root, className),
-      ref: container
-    }, other, {
-      children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(TransitionGroup_default, {
-        component: null,
-        exit: true,
-        children: ripples
-      })
-    }));
-  });
-  true ? TouchRipple.propTypes = {
-    /**
-     * If `true`, the ripple starts at the center of the component
-     * rather than at the point of interaction.
-     */
-    center: import_prop_types14.default.bool,
-    /**
-     * Override or extend the styles applied to the component.
-     */
-    classes: import_prop_types14.default.object,
-    /**
-     * @ignore
-     */
-    className: import_prop_types14.default.string
-  } : void 0;
-  var TouchRipple_default = TouchRipple;
-
-  // node_modules/@mui/material/ButtonBase/buttonBaseClasses.js
-  function getButtonBaseUtilityClass(slot) {
-    return generateUtilityClass("MuiButtonBase", slot);
-  }
-  var buttonBaseClasses = generateUtilityClasses("MuiButtonBase", ["root", "disabled", "focusVisible"]);
-  var buttonBaseClasses_default = buttonBaseClasses;
-
-  // node_modules/@mui/material/ButtonBase/ButtonBase.js
-  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
-  var _excluded13 = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
-  var useUtilityClasses3 = (ownerState) => {
-    const {
-      disabled,
-      focusVisible,
-      focusVisibleClassName,
-      classes
-    } = ownerState;
-    const slots = {
-      root: ["root", disabled && "disabled", focusVisible && "focusVisible"]
-    };
-    const composedClasses = composeClasses(slots, getButtonBaseUtilityClass, classes);
-    if (focusVisible && focusVisibleClassName) {
-      composedClasses.root += ` ${focusVisibleClassName}`;
-    }
-    return composedClasses;
+    itemHasError: createSelector2((state, itemId) => !!state.lazyLoading?.dataSource.errors[itemId])
   };
-  var ButtonBaseRoot = styled_default("button", {
-    name: "MuiButtonBase",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root
-  })({
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
-    boxSizing: "border-box",
-    WebkitTapHighlightColor: "transparent",
-    backgroundColor: "transparent",
-    // Reset default value
-    // We disable the focus ring for mouse, touch and keyboard users.
-    outline: 0,
-    border: 0,
-    margin: 0,
-    // Remove the margin in Safari
-    borderRadius: 0,
-    padding: 0,
-    // Remove the padding in Firefox
-    cursor: "pointer",
-    userSelect: "none",
-    verticalAlign: "middle",
-    MozAppearance: "none",
-    // Reset
-    WebkitAppearance: "none",
-    // Reset
-    textDecoration: "none",
-    // So we take precedent over the style of a native <a /> element.
-    color: "inherit",
-    "&::-moz-focus-inner": {
-      borderStyle: "none"
-      // Remove Firefox dotted outline.
-    },
-    [`&.${buttonBaseClasses_default.disabled}`]: {
-      pointerEvents: "none",
-      // Disable link interactions
-      cursor: "default"
-    },
-    "@media print": {
-      colorAdjust: "exact"
-    }
-  });
-  var ButtonBase = /* @__PURE__ */ React44.forwardRef(function ButtonBase2(inProps, ref) {
-    const props = useDefaultProps2({
-      props: inProps,
-      name: "MuiButtonBase"
-    });
-    const {
-      action,
-      centerRipple = false,
-      children,
-      className,
-      component = "button",
-      disabled = false,
-      disableRipple = false,
-      disableTouchRipple = false,
-      focusRipple = false,
-      LinkComponent = "a",
-      onBlur,
-      onClick,
-      onContextMenu,
-      onDragLeave,
-      onFocus,
-      onFocusVisible,
-      onKeyDown,
-      onKeyUp,
-      onMouseDown,
-      onMouseLeave,
-      onMouseUp,
-      onTouchEnd,
-      onTouchMove,
-      onTouchStart,
-      tabIndex = 0,
-      TouchRippleProps,
-      touchRippleRef,
-      type
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded13);
-    const buttonRef = React44.useRef(null);
-    const rippleRef = React44.useRef(null);
-    const handleRippleRef = useForkRef_default(rippleRef, touchRippleRef);
-    const {
-      isFocusVisibleRef,
-      onFocus: handleFocusVisible,
-      onBlur: handleBlurVisible,
-      ref: focusVisibleRef
-    } = useIsFocusVisible_default();
-    const [focusVisible, setFocusVisible] = React44.useState(false);
-    if (disabled && focusVisible) {
-      setFocusVisible(false);
-    }
-    React44.useImperativeHandle(action, () => ({
-      focusVisible: () => {
-        setFocusVisible(true);
-        buttonRef.current.focus();
-      }
-    }), []);
-    const [mountedState, setMountedState] = React44.useState(false);
-    React44.useEffect(() => {
-      setMountedState(true);
-    }, []);
-    const enableTouchRipple = mountedState && !disableRipple && !disabled;
-    React44.useEffect(() => {
-      if (focusVisible && focusRipple && !disableRipple && mountedState) {
-        rippleRef.current.pulsate();
-      }
-    }, [disableRipple, focusRipple, focusVisible, mountedState]);
-    function useRippleHandler(rippleAction, eventCallback, skipRippleAction = disableTouchRipple) {
-      return useEventCallback_default2((event) => {
-        if (eventCallback) {
-          eventCallback(event);
-        }
-        const ignore = skipRippleAction;
-        if (!ignore && rippleRef.current) {
-          rippleRef.current[rippleAction](event);
-        }
-        return true;
-      });
-    }
-    const handleMouseDown = useRippleHandler("start", onMouseDown);
-    const handleContextMenu = useRippleHandler("stop", onContextMenu);
-    const handleDragLeave = useRippleHandler("stop", onDragLeave);
-    const handleMouseUp = useRippleHandler("stop", onMouseUp);
-    const handleMouseLeave = useRippleHandler("stop", (event) => {
-      if (focusVisible) {
-        event.preventDefault();
-      }
-      if (onMouseLeave) {
-        onMouseLeave(event);
-      }
-    });
-    const handleTouchStart = useRippleHandler("start", onTouchStart);
-    const handleTouchEnd = useRippleHandler("stop", onTouchEnd);
-    const handleTouchMove = useRippleHandler("stop", onTouchMove);
-    const handleBlur = useRippleHandler("stop", (event) => {
-      handleBlurVisible(event);
-      if (isFocusVisibleRef.current === false) {
-        setFocusVisible(false);
-      }
-      if (onBlur) {
-        onBlur(event);
-      }
-    }, false);
-    const handleFocus = useEventCallback_default2((event) => {
-      if (!buttonRef.current) {
-        buttonRef.current = event.currentTarget;
-      }
-      handleFocusVisible(event);
-      if (isFocusVisibleRef.current === true) {
-        setFocusVisible(true);
-        if (onFocusVisible) {
-          onFocusVisible(event);
-        }
-      }
-      if (onFocus) {
-        onFocus(event);
-      }
-    });
-    const isNonNativeButton = () => {
-      const button = buttonRef.current;
-      return component && component !== "button" && !(button.tagName === "A" && button.href);
-    };
-    const keydownRef = React44.useRef(false);
-    const handleKeyDown2 = useEventCallback_default2((event) => {
-      if (focusRipple && !keydownRef.current && focusVisible && rippleRef.current && event.key === " ") {
-        keydownRef.current = true;
-        rippleRef.current.stop(event, () => {
-          rippleRef.current.start(event);
-        });
-      }
-      if (event.target === event.currentTarget && isNonNativeButton() && event.key === " ") {
-        event.preventDefault();
-      }
-      if (onKeyDown) {
-        onKeyDown(event);
-      }
-      if (event.target === event.currentTarget && isNonNativeButton() && event.key === "Enter" && !disabled) {
-        event.preventDefault();
-        if (onClick) {
-          onClick(event);
-        }
-      }
-    });
-    const handleKeyUp = useEventCallback_default2((event) => {
-      if (focusRipple && event.key === " " && rippleRef.current && focusVisible && !event.defaultPrevented) {
-        keydownRef.current = false;
-        rippleRef.current.stop(event, () => {
-          rippleRef.current.pulsate(event);
-        });
-      }
-      if (onKeyUp) {
-        onKeyUp(event);
-      }
-      if (onClick && event.target === event.currentTarget && isNonNativeButton() && event.key === " " && !event.defaultPrevented) {
-        onClick(event);
-      }
-    });
-    let ComponentProp = component;
-    if (ComponentProp === "button" && (other.href || other.to)) {
-      ComponentProp = LinkComponent;
-    }
-    const buttonProps = {};
-    if (ComponentProp === "button") {
-      buttonProps.type = type === void 0 ? "button" : type;
-      buttonProps.disabled = disabled;
-    } else {
-      if (!other.href && !other.to) {
-        buttonProps.role = "button";
-      }
-      if (disabled) {
-        buttonProps["aria-disabled"] = disabled;
-      }
-    }
-    const handleRef = useForkRef_default(ref, focusVisibleRef, buttonRef);
-    if (true) {
-      React44.useEffect(() => {
-        if (enableTouchRipple && !rippleRef.current) {
-          console.error(["MUI: The `component` prop provided to ButtonBase is invalid.", "Please make sure the children prop is rendered in this custom component."].join("\n"));
-        }
-      }, [enableTouchRipple]);
-    }
-    const ownerState = _extends({}, props, {
-      centerRipple,
-      component,
-      disabled,
-      disableRipple,
-      disableTouchRipple,
-      focusRipple,
-      tabIndex,
-      focusVisible
-    });
-    const classes = useUtilityClasses3(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(ButtonBaseRoot, _extends({
-      as: ComponentProp,
-      className: clsx_default(classes.root, className),
-      ownerState,
-      onBlur: handleBlur,
-      onClick,
-      onContextMenu: handleContextMenu,
-      onFocus: handleFocus,
-      onKeyDown: handleKeyDown2,
-      onKeyUp: handleKeyUp,
-      onMouseDown: handleMouseDown,
-      onMouseLeave: handleMouseLeave,
-      onMouseUp: handleMouseUp,
-      onDragLeave: handleDragLeave,
-      onTouchEnd: handleTouchEnd,
-      onTouchMove: handleTouchMove,
-      onTouchStart: handleTouchStart,
-      ref: handleRef,
-      tabIndex: disabled ? -1 : tabIndex,
-      type
-    }, buttonProps, other, {
-      children: [children, enableTouchRipple ? (
-        /* TouchRipple is only needed client-side, x2 boost on the server. */
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(TouchRipple_default, _extends({
-          ref: handleRippleRef,
-          center: centerRipple
-        }, TouchRippleProps))
-      ) : null]
-    }));
-  });
-  true ? ButtonBase.propTypes = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-     * A ref for imperative actions.
-     * It currently only supports `focusVisible()` action.
-     */
-    action: refType_default,
-    /**
-     * If `true`, the ripples are centered.
-     * They won't start at the cursor interaction position.
-     * @default false
-     */
-    centerRipple: import_prop_types15.default.bool,
-    /**
-     * The content of the component.
-     */
-    children: import_prop_types15.default.node,
-    /**
-     * Override or extend the styles applied to the component.
-     */
-    classes: import_prop_types15.default.object,
-    /**
-     * @ignore
-     */
-    className: import_prop_types15.default.string,
-    /**
-     * The component used for the root node.
-     * Either a string to use a HTML element or a component.
-     */
-    component: elementTypeAcceptingRef_default,
-    /**
-     * If `true`, the component is disabled.
-     * @default false
-     */
-    disabled: import_prop_types15.default.bool,
-    /**
-     * If `true`, the ripple effect is disabled.
-     *
-     * ⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure
-     * to highlight the element by applying separate styles with the `.Mui-focusVisible` class.
-     * @default false
-     */
-    disableRipple: import_prop_types15.default.bool,
-    /**
-     * If `true`, the touch ripple effect is disabled.
-     * @default false
-     */
-    disableTouchRipple: import_prop_types15.default.bool,
-    /**
-     * If `true`, the base button will have a keyboard focus ripple.
-     * @default false
-     */
-    focusRipple: import_prop_types15.default.bool,
-    /**
-     * This prop can help identify which element has keyboard focus.
-     * The class name will be applied when the element gains the focus through keyboard interaction.
-     * It's a polyfill for the [CSS :focus-visible selector](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo).
-     * The rationale for using this feature [is explained here](https://github.com/WICG/focus-visible/blob/HEAD/explainer.md).
-     * A [polyfill can be used](https://github.com/WICG/focus-visible) to apply a `focus-visible` class to other components
-     * if needed.
-     */
-    focusVisibleClassName: import_prop_types15.default.string,
-    /**
-     * @ignore
-     */
-    href: import_prop_types15.default.any,
-    /**
-     * The component used to render a link when the `href` prop is provided.
-     * @default 'a'
-     */
-    LinkComponent: import_prop_types15.default.elementType,
-    /**
-     * @ignore
-     */
-    onBlur: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onClick: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onContextMenu: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onDragLeave: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onFocus: import_prop_types15.default.func,
-    /**
-     * Callback fired when the component is focused with a keyboard.
-     * We trigger a `onFocus` callback too.
-     */
-    onFocusVisible: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onKeyDown: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onKeyUp: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onMouseDown: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onMouseLeave: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onMouseUp: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onTouchEnd: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onTouchMove: import_prop_types15.default.func,
-    /**
-     * @ignore
-     */
-    onTouchStart: import_prop_types15.default.func,
-    /**
-     * The system prop that allows defining system overrides as well as additional CSS styles.
-     */
-    sx: import_prop_types15.default.oneOfType([import_prop_types15.default.arrayOf(import_prop_types15.default.oneOfType([import_prop_types15.default.func, import_prop_types15.default.object, import_prop_types15.default.bool])), import_prop_types15.default.func, import_prop_types15.default.object]),
-    /**
-     * @default 0
-     */
-    tabIndex: import_prop_types15.default.number,
-    /**
-     * Props applied to the `TouchRipple` element.
-     */
-    TouchRippleProps: import_prop_types15.default.object,
-    /**
-     * A ref that points to the `TouchRipple` element.
-     */
-    touchRippleRef: import_prop_types15.default.oneOfType([import_prop_types15.default.func, import_prop_types15.default.shape({
-      current: import_prop_types15.default.shape({
-        pulsate: import_prop_types15.default.func.isRequired,
-        start: import_prop_types15.default.func.isRequired,
-        stop: import_prop_types15.default.func.isRequired
-      })
-    })]),
-    /**
-     * @ignore
-     */
-    type: import_prop_types15.default.oneOfType([import_prop_types15.default.oneOf(["button", "reset", "submit"]), import_prop_types15.default.string])
-  } : void 0;
-  var ButtonBase_default = ButtonBase;
 
-  // node_modules/@mui/material/internal/switchBaseClasses.js
-  function getSwitchBaseUtilityClass(slot) {
-    return generateUtilityClass("PrivateSwitchBase", slot);
-  }
-  var switchBaseClasses = generateUtilityClasses("PrivateSwitchBase", ["root", "checked", "disabled", "input", "edgeStart", "edgeEnd"]);
-
-  // node_modules/@mui/material/internal/SwitchBase.js
-  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
-  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
-  var _excluded14 = ["autoFocus", "checked", "checkedIcon", "className", "defaultChecked", "disabled", "disableFocusRipple", "edge", "icon", "id", "inputProps", "inputRef", "name", "onBlur", "onChange", "onFocus", "readOnly", "required", "tabIndex", "type", "value"];
-  var useUtilityClasses4 = (ownerState) => {
-    const {
-      classes,
-      checked,
-      disabled,
-      edge
-    } = ownerState;
-    const slots = {
-      root: ["root", checked && "checked", disabled && "disabled", edge && `edge${capitalize_default(edge)}`],
-      input: ["input"]
-    };
-    return composeClasses(slots, getSwitchBaseUtilityClass, classes);
+  // node_modules/@mui/x-tree-view/esm/hooks/useTreeItemUtils/useTreeItemUtils.js
+  var itemHasChildren = (reactChildren) => {
+    if (Array.isArray(reactChildren)) {
+      return reactChildren.length > 0 && reactChildren.some(itemHasChildren);
+    }
+    return Boolean(reactChildren);
   };
-  var SwitchBaseRoot = styled_default(ButtonBase_default, {
-    name: "MuiSwitchBase"
-  })(({
-    ownerState
-  }) => _extends({
-    padding: 9,
-    borderRadius: "50%"
-  }, ownerState.edge === "start" && {
-    marginLeft: ownerState.size === "small" ? -3 : -12
-  }, ownerState.edge === "end" && {
-    marginRight: ownerState.size === "small" ? -3 : -12
-  }));
-  var SwitchBaseInput = styled_default("input", {
-    name: "MuiSwitchBase",
-    shouldForwardProp: rootShouldForwardProp_default
-  })({
-    cursor: "inherit",
-    position: "absolute",
-    opacity: 0,
-    width: "100%",
-    height: "100%",
-    top: 0,
-    left: 0,
-    margin: 0,
-    padding: 0,
-    zIndex: 1
-  });
-  var SwitchBase = /* @__PURE__ */ React45.forwardRef(function SwitchBase2(props, ref) {
-    const {
-      autoFocus,
-      checked: checkedProp,
-      checkedIcon,
-      className,
-      defaultChecked,
-      disabled: disabledProp,
-      disableFocusRipple = false,
-      edge = false,
-      icon,
-      id,
-      inputProps,
-      inputRef,
-      name,
-      onBlur,
-      onChange,
-      onFocus,
-      readOnly,
-      required = false,
-      tabIndex,
-      type,
-      value
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded14);
-    const [checked, setCheckedState] = useControlled_default({
-      controlled: checkedProp,
-      default: Boolean(defaultChecked),
-      name: "SwitchBase",
-      state: "checked"
-    });
-    const muiFormControl = useFormControl();
-    const handleFocus = (event) => {
-      if (onFocus) {
-        onFocus(event);
-      }
-      if (muiFormControl && muiFormControl.onFocus) {
-        muiFormControl.onFocus(event);
-      }
-    };
-    const handleBlur = (event) => {
-      if (onBlur) {
-        onBlur(event);
-      }
-      if (muiFormControl && muiFormControl.onBlur) {
-        muiFormControl.onBlur(event);
-      }
-    };
-    const handleInputChange = (event) => {
-      if (event.nativeEvent.defaultPrevented) {
-        return;
-      }
-      const newChecked = event.target.checked;
-      setCheckedState(newChecked);
-      if (onChange) {
-        onChange(event, newChecked);
-      }
-    };
-    let disabled = disabledProp;
-    if (muiFormControl) {
-      if (typeof disabled === "undefined") {
-        disabled = muiFormControl.disabled;
-      }
-    }
-    const hasLabelFor = type === "checkbox" || type === "radio";
-    const ownerState = _extends({}, props, {
-      checked,
-      disabled,
-      disableFocusRipple,
-      edge
-    });
-    const classes = useUtilityClasses4(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(SwitchBaseRoot, _extends({
-      component: "span",
-      className: clsx_default(classes.root, className),
-      centerRipple: true,
-      focusRipple: !disableFocusRipple,
-      disabled,
-      tabIndex: null,
-      role: void 0,
-      onFocus: handleFocus,
-      onBlur: handleBlur,
-      ownerState,
-      ref
-    }, other, {
-      children: [/* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SwitchBaseInput, _extends({
-        autoFocus,
-        checked: checkedProp,
-        defaultChecked,
-        className: classes.input,
-        disabled,
-        id: hasLabelFor ? id : void 0,
-        name,
-        onChange: handleInputChange,
-        readOnly,
-        ref: inputRef,
-        required,
-        ownerState,
-        tabIndex,
-        type
-      }, type === "checkbox" && value === void 0 ? {} : {
-        value
-      }, inputProps)), checked ? checkedIcon : icon]
-    }));
-  });
-  true ? SwitchBase.propTypes = {
-    /**
-     * If `true`, the `input` element is focused during the first mount.
-     */
-    autoFocus: import_prop_types16.default.bool,
-    /**
-     * If `true`, the component is checked.
-     */
-    checked: import_prop_types16.default.bool,
-    /**
-     * The icon to display when the component is checked.
-     */
-    checkedIcon: import_prop_types16.default.node.isRequired,
-    /**
-     * Override or extend the styles applied to the component.
-     */
-    classes: import_prop_types16.default.object,
-    /**
-     * @ignore
-     */
-    className: import_prop_types16.default.string,
-    /**
-     * @ignore
-     */
-    defaultChecked: import_prop_types16.default.bool,
-    /**
-     * If `true`, the component is disabled.
-     */
-    disabled: import_prop_types16.default.bool,
-    /**
-     * If `true`, the  keyboard focus ripple is disabled.
-     * @default false
-     */
-    disableFocusRipple: import_prop_types16.default.bool,
-    /**
-     * If given, uses a negative margin to counteract the padding on one
-     * side (this is often helpful for aligning the left or right
-     * side of the icon with content above or below, without ruining the border
-     * size and shape).
-     * @default false
-     */
-    edge: import_prop_types16.default.oneOf(["end", "start", false]),
-    /**
-     * The icon to display when the component is unchecked.
-     */
-    icon: import_prop_types16.default.node.isRequired,
-    /**
-     * The id of the `input` element.
-     */
-    id: import_prop_types16.default.string,
-    /**
-     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
-     */
-    inputProps: import_prop_types16.default.object,
-    /**
-     * Pass a ref to the `input` element.
-     */
-    inputRef: refType_default,
-    /*
-     * @ignore
-     */
-    name: import_prop_types16.default.string,
-    /**
-     * @ignore
-     */
-    onBlur: import_prop_types16.default.func,
-    /**
-     * Callback fired when the state is changed.
-     *
-     * @param {object} event The event source of the callback.
-     * You can pull out the new checked state by accessing `event.target.checked` (boolean).
-     */
-    onChange: import_prop_types16.default.func,
-    /**
-     * @ignore
-     */
-    onFocus: import_prop_types16.default.func,
-    /**
-     * It prevents the user from changing the value of the field
-     * (not from interacting with the field).
-     */
-    readOnly: import_prop_types16.default.bool,
-    /**
-     * If `true`, the `input` element is required.
-     */
-    required: import_prop_types16.default.bool,
-    /**
-     * The system prop that allows defining system overrides as well as additional CSS styles.
-     */
-    sx: import_prop_types16.default.object,
-    /**
-     * @ignore
-     */
-    tabIndex: import_prop_types16.default.oneOfType([import_prop_types16.default.number, import_prop_types16.default.string]),
-    /**
-     * The input component prop `type`.
-     */
-    type: import_prop_types16.default.string.isRequired,
-    /**
-     * The value of the component.
-     */
-    value: import_prop_types16.default.any
-  } : void 0;
-  var SwitchBase_default = SwitchBase;
-
-  // node_modules/@mui/material/internal/svg-icons/CheckBoxOutlineBlank.js
-  var React46 = __toESM(require_react());
-  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
-  var CheckBoxOutlineBlank_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", {
-    d: "M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-  }), "CheckBoxOutlineBlank");
-
-  // node_modules/@mui/material/internal/svg-icons/CheckBox.js
-  var React47 = __toESM(require_react());
-  var import_jsx_runtime17 = __toESM(require_jsx_runtime());
-  var CheckBox_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime17.jsx)("path", {
-    d: "M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-  }), "CheckBox");
-
-  // node_modules/@mui/material/internal/svg-icons/IndeterminateCheckBox.js
-  var React48 = __toESM(require_react());
-  var import_jsx_runtime18 = __toESM(require_jsx_runtime());
-  var IndeterminateCheckBox_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime18.jsx)("path", {
-    d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"
-  }), "IndeterminateCheckBox");
-
-  // node_modules/@mui/material/Checkbox/checkboxClasses.js
-  function getCheckboxUtilityClass(slot) {
-    return generateUtilityClass("MuiCheckbox", slot);
-  }
-  var checkboxClasses = generateUtilityClasses("MuiCheckbox", ["root", "checked", "disabled", "indeterminate", "colorPrimary", "colorSecondary", "sizeSmall", "sizeMedium"]);
-  var checkboxClasses_default = checkboxClasses;
-
-  // node_modules/@mui/material/Checkbox/Checkbox.js
-  var import_jsx_runtime19 = __toESM(require_jsx_runtime());
-  var _excluded15 = ["checkedIcon", "color", "icon", "indeterminate", "indeterminateIcon", "inputProps", "size", "className"];
-  var useUtilityClasses5 = (ownerState) => {
-    const {
-      classes,
-      indeterminate,
-      color: color3,
-      size
-    } = ownerState;
-    const slots = {
-      root: ["root", indeterminate && "indeterminate", `color${capitalize_default(color3)}`, `size${capitalize_default(size)}`]
-    };
-    const composedClasses = composeClasses(slots, getCheckboxUtilityClass, classes);
-    return _extends({}, classes, composedClasses);
-  };
-  var CheckboxRoot = styled_default(SwitchBase_default, {
-    shouldForwardProp: (prop) => rootShouldForwardProp_default(prop) || prop === "classes",
-    name: "MuiCheckbox",
-    slot: "Root",
-    overridesResolver: (props, styles) => {
-      const {
-        ownerState
-      } = props;
-      return [styles.root, ownerState.indeterminate && styles.indeterminate, styles[`size${capitalize_default(ownerState.size)}`], ownerState.color !== "default" && styles[`color${capitalize_default(ownerState.color)}`]];
-    }
-  })(({
-    theme,
-    ownerState
-  }) => _extends({
-    color: (theme.vars || theme).palette.text.secondary
-  }, !ownerState.disableRipple && {
-    "&:hover": {
-      backgroundColor: theme.vars ? `rgba(${ownerState.color === "default" ? theme.vars.palette.action.activeChannel : theme.vars.palette[ownerState.color].mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, import_colorManipulator2.alpha)(ownerState.color === "default" ? theme.palette.action.active : theme.palette[ownerState.color].main, theme.palette.action.hoverOpacity),
-      // Reset on touch devices, it doesn't add specificity
-      "@media (hover: none)": {
-        backgroundColor: "transparent"
-      }
-    }
-  }, ownerState.color !== "default" && {
-    [`&.${checkboxClasses_default.checked}, &.${checkboxClasses_default.indeterminate}`]: {
-      color: (theme.vars || theme).palette[ownerState.color].main
-    },
-    [`&.${checkboxClasses_default.disabled}`]: {
-      color: (theme.vars || theme).palette.action.disabled
-    }
-  }));
-  var defaultCheckedIcon = /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(CheckBox_default, {});
-  var defaultIcon = /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(CheckBoxOutlineBlank_default, {});
-  var defaultIndeterminateIcon = /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(IndeterminateCheckBox_default, {});
-  var Checkbox = /* @__PURE__ */ React49.forwardRef(function Checkbox2(inProps, ref) {
-    var _icon$props$fontSize, _indeterminateIcon$pr;
-    const props = useDefaultProps2({
-      props: inProps,
-      name: "MuiCheckbox"
-    });
-    const {
-      checkedIcon = defaultCheckedIcon,
-      color: color3 = "primary",
-      icon: iconProp = defaultIcon,
-      indeterminate = false,
-      indeterminateIcon: indeterminateIconProp = defaultIndeterminateIcon,
-      inputProps,
-      size = "medium",
-      className
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded15);
-    const icon = indeterminate ? indeterminateIconProp : iconProp;
-    const indeterminateIcon = indeterminate ? indeterminateIconProp : checkedIcon;
-    const ownerState = _extends({}, props, {
-      color: color3,
-      indeterminate,
-      size
-    });
-    const classes = useUtilityClasses5(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(CheckboxRoot, _extends({
-      type: "checkbox",
-      inputProps: _extends({
-        "data-indeterminate": indeterminate
-      }, inputProps),
-      icon: /* @__PURE__ */ React49.cloneElement(icon, {
-        fontSize: (_icon$props$fontSize = icon.props.fontSize) != null ? _icon$props$fontSize : size
-      }),
-      checkedIcon: /* @__PURE__ */ React49.cloneElement(indeterminateIcon, {
-        fontSize: (_indeterminateIcon$pr = indeterminateIcon.props.fontSize) != null ? _indeterminateIcon$pr : size
-      }),
-      ownerState,
-      ref,
-      className: clsx_default(classes.root, className)
-    }, other, {
-      classes
-    }));
-  });
-  true ? Checkbox.propTypes = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-     * If `true`, the component is checked.
-     */
-    checked: import_prop_types17.default.bool,
-    /**
-     * The icon to display when the component is checked.
-     * @default <CheckBoxIcon />
-     */
-    checkedIcon: import_prop_types17.default.node,
-    /**
-     * Override or extend the styles applied to the component.
-     */
-    classes: import_prop_types17.default.object,
-    /**
-     * @ignore
-     */
-    className: import_prop_types17.default.string,
-    /**
-     * The color of the component.
-     * It supports both default and custom theme colors, which can be added as shown in the
-     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
-     * @default 'primary'
-     */
-    color: import_prop_types17.default.oneOfType([import_prop_types17.default.oneOf(["default", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types17.default.string]),
-    /**
-     * The default checked state. Use when the component is not controlled.
-     */
-    defaultChecked: import_prop_types17.default.bool,
-    /**
-     * If `true`, the component is disabled.
-     * @default false
-     */
-    disabled: import_prop_types17.default.bool,
-    /**
-     * If `true`, the ripple effect is disabled.
-     * @default false
-     */
-    disableRipple: import_prop_types17.default.bool,
-    /**
-     * The icon to display when the component is unchecked.
-     * @default <CheckBoxOutlineBlankIcon />
-     */
-    icon: import_prop_types17.default.node,
-    /**
-     * The id of the `input` element.
-     */
-    id: import_prop_types17.default.string,
-    /**
-     * If `true`, the component appears indeterminate.
-     * This does not set the native input element to indeterminate due
-     * to inconsistent behavior across browsers.
-     * However, we set a `data-indeterminate` attribute on the `input`.
-     * @default false
-     */
-    indeterminate: import_prop_types17.default.bool,
-    /**
-     * The icon to display when the component is indeterminate.
-     * @default <IndeterminateCheckBoxIcon />
-     */
-    indeterminateIcon: import_prop_types17.default.node,
-    /**
-     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
-     */
-    inputProps: import_prop_types17.default.object,
-    /**
-     * Pass a ref to the `input` element.
-     */
-    inputRef: refType_default,
-    /**
-     * Callback fired when the state is changed.
-     *
-     * @param {React.ChangeEvent<HTMLInputElement>} event The event source of the callback.
-     * You can pull out the new checked state by accessing `event.target.checked` (boolean).
-     */
-    onChange: import_prop_types17.default.func,
-    /**
-     * If `true`, the `input` element is required.
-     * @default false
-     */
-    required: import_prop_types17.default.bool,
-    /**
-     * The size of the component.
-     * `small` is equivalent to the dense checkbox styling.
-     * @default 'medium'
-     */
-    size: import_prop_types17.default.oneOfType([import_prop_types17.default.oneOf(["medium", "small"]), import_prop_types17.default.string]),
-    /**
-     * The system prop that allows defining system overrides as well as additional CSS styles.
-     */
-    sx: import_prop_types17.default.oneOfType([import_prop_types17.default.arrayOf(import_prop_types17.default.oneOfType([import_prop_types17.default.func, import_prop_types17.default.object, import_prop_types17.default.bool])), import_prop_types17.default.func, import_prop_types17.default.object]),
-    /**
-     * The value of the component. The DOM API casts this to a string.
-     * The browser uses "on" as the default value.
-     */
-    value: import_prop_types17.default.any
-  } : void 0;
-  var Checkbox_default = Checkbox;
-
-  // node_modules/@mui/x-tree-view/TreeItem/useTreeItemState.js
-  function useTreeItemState(itemId) {
+  var useTreeItemUtils = ({
+    itemId,
+    children
+  }) => {
     const {
       instance,
-      items: {
-        onItemClick
-      },
-      selection: {
-        multiSelect,
-        checkboxSelection,
-        disableSelection
-      },
-      expansion: {
-        expansionTrigger
-      }
+      store,
+      publicAPI
     } = useTreeViewContext();
-    const expandable = instance.isItemExpandable(itemId);
-    const expanded = instance.isItemExpanded(itemId);
-    const focused = instance.isItemFocused(itemId);
-    const selected = instance.isItemSelected(itemId);
-    const disabled = instance.isItemDisabled(itemId);
-    const editing = instance?.isItemBeingEdited ? instance?.isItemBeingEdited(itemId) : false;
-    const editable = instance.isItemEditable ? instance.isItemEditable(itemId) : false;
+    const isItemExpandable = useStore(store, expansionSelectors.isItemExpandable, itemId);
+    const isLoading = useStore(store, lazyLoadingSelectors.isItemLoading, itemId);
+    const hasError = useStore(store, lazyLoadingSelectors.itemHasError, itemId);
+    const isExpandable = itemHasChildren(children) || isItemExpandable;
+    const isExpanded = useStore(store, expansionSelectors.isItemExpanded, itemId);
+    const isFocused = useStore(store, focusSelectors.isItemFocused, itemId);
+    const isSelected = useStore(store, selectionSelectors.isItemSelected, itemId);
+    const isDisabled = useStore(store, itemsSelectors.isItemDisabled, itemId);
+    const isEditing = useStore(store, labelSelectors.isItemBeingEdited, itemId);
+    const isEditable = useStore(store, labelSelectors.isItemEditable, itemId);
+    const status = {
+      expandable: isExpandable,
+      expanded: isExpanded,
+      focused: isFocused,
+      selected: isSelected,
+      disabled: isDisabled,
+      editing: isEditing,
+      editable: isEditable,
+      loading: isLoading,
+      error: hasError
+    };
     const handleExpansion = (event) => {
-      if (!disabled) {
-        if (!focused) {
-          instance.focusItem(event, itemId);
-        }
-        const multiple = multiSelect && (event.shiftKey || event.ctrlKey || event.metaKey);
-        if (expandable && !(multiple && instance.isItemExpanded(itemId))) {
-          instance.toggleItemExpansion(event, itemId);
-        }
+      if (status.disabled) {
+        return;
+      }
+      if (!status.focused) {
+        instance.focusItem(event, itemId);
+      }
+      const multiple = selectionSelectors.isMultiSelectEnabled(store.state) && (event.shiftKey || event.ctrlKey || event.metaKey);
+      if (status.expandable && !(multiple && expansionSelectors.isItemExpanded(store.state, itemId))) {
+        instance.setItemExpansion({
+          event,
+          itemId
+        });
       }
     };
     const handleSelection = (event) => {
-      if (!disabled) {
-        if (!focused && !editing) {
-          instance.focusItem(event, itemId);
-        }
-        const multiple = multiSelect && (event.shiftKey || event.ctrlKey || event.metaKey);
-        if (multiple) {
-          if (event.shiftKey) {
-            instance.expandSelectionRange(event, itemId);
-          } else {
-            instance.selectItem({
-              event,
-              itemId,
-              keepExistingSelection: true
-            });
-          }
-        } else {
-          instance.selectItem({
-            event,
-            itemId,
-            shouldBeSelected: true
-          });
-        }
-      }
-    };
-    const handleCheckboxSelection = (event) => {
-      if (disableSelection || disabled) {
+      if (status.disabled) {
         return;
       }
-      const hasShift = event.nativeEvent.shiftKey;
-      if (multiSelect && hasShift) {
-        instance.expandSelectionRange(event, itemId);
+      if (!status.focused && !status.editing) {
+        instance.focusItem(event, itemId);
+      }
+      const multiple = selectionSelectors.isMultiSelectEnabled(store.state) && (event.shiftKey || event.ctrlKey || event.metaKey);
+      if (multiple) {
+        if (event.shiftKey) {
+          instance.expandSelectionRange(event, itemId);
+        } else {
+          instance.setItemSelection({
+            event,
+            itemId,
+            keepExistingSelection: true
+          });
+        }
       } else {
-        instance.selectItem({
+        instance.setItemSelection({
           event,
           itemId,
-          keepExistingSelection: multiSelect,
-          shouldBeSelected: event.target.checked
+          shouldBeSelected: true
         });
       }
     };
-    const preventSelection = (event) => {
-      if (event.shiftKey || event.ctrlKey || event.metaKey || disabled) {
-        event.preventDefault();
+    const handleCheckboxSelection = (event) => {
+      const hasShift = event.nativeEvent.shiftKey;
+      const isMultiSelectEnabled = selectionSelectors.isMultiSelectEnabled(store.state);
+      if (isMultiSelectEnabled && hasShift) {
+        instance.expandSelectionRange(event, itemId);
+      } else {
+        instance.setItemSelection({
+          event,
+          itemId,
+          keepExistingSelection: isMultiSelectEnabled,
+          shouldBeSelected: event.target.checked
+        });
       }
     };
     const toggleItemEditing = () => {
       if (!hasPlugin(instance, useTreeViewLabel)) {
         return;
       }
-      if (instance.isItemEditable(itemId)) {
-        if (instance.isItemBeingEdited(itemId)) {
-          instance.setEditedItemId(null);
-        } else {
-          instance.setEditedItemId(itemId);
-        }
+      if (isEditing) {
+        instance.setEditedItem(null);
+      } else {
+        instance.setEditedItem(itemId);
       }
     };
-    const handleSaveItemLabel = (event, label) => {
+    const handleSaveItemLabel = (event, newLabel) => {
       if (!hasPlugin(instance, useTreeViewLabel)) {
         return;
       }
-      if (instance.isItemBeingEditedRef(itemId)) {
-        instance.updateItemLabel(itemId, label);
+      if (labelSelectors.isItemBeingEdited(store.state, itemId)) {
+        instance.updateItemLabel(itemId, newLabel);
         toggleItemEditing();
         instance.focusItem(event, itemId);
       }
@@ -38826,41 +41690,399 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       if (!hasPlugin(instance, useTreeViewLabel)) {
         return;
       }
-      if (instance.isItemBeingEditedRef(itemId)) {
+      if (labelSelectors.isItemBeingEdited(store.state, itemId)) {
         toggleItemEditing();
         instance.focusItem(event, itemId);
       }
     };
-    return {
-      disabled,
-      expanded,
-      selected,
-      focused,
-      editable,
-      editing,
-      disableSelection,
-      checkboxSelection,
+    const interactions = {
       handleExpansion,
       handleSelection,
       handleCheckboxSelection,
-      handleContentClick: onItemClick,
-      preventSelection,
-      expansionTrigger,
       toggleItemEditing,
       handleSaveItemLabel,
       handleCancelItemLabelEditing
     };
-  }
+    return {
+      interactions,
+      status,
+      publicAPI
+    };
+  };
 
-  // node_modules/@mui/x-tree-view/TreeItem2DragAndDropOverlay/TreeItem2DragAndDropOverlay.js
+  // node_modules/@mui/x-tree-view/esm/useTreeItem/useTreeItem.js
+  var useTreeItem = (parameters) => {
+    const {
+      runItemPlugins,
+      instance,
+      publicAPI,
+      store
+    } = useTreeViewContext();
+    const depthContext = React63.useContext(TreeViewItemDepthContext);
+    const depth = useStore(store, (...params) => {
+      if (typeof depthContext === "function") {
+        return depthContext(...params);
+      }
+      return depthContext;
+    }, parameters.itemId);
+    const {
+      id,
+      itemId,
+      label,
+      children,
+      rootRef
+    } = parameters;
+    const {
+      rootRef: pluginRootRef,
+      contentRef,
+      propsEnhancers
+    } = runItemPlugins(parameters);
+    const {
+      interactions,
+      status
+    } = useTreeItemUtils({
+      itemId,
+      children
+    });
+    const rootRefObject = React63.useRef(null);
+    const contentRefObject = React63.useRef(null);
+    const handleRootRef = useForkRef2(rootRef, pluginRootRef, rootRefObject);
+    const handleContentRef = useForkRef2(contentRef, contentRefObject);
+    const checkboxRef = React63.useRef(null);
+    const treeId = useStore(store, idSelectors.treeId);
+    const isSelectionEnabledForItem = useStore(store, selectionSelectors.canItemBeSelected, itemId);
+    const isCheckboxSelectionEnabled = useStore(store, selectionSelectors.isCheckboxSelectionEnabled);
+    const idAttribute = generateTreeItemIdAttribute({
+      itemId,
+      treeId,
+      id
+    });
+    const shouldBeAccessibleWithTab = useStore(store, focusSelectors.isItemTheDefaultFocusableItem, itemId);
+    const sharedPropsEnhancerParams = {
+      rootRefObject,
+      contentRefObject,
+      interactions
+    };
+    const createRootHandleFocus = (otherHandlers) => (event) => {
+      otherHandlers.onFocus?.(event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      if (!status.focused && itemsSelectors.canItemBeFocused(store.state, itemId) && event.currentTarget === event.target) {
+        instance.focusItem(event, itemId);
+      }
+    };
+    const createRootHandleBlur = (otherHandlers) => (event) => {
+      otherHandlers.onBlur?.(event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      const rootElement = instance.getItemDOMElement(itemId);
+      if (status.editing || // we can exit the editing state by clicking outside the input (within the Tree Item) or by pressing Enter or Escape -> we don't want to remove the focused item from the state in these cases
+      // we can also exit the editing state by clicking on the root itself -> want to remove the focused item from the state in this case
+      event.relatedTarget && isTargetInDescendants(event.relatedTarget, rootElement) && (event.target && event.target?.dataset?.element === "labelInput" && isTargetInDescendants(event.target, rootElement) || event.relatedTarget?.dataset?.element === "labelInput")) {
+        return;
+      }
+      instance.removeFocusedItem();
+    };
+    const createRootHandleKeyDown = (otherHandlers) => (event) => {
+      otherHandlers.onKeyDown?.(event);
+      if (event.defaultMuiPrevented || event.target?.dataset?.element === "labelInput") {
+        return;
+      }
+      instance.handleItemKeyDown(event, itemId);
+    };
+    const createLabelHandleDoubleClick = (otherHandlers) => (event) => {
+      otherHandlers.onDoubleClick?.(event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      interactions.toggleItemEditing();
+    };
+    const createContentHandleClick = (otherHandlers) => (event) => {
+      otherHandlers.onClick?.(event);
+      instance.handleItemClick(event, itemId);
+      if (event.defaultMuiPrevented || checkboxRef.current?.contains(event.target)) {
+        return;
+      }
+      if (expansionSelectors.triggerSlot(store.state) === "content") {
+        interactions.handleExpansion(event);
+      }
+      if (!isCheckboxSelectionEnabled) {
+        interactions.handleSelection(event);
+      }
+    };
+    const createContentHandleMouseDown = (otherHandlers) => (event) => {
+      otherHandlers.onMouseDown?.(event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      if (event.shiftKey || event.ctrlKey || event.metaKey || status.disabled) {
+        event.preventDefault();
+      }
+    };
+    const createIconContainerHandleClick = (otherHandlers) => (event) => {
+      otherHandlers.onClick?.(event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      if (expansionSelectors.triggerSlot(store.state) === "iconContainer") {
+        interactions.handleExpansion(event);
+      }
+    };
+    const getContextProviderProps = () => ({
+      itemId,
+      id
+    });
+    const getRootProps = (externalProps = {}) => {
+      const externalEventHandlers = _extends({}, extractEventHandlers_default2(parameters), extractEventHandlers_default2(externalProps));
+      let ariaSelected;
+      if (status.selected) {
+        ariaSelected = true;
+      } else if (!isSelectionEnabledForItem) {
+        ariaSelected = void 0;
+      } else {
+        ariaSelected = false;
+      }
+      const props = _extends({}, externalEventHandlers, {
+        ref: handleRootRef,
+        role: "treeitem",
+        tabIndex: shouldBeAccessibleWithTab ? 0 : -1,
+        id: idAttribute,
+        "aria-expanded": status.expandable ? status.expanded : void 0,
+        "aria-selected": ariaSelected,
+        "aria-disabled": status.disabled || void 0
+      }, externalProps, {
+        style: _extends({}, externalProps.style ?? {}, {
+          "--TreeView-itemDepth": depth
+        }),
+        onFocus: createRootHandleFocus(externalEventHandlers),
+        onBlur: createRootHandleBlur(externalEventHandlers),
+        onKeyDown: createRootHandleKeyDown(externalEventHandlers)
+      });
+      const enhancedRootProps = propsEnhancers.root?.(_extends({}, sharedPropsEnhancerParams, {
+        externalEventHandlers
+      })) ?? {};
+      return _extends({}, props, enhancedRootProps);
+    };
+    const getContentProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      const props = _extends({}, externalEventHandlers, externalProps, {
+        ref: handleContentRef,
+        onClick: createContentHandleClick(externalEventHandlers),
+        onMouseDown: createContentHandleMouseDown(externalEventHandlers),
+        status
+      });
+      ["expanded", "selected", "focused", "disabled", "editing", "editable"].forEach((key) => {
+        if (status[key]) {
+          props[`data-${key}`] = "";
+        }
+      });
+      const enhancedContentProps = propsEnhancers.content?.(_extends({}, sharedPropsEnhancerParams, {
+        externalEventHandlers
+      })) ?? {};
+      return _extends({}, props, enhancedContentProps);
+    };
+    const getCheckboxProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      const props = _extends({}, externalEventHandlers, {
+        ref: checkboxRef,
+        "aria-hidden": true
+      }, externalProps);
+      const enhancedCheckboxProps = propsEnhancers.checkbox?.(_extends({}, sharedPropsEnhancerParams, {
+        externalEventHandlers
+      })) ?? {};
+      return _extends({}, props, enhancedCheckboxProps);
+    };
+    const getLabelProps = (externalProps = {}) => {
+      const externalEventHandlers = _extends({}, extractEventHandlers_default2(externalProps));
+      const props = _extends({}, externalEventHandlers, {
+        children: label
+      }, externalProps, {
+        onDoubleClick: createLabelHandleDoubleClick(externalEventHandlers)
+      });
+      const enhancedLabelProps = propsEnhancers.label?.(_extends({}, sharedPropsEnhancerParams, {
+        externalEventHandlers
+      })) ?? {};
+      return _extends({}, enhancedLabelProps, props);
+    };
+    const getLabelInputProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      const enhancedLabelInputProps = propsEnhancers.labelInput?.(_extends({}, sharedPropsEnhancerParams, {
+        externalEventHandlers
+      })) ?? {};
+      return _extends({}, externalProps, enhancedLabelInputProps);
+    };
+    const getIconContainerProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      return _extends({}, externalEventHandlers, externalProps, {
+        onClick: createIconContainerHandleClick(externalEventHandlers)
+      });
+    };
+    const getErrorContainerProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      return _extends({}, externalEventHandlers, externalProps);
+    };
+    const getLoadingContainerProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      return _extends({
+        size: "12px",
+        thickness: 6
+      }, externalEventHandlers, externalProps);
+    };
+    const getGroupTransitionProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      const response = _extends({}, externalEventHandlers, {
+        unmountOnExit: true,
+        component: "ul",
+        role: "group",
+        in: status.expanded,
+        children
+      }, externalProps);
+      return response;
+    };
+    const getDragAndDropOverlayProps = (externalProps = {}) => {
+      const externalEventHandlers = extractEventHandlers_default2(externalProps);
+      const enhancedDragAndDropOverlayProps = propsEnhancers.dragAndDropOverlay?.(_extends({}, sharedPropsEnhancerParams, {
+        externalEventHandlers
+      })) ?? {};
+      return _extends({}, externalProps, enhancedDragAndDropOverlayProps);
+    };
+    return {
+      getContextProviderProps,
+      getRootProps,
+      getContentProps,
+      getGroupTransitionProps,
+      getIconContainerProps,
+      getCheckboxProps,
+      getLabelProps,
+      getLabelInputProps,
+      getDragAndDropOverlayProps,
+      getErrorContainerProps,
+      getLoadingContainerProps,
+      rootRef: handleRootRef,
+      status,
+      publicAPI
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/esm/TreeItem/treeItemClasses.js
+  function getTreeItemUtilityClass(slot) {
+    return generateUtilityClass2("MuiTreeItem", slot);
+  }
+  var treeItemClasses = generateUtilityClasses2("MuiTreeItem", [
+    "root",
+    "content",
+    "groupTransition",
+    "iconContainer",
+    "label",
+    "checkbox",
+    "labelInput",
+    "dragAndDropOverlay",
+    "errorIcon",
+    "loadingIcon",
+    // State classes, will be replaced by data-attrs in the next major
+    "expanded",
+    "selected",
+    "focused",
+    "disabled",
+    "editable",
+    "editing"
+  ]);
+
+  // node_modules/@mui/x-tree-view/esm/TreeItemIcon/TreeItemIcon.js
   init_extends();
-  var React50 = __toESM(require_react());
-  var import_prop_types18 = __toESM(require_prop_types());
-  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
-  var TreeItem2DragAndDropOverlayRoot = styled_default("div", {
-    name: "MuiTreeItem2DragAndDropOverlay",
+  var React65 = __toESM(require_react(), 1);
+  var import_prop_types23 = __toESM(require_prop_types(), 1);
+
+  // node_modules/@mui/x-tree-view/esm/icons/icons.js
+  var React64 = __toESM(require_react(), 1);
+  var import_jsx_runtime31 = __toESM(require_jsx_runtime(), 1);
+  var TreeViewExpandIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime31.jsx)("path", {
+    d: "M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+  }), "TreeViewExpandIcon");
+  var TreeViewCollapseIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime31.jsx)("path", {
+    d: "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+  }), "TreeViewCollapseIcon");
+
+  // node_modules/@mui/x-tree-view/esm/TreeItemIcon/TreeItemIcon.js
+  var import_jsx_runtime32 = __toESM(require_jsx_runtime(), 1);
+  function TreeItemIcon(props) {
+    const {
+      slots: slotsFromTreeItem,
+      slotProps: slotPropsFromTreeItem,
+      status
+    } = props;
+    const {
+      slots: slotsFromTreeView,
+      slotProps: slotPropsFromTreeView
+    } = useTreeViewStyleContext();
+    const slots = {
+      collapseIcon: slotsFromTreeItem?.collapseIcon ?? slotsFromTreeView.collapseIcon ?? TreeViewCollapseIcon,
+      expandIcon: slotsFromTreeItem?.expandIcon ?? slotsFromTreeView.expandIcon ?? TreeViewExpandIcon,
+      endIcon: slotsFromTreeItem?.endIcon ?? slotsFromTreeView.endIcon,
+      icon: slotsFromTreeItem?.icon
+    };
+    let iconName;
+    if (slots?.icon) {
+      iconName = "icon";
+    } else if (status.expandable) {
+      if (status.expanded) {
+        iconName = "collapseIcon";
+      } else {
+        iconName = "expandIcon";
+      }
+    } else {
+      iconName = "endIcon";
+    }
+    const Icon = slots[iconName];
+    const iconProps = useSlotProps_default({
+      elementType: Icon,
+      externalSlotProps: (tempOwnerState) => _extends({}, resolveComponentProps_default2(slotPropsFromTreeView[iconName], tempOwnerState), resolveComponentProps_default2(slotPropsFromTreeItem?.[iconName], tempOwnerState)),
+      // TODO: Add proper ownerState
+      ownerState: {}
+    });
+    if (!Icon) {
+      return null;
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Icon, _extends({}, iconProps));
+  }
+  true ? TreeItemIcon.propTypes = {
+    // ----------------------------- Warning --------------------------------
+    // | These PropTypes are generated from the TypeScript type definitions |
+    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
+    // ----------------------------------------------------------------------
+    /**
+     * The props used for each component slot.
+     * @default {}
+     */
+    slotProps: import_prop_types23.default.object,
+    /**
+     * Overridable component slots.
+     * @default {}
+     */
+    slots: import_prop_types23.default.object,
+    status: import_prop_types23.default.shape({
+      disabled: import_prop_types23.default.bool.isRequired,
+      editable: import_prop_types23.default.bool.isRequired,
+      editing: import_prop_types23.default.bool.isRequired,
+      error: import_prop_types23.default.bool.isRequired,
+      expandable: import_prop_types23.default.bool.isRequired,
+      expanded: import_prop_types23.default.bool.isRequired,
+      focused: import_prop_types23.default.bool.isRequired,
+      loading: import_prop_types23.default.bool.isRequired,
+      selected: import_prop_types23.default.bool.isRequired
+    }).isRequired
+  } : void 0;
+
+  // node_modules/@mui/x-tree-view/esm/TreeItemDragAndDropOverlay/TreeItemDragAndDropOverlay.js
+  init_extends();
+  var React66 = __toESM(require_react(), 1);
+  var import_prop_types24 = __toESM(require_prop_types(), 1);
+  var import_jsx_runtime33 = __toESM(require_jsx_runtime(), 1);
+  var TreeItemDragAndDropOverlayRoot = styled_default("div", {
+    name: "MuiTreeItemDragAndDropOverlay",
     slot: "Root",
-    overridesResolver: (props, styles) => styles.root,
     shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "action"
   })(({
     theme
@@ -38907,273 +42129,103 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       }
     }]
   }));
-  function TreeItem2DragAndDropOverlay(props) {
+  function TreeItemDragAndDropOverlay(props) {
     if (props.action == null) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(TreeItem2DragAndDropOverlayRoot, _extends({}, props));
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(TreeItemDragAndDropOverlayRoot, _extends({}, props));
   }
-  true ? TreeItem2DragAndDropOverlay.propTypes = {
+  true ? TreeItemDragAndDropOverlay.propTypes = {
     // ----------------------------- Warning --------------------------------
     // | These PropTypes are generated from the TypeScript type definitions |
     // | To update them edit the TypeScript types and run "pnpm proptypes"  |
     // ----------------------------------------------------------------------
-    action: import_prop_types18.default.oneOf(["make-child", "move-to-parent", "reorder-above", "reorder-below"]),
-    style: import_prop_types18.default.object
+    action: import_prop_types24.default.oneOf(["make-child", "move-to-parent", "reorder-above", "reorder-below"]),
+    style: import_prop_types24.default.object
   } : void 0;
 
-  // node_modules/@mui/x-tree-view/TreeItem2LabelInput/TreeItem2LabelInput.js
+  // node_modules/@mui/x-tree-view/esm/TreeItemProvider/TreeItemProvider.js
+  var React67 = __toESM(require_react(), 1);
+  var import_prop_types25 = __toESM(require_prop_types(), 1);
+  var import_jsx_runtime34 = __toESM(require_jsx_runtime(), 1);
+  function TreeItemProvider(props) {
+    const {
+      children,
+      itemId,
+      id
+    } = props;
+    const {
+      wrapItem,
+      instance,
+      store
+    } = useTreeViewContext();
+    const treeId = useStore(store, idSelectors.treeId);
+    const idAttribute = generateTreeItemIdAttribute({
+      itemId,
+      treeId,
+      id
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(React67.Fragment, {
+      children: wrapItem({
+        children,
+        itemId,
+        instance,
+        idAttribute
+      })
+    });
+  }
+  true ? TreeItemProvider.propTypes = {
+    // ----------------------------- Warning --------------------------------
+    // | These PropTypes are generated from the TypeScript type definitions |
+    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
+    // ----------------------------------------------------------------------
+    children: import_prop_types25.default.node,
+    id: import_prop_types25.default.string,
+    itemId: import_prop_types25.default.string.isRequired
+  } : void 0;
+
+  // node_modules/@mui/x-tree-view/esm/TreeItemLabelInput/TreeItemLabelInput.js
   init_extends();
-  var TreeItem2LabelInput = styled_default("input", {
-    name: "MuiTreeItem2",
-    slot: "LabelInput",
-    overridesResolver: (props, styles) => styles.labelInput
+  var TreeItemLabelInput = styled_default("input", {
+    name: "MuiTreeItem",
+    slot: "LabelInput"
   })(({
     theme
   }) => _extends({}, theme.typography.body1, {
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: (theme.vars || theme).palette.background.paper,
     borderRadius: theme.shape.borderRadius,
     border: "none",
     padding: "0 2px",
     boxSizing: "border-box",
     "&:focus": {
-      outline: `1px solid ${theme.palette.primary.main}`
+      outline: `1px solid ${(theme.vars || theme).palette.primary.main}`
     }
   }));
 
-  // node_modules/@mui/x-tree-view/TreeItem/TreeItemContent.js
-  var import_jsx_runtime21 = __toESM(require_jsx_runtime());
-  var _excluded16 = ["classes", "className", "displayIcon", "expansionIcon", "icon", "label", "itemId", "onClick", "onMouseDown", "dragAndDropOverlayProps", "labelInputProps"];
-  var TreeItemContent = /* @__PURE__ */ React51.forwardRef(function TreeItemContent2(props, ref) {
-    const {
-      classes,
-      className,
-      displayIcon,
-      expansionIcon,
-      icon: iconProp,
-      label,
-      itemId,
-      onClick,
-      onMouseDown,
-      dragAndDropOverlayProps,
-      labelInputProps
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded16);
-    const {
-      disabled,
-      expanded,
-      selected,
-      focused,
-      editing,
-      editable,
-      disableSelection,
-      checkboxSelection,
-      handleExpansion,
-      handleSelection,
-      handleCheckboxSelection,
-      handleContentClick,
-      preventSelection,
-      expansionTrigger,
-      toggleItemEditing
-    } = useTreeItemState(itemId);
-    const icon = iconProp || expansionIcon || displayIcon;
-    const checkboxRef = React51.useRef(null);
-    const handleMouseDown = (event) => {
-      preventSelection(event);
-      if (onMouseDown) {
-        onMouseDown(event);
-      }
-    };
-    const handleClick = (event) => {
-      handleContentClick?.(event, itemId);
-      if (checkboxRef.current?.contains(event.target)) {
-        return;
-      }
-      if (expansionTrigger === "content") {
-        handleExpansion(event);
-      }
-      if (!checkboxSelection) {
-        handleSelection(event);
-      }
-      if (onClick) {
-        onClick(event);
-      }
-    };
-    const handleLabelDoubleClick = (event) => {
-      if (event.defaultMuiPrevented) {
-        return;
-      }
-      toggleItemEditing();
-    };
-    return (
-      /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions -- Key event is handled by the TreeView */
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", _extends({}, other, {
-        className: clsx_default(classes.root, className, expanded && classes.expanded, selected && classes.selected, focused && classes.focused, disabled && classes.disabled, editing && classes.editing, editable && classes.editable),
-        onClick: handleClick,
-        onMouseDown: handleMouseDown,
-        ref,
-        children: [/* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", {
-          className: classes.iconContainer,
-          children: icon
-        }), checkboxSelection && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Checkbox_default, {
-          className: classes.checkbox,
-          checked: selected,
-          onChange: handleCheckboxSelection,
-          disabled: disabled || disableSelection,
-          ref: checkboxRef,
-          tabIndex: -1
-        }), editing ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(TreeItem2LabelInput, _extends({}, labelInputProps, {
-          className: classes.labelInput
-        })) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", _extends({
-          className: classes.label
-        }, editable && {
-          onDoubleClick: handleLabelDoubleClick
-        }, {
-          children: label
-        })), dragAndDropOverlayProps && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(TreeItem2DragAndDropOverlay, _extends({}, dragAndDropOverlayProps))]
-      }))
-    );
-  });
-  true ? TreeItemContent.propTypes = {
-    // ----------------------------- Warning --------------------------------
-    // | These PropTypes are generated from the TypeScript type definitions |
-    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
-    // ----------------------------------------------------------------------
-    /**
-     * Override or extend the styles applied to the component.
-     */
-    classes: import_prop_types19.default.object.isRequired,
-    className: import_prop_types19.default.string,
-    /**
-     * The icon to display next to the Tree Item's label. Either a parent or end icon.
-     */
-    displayIcon: import_prop_types19.default.node,
-    dragAndDropOverlayProps: import_prop_types19.default.shape({
-      action: import_prop_types19.default.oneOf(["make-child", "move-to-parent", "reorder-above", "reorder-below"]),
-      style: import_prop_types19.default.object
-    }),
-    /**
-     * The icon to display next to the Tree Item's label. Either an expansion or collapse icon.
-     */
-    expansionIcon: import_prop_types19.default.node,
-    /**
-     * The icon to display next to the Tree Item's label.
-     */
-    icon: import_prop_types19.default.node,
-    /**
-     * The id of the item.
-     */
-    itemId: import_prop_types19.default.string.isRequired,
-    /**
-     * The Tree Item label.
-     */
-    label: import_prop_types19.default.node,
-    labelInputProps: import_prop_types19.default.shape({
-      autoFocus: import_prop_types19.default.oneOf([true]),
-      "data-element": import_prop_types19.default.oneOf(["labelInput"]),
-      onBlur: import_prop_types19.default.func,
-      onChange: import_prop_types19.default.func,
-      onKeyDown: import_prop_types19.default.func,
-      type: import_prop_types19.default.oneOf(["text"]),
-      value: import_prop_types19.default.string
-    })
-  } : void 0;
-
-  // node_modules/@mui/x-tree-view/TreeItem/treeItemClasses.js
-  function getTreeItemUtilityClass(slot) {
-    return generateUtilityClass("MuiTreeItem", slot);
-  }
-  var treeItemClasses = generateUtilityClasses("MuiTreeItem", ["root", "groupTransition", "content", "expanded", "selected", "focused", "disabled", "iconContainer", "label", "checkbox", "labelInput", "editable", "editing", "dragAndDropOverlay"]);
-
-  // node_modules/@mui/x-tree-view/icons/icons.js
-  var React52 = __toESM(require_react());
-  var import_jsx_runtime22 = __toESM(require_jsx_runtime());
-  var TreeViewExpandIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime22.jsx)("path", {
-    d: "M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-  }), "TreeViewExpandIcon");
-  var TreeViewCollapseIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime22.jsx)("path", {
-    d: "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
-  }), "TreeViewCollapseIcon");
-
-  // node_modules/@mui/x-tree-view/TreeItem2Provider/TreeItem2Provider.js
-  var import_prop_types20 = __toESM(require_prop_types());
-  function TreeItem2Provider(props) {
-    const {
-      children,
-      itemId
-    } = props;
-    const {
-      wrapItem,
-      instance
-    } = useTreeViewContext();
-    return wrapItem({
-      children,
-      itemId,
-      instance
-    });
-  }
-  TreeItem2Provider.propTypes = {
-    // ----------------------------- Warning --------------------------------
-    // | These PropTypes are generated from the TypeScript type definitions |
-    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
-    // ----------------------------------------------------------------------
-    children: import_prop_types20.default.node,
-    itemId: import_prop_types20.default.string.isRequired
-  };
-
-  // node_modules/@mui/x-tree-view/TreeItem/TreeItem.js
-  var import_jsx_runtime23 = __toESM(require_jsx_runtime());
-  var _excluded17 = ["children", "className", "slots", "slotProps", "ContentComponent", "ContentProps", "itemId", "id", "label", "onClick", "onMouseDown", "onFocus", "onBlur", "onKeyDown"];
-  var _excluded22 = ["ownerState"];
-  var _excluded32 = ["ownerState"];
-  var _excluded42 = ["ownerState"];
+  // node_modules/@mui/x-tree-view/esm/TreeItem/TreeItem.js
+  var import_jsx_runtime35 = __toESM(require_jsx_runtime(), 1);
+  var _excluded20 = ["visible"];
+  var _excluded23 = ["id", "itemId", "label", "disabled", "children", "slots", "slotProps", "classes"];
   var useThemeProps3 = createUseThemeProps("MuiTreeItem");
-  var useUtilityClasses6 = (ownerState) => {
-    const {
-      classes
-    } = ownerState;
-    const slots = {
-      root: ["root"],
-      content: ["content"],
-      expanded: ["expanded"],
-      selected: ["selected"],
-      focused: ["focused"],
-      disabled: ["disabled"],
-      iconContainer: ["iconContainer"],
-      checkbox: ["checkbox"],
-      label: ["label"],
-      labelInput: ["labelInput"],
-      editing: ["editing"],
-      editable: ["editable"],
-      groupTransition: ["groupTransition"]
-    };
-    return composeClasses(slots, getTreeItemUtilityClass, classes);
-  };
   var TreeItemRoot = styled_default("li", {
     name: "MuiTreeItem",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root
+    slot: "Root"
   })({
     listStyle: "none",
     margin: 0,
     padding: 0,
     outline: 0
   });
-  var StyledTreeItemContent = styled_default(TreeItemContent, {
+  var TreeItemContent = styled_default("div", {
     name: "MuiTreeItem",
     slot: "Content",
-    overridesResolver: (props, styles) => {
-      return [styles.content, styles.iconContainer && {
-        [`& .${treeItemClasses.iconContainer}`]: styles.iconContainer
-      }, styles.label && {
-        [`& .${treeItemClasses.label}`]: styles.label
-      }];
-    },
-    shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "indentationAtItemLevel"
+    shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "status"
   })(({
     theme
   }) => ({
     padding: theme.spacing(0.5, 1),
+    paddingLeft: `calc(${theme.spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`,
     borderRadius: theme.shape.borderRadius,
     width: "100%",
     boxSizing: "border-box",
@@ -39191,14 +42243,14 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         backgroundColor: "transparent"
       }
     },
-    [`&.${treeItemClasses.disabled}`]: {
+    "&[data-disabled]": {
       opacity: (theme.vars || theme).palette.action.disabledOpacity,
       backgroundColor: "transparent"
     },
-    [`&.${treeItemClasses.focused}`]: {
+    "&[data-focused]": {
       backgroundColor: (theme.vars || theme).palette.action.focus
     },
-    [`&.${treeItemClasses.selected}`]: {
+    "&[data-selected]": {
       backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / ${theme.vars.palette.action.selectedOpacity})` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
       "&:hover": {
         backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / calc(${theme.vars.palette.action.selectedOpacity} + ${theme.vars.palette.action.hoverOpacity}))` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity),
@@ -39206,311 +42258,266 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         "@media (hover: none)": {
           backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / ${theme.vars.palette.action.selectedOpacity})` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity)
         }
-      },
-      [`&.${treeItemClasses.focused}`]: {
-        backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / calc(${theme.vars.palette.action.selectedOpacity} + ${theme.vars.palette.action.focusOpacity}))` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.focusOpacity)
       }
     },
-    [`& .${treeItemClasses.iconContainer}`]: {
-      width: 16,
-      display: "flex",
-      flexShrink: 0,
-      justifyContent: "center",
-      "& svg": {
-        fontSize: 18
-      }
-    },
-    [`& .${treeItemClasses.label}`]: _extends({
-      width: "100%",
-      boxSizing: "border-box",
-      // prevent width + padding to overflow
-      // fixes overflow - see https://github.com/mui/material-ui/issues/27372
-      minWidth: 0,
-      position: "relative"
-    }, theme.typography.body1),
-    [`& .${treeItemClasses.checkbox}`]: {
-      padding: 0
-    },
+    "&[data-selected][data-focused]": {
+      backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / calc(${theme.vars.palette.action.selectedOpacity} + ${theme.vars.palette.action.focusOpacity}))` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.focusOpacity)
+    }
+  }));
+  var TreeItemLabel = styled_default("div", {
+    name: "MuiTreeItem",
+    slot: "Label",
+    shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "editable"
+  })(({
+    theme
+  }) => _extends({
+    width: "100%",
+    boxSizing: "border-box",
+    // prevent width + padding to overflow
+    // fixes overflow - see https://github.com/mui/material-ui/issues/27372
+    minWidth: 0,
+    position: "relative",
+    overflow: "hidden"
+  }, theme.typography.body1, {
     variants: [{
-      props: {
-        indentationAtItemLevel: true
-      },
+      props: ({
+        editable
+      }) => editable,
       style: {
-        paddingLeft: `calc(${theme.spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`
+        paddingLeft: "2px"
       }
     }]
   }));
-  var TreeItemGroup = styled_default(Collapse_default, {
+  var TreeItemIconContainer = styled_default("div", {
+    name: "MuiTreeItem",
+    slot: "IconContainer"
+  })({
+    width: 16,
+    display: "flex",
+    flexShrink: 0,
+    justifyContent: "center",
+    position: "relative",
+    "& svg": {
+      fontSize: 18
+    }
+  });
+  var TreeItemGroupTransition = styled_default(Collapse_default, {
     name: "MuiTreeItem",
     slot: "GroupTransition",
-    overridesResolver: (props, styles) => styles.groupTransition,
-    shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "indentationAtItemLevel"
+    overridesResolver: (props, styles) => styles.groupTransition
   })({
     margin: 0,
-    padding: 0,
-    paddingLeft: "var(--TreeView-itemChildrenIndentation)",
-    variants: [{
-      props: {
-        indentationAtItemLevel: true
-      },
-      style: {
-        paddingLeft: 0
-      }
-    }]
+    padding: 0
   });
-  var TreeItem = /* @__PURE__ */ React53.forwardRef(function TreeItem2(inProps, inRef) {
+  var TreeItemErrorContainer = styled_default("div", {
+    name: "MuiTreeItem",
+    slot: "ErrorIcon"
+  })({
+    position: "absolute",
+    right: -3,
+    width: 7,
+    height: 7,
+    borderRadius: "50%",
+    backgroundColor: "red"
+  });
+  var TreeItemLoadingContainer = styled_default(CircularProgress_default, {
+    name: "MuiTreeItem",
+    slot: "LoadingIcon"
+  })({
+    color: "text.primary"
+  });
+  var TreeItemCheckbox = styled_default(/* @__PURE__ */ React68.forwardRef((props, ref) => {
     const {
-      icons: contextIcons,
-      runItemPlugins,
-      items: {
-        disabledItemsFocusable,
-        indentationAtItemLevel
-      },
-      selection: {
-        disableSelection
-      },
-      expansion: {
-        expansionTrigger
-      },
-      treeId,
-      instance
-    } = useTreeViewContext();
-    const depthContext = React53.useContext(TreeViewItemDepthContext);
+      visible
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded20);
+    if (!visible) {
+      return null;
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Checkbox_default, _extends({}, other, {
+      ref
+    }));
+  }), {
+    name: "MuiTreeItem",
+    slot: "Checkbox"
+  })({
+    padding: 0
+  });
+  if (true)
+    TreeItemCheckbox.displayName = "TreeItemCheckbox";
+  var useUtilityClasses11 = (classesProp) => {
+    const {
+      classes: classesFromTreeView
+    } = useTreeViewStyleContext();
+    const classes = _extends({}, classesProp, {
+      root: clsx_default(classesProp?.root, classesFromTreeView.root),
+      content: clsx_default(classesProp?.content, classesFromTreeView.itemContent),
+      iconContainer: clsx_default(classesProp?.iconContainer, classesFromTreeView.itemIconContainer),
+      checkbox: clsx_default(classesProp?.checkbox, classesFromTreeView.itemCheckbox),
+      label: clsx_default(classesProp?.label, classesFromTreeView.itemLabel),
+      groupTransition: clsx_default(classesProp?.groupTransition, classesFromTreeView.itemGroupTransition),
+      labelInput: clsx_default(classesProp?.labelInput, classesFromTreeView.itemLabelInput),
+      dragAndDropOverlay: clsx_default(classesProp?.dragAndDropOverlay, classesFromTreeView.itemDragAndDropOverlay),
+      errorIcon: clsx_default(classesProp?.errorIcon, classesFromTreeView.itemErrorIcon),
+      loadingIcon: clsx_default(classesProp?.loadingIcon, classesFromTreeView.itemLoadingIcon)
+    });
+    const slots = {
+      root: ["root"],
+      content: ["content"],
+      iconContainer: ["iconContainer"],
+      checkbox: ["checkbox"],
+      label: ["label"],
+      groupTransition: ["groupTransition"],
+      labelInput: ["labelInput"],
+      dragAndDropOverlay: ["dragAndDropOverlay"],
+      errorIcon: ["errorIcon"],
+      loadingIcon: ["loadingIcon"],
+      expanded: ["expanded"],
+      editing: ["editing"],
+      editable: ["editable"],
+      selected: ["selected"],
+      focused: ["focused"],
+      disabled: ["disabled"]
+    };
+    return composeClasses2(slots, getTreeItemUtilityClass, classes);
+  };
+  var TreeItem = /* @__PURE__ */ React68.forwardRef(function TreeItem2(inProps, forwardedRef) {
     const props = useThemeProps3({
       props: inProps,
       name: "MuiTreeItem"
     });
     const {
-      children,
-      className,
-      slots: inSlots,
-      slotProps: inSlotProps,
-      ContentComponent = TreeItemContent,
-      ContentProps,
-      itemId,
       id,
+      itemId,
       label,
-      onClick,
-      onMouseDown,
-      onBlur,
-      onKeyDown
-    } = props, other = _objectWithoutPropertiesLoose(props, _excluded17);
-    const {
-      expanded,
-      focused,
-      selected,
       disabled,
-      editing,
-      handleExpansion,
-      handleCancelItemLabelEditing,
-      handleSaveItemLabel
-    } = useTreeItemState(itemId);
-    if (true) {
-      if (props.ContentComponent) {
-        warnOnce(["MUI X: The ContentComponent prop of the TreeItem component is deprecated and will be removed in the next major release.", "You can use the new TreeItem2 component or the new useTreeItem2 hook to customize the rendering of the content.", "For more detail, see https://mui.com/x/react-tree-view/tree-item-customization/."]);
-      }
-      if (props.ContentProps) {
-        warnOnce(["MUI X: The ContentProps prop of the TreeItem component is deprecated and will be removed in the next major release.", "You can use the new TreeItem2 component or the new useTreeItem2 hook to customize the rendering of the content.", "For more detail, see https://mui.com/x/react-tree-view/tree-item-customization/."]);
-      }
-    }
+      children,
+      slots = {},
+      slotProps = {},
+      classes: classesProp
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded23);
     const {
-      contentRef,
-      rootRef,
-      propsEnhancers
-    } = runItemPlugins(props);
-    const rootRefObject = React53.useRef(null);
-    const contentRefObject = React53.useRef(null);
-    const handleRootRef = useForkRef(inRef, rootRef, rootRefObject);
-    const handleContentRef = useForkRef(ContentProps?.ref, contentRef, contentRefObject);
-    const slots = {
-      expandIcon: inSlots?.expandIcon ?? contextIcons.slots.expandIcon ?? TreeViewExpandIcon,
-      collapseIcon: inSlots?.collapseIcon ?? contextIcons.slots.collapseIcon ?? TreeViewCollapseIcon,
-      endIcon: inSlots?.endIcon ?? contextIcons.slots.endIcon,
-      icon: inSlots?.icon,
-      groupTransition: inSlots?.groupTransition
-    };
-    const isExpandable = (reactChildren) => {
-      if (Array.isArray(reactChildren)) {
-        return reactChildren.length > 0 && reactChildren.some(isExpandable);
-      }
-      return Boolean(reactChildren);
-    };
-    const expandable = isExpandable(children);
-    const ownerState = _extends({}, props, {
-      expanded,
-      focused,
-      selected,
-      disabled,
-      indentationAtItemLevel
+      getContextProviderProps,
+      getRootProps,
+      getContentProps,
+      getIconContainerProps,
+      getCheckboxProps,
+      getLabelProps,
+      getGroupTransitionProps,
+      getLabelInputProps,
+      getDragAndDropOverlayProps,
+      getErrorContainerProps,
+      getLoadingContainerProps,
+      status
+    } = useTreeItem({
+      id,
+      itemId,
+      children,
+      label,
+      disabled
     });
-    const classes = useUtilityClasses6(ownerState);
+    const classes = useUtilityClasses11(classesProp);
+    const Root2 = slots.root ?? TreeItemRoot;
+    const rootProps = useSlotProps_default({
+      elementType: Root2,
+      getSlotProps: getRootProps,
+      externalForwardedProps: other,
+      externalSlotProps: slotProps.root,
+      additionalProps: {
+        ref: forwardedRef
+      },
+      ownerState: {},
+      className: classes.root
+    });
+    const Content = slots.content ?? TreeItemContent;
+    const contentProps = useSlotProps_default({
+      elementType: Content,
+      getSlotProps: getContentProps,
+      externalSlotProps: slotProps.content,
+      ownerState: {},
+      className: clsx_default(classes.content, status.expanded && classes.expanded, status.selected && classes.selected, status.focused && classes.focused, status.disabled && classes.disabled, status.editing && classes.editing, status.editable && classes.editable)
+    });
+    const IconContainer = slots.iconContainer ?? TreeItemIconContainer;
+    const iconContainerProps = useSlotProps_default({
+      elementType: IconContainer,
+      getSlotProps: getIconContainerProps,
+      externalSlotProps: slotProps.iconContainer,
+      ownerState: {},
+      className: classes.iconContainer
+    });
+    const Label = slots.label ?? TreeItemLabel;
+    const labelProps = useSlotProps_default({
+      elementType: Label,
+      getSlotProps: getLabelProps,
+      externalSlotProps: slotProps.label,
+      ownerState: {},
+      className: classes.label
+    });
+    const Checkbox3 = slots.checkbox ?? TreeItemCheckbox;
+    const checkboxProps = useSlotProps_default({
+      elementType: Checkbox3,
+      getSlotProps: getCheckboxProps,
+      externalSlotProps: slotProps.checkbox,
+      ownerState: {},
+      className: classes.checkbox
+    });
     const GroupTransition = slots.groupTransition ?? void 0;
     const groupTransitionProps = useSlotProps_default({
       elementType: GroupTransition,
+      getSlotProps: getGroupTransitionProps,
+      externalSlotProps: slotProps.groupTransition,
       ownerState: {},
-      externalSlotProps: inSlotProps?.groupTransition,
-      additionalProps: _extends({
-        unmountOnExit: true,
-        in: expanded,
-        component: "ul",
-        role: "group"
-      }, indentationAtItemLevel ? {
-        indentationAtItemLevel: true
-      } : {}),
       className: classes.groupTransition
     });
-    const handleIconContainerClick = (event) => {
-      if (expansionTrigger === "iconContainer") {
-        handleExpansion(event);
-      }
-    };
-    const ExpansionIcon = expanded ? slots.collapseIcon : slots.expandIcon;
-    const _useSlotProps = useSlotProps_default({
-      elementType: ExpansionIcon,
+    const LabelInput = slots.labelInput ?? TreeItemLabelInput;
+    const labelInputProps = useSlotProps_default({
+      elementType: LabelInput,
+      getSlotProps: getLabelInputProps,
+      externalSlotProps: slotProps.labelInput,
       ownerState: {},
-      externalSlotProps: (tempOwnerState) => {
-        if (expanded) {
-          return _extends({}, resolveComponentProps_default(contextIcons.slotProps.collapseIcon, tempOwnerState), resolveComponentProps_default(inSlotProps?.collapseIcon, tempOwnerState));
-        }
-        return _extends({}, resolveComponentProps_default(contextIcons.slotProps.expandIcon, tempOwnerState), resolveComponentProps_default(inSlotProps?.expandIcon, tempOwnerState));
-      },
-      additionalProps: {
-        onClick: handleIconContainerClick
-      }
-    }), expansionIconProps = _objectWithoutPropertiesLoose(_useSlotProps, _excluded22);
-    const expansionIcon = expandable && !!ExpansionIcon ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ExpansionIcon, _extends({}, expansionIconProps)) : null;
-    const DisplayIcon = expandable ? void 0 : slots.endIcon;
-    const _useSlotProps2 = useSlotProps_default({
-      elementType: DisplayIcon,
-      ownerState: {},
-      externalSlotProps: (tempOwnerState) => {
-        if (expandable) {
-          return {};
-        }
-        return _extends({}, resolveComponentProps_default(contextIcons.slotProps.endIcon, tempOwnerState), resolveComponentProps_default(inSlotProps?.endIcon, tempOwnerState));
-      }
-    }), displayIconProps = _objectWithoutPropertiesLoose(_useSlotProps2, _excluded32);
-    const displayIcon = DisplayIcon ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(DisplayIcon, _extends({}, displayIconProps)) : null;
-    const Icon = slots.icon;
-    const _useSlotProps3 = useSlotProps_default({
-      elementType: Icon,
-      ownerState: {},
-      externalSlotProps: inSlotProps?.icon
-    }), iconProps = _objectWithoutPropertiesLoose(_useSlotProps3, _excluded42);
-    const icon = Icon ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon, _extends({}, iconProps)) : null;
-    let ariaSelected;
-    if (selected) {
-      ariaSelected = true;
-    } else if (disableSelection || disabled) {
-      ariaSelected = void 0;
-    } else {
-      ariaSelected = false;
-    }
-    function handleFocus(event) {
-      const canBeFocused = !disabled || disabledItemsFocusable;
-      if (!focused && canBeFocused && event.currentTarget === event.target) {
-        instance.focusItem(event, itemId);
-      }
-    }
-    function handleBlur(event) {
-      onBlur?.(event);
-      if (editing || // we can exit the editing state by clicking outside the input (within the Tree Item) or by pressing Enter or Escape -> we don't want to remove the focused item from the state in these cases
-      // we can also exit the editing state by clicking on the root itself -> want to remove the focused item from the state in this case
-      event.relatedTarget && isTargetInDescendants(event.relatedTarget, rootRefObject.current) && (event.target && event.target?.dataset?.element === "labelInput" && isTargetInDescendants(event.target, rootRefObject.current) || event.relatedTarget?.dataset?.element === "labelInput")) {
-        return;
-      }
-      instance.removeFocusedItem();
-    }
-    const handleKeyDown2 = (event) => {
-      onKeyDown?.(event);
-      if (event.target?.dataset?.element === "labelInput") {
-        return;
-      }
-      instance.handleItemKeyDown(event, itemId);
-    };
-    const idAttribute = generateTreeItemIdAttribute({
-      itemId,
-      treeId,
-      id
+      className: classes.labelInput
     });
-    const tabIndex = instance.canItemBeTabbed(itemId) ? 0 : -1;
-    const sharedPropsEnhancerParams = {
-      rootRefObject,
-      contentRefObject,
-      interactions: {
-        handleSaveItemLabel,
-        handleCancelItemLabelEditing
-      }
-    };
-    const enhancedRootProps = propsEnhancers.root?.(_extends({}, sharedPropsEnhancerParams, {
-      externalEventHandlers: extractEventHandlers_default(other)
-    })) ?? {};
-    const enhancedContentProps = propsEnhancers.content?.(_extends({}, sharedPropsEnhancerParams, {
-      externalEventHandlers: extractEventHandlers_default(ContentProps)
-    })) ?? {};
-    const enhancedDragAndDropOverlayProps = propsEnhancers.dragAndDropOverlay?.(_extends({}, sharedPropsEnhancerParams, {
-      externalEventHandlers: {}
-    })) ?? {};
-    const enhancedLabelInputProps = propsEnhancers.labelInput?.(_extends({}, sharedPropsEnhancerParams, {
-      externalEventHandlers: {}
-    })) ?? {};
-    return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(TreeItem2Provider, {
-      itemId,
-      children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(TreeItemRoot, _extends({
-        className: clsx_default(classes.root, className),
-        role: "treeitem",
-        "aria-expanded": expandable ? expanded : void 0,
-        "aria-selected": ariaSelected,
-        "aria-disabled": disabled || void 0,
-        id: idAttribute,
-        tabIndex
-      }, other, {
-        ownerState,
-        onFocus: handleFocus,
-        onBlur: handleBlur,
-        onKeyDown: handleKeyDown2,
-        ref: handleRootRef,
-        style: indentationAtItemLevel ? _extends({}, other.style, {
-          "--TreeView-itemDepth": typeof depthContext === "function" ? depthContext(itemId) : depthContext
-        }) : other.style
-      }, enhancedRootProps, {
-        children: [/* @__PURE__ */ (0, import_jsx_runtime23.jsx)(StyledTreeItemContent, _extends({
-          as: ContentComponent,
-          classes: {
-            root: classes.content,
-            expanded: classes.expanded,
-            selected: classes.selected,
-            focused: classes.focused,
-            disabled: classes.disabled,
-            editable: classes.editable,
-            editing: classes.editing,
-            iconContainer: classes.iconContainer,
-            label: classes.label,
-            labelInput: classes.labelInput,
-            checkbox: classes.checkbox
-          },
-          label,
-          itemId,
-          onClick,
-          onMouseDown,
-          icon,
-          expansionIcon,
-          displayIcon,
-          ownerState
-        }, ContentProps, enhancedContentProps, enhancedDragAndDropOverlayProps.action == null ? {} : {
-          dragAndDropOverlayProps: enhancedDragAndDropOverlayProps
-        }, enhancedLabelInputProps.value == null ? {} : {
-          labelInputProps: enhancedLabelInputProps
-        }, {
-          ref: handleContentRef
-        })), children && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(TreeItemGroup, _extends({
+    const DragAndDropOverlay = slots.dragAndDropOverlay ?? TreeItemDragAndDropOverlay;
+    const dragAndDropOverlayProps = useSlotProps_default({
+      elementType: DragAndDropOverlay,
+      getSlotProps: getDragAndDropOverlayProps,
+      externalSlotProps: slotProps.dragAndDropOverlay,
+      ownerState: {},
+      className: classes.dragAndDropOverlay
+    });
+    const ErrorIcon = slots.errorIcon ?? TreeItemErrorContainer;
+    const errorContainerProps = useSlotProps_default({
+      elementType: ErrorIcon,
+      getSlotProps: getErrorContainerProps,
+      externalSlotProps: slotProps.errorIcon,
+      ownerState: {},
+      className: classes.errorIcon
+    });
+    const LoadingIcon = slots.loadingIcon ?? TreeItemLoadingContainer;
+    const loadingContainerProps = useSlotProps_default({
+      elementType: LoadingIcon,
+      getSlotProps: getLoadingContainerProps,
+      externalSlotProps: slotProps.loadingIcon,
+      ownerState: {},
+      className: classes.loadingIcon
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(TreeItemProvider, _extends({}, getContextProviderProps(), {
+      children: /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(Root2, _extends({}, rootProps, {
+        children: [/* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(Content, _extends({}, contentProps, {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(IconContainer, _extends({}, iconContainerProps, {
+            children: [status.error && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(ErrorIcon, _extends({}, errorContainerProps)), status.loading ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(LoadingIcon, _extends({}, loadingContainerProps)) : /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(TreeItemIcon, {
+              status,
+              slots,
+              slotProps
+            })]
+          })), /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Checkbox3, _extends({}, checkboxProps)), status.editing ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(LabelInput, _extends({}, labelInputProps)) : /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Label, _extends({}, labelProps)), /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(DragAndDropOverlay, _extends({}, dragAndDropOverlayProps))]
+        })), children && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(TreeItemGroupTransition, _extends({
           as: GroupTransition
-        }, groupTransitionProps, {
-          children
-        }))]
+        }, groupTransitionProps))]
       }))
-    });
+    }));
   });
+  if (true)
+    TreeItem.displayName = "TreeItem";
   true ? TreeItem.propTypes = {
     // ----------------------------- Warning --------------------------------
     // | These PropTypes are generated from the TypeScript type definitions |
@@ -39519,129 +42526,147 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     /**
      * The content of the component.
      */
-    children: import_prop_types21.default.node,
+    children: import_prop_types26.default.any,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types21.default.object,
-    className: import_prop_types21.default.string,
-    /**
-     * The component used to render the content of the item.
-     * @deprecated Consider using the `<TreeItem2 />` component or the `useTreeItem2` hook instead. For more details, see https://mui.com/x/react-tree-view/tree-item-customization/.
-     * @default TreeItemContent
-     */
-    ContentComponent: elementTypeAcceptingRef_default,
-    /**
-     * Props applied to ContentComponent.
-     * @deprecated Consider using the `<TreeItem2 />` component or the `useTreeItem2` hook instead. For more details, see https://mui.com/x/react-tree-view/tree-item-customization/.
-     */
-    ContentProps: import_prop_types21.default.object,
+    classes: import_prop_types26.default.object,
+    className: import_prop_types26.default.string,
     /**
      * If `true`, the item is disabled.
      * @default false
      */
-    disabled: import_prop_types21.default.bool,
+    disabled: import_prop_types26.default.bool,
+    /**
+     * The id attribute of the item. If not provided, it will be generated.
+     */
+    id: import_prop_types26.default.string,
     /**
      * The id of the item.
+     * Must be unique.
      */
-    itemId: import_prop_types21.default.string.isRequired,
+    itemId: import_prop_types26.default.string.isRequired,
     /**
-     * The Tree Item label.
+     * The label of the item.
      */
-    label: import_prop_types21.default.node,
+    label: import_prop_types26.default.node,
+    /**
+     * Callback fired when the item root is blurred.
+     */
+    onBlur: import_prop_types26.default.func,
     /**
      * This prop isn't supported.
-     * Use the `onItemFocus` callback on the tree if you need to monitor a item's focus.
+     * Use the `onItemFocus` callback on the tree if you need to monitor an item's focus.
      */
     onFocus: unsupportedProp,
     /**
-     * Callback fired when a key of the keyboard is pressed on the item.
+     * Callback fired when a key is pressed on the keyboard and the tree is in focus.
      */
-    onKeyDown: import_prop_types21.default.func,
+    onKeyDown: import_prop_types26.default.func,
     /**
      * The props used for each component slot.
      * @default {}
      */
-    slotProps: import_prop_types21.default.object,
+    slotProps: import_prop_types26.default.object,
     /**
      * Overridable component slots.
      * @default {}
      */
-    slots: import_prop_types21.default.object,
+    slots: import_prop_types26.default.object,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types21.default.oneOfType([import_prop_types21.default.arrayOf(import_prop_types21.default.oneOfType([import_prop_types21.default.func, import_prop_types21.default.object, import_prop_types21.default.bool])), import_prop_types21.default.func, import_prop_types21.default.object])
+    sx: import_prop_types26.default.oneOfType([import_prop_types26.default.arrayOf(import_prop_types26.default.oneOfType([import_prop_types26.default.func, import_prop_types26.default.object, import_prop_types26.default.bool])), import_prop_types26.default.func, import_prop_types26.default.object])
   } : void 0;
 
-  // node_modules/@mui/x-tree-view/internals/components/RichTreeViewItems.js
-  var import_jsx_runtime24 = __toESM(require_jsx_runtime());
-  var _excluded18 = ["ownerState"];
-  function WrappedTreeItem({
-    slots,
-    slotProps,
-    label,
-    id,
-    itemId,
-    itemsToRender
+  // node_modules/@mui/x-tree-view/esm/internals/components/RichTreeViewItems.js
+  var import_jsx_runtime36 = __toESM(require_jsx_runtime(), 1);
+  var _excluded21 = ["ownerState"];
+  var RichTreeViewItemsContext = /* @__PURE__ */ React69.createContext(null);
+  if (true)
+    RichTreeViewItemsContext.displayName = "RichTreeViewItemsContext";
+  var WrappedTreeItem = /* @__PURE__ */ React69.memo(function WrappedTreeItem2({
+    itemSlot,
+    itemSlotProps,
+    itemId
   }) {
-    const Item = slots?.item ?? TreeItem;
+    const renderItemForRichTreeView = React69.useContext(RichTreeViewItemsContext);
+    const {
+      store
+    } = useTreeViewContext();
+    const itemMeta = useStore(store, itemsSelectors.itemMeta, itemId);
+    const children = useStore(store, itemsSelectors.itemOrderedChildrenIds, itemId);
+    const Item = itemSlot ?? TreeItem;
     const _useSlotProps = useSlotProps_default({
       elementType: Item,
-      externalSlotProps: slotProps?.item,
+      externalSlotProps: itemSlotProps,
       additionalProps: {
-        itemId,
-        id,
-        label
+        label: itemMeta?.label,
+        id: itemMeta?.idAttribute,
+        itemId
       },
       ownerState: {
         itemId,
-        label
+        label: itemMeta?.label
       }
-    }), itemProps = _objectWithoutPropertiesLoose(_useSlotProps, _excluded18);
-    const children = React54.useMemo(() => itemsToRender ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(RichTreeViewItems, {
-      itemsToRender,
-      slots,
-      slotProps
-    }) : null, [itemsToRender, slots, slotProps]);
-    return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(Item, _extends({}, itemProps, {
-      children
+    }), itemProps = _objectWithoutPropertiesLoose(_useSlotProps, _excluded21);
+    return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Item, _extends({}, itemProps, {
+      children: children?.map(renderItemForRichTreeView)
     }));
-  }
+  }, fastObjectShallowCompare);
+  if (true)
+    WrappedTreeItem.displayName = "WrappedTreeItem";
   function RichTreeViewItems(props) {
     const {
-      itemsToRender,
       slots,
       slotProps
     } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(React54.Fragment, {
-      children: itemsToRender.map((item) => /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(WrappedTreeItem, {
-        slots,
-        slotProps,
-        label: item.label,
-        id: item.id,
-        itemId: item.itemId,
-        itemsToRender: item.children
-      }, item.itemId))
+    const {
+      store
+    } = useTreeViewContext();
+    const itemSlot = slots?.item;
+    const itemSlotProps = slotProps?.item;
+    const items = useStore(store, itemsSelectors.itemOrderedChildrenIds, null);
+    const renderItem = React69.useCallback((itemId) => {
+      return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(WrappedTreeItem, {
+        itemSlot,
+        itemSlotProps,
+        itemId
+      }, itemId);
+    }, [itemSlot, itemSlotProps]);
+    return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(RichTreeViewItemsContext.Provider, {
+      value: renderItem,
+      children: items.map(renderItem)
     });
   }
 
-  // node_modules/@mui/x-tree-view/RichTreeView/RichTreeView.js
-  var import_jsx_runtime25 = __toESM(require_jsx_runtime());
+  // node_modules/@mui/x-tree-view/esm/RichTreeView/RichTreeView.js
+  var import_jsx_runtime37 = __toESM(require_jsx_runtime(), 1);
+  var _excluded24 = ["slots", "slotProps"];
   var useThemeProps4 = createUseThemeProps("MuiRichTreeView");
-  var useUtilityClasses7 = (ownerState) => {
+  var useUtilityClasses12 = (ownerState) => {
     const {
       classes
     } = ownerState;
-    const slots = {
-      root: ["root"]
-    };
-    return composeClasses(slots, getRichTreeViewUtilityClass, classes);
+    return React70.useMemo(() => {
+      const slots = {
+        root: ["root"],
+        item: ["item"],
+        itemContent: ["itemContent"],
+        itemGroupTransition: ["itemGroupTransition"],
+        itemIconContainer: ["itemIconContainer"],
+        itemLabel: ["itemLabel"],
+        itemLabelInput: ["itemLabelInput"],
+        itemCheckbox: ["itemCheckbox"]
+        // itemDragAndDropOverlay: ['itemDragAndDropOverlay'], => feature not available on this component
+        // itemErrorIcon: ['itemErrorIcon'], => feature not available on this component
+      };
+      return composeClasses2(slots, getRichTreeViewUtilityClass, classes);
+    }, [classes]);
   };
   var RichTreeViewRoot = styled_default("ul", {
     name: "MuiRichTreeView",
-    slot: "Root",
-    overridesResolver: (props, styles) => styles.root
+    slot: "Root"
   })({
     padding: 0,
     margin: 0,
@@ -39649,11 +42674,15 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     outline: 0,
     position: "relative"
   });
-  var RichTreeView = /* @__PURE__ */ React55.forwardRef(function RichTreeView2(inProps, ref) {
+  var RichTreeView = /* @__PURE__ */ React70.forwardRef(function RichTreeView2(inProps, ref) {
     const props = useThemeProps4({
       props: inProps,
       name: "MuiRichTreeView"
     });
+    const {
+      slots,
+      slotProps
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded24);
     if (true) {
       if (props.children != null) {
         warnOnce(["MUI X: The Rich Tree View component does not support JSX children.", "If you want to add items, you need to use the `items` prop.", "Check the documentation for more details: https://mui.com/x/react-tree-view/rich-tree-view/items/."]);
@@ -39661,18 +42690,15 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     }
     const {
       getRootProps,
-      contextValue,
-      instance
+      contextValue
     } = useTreeView({
       plugins: RICH_TREE_VIEW_PLUGINS,
       rootRef: ref,
-      props
+      props: other
     });
-    const {
-      slots,
-      slotProps
-    } = props;
-    const classes = useUtilityClasses7(props);
+    const isLoading = useStore(contextValue.store, itemsSelectors.isLoading);
+    const treeViewError = useStore(contextValue.store, itemsSelectors.error);
+    const classes = useUtilityClasses12(props);
     const Root2 = slots?.root ?? RichTreeViewRoot;
     const rootProps = useSlotProps_default({
       elementType: Root2,
@@ -39681,17 +42707,32 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       getSlotProps: getRootProps,
       ownerState: props
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(TreeViewProvider, {
-      value: contextValue,
-      children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Root2, _extends({}, rootProps, {
-        children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RichTreeViewItems, {
+    if (isLoading) {
+      return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Typography_default, {
+        children: "Loading..."
+      });
+    }
+    if (treeViewError) {
+      return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Alert_default, {
+        severity: "error",
+        children: treeViewError.message
+      });
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TreeViewProvider, {
+      contextValue,
+      classes,
+      slots,
+      slotProps,
+      children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Root2, _extends({}, rootProps, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(RichTreeViewItems, {
           slots,
-          slotProps,
-          itemsToRender: instance.getItemsToRender()
+          slotProps
         })
       }))
     });
   });
+  if (true)
+    RichTreeView.displayName = "RichTreeView";
   true ? RichTreeView.propTypes = {
     // ----------------------------- Warning --------------------------------
     // | These PropTypes are generated from the TypeScript type definitions |
@@ -39700,69 +42741,73 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     /**
      * The ref object that allows Tree View manipulation. Can be instantiated with `useTreeViewApiRef()`.
      */
-    apiRef: import_prop_types22.default.shape({
-      current: import_prop_types22.default.shape({
-        focusItem: import_prop_types22.default.func.isRequired,
-        getItem: import_prop_types22.default.func.isRequired,
-        getItemDOMElement: import_prop_types22.default.func.isRequired,
-        getItemOrderedChildrenIds: import_prop_types22.default.func.isRequired,
-        getItemTree: import_prop_types22.default.func.isRequired,
-        selectItem: import_prop_types22.default.func.isRequired,
-        setItemExpansion: import_prop_types22.default.func.isRequired,
-        updateItemLabel: import_prop_types22.default.func.isRequired
+    apiRef: import_prop_types27.default.shape({
+      current: import_prop_types27.default.shape({
+        focusItem: import_prop_types27.default.func,
+        getItem: import_prop_types27.default.func,
+        getItemDOMElement: import_prop_types27.default.func,
+        getItemOrderedChildrenIds: import_prop_types27.default.func,
+        getItemTree: import_prop_types27.default.func,
+        getParentId: import_prop_types27.default.func,
+        isItemExpanded: import_prop_types27.default.func,
+        setEditedItem: import_prop_types27.default.func,
+        setIsItemDisabled: import_prop_types27.default.func,
+        setItemExpansion: import_prop_types27.default.func,
+        setItemSelection: import_prop_types27.default.func,
+        updateItemLabel: import_prop_types27.default.func
       })
     }),
     /**
      * If `true`, the Tree View renders a checkbox at the left of its label that allows selecting it.
      * @default false
      */
-    checkboxSelection: import_prop_types22.default.bool,
+    checkboxSelection: import_prop_types27.default.bool,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types22.default.object,
-    className: import_prop_types22.default.string,
+    classes: import_prop_types27.default.object,
+    className: import_prop_types27.default.string,
     /**
      * Expanded item ids.
      * Used when the item's expansion is not controlled.
      * @default []
      */
-    defaultExpandedItems: import_prop_types22.default.arrayOf(import_prop_types22.default.string),
+    defaultExpandedItems: import_prop_types27.default.arrayOf(import_prop_types27.default.string),
     /**
      * Selected item ids. (Uncontrolled)
      * When `multiSelect` is true this takes an array of strings; when false (default) a string.
      * @default []
      */
-    defaultSelectedItems: import_prop_types22.default.any,
+    defaultSelectedItems: import_prop_types27.default.any,
     /**
      * If `true`, will allow focus on disabled items.
      * @default false
      */
-    disabledItemsFocusable: import_prop_types22.default.bool,
+    disabledItemsFocusable: import_prop_types27.default.bool,
     /**
      * If `true` selection is disabled.
      * @default false
      */
-    disableSelection: import_prop_types22.default.bool,
+    disableSelection: import_prop_types27.default.bool,
     /**
      * Expanded item ids.
      * Used when the item's expansion is controlled.
      */
-    expandedItems: import_prop_types22.default.arrayOf(import_prop_types22.default.string),
+    expandedItems: import_prop_types27.default.arrayOf(import_prop_types27.default.string),
     /**
      * The slot that triggers the item's expansion when clicked.
      * @default 'content'
      */
-    expansionTrigger: import_prop_types22.default.oneOf(["content", "iconContainer"]),
+    expansionTrigger: import_prop_types27.default.oneOf(["content", "iconContainer"]),
     /**
-     * Unstable features, breaking changes might be introduced.
-     * For each feature, if the flag is not explicitly set to `true`,
-     * the feature will be fully disabled and any property / method call will not have any effect.
+     * Used to determine the children of a given item.
+     *
+     * @template R
+     * @param {R} item The item to check.
+     * @returns {R[]} The children of the item.
+     * @default (item) => item.children
      */
-    experimentalFeatures: import_prop_types22.default.shape({
-      indentationAtItemLevel: import_prop_types22.default.bool,
-      labelEditing: import_prop_types22.default.bool
-    }),
+    getItemChildren: import_prop_types27.default.func,
     /**
      * Used to determine the id of a given item.
      *
@@ -39771,7 +42816,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
      * @returns {string} The id of the item.
      * @default (item) => item.id
      */
-    getItemId: import_prop_types22.default.func,
+    getItemId: import_prop_types27.default.func,
     /**
      * Used to determine the string label for a given item.
      *
@@ -39780,108 +42825,157 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
      * @returns {string} The label of the item.
      * @default (item) => item.label
      */
-    getItemLabel: import_prop_types22.default.func,
+    getItemLabel: import_prop_types27.default.func,
     /**
      * This prop is used to help implement the accessibility logic.
      * If you don't provide this prop. It falls back to a randomly generated id.
      */
-    id: import_prop_types22.default.string,
+    id: import_prop_types27.default.string,
     /**
      * Used to determine if a given item should be disabled.
      * @template R
      * @param {R} item The item to check.
      * @returns {boolean} `true` if the item should be disabled.
      */
-    isItemDisabled: import_prop_types22.default.func,
+    isItemDisabled: import_prop_types27.default.func,
     /**
-     * Determines if a given item is editable or not.
-     * Make sure to also enable the `labelEditing` experimental feature:
-     * `<RichTreeViewPro experimentalFeatures={{ labelEditing: true }}  />`.
-     * By default, the items are not editable.
+     * Determine if a given item can be edited.
      * @template R
      * @param {R} item The item to check.
-     * @returns {boolean} `true` if the item is editable.
+     * @returns {boolean} `true` if the item can be edited.
+     * @default () => false
      */
-    isItemEditable: import_prop_types22.default.oneOfType([import_prop_types22.default.func, import_prop_types22.default.bool]),
+    isItemEditable: import_prop_types27.default.oneOfType([import_prop_types27.default.func, import_prop_types27.default.bool]),
     /**
      * Horizontal indentation between an item and its children.
      * Examples: 24, "24px", "2rem", "2em".
      * @default 12px
      */
-    itemChildrenIndentation: import_prop_types22.default.oneOfType([import_prop_types22.default.number, import_prop_types22.default.string]),
-    items: import_prop_types22.default.array.isRequired,
+    itemChildrenIndentation: import_prop_types27.default.oneOfType([import_prop_types27.default.number, import_prop_types27.default.string]),
+    items: import_prop_types27.default.array.isRequired,
     /**
      * If `true`, `ctrl` and `shift` will trigger multiselect.
      * @default false
      */
-    multiSelect: import_prop_types22.default.bool,
+    multiSelect: import_prop_types27.default.bool,
     /**
      * Callback fired when Tree Items are expanded/collapsed.
-     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {React.SyntheticEvent} event The DOM event that triggered the change. Can be null when the change is caused by the `publicAPI.setItemExpansion()` method.
      * @param {array} itemIds The ids of the expanded items.
      */
-    onExpandedItemsChange: import_prop_types22.default.func,
+    onExpandedItemsChange: import_prop_types27.default.func,
     /**
      * Callback fired when the `content` slot of a given Tree Item is clicked.
      * @param {React.MouseEvent} event The DOM event that triggered the change.
      * @param {string} itemId The id of the focused item.
      */
-    onItemClick: import_prop_types22.default.func,
+    onItemClick: import_prop_types27.default.func,
     /**
      * Callback fired when a Tree Item is expanded or collapsed.
-     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {React.SyntheticEvent | null} event The DOM event that triggered the change. Can be null when the change is caused by the `publicAPI.setItemExpansion()` method.
      * @param {array} itemId The itemId of the modified item.
      * @param {array} isExpanded `true` if the item has just been expanded, `false` if it has just been collapsed.
      */
-    onItemExpansionToggle: import_prop_types22.default.func,
+    onItemExpansionToggle: import_prop_types27.default.func,
     /**
      * Callback fired when a given Tree Item is focused.
      * @param {React.SyntheticEvent | null} event The DOM event that triggered the change. **Warning**: This is a generic event not a focus event.
      * @param {string} itemId The id of the focused item.
      */
-    onItemFocus: import_prop_types22.default.func,
+    onItemFocus: import_prop_types27.default.func,
     /**
      * Callback fired when the label of an item changes.
      * @param {TreeViewItemId} itemId The id of the item that was edited.
      * @param {string} newLabel The new label of the items.
      */
-    onItemLabelChange: import_prop_types22.default.func,
+    onItemLabelChange: import_prop_types27.default.func,
     /**
      * Callback fired when a Tree Item is selected or deselected.
-     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {React.SyntheticEvent} event The DOM event that triggered the change. Can be null when the change is caused by the `publicAPI.setItemSelection()` method.
      * @param {array} itemId The itemId of the modified item.
      * @param {array} isSelected `true` if the item has just been selected, `false` if it has just been deselected.
      */
-    onItemSelectionToggle: import_prop_types22.default.func,
+    onItemSelectionToggle: import_prop_types27.default.func,
     /**
      * Callback fired when Tree Items are selected/deselected.
-     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {React.SyntheticEvent} event The DOM event that triggered the change. Can be null when the change is caused by the `publicAPI.setItemSelection()` method.
      * @param {string[] | string} itemIds The ids of the selected items.
      * When `multiSelect` is `true`, this is an array of strings; when false (default) a string.
      */
-    onSelectedItemsChange: import_prop_types22.default.func,
+    onSelectedItemsChange: import_prop_types27.default.func,
     /**
      * Selected item ids. (Controlled)
      * When `multiSelect` is true this takes an array of strings; when false (default) a string.
      */
-    selectedItems: import_prop_types22.default.any,
+    selectedItems: import_prop_types27.default.any,
+    /**
+     * When `selectionPropagation.descendants` is set to `true`.
+     *
+     * - Selecting a parent selects all its descendants automatically.
+     * - Deselecting a parent deselects all its descendants automatically.
+     *
+     * When `selectionPropagation.parents` is set to `true`.
+     *
+     * - Selecting all the descendants of a parent selects the parent automatically.
+     * - Deselecting a descendant of a selected parent deselects the parent automatically.
+     *
+     * Only works when `multiSelect` is `true`.
+     * On the <SimpleTreeView />, only the expanded items are considered (since the collapsed item are not passed to the Tree View component at all)
+     *
+     * @default { parents: false, descendants: false }
+     */
+    selectionPropagation: import_prop_types27.default.shape({
+      descendants: import_prop_types27.default.bool,
+      parents: import_prop_types27.default.bool
+    }),
     /**
      * The props used for each component slot.
      * @default {}
      */
-    slotProps: import_prop_types22.default.object,
+    slotProps: import_prop_types27.default.object,
     /**
      * Overridable component slots.
      * @default {}
      */
-    slots: import_prop_types22.default.object,
+    slots: import_prop_types27.default.object,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types22.default.oneOfType([import_prop_types22.default.arrayOf(import_prop_types22.default.oneOfType([import_prop_types22.default.func, import_prop_types22.default.object, import_prop_types22.default.bool])), import_prop_types22.default.func, import_prop_types22.default.object])
+    sx: import_prop_types27.default.oneOfType([import_prop_types27.default.arrayOf(import_prop_types27.default.oneOfType([import_prop_types27.default.func, import_prop_types27.default.object, import_prop_types27.default.bool])), import_prop_types27.default.func, import_prop_types27.default.object])
   } : void 0;
 
-  // srcts/treeview.ts
+  // node_modules/@mui/x-tree-view/esm/hooks/useTreeItemModel.js
+  var useTreeItemModel = (itemId) => {
+    const {
+      store
+    } = useTreeViewContext();
+    return useStore(store, itemsSelectors.itemModel, itemId);
+  };
+
+  // srcts/treeview.tsx
+  var import_jsx_runtime38 = __toESM(require_jsx_runtime());
+  function CustomLabel({ children, className, caption }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Typography_default, { children }),
+      caption && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Typography_default, { variant: "caption", color: "text.secondary", children: caption })
+    ] });
+  }
+  var CustomTreeItem = import_react8.default.forwardRef(function CustomTreeItem2(props, ref) {
+    const item = useTreeItemModel(props.itemId);
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      TreeItem,
+      {
+        ...props,
+        ref,
+        slots: {
+          label: CustomLabel
+        },
+        slotProps: {
+          label: { caption: item?.caption || "" }
+        }
+      }
+    );
+  });
   function ShinyTreeView({
     items,
     multiple,
@@ -39900,39 +42994,45 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         updateShinyValue(singleValue);
       }
     }, []);
-    return import_react8.default.createElement(RichTreeView, {
-      items,
-      selectedItems,
-      expandedItems: currentExpandedItems,
-      onExpandedItemsChange: (_event, itemIds) => {
-        setCurrentExpandedItems(itemIds);
-      },
-      onSelectedItemsChange: (_event, itemIds) => {
-        const normalizedIds = Array.isArray(itemIds) ? itemIds : itemIds ? [itemIds] : [];
-        normalizedIds.sort();
-        setSelectedItems(normalizedIds);
-        if (multiple) {
-          const multiValue = normalizedIds.length > 0 ? normalizedIds : null;
-          updateShinyValue(multiValue);
-        } else {
-          const singleValue = normalizedIds.length > 0 ? normalizedIds[0] : null;
-          updateShinyValue(singleValue);
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      RichTreeView,
+      {
+        items,
+        selectedItems,
+        expandedItems: currentExpandedItems,
+        slots: {
+          item: CustomTreeItem
+        },
+        onExpandedItemsChange: (_event, itemIds) => {
+          setCurrentExpandedItems(itemIds);
+        },
+        onSelectedItemsChange: (_event, itemIds) => {
+          const normalizedIds = Array.isArray(itemIds) ? itemIds : itemIds ? [itemIds] : [];
+          normalizedIds.sort();
+          setSelectedItems(normalizedIds);
+          if (multiple) {
+            const multiValue = normalizedIds.length > 0 ? normalizedIds : null;
+            updateShinyValue(multiValue);
+          } else {
+            const singleValue = normalizedIds.length > 0 ? normalizedIds[0] : null;
+            updateShinyValue(singleValue);
+          }
+        },
+        multiSelect: multiple,
+        isItemDisabled: (item) => {
+          return item.disabled === true;
+        },
+        sx: {
+          height: "fit-content",
+          width: "100%",
+          border: "1px solid #e0e0e0",
+          borderRadius: "4px",
+          padding: "8px",
+          fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+          backgroundColor: "white"
         }
-      },
-      multiSelect: multiple,
-      isItemDisabled: (item) => {
-        return item.disabled === true;
-      },
-      sx: {
-        height: "fit-content",
-        width: "100%",
-        border: "1px solid #e0e0e0",
-        borderRadius: "4px",
-        padding: "8px",
-        fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-        backgroundColor: "white"
       }
-    });
+    );
   }
 
   // srcts/index.ts
@@ -39982,6 +43082,9 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
             };
             if (typeof item.disabled === "boolean") {
               validatedItem.disabled = item.disabled;
+            }
+            if (typeof item.caption === "string") {
+              validatedItem.caption = item.caption;
             }
             if (Array.isArray(item.children)) {
               const validChildren = item.children.map(validateItem).filter((child) => child !== null);
@@ -40106,6 +43209,28 @@ object-assign/index.js:
   @license MIT
   *)
 
+use-sync-external-store/cjs/use-sync-external-store-shim.development.js:
+  (**
+   * @license React
+   * use-sync-external-store-shim.development.js
+   *
+   * Copyright (c) Meta Platforms, Inc. and affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
+
+use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js:
+  (**
+   * @license React
+   * use-sync-external-store-shim/with-selector.development.js
+   *
+   * Copyright (c) Meta Platforms, Inc. and affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
+
 react-is/cjs/react-is.development.js:
   (** @license React v16.13.1
    * react-is.development.js
@@ -40143,6 +43268,15 @@ react-is/cjs/react-is.development.js:
    *
    * Copyright (c) Meta Platforms, Inc. and affiliates.
    *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
+
+@mui/material/index.js:
+  (**
+   * @mui/material v5.18.0
+   *
+   * @license MIT
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    *)

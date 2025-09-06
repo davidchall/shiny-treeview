@@ -24,8 +24,9 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
     "esModuleInterop": true,
-    "strict": true
+    "strict": true,
+    "jsx": "react-jsx"
   },
-  "include": ["srcts/**/*.ts"],
+  "include": ["srcts/**/*.ts", "srcts/**/*.tsx"],
   "exclude": []
 }

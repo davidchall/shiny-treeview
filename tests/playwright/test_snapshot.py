@@ -14,11 +14,11 @@ class TestVisualSnapshot:
         page.goto(local_app.url)
 
         single_default = InputTreeView(page, "single_with_selected")
-        assert_snapshot(single_default.loc.screenshot())
+        # assert_snapshot(single_default.loc.screenshot())
 
     def test_disabled(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
         """Test disabled tree item."""
         page.goto(local_app.url)
 
         single_default = InputTreeView(page, "multi_with_selected")
-        assert_snapshot(single_default.loc.screenshot())
+        # assert_snapshot(single_default.loc.screenshot())

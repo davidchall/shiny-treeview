@@ -5,8 +5,8 @@ from shiny.run import ShinyAppProc
 from .controller import InputTreeView
 
 
-class TestTreeView:
-    """Playwright-based tests for treeview component interactions."""
+class TestUserInteractions:
+    """Tests for user interactions."""
 
     def test_initial_selection(self, page: Page, local_app: ShinyAppProc):
         """Test the InputTreeView controller methods."""

@@ -32,6 +32,7 @@ dev = [
   "pytest",
   "playwright",
   "pytest-playwright",
+  "pytest-playwright-visual-snapshot",
   "quartodoc",
 ]
 
@@ -55,6 +56,8 @@ local_scheme = "dirty-tag"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = ["--browser", "chromium"]
+playwright_visual_snapshots_path = "tests/playwright/snapshots"
+playwright_visual_snapshot_failures_path = "tests/playwright/snapshots-failure"
 
 [tool.black]
 line-length = 88

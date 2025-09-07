@@ -8,9 +8,6 @@ on:
   issue_comment:
     types: [created]
 
-env:
-  BROWSER: "chromium"
-
 jobs:
   # Main snapshot testing job - runs on push and PR
   snapshot-tests:
@@ -33,11 +30,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
-          playwright install $BROWSER --with-deps
+          playwright install chromium --with-deps
 
       - name: Run snapshot tests
         run: |
-          pytest tests/playwright/test_snapshot.py --browser $BROWSER
+          pytest tests/playwright/test_snapshot.py
 
       - name: Upload snapshot test results
         if: failure()
@@ -100,11 +97,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
-          playwright install $BROWSER --with-deps
+          playwright install chromium --with-deps
 
       - name: Update snapshots
         run: |
-          pytest tests/playwright/test_snapshot.py --browser $BROWSER --update-snapshots
+          pytest tests/playwright/test_snapshot.py --update-snapshots
 
       - name: Commit and push updated snapshots
         uses: stefanzweifel/git-auto-commit-action@v5

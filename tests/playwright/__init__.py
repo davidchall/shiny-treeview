@@ -1,1 +1,1 @@
-# Playwright tests for shiny-treeview
+"""Integration and regression tests (playwright based)."""

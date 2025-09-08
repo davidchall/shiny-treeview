@@ -2,7 +2,7 @@ from playwright.sync_api import Page
 from shiny.playwright.controller import OutputCode
 from shiny.run import ShinyAppProc
 
-from .controller import InputTreeView
+from shiny_treeview.playwright import InputTreeView
 
 
 class TestUserInteractions:
@@ -51,22 +51,22 @@ class TestUserInteractions:
         tree = InputTreeView(page, "single_default")
         tree_txt = OutputCode(page, "single_default_txt")
 
-        tree.select_single("standalone")
+        tree.set("standalone")
         tree.expect_expanded(None)
         tree.expect_selected("standalone")
         tree_txt.expect_value("standalone")
 
-        tree.select_single("folder1")
-        tree.select_single("file2")
+        tree.set("folder1")
+        tree.set("file2")
         tree.expect_expanded("folder1")
         tree.expect_selected("file2")
         tree_txt.expect_value("file2")
 
-        tree.select_multiple(["file1", "file2"])
+        tree.set(["file1", "file2"])
         tree.expect_selected("file2")
         tree_txt.expect_value("file2")
 
-        tree.select_range("file2", "file1")
+        tree.set_range("file2", "file1")
         tree.expect_selected("file1")
         tree_txt.expect_value("file1")
 
@@ -77,29 +77,29 @@ class TestUserInteractions:
         tree = InputTreeView(page, "multi_default")
         tree_txt = OutputCode(page, "multi_default_txt")
 
-        tree.select_single("standalone")
+        tree.set("standalone")
         tree.expect_expanded(None)
         tree.expect_selected("standalone")
         tree_txt.expect_value("('standalone',)")
 
-        tree.select_single("folder1")
-        tree.select_single("file2")
+        tree.set("folder1")
+        tree.set("file2")
         tree.expect_expanded("folder1")
         tree.expect_selected("file2")
         tree_txt.expect_value("('file2',)")
 
-        tree.select_single("folder2")
-        tree.select_multiple(["file1", "file3"])
+        tree.set("folder2")
+        tree.set(["file1", "file3"])
         tree.expect_expanded(["folder1", "folder2"])
         tree.expect_selected(["file1", "file3"])
         tree_txt.expect_value("('file1', 'file3')")
 
-        tree.select_range("file1", "file2")
+        tree.set_range("file1", "file2")
         tree.expect_expanded(["folder1", "folder2"])
         tree.expect_selected(["file1", "file2"])
         tree_txt.expect_value("('file1', 'file2')")
 
-        tree.select_range("file1", "file3")
+        tree.set_range("file1", "file3")
         tree.expect_expanded(["folder1", "folder2"])
         tree.expect_selected(["file1", "file2", "subfolder1", "folder2", "file3"])
         tree_txt.expect_value("('file1', 'file2', 'file3', 'folder2', 'subfolder1')")

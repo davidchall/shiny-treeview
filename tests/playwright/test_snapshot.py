@@ -3,7 +3,7 @@
 from playwright.sync_api import Page
 from shiny.run import ShinyAppProc
 
-from .controller import InputTreeView
+from shiny_treeview.playwright import InputTreeView
 
 
 class TestVisualSnapshot:

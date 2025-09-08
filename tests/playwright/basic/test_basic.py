@@ -1,3 +1,6 @@
+"""Tests for basic features (selection and expansion)."""
+
+import pytest
 from playwright.sync_api import Page
 from shiny.playwright.controller import OutputCode
 from shiny.run import ShinyAppProc
@@ -17,7 +20,6 @@ class TestUserInteractions:
         single_default.expect_multiple(False)
         single_default.expect_selected(None)
         single_default.expect_expanded(None)
-        single_default.expect_disabled(None)
         single_default_txt.expect_value("None")
 
         multi_default = InputTreeView(page, "multi_default")
@@ -25,7 +27,6 @@ class TestUserInteractions:
         multi_default.expect_multiple(True)
         multi_default.expect_selected(None)
         multi_default.expect_expanded(None)
-        multi_default.expect_disabled(None)
         multi_default_txt.expect_value("None")
 
         single_with_selected = InputTreeView(page, "single_with_selected")
@@ -33,7 +34,6 @@ class TestUserInteractions:
         single_with_selected.expect_multiple(False)
         single_with_selected.expect_selected("file1")
         single_with_selected.expect_expanded("folder1")
-        single_with_selected.expect_disabled(None)
         single_with_selected_txt.expect_value("file1")
 
         multi_with_selected = InputTreeView(page, "multi_with_selected")
@@ -41,7 +41,6 @@ class TestUserInteractions:
         multi_with_selected.expect_multiple(True)
         multi_with_selected.expect_selected(["file1", "file3"])
         multi_with_selected.expect_expanded(["folder1", "folder2"])
-        multi_with_selected.expect_disabled("file4")
         multi_with_selected_txt.expect_value("('file1', 'file3')")
 
     def test_interact_single(self, page: Page, local_app: ShinyAppProc):
@@ -103,3 +102,15 @@ class TestUserInteractions:
         tree.expect_expanded(["folder1", "folder2"])
         tree.expect_selected(["file1", "file2", "subfolder1", "folder2", "file3"])
         tree_txt.expect_value("('file1', 'file2', 'file3', 'folder2', 'subfolder1')")
+
+
+@pytest.mark.snapshot
+class TestVisualSnapshot:
+    """Snapshot tests using component screenshots."""
+
+    def test_basic(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
+        """Test basic features (selected and expanded items)."""
+        page.goto(local_app.url)
+
+        single_default = InputTreeView(page, "single_with_selected")
+        assert_snapshot(single_default.loc.screenshot())

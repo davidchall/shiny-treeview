@@ -26,7 +26,7 @@ tree_data = [
         label="Folder 2",
         children=[
             TreeItem(id="file3", label="File 3"),
-            TreeItem(id="file4", label="File 4", disabled=True),
+            TreeItem(id="file4", label="File 4"),
         ],
     ),
     TreeItem(id="standalone", label="Standalone File"),

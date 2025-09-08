@@ -56,8 +56,11 @@ local_scheme = "dirty-tag"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = ["--browser", "chromium"]
-playwright_visual_snapshots_path = "tests/playwright/snapshots"
-playwright_visual_snapshot_failures_path = "tests/playwright/snapshots-failure"
+markers = [
+  "snapshot: mark test as a visual snapshot test",
+]
+playwright_visual_snapshots_path = "tests/playwright/__snapshots__"
+playwright_visual_snapshot_failures_path = "tests/playwright/__failures__"
 
 [tool.black]
 line-length = 88
@@ -94,4 +97,4 @@ ensure_newline_before_comments = true
 src_paths = ["shiny_treeview", "tests"]
 skip_glob = ["**/distjs/*", "**/node_modules/*"]
 known_first_party = ["shiny_treeview"]
-known_third_party = ["shiny", "htmltools", "playwright"]
+known_third_party = ["shiny", "htmltools", "playwright", "pytest"]

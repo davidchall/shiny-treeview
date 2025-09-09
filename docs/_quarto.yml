@@ -16,6 +16,8 @@ website:
         text: Home
       - href: reference/
         text: Reference
+      - href: CHANGELOG.md
+        text: News
     right:
       - icon: github
         href: https://github.com/davidchall/shiny-treeview

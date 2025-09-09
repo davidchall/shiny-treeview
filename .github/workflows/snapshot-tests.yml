@@ -34,7 +34,7 @@ jobs:
 
       - name: Run snapshot tests
         run: |
-          pytest tests/playwright/test_snapshot.py
+          pytest -m "snapshot"
 
       - name: Upload snapshot test results
         if: failure()
@@ -43,8 +43,8 @@ jobs:
         with:
           name: snapshot-test-results
           path: |
-            tests/playwright/snapshots/
-            tests/playwright/snapshots-failure/
+            tests/playwright/__snapshots__/
+            tests/playwright/__failures__/
           retention-days: 30
 
       - name: Comment on PR with snapshot differences
@@ -103,13 +103,13 @@ jobs:
       - name: Update snapshots
         continue-on-error: true
         run: |
-          pytest tests/playwright/test_snapshot.py --update-snapshots
+          pytest -m "snapshot" --update-snapshots
 
       - name: Commit and push updated snapshots
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update visual snapshots'
-          file_pattern: 'tests/playwright/snapshots/**'
+          file_pattern: 'tests/playwright/__snapshots__/**'
 
       - name: Comment - Success
         uses: thollander/actions-comment-pull-request@v3

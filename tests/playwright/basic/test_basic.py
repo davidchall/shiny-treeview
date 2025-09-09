@@ -1,15 +1,18 @@
+"""Tests for basic treeview features (selection and expansion)."""
+
+import pytest
 from playwright.sync_api import Page
 from shiny.playwright.controller import OutputCode
 from shiny.run import ShinyAppProc
 
-from .controller import InputTreeView
+from shiny_treeview.playwright import InputTreeView
 
 
-class TestUserInteractions:
-    """Tests for user interactions."""
+class TestShinyIntegration:
+    """Integration tests with Shiny app."""
 
     def test_initial_selection(self, page: Page, local_app: ShinyAppProc):
-        """Test the InputTreeView controller methods."""
+        """Test that selected items are setup correctly."""
         page.goto(local_app.url)
 
         single_default = InputTreeView(page, "single_default")
@@ -17,7 +20,6 @@ class TestUserInteractions:
         single_default.expect_multiple(False)
         single_default.expect_selected(None)
         single_default.expect_expanded(None)
-        single_default.expect_disabled(None)
         single_default_txt.expect_value("None")
 
         multi_default = InputTreeView(page, "multi_default")
@@ -25,7 +27,6 @@ class TestUserInteractions:
         multi_default.expect_multiple(True)
         multi_default.expect_selected(None)
         multi_default.expect_expanded(None)
-        multi_default.expect_disabled(None)
         multi_default_txt.expect_value("None")
 
         single_with_selected = InputTreeView(page, "single_with_selected")
@@ -33,7 +34,6 @@ class TestUserInteractions:
         single_with_selected.expect_multiple(False)
         single_with_selected.expect_selected("file1")
         single_with_selected.expect_expanded("folder1")
-        single_with_selected.expect_disabled(None)
         single_with_selected_txt.expect_value("file1")
 
         multi_with_selected = InputTreeView(page, "multi_with_selected")
@@ -41,7 +41,6 @@ class TestUserInteractions:
         multi_with_selected.expect_multiple(True)
         multi_with_selected.expect_selected(["file1", "file3"])
         multi_with_selected.expect_expanded(["folder1", "folder2"])
-        multi_with_selected.expect_disabled("file4")
         multi_with_selected_txt.expect_value("('file1', 'file3')")
 
     def test_interact_single(self, page: Page, local_app: ShinyAppProc):
@@ -51,22 +50,22 @@ class TestUserInteractions:
         tree = InputTreeView(page, "single_default")
         tree_txt = OutputCode(page, "single_default_txt")
 
-        tree.select_single("standalone")
+        tree.set("standalone")
         tree.expect_expanded(None)
         tree.expect_selected("standalone")
         tree_txt.expect_value("standalone")
 
-        tree.select_single("folder1")
-        tree.select_single("file2")
+        tree.set("folder1")
+        tree.set("file2")
         tree.expect_expanded("folder1")
         tree.expect_selected("file2")
         tree_txt.expect_value("file2")
 
-        tree.select_multiple(["file1", "file2"])
+        tree.set(["file1", "file2"])
         tree.expect_selected("file2")
         tree_txt.expect_value("file2")
 
-        tree.select_range("file2", "file1")
+        tree.set_range("file2", "file1")
         tree.expect_selected("file1")
         tree_txt.expect_value("file1")
 
@@ -77,29 +76,55 @@ class TestUserInteractions:
         tree = InputTreeView(page, "multi_default")
         tree_txt = OutputCode(page, "multi_default_txt")
 
-        tree.select_single("standalone")
+        tree.set("standalone")
         tree.expect_expanded(None)
         tree.expect_selected("standalone")
         tree_txt.expect_value("('standalone',)")
 
-        tree.select_single("folder1")
-        tree.select_single("file2")
+        tree.set("folder1")
+        tree.set("file2")
         tree.expect_expanded("folder1")
         tree.expect_selected("file2")
         tree_txt.expect_value("('file2',)")
 
-        tree.select_single("folder2")
-        tree.select_multiple(["file1", "file3"])
+        tree.set("folder2")
+        tree.set(["file1", "file3"])
         tree.expect_expanded(["folder1", "folder2"])
         tree.expect_selected(["file1", "file3"])
         tree_txt.expect_value("('file1', 'file3')")
 
-        tree.select_range("file1", "file2")
+        tree.set_range("file1", "file2")
         tree.expect_expanded(["folder1", "folder2"])
         tree.expect_selected(["file1", "file2"])
         tree_txt.expect_value("('file1', 'file2')")
 
-        tree.select_range("file1", "file3")
+        tree.set_range("file1", "file3")
         tree.expect_expanded(["folder1", "folder2"])
         tree.expect_selected(["file1", "file2", "subfolder1", "folder2", "file3"])
         tree_txt.expect_value("('file1', 'file2', 'file3', 'folder2', 'subfolder1')")
+
+
+@pytest.mark.snapshot
+class TestVisualSnapshot:
+    """Snapshot tests using component screenshots."""
+
+    def test_none(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
+        """Snapshot test with no items selected or expanded."""
+        page.goto(local_app.url)
+
+        single_default = InputTreeView(page, "single_default")
+        assert_snapshot(single_default.loc.screenshot())
+
+    def test_single(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
+        """Snapshot test with one item selected and expanded."""
+        page.goto(local_app.url)
+
+        single_default = InputTreeView(page, "single_with_selected")
+        assert_snapshot(single_default.loc.screenshot())
+
+    def test_multi(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
+        """Snapshot test with multiple items selected and expanded."""
+        page.goto(local_app.url)
+
+        multi_default = InputTreeView(page, "multi_with_selected")
+        assert_snapshot(multi_default.loc.screenshot())

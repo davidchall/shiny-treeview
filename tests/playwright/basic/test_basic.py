@@ -1,4 +1,4 @@
-"""Tests for basic features (selection and expansion)."""
+"""Tests for basic treeview features (selection and expansion)."""
 
 import pytest
 from playwright.sync_api import Page
@@ -8,11 +8,11 @@ from shiny.run import ShinyAppProc
 from shiny_treeview.playwright import InputTreeView
 
 
-class TestUserInteractions:
-    """Tests for user interactions."""
+class TestShinyIntegration:
+    """Integration tests with Shiny app."""
 
     def test_initial_selection(self, page: Page, local_app: ShinyAppProc):
-        """Test the InputTreeView controller methods."""
+        """Test that selected items are setup correctly."""
         page.goto(local_app.url)
 
         single_default = InputTreeView(page, "single_default")
@@ -108,9 +108,23 @@ class TestUserInteractions:
 class TestVisualSnapshot:
     """Snapshot tests using component screenshots."""
 
-    def test_basic(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
-        """Test basic features (selected and expanded items)."""
+    def test_none(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
+        """Snapshot test with no items selected or expanded."""
+        page.goto(local_app.url)
+
+        single_default = InputTreeView(page, "single_default")
+        assert_snapshot(single_default.loc.screenshot())
+
+    def test_single(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
+        """Snapshot test with one item selected and expanded."""
         page.goto(local_app.url)
 
         single_default = InputTreeView(page, "single_with_selected")
         assert_snapshot(single_default.loc.screenshot())
+
+    def test_multi(self, page: Page, local_app: ShinyAppProc, assert_snapshot):
+        """Snapshot test with multiple items selected and expanded."""
+        page.goto(local_app.url)
+
+        multi_default = InputTreeView(page, "multi_with_selected")
+        assert_snapshot(multi_default.loc.screenshot())

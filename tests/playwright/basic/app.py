@@ -1,5 +1,3 @@
-"""Test app for shiny-treeview testing."""
-
 from shiny import App, render, ui
 
 from shiny_treeview import TreeItem, input_treeview

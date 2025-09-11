@@ -39,8 +39,16 @@ class InputTreeView(UiBase):
         page.goto(local_app.url)
 
         treeview = InputTreeView(page, "my_treeview")
-        treeview.select_single("item1")
+        treeview.select("item1")
         treeview.expect_selected("item1")
+
+        # Works with multiple selection too
+        treeview.select(["item1", "item2"])
+        treeview.expect_selected(["item1", "item2"])
+
+        # Expand tree nodes (if checkbox=False, this also selects the item)
+        treeview.expand("folder1")
+        treeview.expect_expanded("folder1")
     ```
     """
 
@@ -59,7 +67,7 @@ class InputTreeView(UiBase):
         """Get the ID attribute of the tree element."""
         return self.loc.get_attribute("id")
 
-    def _item_locator(self, id: str) -> Locator:
+    def item_locator(self, id: str) -> Locator:
         """Get a locator for a specific tree item by ID.
 
         Parameters
@@ -73,6 +81,28 @@ class InputTreeView(UiBase):
             A Playwright locator for the tree item.
         """
         return self.loc.locator(f'[role="treeitem"][id$="-{id}"]')
+
+    def _get_selectable_element(self, id: str) -> Locator:
+        """Get the appropriate selectable element for a tree item.
+
+        Parameters
+        ----------
+        id : str
+            The ID of the tree item.
+
+        Returns
+        -------
+        Locator
+            A locator for either the checkbox (if present) or the tree item itself.
+        """
+        item = self.item_locator(id)
+        checkbox = item.locator('input[type="checkbox"]')
+
+        try:
+            checkbox.wait_for(state="attached", timeout=100)
+            return checkbox
+        except:
+            return item
 
     def expect_disabled(
         self, id: str | list[str] | None, *, timeout: Optional[float] = None
@@ -153,10 +183,27 @@ class InputTreeView(UiBase):
         value = str(value).lower()
         self.expect.to_have_attribute("aria-multiselectable", value, timeout=timeout)
 
-    def set(
+    def expect_checkbox(self, value: bool, *, timeout: Optional[float] = None) -> None:
+        """Expect the treeview to have checkbox selection enabled.
+
+        Parameters
+        ----------
+        value : bool
+            Whether the input should have checkbox selection enabled.
+        timeout : float, optional
+            Maximum time to wait for the expectation to be fulfilled.
+        """
+        checkboxes = self.loc.locator('input[type="checkbox"]')
+
+        if value:
+            playwright_expect(checkboxes.first).to_be_attached(timeout=timeout)
+        else:
+            playwright_expect(checkboxes).to_have_count(0, timeout=timeout)
+
+    def select(
         self, selected: str | list[str], *, timeout: Optional[float] = None
     ) -> None:
-        """Sets the selected item(s) in the treeview.
+        """Select item(s) in the treeview.
 
         Parameters
         ----------
@@ -170,11 +217,11 @@ class InputTreeView(UiBase):
 
         for index, id in enumerate(selected):
             modifiers = ["ControlOrMeta"] if index > 0 else None
-            item = self._item_locator(id)
-            playwright_expect(item).to_have_count(1, timeout=timeout)
-            item.click(modifiers=modifiers, timeout=timeout)
+            selectable = self._get_selectable_element(id)
+            playwright_expect(selectable).to_have_count(1, timeout=timeout)
+            selectable.click(modifiers=modifiers, timeout=timeout)
 
-    def set_range(
+    def select_range(
         self, id_start: str, id_end: str, *, timeout: Optional[float] = None
     ) -> None:
         """Select a range of items in the treeview.
@@ -188,11 +235,35 @@ class InputTreeView(UiBase):
         timeout : float, optional
             Maximum time to wait for the action to complete.
         """
-        item_start = self._item_locator(id_start)
-        item_end = self._item_locator(id_end)
+        selectable_start = self._get_selectable_element(id_start)
+        selectable_end = self._get_selectable_element(id_end)
 
-        playwright_expect(item_start).to_have_count(1, timeout=timeout)
-        playwright_expect(item_end).to_have_count(1, timeout=timeout)
+        playwright_expect(selectable_start).to_have_count(1, timeout=timeout)
+        playwright_expect(selectable_end).to_have_count(1, timeout=timeout)
 
-        item_start.click(timeout=timeout)
-        item_end.click(modifiers=["Shift"], timeout=timeout)
+        selectable_start.click(timeout=timeout)
+        selectable_end.click(modifiers=["Shift"], timeout=timeout)
+
+    def expand(
+        self, items: str | list[str], *, timeout: Optional[float] = None
+    ) -> None:
+        """Expand or collapse tree item(s) by clicking on them.
+
+        This method always clicks on the tree item itself (not checkboxes)
+        to expand/collapse tree nodes. Without checkboxes, clicking the item
+        also selects it.
+
+        Parameters
+        ----------
+        items : str or list[str]
+            The IDs of the items to expand.
+        timeout : float, optional
+            Maximum time to wait for the action to complete.
+        """
+        if isinstance(items, str):
+            items = [items]
+
+        for item_id in items:
+            item = self.item_locator(item_id)
+            playwright_expect(item).to_have_count(1, timeout=timeout)
+            item.click(timeout=timeout)

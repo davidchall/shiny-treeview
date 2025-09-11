@@ -23,7 +23,7 @@ class TestShinyIntegration:
 
         treeview = InputTreeView(page, "my_treeview")
         with pytest.raises(TimeoutError):
-            treeview.set("file2", timeout=1000)
+            treeview.select("file2", timeout=1000)
         treeview.expect_selected("file1")
 
 

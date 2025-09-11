@@ -24,9 +24,10 @@ def input_treeview(
     id: str,
     items: list[TreeItem],
     *,
-    multiple: bool = False,
     selected: Optional[str | list[str]] = None,
     expanded: Optional[str | list[str]] = None,
+    multiple: bool = False,
+    checkbox: bool = False,
     width: Optional[str] = None,
 ) -> Tag:
     """
@@ -38,13 +39,15 @@ def input_treeview(
         The input id.
     items : list[TreeItem]
         A list of TreeItem objects representing the tree data.
-    multiple : bool
-        Whether to allow multiple selection.
     selected : Optional[str | list[str]]
         Initially selected item ID(s). If None (default), no items are selected.
     expanded : Optional[str | list[str]]
         Initially expanded item ID(s). If None (default), automatically expands all
         parents necessary to make visible the items in the `selected` argument.
+    multiple : bool
+        Whether to allow multiple selection.
+    checkbox : bool
+        Whether to show checkboxes for selection.
     width : Optional[str]
         The CSS width of the input component (e.g., "400px", "100%").
 
@@ -90,9 +93,10 @@ def input_treeview(
 
     payload = {
         "items": [x._to_dict() for x in items],
-        "multiple": multiple,
         "selected": selected_items,
         "expanded": expanded_items,
+        "multiple": multiple,
+        "checkbox": checkbox,
     }
 
     return tags.div(

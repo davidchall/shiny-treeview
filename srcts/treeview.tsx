@@ -58,15 +58,17 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
 // React component for MUI RichTreeView
 export function ShinyTreeView({
   items,
-  multiple,
   selected,
   expanded,
+  multiple,
+  checkbox,
   updateShinyValue
 }: {
   items: ShinyTreeItem[];
-  multiple: boolean;
   selected: string[];
   expanded: string[];
+  multiple: boolean;
+  checkbox: boolean;
   updateShinyValue: (value: string[] | string | null) => void;
 }) {
   const [selectedItems, setSelectedItems] = React.useState<string[]>(selected);
@@ -90,6 +92,8 @@ export function ShinyTreeView({
       items={items}
       selectedItems={selectedItems}
       expandedItems={currentExpandedItems}
+      multiSelect={multiple}
+      checkboxSelection={checkbox}
       slots={{
         item: CustomTreeItem,
       }}
@@ -112,7 +116,6 @@ export function ShinyTreeView({
           updateShinyValue(singleValue);
         }
       }}
-      multiSelect={multiple}
       isItemDisabled={(item: any) => {
         return item.disabled === true;
       }}

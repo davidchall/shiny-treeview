@@ -1,4 +1,4 @@
-"""Tests for basic treeview features (selection and expansion)."""
+"""Tests for checkbox treeview features."""
 
 import pytest
 from playwright.sync_api import Page
@@ -20,7 +20,7 @@ class TestShinyIntegration:
         single_default.expect_selected(None)
         single_default.expect_expanded(None)
         single_default.expect_multiple(False)
-        single_default.expect_checkbox(False)
+        single_default.expect_checkbox(True)
         single_default_txt.expect_value("None")
 
         multi_default = InputTreeView(page, "multi_default")
@@ -28,7 +28,7 @@ class TestShinyIntegration:
         multi_default.expect_selected(None)
         multi_default.expect_expanded(None)
         multi_default.expect_multiple(True)
-        multi_default.expect_checkbox(False)
+        multi_default.expect_checkbox(True)
         multi_default_txt.expect_value("None")
 
         single_with_selected = InputTreeView(page, "single_with_selected")
@@ -36,7 +36,7 @@ class TestShinyIntegration:
         single_with_selected.expect_selected("file1")
         single_with_selected.expect_expanded("folder1")
         single_with_selected.expect_multiple(False)
-        single_with_selected.expect_checkbox(False)
+        single_with_selected.expect_checkbox(True)
         single_with_selected_txt.expect_value("file1")
 
         multi_with_selected = InputTreeView(page, "multi_with_selected")
@@ -44,7 +44,7 @@ class TestShinyIntegration:
         multi_with_selected.expect_selected(["file1", "file3"])
         multi_with_selected.expect_expanded(["folder1", "folder2"])
         multi_with_selected.expect_multiple(True)
-        multi_with_selected.expect_checkbox(False)
+        multi_with_selected.expect_checkbox(True)
         multi_with_selected_txt.expect_value("('file1', 'file3')")
 
     def test_interact_single(self, page: Page, local_app: ShinyAppProc):
@@ -60,7 +60,7 @@ class TestShinyIntegration:
         tree_txt.expect_value("standalone")
 
         tree.expand("folder1")
-        tree.expect_selected("folder1")
+        tree.expect_selected("standalone")
         tree.select("file2")
         tree.expect_expanded("folder1")
         tree.expect_selected("file2")
@@ -87,18 +87,21 @@ class TestShinyIntegration:
         tree_txt.expect_value("('standalone',)")
 
         tree.expand("folder1")
-        tree.expect_selected("folder1")
+        tree.expect_selected("standalone")
         tree.select("file2")
         tree.expect_expanded("folder1")
-        tree.expect_selected("file2")
-        tree_txt.expect_value("('file2',)")
+        tree.expect_selected(["file2", "standalone"])
+        tree_txt.expect_value("('file2', 'standalone')")
 
         tree.expand("folder2")
-        tree.expect_selected("folder2")
+        tree.expect_selected(["file2", "standalone"])
         tree.select(["file1", "file3"])
         tree.expect_expanded(["folder1", "folder2"])
-        tree.expect_selected(["file1", "file3"])
-        tree_txt.expect_value("('file1', 'file3')")
+        tree.expect_selected(["file1", "file2", "file3", "standalone"])
+        tree_txt.expect_value("('file1', 'file2', 'file3', 'standalone')")
+
+        tree.select(["file1", "file2", "file3", "standalone"])
+        tree.expect_selected(None)
 
         tree.select_range("file1", "file2")
         tree.expect_expanded(["folder1", "folder2"])

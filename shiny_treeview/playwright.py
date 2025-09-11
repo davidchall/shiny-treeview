@@ -96,7 +96,9 @@ class InputTreeView(UiBase):
             A locator for either the checkbox (if present) or the tree item itself.
         """
         item = self.item_locator(id)
-        checkbox = item.locator('input[type="checkbox"]')
+
+        # Find checkbox that belongs to this tree item, not its children
+        checkbox = item.locator('input[type="checkbox"]:not(ul *)')
 
         try:
             checkbox.wait_for(state="attached", timeout=100)

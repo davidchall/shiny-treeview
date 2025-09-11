@@ -46,7 +46,7 @@ app_ui = ui.page_fluid(
     ui.card(
         ui.card_header("Single selection: with initial value"),
         input_treeview(
-            id="single_with_selected", items=tree_data, multiple=False, selected="file1"
+            id="single_with_selected", items=tree_data, selected="file1", multiple=False
         ),
         ui.output_code("single_with_selected_txt"),
     ),
@@ -55,8 +55,8 @@ app_ui = ui.page_fluid(
         input_treeview(
             id="multi_with_selected",
             items=tree_data,
-            multiple=True,
             selected=["file1", "file3"],
+            multiple=True,
         ),
         ui.output_code("multi_with_selected_txt"),
     ),

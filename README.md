@@ -45,8 +45,8 @@ app_ui = ui.page_fluid(
     input_treeview(
         id="my_tree",
         items=tree_data,
-        multiple=False,
-        selected="doc1"
+        selected="doc1",
+        multiple=False
     ),
     ui.output_text("selected_items")
 )

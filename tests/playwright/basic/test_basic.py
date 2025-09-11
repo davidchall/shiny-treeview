@@ -110,6 +110,41 @@ class TestShinyIntegration:
         tree.expect_selected(["file1", "file2", "subfolder1", "folder2", "file3"])
         tree_txt.expect_value("('file1', 'file2', 'file3', 'folder2', 'subfolder1')")
 
+    def test_interact_parent(self, page: Page, local_app: ShinyAppProc):
+        """Test interactions with parent tree items."""
+        page.goto(local_app.url)
+
+        tree = InputTreeView(page, "multi_default")
+
+        tree.select("folder1")
+        tree.expect_selected("folder1")
+        tree.expect_expanded("folder1")
+        tree.select("folder1")
+        tree.expect_selected("folder1")
+        tree.expect_expanded(None)
+
+        tree.expand("folder1")
+        tree.expect_selected("folder1")
+        tree.expect_expanded("folder1")
+
+        tree.select("subfolder1")
+        tree.expect_selected("subfolder1")
+        tree.expect_expanded(["folder1", "subfolder1"])
+        tree.select("subfolder1")
+        tree.expect_selected("subfolder1")
+        tree.expect_expanded("folder1")
+
+        tree.expand("subfolder1")
+        tree.expect_selected("subfolder1")
+        tree.expect_expanded(["folder1", "subfolder1"])
+        tree.expand("subfolder1")
+        tree.expect_selected("subfolder1")
+        tree.expect_expanded("folder1")
+
+        tree.expand("folder1")
+        tree.expect_selected("folder1")
+        tree.expect_expanded(None)
+
 
 @pytest.mark.snapshot
 class TestVisualSnapshot:

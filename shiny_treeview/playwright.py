@@ -17,6 +17,10 @@ except ImportError as e:
     ) from e
 
 
+LABEL_CLASS = "MuiTreeItem-label"
+ICON_CLASS = "MuiTreeItem-iconContainer"
+
+
 class InputTreeView(UiBase):
     """Custom Playwright controller for `input_treeview`.
 
@@ -81,30 +85,6 @@ class InputTreeView(UiBase):
             A Playwright locator for the tree item.
         """
         return self.loc.locator(f'[role="treeitem"][id$="-{id}"]')
-
-    def _get_selectable_element(self, id: str) -> Locator:
-        """Get the appropriate selectable element for a tree item.
-
-        Parameters
-        ----------
-        id : str
-            The ID of the tree item.
-
-        Returns
-        -------
-        Locator
-            A locator for either the checkbox (if present) or the tree item itself.
-        """
-        item = self.item_locator(id)
-
-        # Find checkbox that belongs to this tree item, not its children
-        checkbox = item.locator('input[type="checkbox"]:not(ul *)')
-
-        try:
-            checkbox.wait_for(state="attached", timeout=100)
-            return checkbox
-        except:
-            return item
 
     def expect_disabled(
         self, id: str | list[str] | None, *, timeout: Optional[float] = None
@@ -202,6 +182,28 @@ class InputTreeView(UiBase):
         else:
             playwright_expect(checkboxes).to_have_count(0, timeout=timeout)
 
+    def _get_selectable_element(self, id: str) -> Locator:
+        """Get the appropriate selectable element for a tree item (checkbox or label).
+
+        Parameters
+        ----------
+        id : str
+            The ID of the tree item.
+
+        Returns
+        -------
+        Locator
+            A locator for either the checkbox (if present) or the tree item itself.
+        """
+        item = self.item_locator(id)
+
+        try:
+            checkbox = item.locator('input[type="checkbox"]:not(ul *)')
+            checkbox.wait_for(state="attached", timeout=100)
+            return checkbox
+        except:
+            return item.locator(f".{LABEL_CLASS}:not(ul *)")
+
     def select(
         self, selected: str | list[str], *, timeout: Optional[float] = None
     ) -> None:
@@ -249,11 +251,7 @@ class InputTreeView(UiBase):
     def expand(
         self, items: str | list[str], *, timeout: Optional[float] = None
     ) -> None:
-        """Expand or collapse tree item(s) by clicking on them.
-
-        This method always clicks on the tree item itself (not checkboxes)
-        to expand/collapse tree nodes. Without checkboxes, clicking the item
-        also selects it.
+        """Expand or collapse tree item(s) by clicking on their expand icons.
 
         Parameters
         ----------
@@ -268,4 +266,7 @@ class InputTreeView(UiBase):
         for item_id in items:
             item = self.item_locator(item_id)
             playwright_expect(item).to_have_count(1, timeout=timeout)
-            item.click(timeout=timeout)
+
+            # Find the expand icon for this tree item (not its children)
+            expand_icon = item.locator(f".{ICON_CLASS}:not(ul *)").first
+            expand_icon.click(timeout=timeout)

@@ -137,6 +137,20 @@ class TestShinyIntegration:
         tree.expect_selected(None)
         tree.expect_expanded("folder1")
 
+        tree.select("subfolder1")
+        tree.expect_selected("subfolder1")
+        tree.expect_expanded("folder1")
+        tree.select("subfolder1")
+        tree.expect_selected(None)
+        tree.expect_expanded("folder1")
+
+        tree.expand("subfolder1")
+        tree.expect_selected(None)
+        tree.expect_expanded(["folder1", "subfolder1"])
+        tree.expand("subfolder1")
+        tree.expect_selected(None)
+        tree.expect_expanded("folder1")
+
         tree.expand("folder1")
         tree.expect_selected(None)
         tree.expect_expanded(None)

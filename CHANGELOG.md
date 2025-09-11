@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Select from hierarchical data in your [Shiny for Python](https://shiny.posit.co/py/) apps via `input_treeview()`.
-    - Parameters: `id`, `items`, `multiple`, `selected`, `expanded`, `width`.
+    - Parameters: `id`, `items`, `selected`, `expanded`, `multiple`, `checkbox`, `width`.
 - Create hierarchical data with nested `TreeItem` objects.
     - Parameters: `id`, `label`, `caption`, `children`, `disabled`.
 - Convert flat to hierarchical data with helper functions: `stratify_by_parent()`.

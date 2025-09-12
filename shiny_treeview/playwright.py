@@ -1,5 +1,6 @@
 """Playwright controllers for shiny-treeview components."""
 
+from functools import cached_property
 from typing import TYPE_CHECKING, Optional
 
 if TYPE_CHECKING:
@@ -70,6 +71,24 @@ class InputTreeView(UiBase):
     def _tree_id(self) -> str | None:
         """Get the ID attribute of the tree element."""
         return self.loc.get_attribute("id")
+
+    @cached_property
+    def _has_checkboxes(self) -> bool:
+        """Check if the treeview has checkbox selection enabled.
+
+        Cached property to avoid repeated DOM queries.
+
+        Returns
+        -------
+        bool
+            True if the treeview has checkboxes, False otherwise.
+        """
+        checkboxes = self.loc.locator('input[type="checkbox"]')
+        try:
+            checkboxes.first.wait_for(state="attached", timeout=1000)
+            return True
+        except:
+            return False
 
     def item_locator(self, id: str) -> Locator:
         """Get a locator for a specific tree item by ID.
@@ -197,11 +216,9 @@ class InputTreeView(UiBase):
         """
         item = self.item_locator(id)
 
-        try:
-            checkbox = item.locator('input[type="checkbox"]:not(ul *)')
-            checkbox.wait_for(state="attached", timeout=100)
-            return checkbox
-        except:
+        if self._has_checkboxes:
+            return item.locator('input[type="checkbox"]:not(ul *)')
+        else:
             return item.locator(f".{LABEL_CLASS}:not(ul *)")
 
     def select(

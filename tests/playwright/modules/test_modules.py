@@ -25,13 +25,13 @@ class TestShinyIntegration:
         nav_tree.expect_selected(["overview", "users"])
 
         # Change file browser selection, others unchanged
-        file_tree.set("doc2.docx")
+        file_tree.select("doc2.docx")
         file_tree.expect_selected("doc2.docx")
         settings_tree.expect_selected("theme")
         nav_tree.expect_selected(["overview", "users"])
 
         # Change settings selection, others unchanged
-        settings_tree.set("language")
+        settings_tree.select("language")
         settings_tree.expect_selected("language")
         file_tree.expect_selected("doc2.docx")
         nav_tree.expect_selected(["overview", "users"])
@@ -46,12 +46,12 @@ class TestShinyIntegration:
         settings_text = OutputText(page, "settings_module-selected_setting")
 
         # Test file browser output updates
-        file_tree.set("readme.txt")
+        file_tree.select("readme.txt")
         file_text.expect_value("Selected file: readme.txt")
 
         # Test settings output updates
-        settings_tree.set("security")
-        settings_tree.set("encryption")
+        settings_tree.select("security")
+        settings_tree.select("encryption")
         settings_text.expect_value("Current setting: encryption")
 
 

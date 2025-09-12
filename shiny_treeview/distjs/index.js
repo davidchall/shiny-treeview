@@ -42978,9 +42978,10 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   });
   function ShinyTreeView({
     items,
-    multiple,
     selected,
     expanded,
+    multiple,
+    checkbox,
     updateShinyValue
   }) {
     const [selectedItems, setSelectedItems] = import_react8.default.useState(selected);
@@ -43000,6 +43001,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         items,
         selectedItems,
         expandedItems: currentExpandedItems,
+        multiSelect: multiple,
+        checkboxSelection: checkbox,
         slots: {
           item: CustomTreeItem
         },
@@ -43018,7 +43021,6 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
             updateShinyValue(singleValue);
           }
         },
-        multiSelect: multiple,
         isItemDisabled: (item) => {
           return item.disabled === true;
         },
@@ -43101,9 +43103,10 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
           const rawConfig = JSON.parse(configScript.textContent || "{}");
           config = {
             items: validateTreeItems(rawConfig?.items ?? []),
-            multiple: Boolean(rawConfig?.multiple),
             selected: parseStringArray(rawConfig?.selected ?? []),
-            expanded: parseStringArray(rawConfig?.expanded ?? [])
+            expanded: parseStringArray(rawConfig?.expanded ?? []),
+            multiple: Boolean(rawConfig?.multiple),
+            checkbox: Boolean(rawConfig?.checkbox)
           };
           if (Array.isArray(rawConfig?.items) && rawConfig.items.length > 0 && config.items.length === 0) {
             console.warn("All tree items failed validation - check item structure (id and label are required)");
@@ -43112,12 +43115,13 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
           console.error("Failed to parse treeview configuration:", e);
           config = {
             items: [],
-            multiple: false,
             selected: [],
-            expanded: []
+            expanded: [],
+            multiple: false,
+            checkbox: false
           };
         }
-        const { items, multiple, selected, expanded } = config;
+        const { items, selected, expanded, multiple, checkbox } = config;
         const updateValue = (value, allowDeferred) => {
           this.boundElementValues.set(el, value);
           callback(allowDeferred || false);
@@ -43126,9 +43130,10 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         this.boundElementRoots.set(el, root);
         root.render(import_react9.default.createElement(ShinyTreeView, {
           items,
-          multiple,
           selected,
           expanded,
+          multiple,
+          checkbox,
           updateShinyValue: updateValue
         }));
       }

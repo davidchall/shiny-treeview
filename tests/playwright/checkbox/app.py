@@ -35,18 +35,24 @@ app_ui = ui.page_fluid(
     ui.h1("Treeview Test App"),
     ui.card(
         ui.card_header("Single selection: default"),
-        input_treeview(id="single_default", items=tree_data),
+        input_treeview(id="single_default", items=tree_data, checkbox=True),
         ui.output_code("single_default_txt"),
     ),
     ui.card(
         ui.card_header("Multiple selection: default"),
-        input_treeview(id="multi_default", items=tree_data, multiple=True),
+        input_treeview(
+            id="multi_default", items=tree_data, multiple=True, checkbox=True
+        ),
         ui.output_code("multi_default_txt"),
     ),
     ui.card(
         ui.card_header("Single selection: with initial value"),
         input_treeview(
-            id="single_with_selected", items=tree_data, selected="file1", multiple=False
+            id="single_with_selected",
+            items=tree_data,
+            selected="file1",
+            multiple=False,
+            checkbox=True,
         ),
         ui.output_code("single_with_selected_txt"),
     ),
@@ -57,6 +63,7 @@ app_ui = ui.page_fluid(
             items=tree_data,
             selected=["file1", "file3"],
             multiple=True,
+            checkbox=True,
         ),
         ui.output_code("multi_with_selected_txt"),
     ),

@@ -81,9 +81,10 @@ if (window.Shiny) {
 
       let config: {
         items: ShinyTreeItem[];
-        multiple: boolean;
         selected: string[];
         expanded: string[];
+        multiple: boolean;
+        checkbox: boolean;
       };
 
       try {
@@ -92,9 +93,10 @@ if (window.Shiny) {
         // Safely extract and validate each property
         config = {
           items: validateTreeItems(rawConfig?.items ?? []),
-          multiple: Boolean(rawConfig?.multiple),
           selected: parseStringArray(rawConfig?.selected ?? []),
           expanded: parseStringArray(rawConfig?.expanded ?? []),
+          multiple: Boolean(rawConfig?.multiple),
+          checkbox: Boolean(rawConfig?.checkbox),
         };
 
         // Log warning if items array is empty after validation
@@ -106,13 +108,14 @@ if (window.Shiny) {
         // Provide fallback configuration instead of complete failure
         config = {
           items: [],
-          multiple: false,
           selected: [],
           expanded: [],
+          multiple: false,
+          checkbox: false,
         };
       }
 
-      const { items, multiple, selected, expanded } = config;
+      const { items, selected, expanded, multiple, checkbox } = config;
 
       // Function to update the Shiny value
       const updateValue = (value: unknown, allowDeferred?: boolean) => {
@@ -126,9 +129,10 @@ if (window.Shiny) {
 
       root.render(React.createElement(ShinyTreeView, {
         items,
-        multiple,
         selected,
         expanded,
+        multiple,
+        checkbox,
         updateShinyValue: updateValue
       }));
     }

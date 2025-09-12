@@ -1,7 +1,7 @@
 """Tests for disabled items in the treeview."""
 
 import pytest
-from playwright.sync_api import Page, TimeoutError
+from playwright.sync_api import Page
 from shiny.run import ShinyAppProc
 
 from shiny_treeview.playwright import InputTreeView
@@ -22,8 +22,7 @@ class TestShinyIntegration:
         page.goto(local_app.url)
 
         treeview = InputTreeView(page, "my_treeview")
-        with pytest.raises(TimeoutError):
-            treeview.set("file2", timeout=1000)
+        treeview.select("file2")
         treeview.expect_selected("file1")
 
 

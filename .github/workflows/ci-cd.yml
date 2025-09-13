@@ -130,7 +130,9 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [check-python, check-javascript, validate-release]
-    environment: release
+    environment:
+      name: pypi
+      url: https://pypi.org/p/shiny-treeview
     permissions:
       id-token: write  # Required for trusted publishing to PyPI
 

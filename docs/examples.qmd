@@ -1,0 +1,155 @@
+---
+title: "Examples"
+engine: python
+execute:
+  echo: false
+---
+
+```{python}
+import shinylive
+
+def shinylive_example_url(name: str) -> str:
+    return shinylive.url_encode(
+        f"examples/{name}/app.py",
+        f"examples/{name}/requirements.txt",
+    )
+```
+
+## Interactive TreeView Examples
+
+This page demonstrates the `shiny-treeview` component through interactive examples. Each example showcases different features and use cases, and you can edit and run the code directly in your browser.
+
+## File Browser
+
+A classic file browser interface with single selection. Click on files and folders to see how selection works, and notice how different file types show different action buttons.
+
+::: {.content-visible when-format="markdown"}
+[Demo **file browser** app on shinylive.io](`{python} shinylive_example_url("file-browser")`).
+:::
+
+::: {.content-visible when-format="html"}
+::: column-page-inset
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/file-browser/app.py" >}}
+
+## file: requirements.txt
+{{< include "examples/file-browser/requirements.txt" >}}
+```
+:::
+:::
+
+## Multiple Selection
+
+This example shows a task management interface where you can select multiple items at once. Great for batch operations like marking multiple tasks as complete or organizing project work.
+
+::: {.content-visible when-format="markdown"}
+[Demo **multiple selection** app on shinylive.io](`{python} shinylive_example_url("multiple-selection")`).
+:::
+
+::: {.content-visible when-format="html"}
+::: column-page-inset
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/multiple-selection/app.py" >}}
+
+## file: requirements.txt
+{{< include "examples/multiple-selection/requirements.txt" >}}
+```
+:::
+:::
+
+## Checkbox Selection
+
+This example demonstrates checkbox-style selection, perfect for component selection interfaces. Users can clearly see what's selected with checkboxes, making it ideal for configuration or setup screens.
+
+::: {.content-visible when-format="markdown"}
+[Demo **checkbox selection** app on shinylive.io](`{python} shinylive_example_url("checkbox-selection")`).
+:::
+
+::: {.content-visible when-format="html"}
+::: column-page-inset
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/checkbox-selection/app.py" >}}
+
+## file: requirements.txt
+{{< include "examples/checkbox-selection/requirements.txt" >}}
+```
+:::
+:::
+
+## Key Features Demonstrated
+
+- **Single Selection**: Choose one item at a time (file browser example)
+- **Multiple Selection**: Select multiple items with Ctrl/Cmd+click (task management)
+- **Checkbox Selection**: Visual checkboxes for clear selection state (component picker)
+- **Pre-selected Items**: Set initial selections with the `selected` parameter
+- **Expandable Nodes**: Control which folders are expanded initially with the `expanded` parameter
+- **Disabled Items**: Mark certain items as non-selectable with the `disabled` parameter
+- **Hierarchical Data**: Support for deeply nested tree structures using `TreeItem` objects
+- **Dynamic UI**: Update other UI elements based on tree selection
+
+## Usage Patterns
+
+### File Management
+- File browsers and explorers
+- Document organization systems
+- Asset management interfaces
+- Directory navigation
+
+### Data Organization
+- Database schema exploration
+- API endpoint browsing
+- Category and tag selection
+- Hierarchical data visualization
+
+### Configuration
+- Feature selection interfaces
+- Component configuration screens
+- Settings organization
+- Multi-step wizards
+
+## Getting Started
+
+To use `shiny-treeview` in your own project:
+
+```bash
+pip install shiny-treeview
+```
+
+Then import and use the component:
+
+```python
+from shiny_treeview import input_treeview, TreeItem
+```
+
+## Running Examples Locally
+
+You can find all these examples in the [docs/examples](https://github.com/davidchall/shiny-treeview/tree/main/docs/examples) directory. To run them locally:
+
+```bash
+git clone https://github.com/davidchall/shiny-treeview.git
+cd shiny-treeview/docs/examples/file-browser
+pip install -r requirements.txt
+python -m shiny run app.py
+```
+
+> **Note**: When using shiny-treeview on [shinylive.io](https://shinylive.io), remember to add `shiny-treeview` to your `requirements.txt` file!
+
+Check out the [Reference](reference/) for detailed API documentation.

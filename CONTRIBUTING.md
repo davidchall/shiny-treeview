@@ -26,7 +26,11 @@ Thank you for your interest in contributing to Shiny TreeView! This guide will h
 
 3. **Install the package in development mode**:
    ```bash
+   # For full development (includes testing, linting, and documentation)
    pip install -e ".[dev]"
+
+   # Or, for documentation work only
+   pip install -e ".[docs]"
    ```
 
 4. **Install JavaScript dependencies** (if working on the React component):
@@ -79,21 +83,27 @@ Thank you for your interest in contributing to Shiny TreeView! This guide will h
 
 #### Documentation Development
 
-1. **Install Quarto**:
+1. **Install documentation dependencies**:
+   ```bash
+   pip install -e ".[docs]"
+   ```
+
+2. **Install Quarto**:
    - Download from [quarto.org](https://quarto.org/docs/get-started/)
    - Or on macOS: `brew install quarto`
 
-2. **Build API documentation**:
+3. **Build API documentation**:
    ```bash
+   cd docs
    quartodoc build
    ```
 
-3. **Render the documentation site**:
+4. **Render the documentation site**:
    ```bash
    quarto render
    ```
 
-4. **Preview locally**:
+5. **Preview locally**:
    ```bash
    quarto preview
    ```

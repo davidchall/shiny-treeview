@@ -29,11 +29,18 @@ dev = [
   "black",
   "flake8",
   "isort",
+]
+test = [
   "pytest",
   "playwright",
   "pytest-playwright",
   "pytest-playwright-visual-snapshot",
+]
+docs = [
   "quartodoc",
+  "shinylive",
+  "jupyter",
+  "pyyaml",
 ]
 
 [project.urls]

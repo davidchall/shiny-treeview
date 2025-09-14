@@ -5,40 +5,47 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "shiny-treeview"
 dynamic = ["version"]
-description = "A Shiny for Python extension providing MUI RichTreeView component"
+description = "A Shiny for Python extension providing a treeview component"
 authors = [{ name = "David Hall", email = "david.hall.physics@gmail.com" }]
 readme = "README.md"
 license = { file = "LICENSE" }
-keywords = ["shiny", "python", "tree-view", "mui", "react", "web-components"]
+keywords = ["shiny", "python", "treeview"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
   "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Software Development :: User Interfaces",
   "Topic :: Scientific/Engineering :: Visualization",
 ]
 dependencies = ["shiny >= 0.6.0", "htmltools >= 0.6.0"]
 requires-python = ">=3.10"
 
 [project.optional-dependencies]
-dev = [
-  "black",
-  "flake8",
-  "isort",
+test = [
   "pytest",
   "playwright",
   "pytest-playwright",
   "pytest-playwright-visual-snapshot",
-  "quartodoc",
+]
+docs = ["quartodoc"]
+dev = [
+  "shiny-treeview[test,docs]",
+  "black",
+  "flake8",
+  "isort",
 ]
 
 [project.urls]
 Homepage = "https://github.com/davidchall/shiny-treeview"
-Documentation = "https://github.com/davidchall/shiny-treeview#readme"
+Documentation = "https://davidchall.github.io/shiny-treeview"
 Repository = "https://github.com/davidchall/shiny-treeview.git"
 "Bug Tracker" = "https://github.com/davidchall/shiny-treeview/issues"
 

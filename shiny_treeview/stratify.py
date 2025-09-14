@@ -1,3 +1,5 @@
+"""Helper functions to convert flat data to hierarchical tree data."""
+
 from dataclasses import replace
 from typing import Optional
 
@@ -8,20 +10,17 @@ def stratify_by_parent(
     items: list[TreeItem], parent_ids: list[Optional[str]]
 ) -> list[TreeItem]:
     """
-    Convert flat TreeItem data with parent-child relationships to hierarchical structure.
+    Convert flat data to hierarchical tree data via parent-child relationships.
 
     Takes a list of TreeItem objects where parent-child relationships are expressed
     through a separate list of parent_ids, and returns tree data where the
     parent-child relationships are expressed through the TreeItem children attribute.
 
-    This function preserves all fields and attributes from the original TreeItem objects,
-    including any additional fields that may be added in future versions or custom extensions.
-
     Parameters
     ----------
-    items
+    items : list[TreeItem]
         List of TreeItem objects with empty children lists
-    parent_ids
+    parent_ids : list[Optional[str]]
         List of parent IDs corresponding to each TreeItem. None indicates a root item.
         Must be the same length as items list.
 
@@ -29,17 +28,17 @@ def stratify_by_parent(
     -------
     list[TreeItem]
         List of root TreeItem objects with populated children attributes.
-        All original fields and attributes are preserved.
+        All original attributes are preserved.
 
     Raises
     ------
     ValueError
-        If items and parent_ids lists have different lengths
-        If a parent_id references a non-existent item
-        If circular references are detected
+        If items and parent_ids lists have different lengths.
+        If a parent_id references a non-existent item.
+        If circular references are detected.
 
-    Example
-    -------
+    Examples
+    --------
     ```python
     from shiny_treeview import TreeItem, stratify_by_parent
 

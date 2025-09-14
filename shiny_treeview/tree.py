@@ -1,4 +1,4 @@
-"""Data structures for shiny-treeview."""
+"""Tree data structures for shiny-treeview."""
 
 import string
 from dataclasses import dataclass, field
@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 @dataclass
 class TreeItem:
     """
-    Represents a single item in a tree data structure. Passed to `input_treeview()`.
+    Represents a single item in a tree data structure.
 
     Parameters
     ----------
@@ -26,19 +26,23 @@ class TreeItem:
     --------
     Simple leaf item:
 
-    >>> from shiny_treeview import TreeItem
-    >>> leaf = TreeItem(id="doc1", label="📄 Document.pdf")
+    ```python
+    from shiny_treeview import TreeItem
+    leaf = TreeItem(id="doc1", label="📄 Document.pdf")
+    ```
 
     Parent item with children:
 
-    >>> folder = TreeItem(
-    ...     id="documents",
-    ...     label="📁 Documents",
-    ...     children=[
-    ...         TreeItem(id="doc1", label="📄 Report.pdf"),
-    ...         TreeItem(id="doc2", label="📄 Presentation.pptx", disabled=True)
-    ...     ]
-    ... )
+    ```python
+    folder = TreeItem(
+        id="documents",
+        label="📁 Documents",
+        children=[
+            TreeItem(id="doc1", label="📄 Report.pdf"),
+            TreeItem(id="doc2", label="📄 Presentation.pptx", disabled=True)
+        ]
+    )
+    ```
     """
 
     id: str

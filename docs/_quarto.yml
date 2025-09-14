@@ -15,7 +15,7 @@ website:
       - href: index.md
         text: Home
       - href: reference/
-        text: Reference
+        text: API Reference
       - href: CHANGELOG.md
         text: News
     right:

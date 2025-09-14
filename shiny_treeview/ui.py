@@ -1,3 +1,5 @@
+"""UI components for shiny-treeview."""
+
 import json
 from pathlib import PurePath
 from typing import Optional
@@ -31,7 +33,9 @@ def input_treeview(
     width: Optional[str] = None,
 ) -> Tag:
     """
-    Create a treeview input component.
+    Create a treeview component to navigate and select items from a hierarchical data structure.
+
+    Supports single or multiple selection. Nested levels can be expanded and collapsed.
 
     Parameters
     ----------
@@ -39,16 +43,16 @@ def input_treeview(
         The input id.
     items : list[TreeItem]
         A list of TreeItem objects representing the tree data.
-    selected : Optional[str | list[str]]
+    selected : str | list[str], optional
         Initially selected item ID(s). If None (default), no items are selected.
-    expanded : Optional[str | list[str]]
-        Initially expanded item ID(s). If None (default), automatically expands all
-        parents necessary to make visible the items in the `selected` argument.
-    multiple : bool
+    expanded : str | list[str], optional
+        Initially expanded item ID(s). If None (default), ensures selected items are
+        visible by expanding their parents.
+    multiple : bool, default=False
         Whether to allow multiple selection.
-    checkbox : bool
+    checkbox : bool, default=False
         Whether to show checkboxes for selection.
-    width : Optional[str]
+    width : str, optional
         The CSS width of the input component (e.g., "400px", "100%").
 
     Returns
@@ -59,8 +63,8 @@ def input_treeview(
     Notes
     -----
     If `multiple=False`, the server value is a string with the ID of the selected item.
-    If `multiple=True`, the server value is a tuple containing the IDs of the
-    selected items. When nothing is selected, this value will be `None`.
+    If `multiple=True`, the server value is a tuple of the selected item IDs.
+    When nothing is selected, the server value is `None` in both cases.
     """
     duplicates = duplicate_ids(items)
     if duplicates:

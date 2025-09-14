@@ -71,11 +71,65 @@ jobs:
             echo "✅ Javascript source files are up to date."
           fi
 
+  # Build the distribution
+  build-dist:
+    runs-on: ubuntu-latest
+    needs: [check-python, check-javascript]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for setuptools-scm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: 'pip'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install build
+
+      - name: Build package
+        run: python -m build
+
+      - name: Check package
+        run: python -m twine check dist/*
+
+      - name: Upload the distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+  # Deploy to TestPyPI (only on push to main, after all checks pass)
+  deploy-testpypi:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [build-dist]
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/shiny-treeview
+    permissions:
+      id-token: write  # Required for trusted publishing
+
+    steps:
+      - name: Download the distribution
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          print-hash: true
+
   # Validate versions for releases (only on tags)
   validate-release:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [check-python, check-javascript]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -129,33 +183,19 @@ jobs:
   deploy-pypi:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [check-python, check-javascript, validate-release]
+    needs: [build-dist, validate-release]
     environment:
       name: pypi
       url: https://pypi.org/p/shiny-treeview
     permissions:
-      id-token: write  # Required for trusted publishing to PyPI
+      id-token: write  # Required for trusted publishing
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Download the distribution
+        uses: actions/download-artifact@v4
         with:
-          fetch-depth: 0  # Fetch full history for setuptools-scm
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-          cache: 'pip'
-
-      - name: Install build dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install build twine
-
-      - name: Build package
-        run: python -m build
-
-      - name: Check package
-        run: python -m twine check dist/*
+          name: python-package-distributions
+          path: dist/
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1

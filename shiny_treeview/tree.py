@@ -1,7 +1,7 @@
 """Tree data structures for shiny-treeview."""
 
 import string
-from dataclasses import dataclass, field
+from dataclasses import KW_ONLY, dataclass, field
 
 
 @dataclass
@@ -28,18 +28,18 @@ class TreeItem:
 
     ```python
     from shiny_treeview import TreeItem
-    leaf = TreeItem(id="doc1", label="📄 Document.pdf")
+    leaf = TreeItem("doc1", "📄 Document.pdf")
     ```
 
     Parent item with children:
 
     ```python
     folder = TreeItem(
-        id="documents",
-        label="📁 Documents",
+        "documents",
+        "📁 Documents",
         children=[
-            TreeItem(id="doc1", label="📄 Report.pdf"),
-            TreeItem(id="doc2", label="📄 Presentation.pptx", disabled=True)
+            TreeItem("doc1", "📄 Report.pdf"),
+            TreeItem("doc2", "📄 Presentation.pptx", disabled=True)
         ]
     )
     ```
@@ -47,8 +47,9 @@ class TreeItem:
 
     id: str
     label: str
-    caption: str = ""
     children: list["TreeItem"] = field(default_factory=list)
+    _: KW_ONLY
+    caption: str = ""
     disabled: bool = False
 
     def __post_init__(self):

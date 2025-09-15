@@ -16,6 +16,8 @@ pip install git+https://github.com/davidchall/shiny-treeview.git#egg=shiny_treev
 
 ## Quick Start
 
+Create hierarchical data with `TreeItem`, add the treeview to your Shiny app UI, and use the selected IDs as needed in the rest of the app.
+
 ```python
 from shiny import App, ui, render
 from shiny_treeview import input_treeview, TreeItem
@@ -23,39 +25,26 @@ from shiny_treeview import input_treeview, TreeItem
 # Define your tree data using TreeItem objects
 tree_data = [
     TreeItem(
-        id="documents",
-        label="📁 Documents",
+        "docs",
+        "📁 Documents",
         children=[
-            TreeItem(id="doc1", label="📄 Report.pdf"),
-            TreeItem(id="doc2", label="📄 Presentation.pptx"),
+            TreeItem("report", "📄 Report.pdf"),
+            TreeItem("slides", "📄 Slides.pptx"),
         ]
     ),
-    TreeItem(
-        id="downloads",
-        label="📁 Downloads",
-        children=[
-            TreeItem(id="download1", label="📦 software.zip"),
-            TreeItem(id="download2", label="🖼️ image.png"),
-        ]
-    )
+    TreeItem("readme", "ℹ️ README.md")
 ]
 
 app_ui = ui.page_fluid(
     ui.h1("My Tree View App"),
-    input_treeview(
-        id="my_tree",
-        items=tree_data,
-        selected="doc1",
-        multiple=False
-    ),
-    ui.output_text("selected_items")
+    input_treeview("my_tree", tree_data),
+    ui.output_text("selected_item")
 )
 
 def server(input, output, session):
     @render.text
-    def selected_items():
-        selected = input.my_tree()
-        return f"Selected: {selected}"
+    def selected_item():
+        return f"Selected: {input.my_tree()}"
 
 app = App(app_ui, server)
 ```

@@ -85,6 +85,7 @@ Thank you for your interest in contributing to Shiny TreeView! This guide will h
 
 2. **Build API documentation**:
    ```bash
+   cd docs
    quartodoc build
    ```
 

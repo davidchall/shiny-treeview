@@ -1,0 +1,22 @@
+---
+title: Examples
+format: html
+filters:
+  - shinylive
+---
+
+## Basic
+
+::: column-page-inset
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/basic/app.py" >}}
+
+## file: requirements.txt
+{{< include "examples/basic/requirements.txt" >}}
+```

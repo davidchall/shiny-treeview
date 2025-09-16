@@ -35,7 +35,11 @@ test = [
   "pytest-playwright",
   "pytest-playwright-visual-snapshot",
 ]
-docs = ["quartodoc"]
+docs = [
+  "quartodoc",
+  "shinylive",
+  "jupyter",
+]
 dev = [
   "shiny-treeview[test,docs]",
   "black",

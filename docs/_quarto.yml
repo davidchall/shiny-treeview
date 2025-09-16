@@ -14,6 +14,8 @@ website:
     left:
       - href: index.md
         text: Home
+      - href: examples.qmd
+        text: Examples
       - href: reference/
         text: API Reference
       - href: CHANGELOG.md
@@ -54,6 +56,7 @@ quartodoc:
 
 filters:
   - interlinks
+  - shinylive
 
 interlinks:
   autolink: true

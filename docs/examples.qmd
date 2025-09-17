@@ -32,12 +32,14 @@ Try playing around with the `multiple` and `selected` arguments.
 ## file: requirements.txt
 {{< include "examples/basic/requirements.txt" >}}
 ```
+:::
 
 
 ## Checkbox selection
 
 When checkboxes are enabled, a tree item is selected by clicking on the checkbox element.
-Consequently a tree item can be expanded without selecting it.
+Now multiple tree items can be selected without holding down a key.
+Also a tree item can now be expanded or collapsed without selecting it, by clicking on the label or the expand icon.
 
 ::: column-page-inset-right
 ```{shinylive-python}
@@ -55,3 +57,4 @@ Consequently a tree item can be expanded without selecting it.
 ## file: requirements.txt
 {{< include "examples/checkbox/requirements.txt" >}}
 ```
+:::

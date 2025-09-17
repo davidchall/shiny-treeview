@@ -3,3 +3,5 @@ _site
 reference
 objects.json
 objects.txt
+
+**/*.quarto_ipynb

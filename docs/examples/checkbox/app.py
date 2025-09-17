@@ -7,7 +7,8 @@ input_treeview(
     "my_tree",
     tree_data,
     selected="report",
-    multiple=False,
+    multiple=True,
+    checkbox=True,
 )
 
 

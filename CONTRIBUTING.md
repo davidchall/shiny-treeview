@@ -51,12 +51,6 @@ Thank you for your interest in contributing to Shiny TreeView! This guide will h
    isort .
    ```
 
-4. **Test the example app**:
-   ```bash
-   cd example-app
-   python -m shiny run app.py --reload
-   ```
-
 #### JavaScript/TypeScript Development
 
 1. **Make changes** to TypeScript code in `srcts/`
@@ -85,6 +79,7 @@ Thank you for your interest in contributing to Shiny TreeView! This guide will h
 
 2. **Build API documentation**:
    ```bash
+   cd docs
    quartodoc build
    ```
 

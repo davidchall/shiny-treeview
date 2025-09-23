@@ -5,23 +5,23 @@ filters:
   - shinylive
 ---
 
-Each example below is written using the [Shiny Express](https://shiny.posit.co/py/api/express/)
-syntax, a concise API for [Shiny for Python](https://shiny.posit.co/py/).
-The more powerful [Shiny Core](https://shiny.posit.co/py/api/core/) API is also supported.
+The examples below demonstrate the key features of shiny-treeview, a TreeView UI component for [Shiny for Python](https://shiny.posit.co/py/) backed by [Material UI](https://mui.com/x/react-tree-view/).
 
-The examples run in your web browser using [Shinylive](https://shiny.posit.co/py/get-started/shinylive.html),
-which means you can quickly test ideas by editing the source code and re-running the app.
+Each example is written using the concise [Shiny Express](https://shiny.posit.co/py/api/express/) API.
+The more powerful [Shiny Core](https://shiny.posit.co/py/api/core/) API is also supported.
+The examples run in your web browser using [Shinylive](https://shiny.posit.co/py/get-started/shinylive.html), which means you can quickly test ideas by editing the source code and re-running the app.
 
 ## Basic usage
 
-Try playing around with the `multiple` and `selected` arguments.
+
+Start with a simple hierarchical tree structure. Click on any item to select it.
 
 ::: column-page-inset-right
 ```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
-#| viewerHeight: 500
+#| viewerHeight: 300
 
 ## file: app.py
 {{< include "examples/basic/app.py" >}}
@@ -34,12 +34,34 @@ Try playing around with the `multiple` and `selected` arguments.
 ```
 :::
 
+## Selection modes
+
+Compare single selection (default) with multiple selection. When `multiple=True`, hold Ctrl/Cmd or Shift while clicking to select multiple items.
+
+::: column-page-inset-right
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/selection-modes/app.py" >}}
+
+## file: data.py
+{{< include "examples/selection-modes/data.py" >}}
+
+## file: requirements.txt
+{{< include "examples/selection-modes/requirements.txt" >}}
+```
+:::
 
 ## Checkbox selection
 
 When checkboxes are enabled, a tree item is selected by clicking on the checkbox element.
 Now multiple tree items can be selected without holding down a key.
 Also a tree item can now be expanded or collapsed without selecting it, by clicking on the label or the expand icon.
+
 
 ::: column-page-inset-right
 ```{shinylive-python}
@@ -52,9 +74,34 @@ Also a tree item can now be expanded or collapsed without selecting it, by click
 {{< include "examples/checkbox/app.py" >}}
 
 ## file: data.py
-{{< include "examples/basic/data.py" >}}
+{{< include "examples/checkbox/data.py" >}}
 
 ## file: requirements.txt
 {{< include "examples/checkbox/requirements.txt" >}}
+```
+:::
+
+## Working with flat data
+
+Transform flat data (like CSV or database results) into hierarchical trees using stratify helper functions.
+If the hierarchy structure is expressed through a parent ID field, then use `stratify_by_parent()`.
+
+This next example shows an organizational chart built from employee data.
+
+::: column-page-inset-right
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/org-chart/app.py" >}}
+
+## file: data.py
+{{< include "examples/org-chart/data.py" >}}
+
+## file: requirements.txt
+{{< include "examples/org-chart/requirements.txt" >}}
 ```
 :::

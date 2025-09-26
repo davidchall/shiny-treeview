@@ -57,7 +57,6 @@ quartodoc:
 
 filters:
   - interlinks
-  - shinylive
 
 interlinks:
   autolink: true

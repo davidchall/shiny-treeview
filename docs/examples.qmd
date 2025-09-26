@@ -26,8 +26,8 @@ Start with a simple hierarchical tree structure. Click on any item to select it.
 ## file: app.py
 {{< include "examples/basic/app.py" >}}
 
-## file: data.py
-{{< include "examples/basic/data.py" >}}
+## file: data1.py
+{{< include "examples/basic/data1.py" >}}
 
 ## file: requirements.txt
 {{< include "examples/basic/requirements.txt" >}}
@@ -36,7 +36,8 @@ Start with a simple hierarchical tree structure. Click on any item to select it.
 
 ## Selection modes
 
-Compare single selection (default) with multiple selection. When `multiple=True`, hold Ctrl/Cmd or Shift while clicking to select multiple items.
+With multiple selection enabled, hold Ctrl/Cmd or Shift while clicking to select multiple items.
+Try toggling multiple selection below by editing the `multiple` argument, to see how it impacts user interactions.
 
 ::: column-page-inset-right
 ```{shinylive-python}
@@ -48,8 +49,8 @@ Compare single selection (default) with multiple selection. When `multiple=True`
 ## file: app.py
 {{< include "examples/selection-modes/app.py" >}}
 
-## file: data.py
-{{< include "examples/selection-modes/data.py" >}}
+## file: data2.py
+{{< include "examples/selection-modes/data2.py" >}}
 
 ## file: requirements.txt
 {{< include "examples/selection-modes/requirements.txt" >}}
@@ -59,9 +60,8 @@ Compare single selection (default) with multiple selection. When `multiple=True`
 ## Checkbox selection
 
 When checkboxes are enabled, a tree item is selected by clicking on the checkbox element.
+This decouples the select action from the expand/contract action.
 Now multiple tree items can be selected without holding down a key.
-Also a tree item can now be expanded or collapsed without selecting it, by clicking on the label or the expand icon.
-
 
 ::: column-page-inset-right
 ```{shinylive-python}
@@ -73,8 +73,8 @@ Also a tree item can now be expanded or collapsed without selecting it, by click
 ## file: app.py
 {{< include "examples/checkbox/app.py" >}}
 
-## file: data.py
-{{< include "examples/checkbox/data.py" >}}
+## file: data3.py
+{{< include "examples/checkbox/data3.py" >}}
 
 ## file: requirements.txt
 {{< include "examples/checkbox/requirements.txt" >}}
@@ -83,10 +83,8 @@ Also a tree item can now be expanded or collapsed without selecting it, by click
 
 ## Working with flat data
 
-Transform flat data (like CSV or database results) into hierarchical trees using stratify helper functions.
+Transform flat data (like CSV or database results) into hierarchical trees using the stratify helper functions.
 If the hierarchy structure is expressed through a parent ID field, then use `stratify_by_parent()`.
-
-This next example shows an organizational chart built from employee data.
 
 ::: column-page-inset-right
 ```{shinylive-python}
@@ -98,8 +96,8 @@ This next example shows an organizational chart built from employee data.
 ## file: app.py
 {{< include "examples/org-chart/app.py" >}}
 
-## file: data.py
-{{< include "examples/org-chart/data.py" >}}
+## file: data4.py
+{{< include "examples/org-chart/data4.py" >}}
 
 ## file: requirements.txt
 {{< include "examples/org-chart/requirements.txt" >}}

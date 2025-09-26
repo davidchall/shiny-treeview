@@ -1,0 +1,105 @@
+---
+title: Examples
+format: html
+filters:
+  - shinylive
+---
+
+The examples below demonstrate the key features of shiny-treeview, a TreeView UI component for [Shiny for Python](https://shiny.posit.co/py/) backed by [Material UI](https://mui.com/x/react-tree-view/).
+
+Each example is written using the concise [Shiny Express](https://shiny.posit.co/py/api/express/) API.
+The more powerful [Shiny Core](https://shiny.posit.co/py/api/core/) API is also supported.
+The examples run in your web browser using [Shinylive](https://shiny.posit.co/py/get-started/shinylive.html), which means you can quickly test ideas by editing the source code and re-running the app.
+
+## Basic usage
+
+
+Start with a simple hierarchical tree structure. Click on any item to select it.
+
+::: column-page-inset-right
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 300
+
+## file: app.py
+{{< include "examples/basic/app.py" >}}
+
+## file: data1.py
+{{< include "examples/basic/data1.py" >}}
+
+## file: requirements.txt
+{{< include "examples/basic/requirements.txt" >}}
+```
+:::
+
+## Selection modes
+
+With multiple selection enabled, hold Ctrl/Cmd or Shift while clicking to select multiple items.
+Try toggling multiple selection below by editing the `multiple` argument, to see how it impacts user interactions.
+
+::: column-page-inset-right
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/selection-modes/app.py" >}}
+
+## file: data2.py
+{{< include "examples/selection-modes/data2.py" >}}
+
+## file: requirements.txt
+{{< include "examples/selection-modes/requirements.txt" >}}
+```
+:::
+
+## Checkbox selection
+
+When checkboxes are enabled, a tree item is selected by clicking on the checkbox element.
+This decouples the select action from the expand/contract action.
+Now multiple tree items can be selected without holding down a key.
+
+::: column-page-inset-right
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/checkbox/app.py" >}}
+
+## file: data3.py
+{{< include "examples/checkbox/data3.py" >}}
+
+## file: requirements.txt
+{{< include "examples/checkbox/requirements.txt" >}}
+```
+:::
+
+## Working with flat data
+
+Transform flat data (like CSV or database results) into hierarchical trees using the stratify helper functions.
+If the hierarchy structure is expressed through a parent ID field, then use `stratify_by_parent()`.
+
+::: column-page-inset-right
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: horizontal
+#| viewerHeight: 500
+
+## file: app.py
+{{< include "examples/stratify-by-parent/app.py" >}}
+
+## file: data4.py
+{{< include "examples/stratify-by-parent/data4.py" >}}
+
+## file: requirements.txt
+{{< include "examples/stratify-by-parent/requirements.txt" >}}
+```
+:::

@@ -35,7 +35,10 @@ test = [
   "pytest-playwright",
   "pytest-playwright-visual-snapshot",
 ]
-docs = ["quartodoc"]
+docs = [
+  "quartodoc",
+  "shinylive",
+]
 dev = [
   "shiny-treeview[test,docs]",
   "black",
@@ -102,6 +105,6 @@ force_grid_wrap = 0
 use_parentheses = true
 ensure_newline_before_comments = true
 src_paths = ["shiny_treeview", "tests"]
-skip_glob = ["**/distjs/*", "**/node_modules/*"]
+skip_glob = ["**/distjs/*", "**/node_modules/*", "docs/examples/**"]
 known_first_party = ["shiny_treeview"]
 known_third_party = ["shiny", "htmltools", "playwright", "pytest"]

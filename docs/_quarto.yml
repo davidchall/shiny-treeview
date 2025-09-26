@@ -14,6 +14,8 @@ website:
     left:
       - href: index.md
         text: Home
+      - href: examples.qmd
+        text: Examples
       - href: reference/
         text: API Reference
       - href: CHANGELOG.md
@@ -30,6 +32,7 @@ format:
       dark: solar
     respect-user-color-scheme: true
     toc: true
+    toc-location: left
     code-copy: true
     code-overflow: wrap
     css:

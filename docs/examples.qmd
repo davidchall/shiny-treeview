@@ -94,12 +94,12 @@ If the hierarchy structure is expressed through a parent ID field, then use `str
 #| viewerHeight: 500
 
 ## file: app.py
-{{< include "examples/org-chart/app.py" >}}
+{{< include "examples/stratify-by-parent/app.py" >}}
 
 ## file: data4.py
-{{< include "examples/org-chart/data4.py" >}}
+{{< include "examples/stratify-by-parent/data4.py" >}}
 
 ## file: requirements.txt
-{{< include "examples/org-chart/requirements.txt" >}}
+{{< include "examples/stratify-by-parent/requirements.txt" >}}
 ```
 :::

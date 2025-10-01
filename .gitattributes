@@ -1,3 +1,4 @@
 package-lock.json linguist-generated
 shiny_treeview/distjs/** linguist-generated
 docs/** linguist-documentation
+docs/examples/** linguist-vendored

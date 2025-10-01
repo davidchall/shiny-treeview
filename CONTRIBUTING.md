@@ -128,11 +128,10 @@ Thank you for your interest in contributing to Shiny TreeView! This guide will h
 
 (For maintainers)
 
-1. Update version in `pyproject.toml`
-2. Update `CHANGELOG.md`
-3. Create a git tag: `git tag v0.1.1`
-4. Push tag: `git push origin v0.1.1`
-5. GitHub Actions will automatically build and publish to PyPI
+1. Update `CHANGELOG.md`
+2. Create a git tag: `git tag v0.1.1`
+3. Push tag: `git push origin v0.1.1`
+4. GitHub Actions will automatically build and publish to PyPI
 
 ## Getting Help
 
